@@ -1,367 +1,111 @@
-# Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models
+# ACE (Agent-Curator-Environment)
 
-<div align="left">
+## 项目介绍 (Introduction)
 
-<p align="left" style="display:flex; gap:18px;">
-  <a href="https://arxiv.org/abs/2510.04618" target="_blank" style="margin-right:0;">
-    <img alt="arXiv" src="https://img.shields.io/badge/arXiv-2510.04618-b31b1b.svg">
-  </a>
-  <a href="https://join.slack.com/t/ace-agent/shared_invite/zt-3np7gusuf-DCUJaBshNjuAz5ECDx702w" target="_blank" style="margin-right:0;">
-    <img alt="Slack" src="https://img.shields.io/badge/Join Slack-4A154B?logo=slack&logoColor=white">
-  </a>
-  <a href="https://discord.gg/NW2W4xYt" target="_blank" style="margin-right:0;">
-    <img alt="Discord" src="https://img.shields.io/badge/Discord-7289DA?logo=discord&logoColor=white">
-  </a>
-  <a href="https://deepwiki.com/ace-agent/ace" target="_blank" style="margin-right:0;">
-    <img alt="Ask DeepWiki" src="https://deepwiki.com/badge.svg">
-  </a>
-  <a href="https://forms.gle/ZNJpqVBRa8QoPjzM7" target="_blank" style="margin-right:0;">
-    <img alt="Feedback & Interest Form" src="https://img.shields.io/badge/Feedback & Interest Form-4285F4?logo=googleforms&logoColor=white">
-  </a>
-</p>
+ACE (Agent-Curator-Environment) 是一个具备自我进化能力的自动化大模型智能体（Agent）系统。该系统不仅仅是一个接收 Prompt 并输出结果的工具，它通过维护一个**本地经验库（Playbook）**来指导具体任务的严谨执行。
 
-
-<img src="assets/images/ace_framework.png" alt="ACE Framework" width="800"/>
-
-</div>
+更重要的是，在每次任务执行结束后，系统会启动反思与提炼机制（Reflector & Curator），不断沉淀成功的执行经验和排雷失败的教训，形成真正意义上的**闭环学习引擎**。结合人类在环（Human-in-the-loop）的严格审批机制，系统能够在保证业务安全可控的前提下，“越用越聪明”，持续提升自动化能力。
 
 ---
 
-## 🎯 Overview
+## 核心架构 (Architecture)
 
-ACE (Agentic Context Engineering) is a framework that enables large language models to self-improve by treating contexts as evolving playbooks that accumulate, refine, and organize strategies through a modular process of generation, reflection, and curation. Unlike traditional approaches that suffer from **brevity bias** and **context collapse**, ACE introduces structured, incremental updates guided by a grow-and-refine principle, preserving detailed, domain-specific knowledge while remaining comprehensive and scalable throughout adaptation.
+该系统经过深度重构，采用了极为优雅清晰的**三层隔离技术架构**：
 
-## Latest News
-- **2025 Nov**: ACE [Paper](https://arxiv.org/abs/2510.04618) and Repo says "Hello World"!
+### 1. 第一层：存储层 (Storage Layer) —— 本地化动态经验库 (Local Playbook)
+- **核心职责**：持久化存储从各项任务中学习到的“经验规则”（Bullets）。
+- **实现机制**：完全依赖轻量级的本地文件系统（默认位于路径 `agent_memory/playbooks/base_rules.json`）。系统执行读写隔离原则，所有经验以 JSON 格式存储，便于机器结构化读写以及局部的增量更新。
+- **数据结构**：所有经验被高度原子化，每一条规则标准包含以下字段：
+  - `id`: 经验唯一标识（例：`rule-glp-001`）。
+  - `tags`: 任务场景标签数组，用于快速检索匹配。
+  - `content`: 具体、详细且可直接执行的业务逻辑/指令内容。
+  - `metrics`: 效果评估指标（统计该规则在历史任务中被判定为 `helpful` 还是 `harmful` 的次数），作为日后清理无效规则的依据。
 
-### Key Features
+### 2. 第二层：检索层 (Retrieval Layer) —— 插件化上下文引擎 (Context Plugin)
+- **核心职责**：在正式执行任务前，智能提取当前任务所需的经验，避免将整个庞大的全局经验库全部塞入 LLM 导致上下文污染、超载或丢失焦点。
+- **实现机制**：作为挂载在大模型调用链上的前置拦截中间件（`ContextEnhancer`）。它通过轻量级的关键词机制，分析当前用户指令，从第一层 JSON 文件库中精准过滤出 `tags` 匹配度高的业务条目。
+- **能力输出**：将抽取出的多条离散格式经验，拼接包装成一段专属的 System Playbook 文本（包含该规则的效能评估指标），前置注入给大模型作为“纪律指引”。
 
-- 🔄 **Three-Role Agentic Architecture**: Generator, Reflector, and Curator work together to continuously improve contexts
-- 📈 **Incremental Delta Updates**: Localized edits that preserve prior knowledge while accumulating new insights
-- 🎓 **Self-Supervised Learning**: Adapts effectively without labeled supervision by leveraging natural execution feedback
-- 🚀 **High Efficiency**: 86.9% lower adaptation latency on average compared to existing adaptive methods
-- 💰 **Cost Effective**: Significantly fewer rollouts and lower dollar costs while achieving higher accuracy
+### 3. 第三层：认知层 (Cognitive Layer) —— 闭环学习与审批引擎 (ACE Engine)
+这是整个项目的大脑中枢，负责任务控制、自我反思以及通过防线机制保障生态安全。
+- **核心职能**：串联多 Agent 协同流，并引入安全门（Approval）。
+- **实现机制**：包含四大功能组件：
+  - **Generator (执行者)**：接收来自 Context Plugin 增强的专属上下文，并实际去执行任务、产生结果输出或代码调用。
+  - **Reflector (反思者)**：充当“复盘官”，基于 Generator 的详细执行轨迹、运行报错日志及标准答案对照，深度分析此阶段的问题，并为刚刚引用的规则打上效果标签（Helpful / Harmful）。
+  - **Curator (策展者)**：充当“书籍编撰者”，根据 Reflector 提供的大量教训，去粗取精，提炼出具有普遍复用价值的**全新格式化规则描述**。
+  - **ApprovalInterceptor (审批拦截器)**：出于生产安全考量，在新规则提炼好准备写入 Local Playbook 前发挥最后一道防线的作用。系统会挂起进程并通过控制台（CLI `y/n/a`）或界面弹窗拦截反馈：“发现新经验，是否加入经验库？” 只有经开发者人工确认，该智慧结晶才完成真正入库，实现生态繁荣与业务安全的统一。
 
-### Tutorials
-- 📚 **Adding Dataset for Evaluation** [Link](tutorials/ExtendingDatasets.md)
-- ✨ **Extending ACE for Tool Calling** (Coming Soon) 
+---
 
-### 📊 Performance
+## 快速使用说明 (How to Use)
 
-ACE consistently outperforms strong baselines, achieving average gains of **+10.6%** on agent tasks and **+8.6%** on domain-specific benchmarks, across both offline and online adaptation settings.
+### 1. 环境准备
+- **语言依赖**: Python >= 3.10
+- **环境搭建**: 建议使用 `uv` 来加速环境配置与包管理（或直接使用 pip）。
+  ```bash
+  uv sync  # (如果存在 uv 配置)
+  # 或者
+  pip install -r pyproject.toml # (依据具体配置情况)
+  ```
+- **密钥配置**: 复制一份 `.env.example` 并重命名为 `.env`，填入您使用的大语言模型（如 OpenAI、Anthropic、智谱等） API Key 设置。
 
-#### Benchmarks
-
-| Task Category | Dataset | Improvement | Details |
-|---------------|---------|-------------|---------|
-| **Agent Tasks** | AppWorld | +10.6% | Matches top-ranked production-level agent (GPT-4.1) on average and surpasses it on harder test-challenge split, using smaller open-source model |
-| **Finance** | FiNER + XBRL Formula | +8.6% | Domain-specific reasoning with structured information extraction |
-
-#### Efficiency Improvements
-
-- **Offline (AppWorld)**: -82.3% latency and -75.1% rollouts vs GEPA
-- **Online (FiNER)**: -91.5% latency and -83.6% token cost vs Dynamic Cheatsheet
-
-
-#### How It Works
-
-1. **Generator** produces reasoning trajectories for new queries, surfacing both effective strategies and recurring pitfalls
-2. **Reflector** separates evaluation and insight extraction from curation, improving context quality
-3. **Curator** converts lessons into structured delta updates with helpful/harmful counters, using deterministic merging with de-duplication and pruning
-
-This design prevents the **context collapse** problem where iterative rewriting erodes details over time.
-
-## 🚀 Quick Start
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/ace-agent/ace.git
-cd ace
-
-# Install uv (if not already installed)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Install ACE and core dependencies
-uv sync
-
-# Set up API keys
-cp .env.example .env
-# Edit .env and set the API key(s) you need
+### 2. 项目核心目录导读
+```text
+ace/
+├── ace/                         # 主干代码库
+│   ├── engine.py                # -> 主力引擎，控制训练与闭环运行流程，封装 ACE 核心类
+│   ├── core/                    # -> 架构三层抽象具体代码点
+│   │   ├── storage.py           # (第一层) JSON文件持久化读写
+│   │   ├── retrieval.py         # (第二层) Prompt上下文装配检索
+│   │   ├── approval.py          # (第三层) 人机交互CLI审批确认
+│   │   ├── generator.py         # (第三层) 任务执行智体
+│   │   ├── reflector.py         # (第三层) 复盘打标智体
+│   │   └── curator.py           # (第三层) 教训提炼智体
+│   └── utils/                   # -> 通用支撑函数 (Playbook 解析、日志等)
+├── agent_memory/                #
+│   └── playbooks/               # -> 本地 JSON 经验库统一存储路径 (base_rules.json)
+└── pyproject.toml               # Python 依赖配置文件
 ```
 
-### Basic Usage
+### 3. 代码体验示例 (Quick Start)
+您可以在您的业务入口代码（如 `main.py`）中，只需按如下方式引入 ACE 系统：
 
 ```python
-from ace import ACE
-from utils import initialize_clients
+from ace.engine import ACE
 
-# Initialize API clients
-api_provider = "sambanova" # or "together", "openai"
-
-# Initialize ACE system
+# 1. 实例化核心系统对象
 ace_system = ACE(
-    api_provider=api_provider,
-    generator_model="DeepSeek-V3.1",
-    reflector_model="DeepSeek-V3.1",
-    curator_model="DeepSeek-V3.1",
-    max_tokens=4096
+    api_provider="openai",        # 供应商配置
+    generator_model="gpt-4o",     # 负责推导调用的主模型
+    reflector_model="gpt-4o",     # 负责反思复盘的模型
+    curator_model="gpt-4o"        # 负责凝练规则的模型
 )
 
-# Prepare configuration
+# 2. 准备运行参数配置
 config = {
-    'num_epochs': 1,
-    'max_num_rounds': 3,
-    'curator_frequency': 1,
-    'eval_steps': 100,
-    'online_eval_frequency': 15,
-    'save_steps': 50,
-    'playbook_token_budget': 80000,
-    'task_name': 'your_task',
-    'json_mode': False,
-    'no_ground_truth': False,
-    'save_dir': './results',
-    'test_workers': 20,
-    'use_bulletpoint_analyzer': false,
-    'api_provider': api_provider
-
+    "task_name": "demo_task",
+    "curator_frequency": 1,       # 进行反思总结的频次
+    "max_num_rounds": 3,          # 如果做错了允许让 Reflector 指导重试的轮次
+    "use_json_mode": False
 }
 
-# Offline adaptation
-results = ace_system.run(
-    mode='offline',
-    train_samples=train_data,
-    val_samples=val_data,
-    test_samples=test_data,  # Optional
-    data_processor=processor,
-    config=config
-)
+test_data = [
+    {
+        "question": "解析如下文本并提取关键数字", 
+        "context": "项目A总成本 30200 元", 
+        "target": "30200"
+    }
+]
 
-# Online adaptation
-results = ace_system.run(
-    mode='online',
+# 3. 驱动作业执行 (开启 eval_only 测试 或 online 训练模式)
+# 在执行过程中如果 Curator 总结出了新的普适性经验，终端会提示拦截进行审批
+ace_system.run(
+    mode="online", 
     test_samples=test_data,
-    data_processor=processor,
-    config=config
-)
-
-# Evaluation only
-results = ace_system.run(
-    mode='eval_only',
-    test_samples=test_data,
-    data_processor=processor,
+    data_processor=your_data_processor_instance,  # 支持您特定的数据处理器评判真伪
     config=config
 )
 ```
 
-## 💼 Finance Domain Example
-
-### Training Script Usage
-
-The `finance/run.py` script provides a unified interface for training and evaluation on financial analysis tasks.
-
-```bash
-# Offline training (with automatic initial and final testing)
-uv run python -m eval.finance.run \
-    --task_name finer \
-    --mode offline \
-    --save_path results
-
-# Online training and testing
-uv run python -m eval.finance.run \
-    --task_name finer \
-    --mode online \
-    --save_path results
-
-# Run evaluation on the test split only. Provide a pre-trained playbook or leave initial_playbook_path empty to evaluate an uninitialized playbook.
-uv run python -m eval.finance.run \
-    --task_name finer \
-    --mode eval_only \
-    --initial_playbook_path results/ace_run_TIMESTAMP_finer_offline/best_playbook.txt \
-    --save_path test_results
-
-# Training with custom configuration
-uv run python -m eval.finance.run \
-    --task_name finer \
-    --mode offline \
-    --save_path results \
-    --num_epochs 3 \
-    --eval_steps 100 \
-    --max_tokens 4096
-```
-
-#### Available Arguments
-<details>
-<summary>Click here to see available arguments</summary>
-
-| Argument | Description | Default |
-|----------|-------------|---------|
-| `--task_name` | Task to train on (e.g., `finer`, `formula`) | Required |
-| `--save_path` | Directory to save results | Required |
-| `--initial_playbook_path` | Path to initial playbook | Optional |
-| `--mode` | Run mode: 'offline' for offline training with validation, 'online' for online training and testing on test split, 'eval_only' for evaluation only | `offline` |
-| `--api_provider` | API provider for LLM calls. Choose from ['sambanova', 'together', 'openai'] | `sambanova` |
-| `--num_epochs` | Number of training epochs | 1 |
-| `--max_num_rounds` | Max reflection rounds for incorrect answers | 3 |
-| `--curator_frequency` | Run curator every N steps | 1 |
-| `--eval_steps` | Evaluate every N steps | 100 |
-| `--online_eval_frequency` | Update playbook every N samples for evaluation in online mode | 15 |
-| `--save_steps` | Save intermediate playbooks every N steps | 50 |
-| `--max_tokens` | Maximum tokens for LLM responses | 4096 |
-| `--playbook_token_budget` | Total token budget for playbook | 80000 |
-| `--test_workers` | Number of parallel workers for testing | 20 |
-| `--generator_model` | Model for generator | `DeepSeek-V3.1` |
-| `--reflector_model` | Model for reflector | `DeepSeek-V3.1` |
-| `--curator_model` | Model for curator | `DeepSeek-V3.1` |
-| `--json_mode` | Enable JSON mode for structured output | False |
-| `--no_ground_truth` | Don't use ground truth in reflection | False |
-| `--use_bulletpoint_analyzer` | Enable bulletpoint analyzer for playbook deduplication and merging | False |
-| `--bulletpoint_analyzer_threshold` | Similarity threshold for bulletpoint analyzer (0-1) | 0.9 |
-
-</details>
-
-## 📈 Results and Outputs
-
-Using offline training as an example, after training, ACE generates:
-
-```
-results/
-└── ace_run_TIMESTAMP_finer_offline/
-    ├── run_config.json                # Training configuration
-    ├── final_results.json             # Consolidated results from all stages
-    ├── initial_test_results.json      # Initial test results with empty playbook (baseline)
-    ├── final_test_results.json        # Final test results with best playbook
-    ├── train_results.json             # Training results
-    ├── val_results.json               # Validation results and error logs
-    ├── pre_train_post_train_results.json     # Detailed pre-train and post-train generator output for each training sample
-    ├── final_playbook.txt             # Final evolved context
-    ├── best_playbook.txt              # Best performing context (only for offline training)
-    ├── bullet_usage_log.jsonl         # Bullet usage tracking
-    ├── curator_operations_diff.jsonl  # Curator operation tracking
-    ├── detailed_llm_logs/             # Detailed LLM call logs
-    └── intermediate_playbooks/        # Intermediate playbooks 
-```
-
-### Understanding Playbook Format
-
-The evolved context (playbook) follows this structure:
-
-```
-## STRATEGIES & INSIGHTS
-[str-00001] helpful=5 harmful=0 :: Always verify data types before processing
-[str-00002] helpful=3 harmful=1 :: Consider edge cases in financial data
-
-## FORMULAS & CALCULATIONS
-[cal-00003] helpful=8 harmful=0 :: NPV = Σ(Cash Flow / (1+r)^t)
-
-## COMMON MISTAKES TO AVOID
-[mis-00004] helpful=6 harmful=0 :: Don't forget timezone conversions
-```
-
-Each bullet has:
-- **ID**: `[section_slug-00000]` for tracking
-- **Counts**: `helpful=X harmful=Y` updated by Reflector
-- **Content**: `:: actual advice or strategy`
-
-<!-- ## 🎓 Key Innovations
-
-### 1. Incremental Delta Updates
-
-Instead of rewriting full prompts, ACE performs delta updates—localized edits that accumulate new insights while preserving prior knowledge.
-
-### 2. Grow-and-Refine Mechanism
-
-A mechanism that balances steady context expansion with redundancy management by merging or pruning context items based on semantic similarity.
-
-### 3. Dedicated Reflector
-
-A specialized Reflector that separates evaluation and insight extraction from curation, improving context quality and downstream performance. -->
-
-### 📬 Supported Tasks
-#### Agent Tasks
-- **AppWorld**: Simulated digital environment with app interactions
-#### Domain-Specific Tasks
-- **FiNER**: Financial information extraction
-- **XBRL Formula**: Structured financial data processing
-
-## 🛠️ Extending ACE
-
-ACE is designed to be easily extended to new tasks and domains. To add your own task:
-
-1. **Prepare your data**: Create JSONL files with train/val/test splits
-2. **Implement DataProcessor**: Only 3 methods needed - `process_task_data()`, `answer_is_correct()`, `evaluate_accuracy()`
-3. **Create training script**: Initialize ACE and run training using the `run()` method
-4. **Customize prompts** (optional): Adapt prompts to your domain
-
-The evaluation orchestration (parallel test execution, result aggregation) is handled by reusable utilities in `utils.py`, so you only need to focus on task-specific logic.
-
-### Quick Example
-
-```python
-class DataProcessor:
-    def process_task_data(self, raw_data):
-        # Convert your data format to standardized format
-        return [{"context": ..., "question": ..., "target": ..., "others": {...}}]
-    
-    def answer_is_correct(self, predicted, ground_truth):
-        # Your comparison logic
-        return predicted.strip() == ground_truth.strip()
-    
-    def evaluate_accuracy(self, predictions, ground_truths):
-        # Calculate accuracy
-        return sum(self.answer_is_correct(p, g) for p, g in zip(predictions, ground_truths)) / len(predictions)
-```
-📖 **[Read the full extension guide →](EXTENDING_ACE.md)**
-
-
-## 🤝 Contributing
-We welcome contributions! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-
-## 📚 Additional Resources
-- **Blog Posts**: 
-  - [Medium: Agentic Context Engineering](https://medium.com/@bingqian/agentic-context-engineering-teaching-language-models-to-learn-from-experience-706c31a872ca)
-  - [MarkTechPost Coverage](https://www.marktechpost.com/2025/10/10/agentic-context-engineering-ace-self-improving-llms-via-evolving-contexts-not-fine-tuning/)
-  - [InfoQ Article](https://www.infoq.com/news/2025/10/agentic-context-eng/)
-
-### 🙏 Acknowledgments
-This work builds upon insights from Dynamic Cheatsheet and incorporates ideas from the broader LLM agent and context optimization research community.
-
-### 📧 Contact
-For questions and feedback:
-- **Paper Authors**: See [arXiv paper](https://arxiv.org/abs/2510.04618) for author contact information
-- **Issues**: Please open an issue on GitHub
-- **Discussions**: Join the [GitHub Discussions](../../discussions)
-
----
-
-
-## 📝 Citation
-
-If you use ACE in your research, please cite our paper:
-
-```bibtex
-@misc{zhang2025agenticcontextengineeringevolving,
-      title={Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models}, 
-      author={Qizheng Zhang and Changran Hu and Shubhangi Upasani and Boyuan Ma and Fenglu Hong and Vamsidhar Kamanuru and Jay Rainton and Chen Wu and Mengmeng Ji and Hanchen Li and Urmish Thakker and James Zou and Kunle Olukotun},
-      year={2025},
-      eprint={2510.04618},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2510.04618}, 
-}
-```
-
-<div align="center">
-
-**⭐ Star us on GitHub if ACE helps your research!**
-
-Made with ❤️ by the ACE team
-
-</div>
+### 4. 经验库日常干预
+您不仅可以等待系统自我进化更新规则，由于系统的存储采取了第一层的可读性 JSON 文件设计，您随时可以在运行停止时，使用任何文档编辑器打开 `agent_memory/playbooks/base_rules.json` 进行硬核的“手术刀式”微调，大模型下一次载入时将直接遵循您的最新人工意志！
