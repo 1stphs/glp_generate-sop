@@ -135,14 +135,40 @@ for step in trajectory:
     print(f"Step {step['step']}: {step['agent']} ({step['type']})")
 ```
 
+### CLI Usage
+
+The CLI uses configuration from environment variables automatically:
+
+```bash
+# Print current configuration
+python deepagent_sop/main.py --config
+
+# Run with default configuration
+python deepagent_sop/main.py --task "Generate SOP for validation report"
+
+# Run with custom parameters (overrides env config)
+python deepagent_sop/main.py \
+  --task "Generate SOP" \
+  --model "gpt-4o-mini" \
+  --temperature 0.5 \
+  --no-learning
+
+# Use different memory file
+python deepagent_sop/main.py \
+  --task "Generate SOP" \
+  --memory-path "custom_memory.md"
+```
+
 ## File Structure
 
 ```
 deepagent_sop/
 ├── README.md                          # This file
 ├── main.py                            # Entry point
+├── .env.example                       # Configuration template
 ├── core/
 │   ├── __init__.py
+│   ├── config.py                      # Configuration manager
 │   ├── base_agent.py                   # DeepAgent base class
 │   ├── main_agent.py                   # Main Agent (autonomous orchestrator)
 │   ├── subagents/
@@ -189,15 +215,52 @@ All code, prompts, and configuration are in `deepagent_sop/` folder - no cross-r
 
 - Python >= 3.10
 - openai >= 1.0.0
+- anthropic >= 0.39.0 (optional, for Anthropic provider)
 - python-dotenv >= 1.0.0
+- httpx >= 0.24.0
 
-## Environment Variables
+## Configuration
 
+DeepAgent SOP uses a centralized configuration system via environment variables.
+
+### Quick Start
+
+1. Copy the example configuration:
 ```bash
-OPENAI_API_KEY=your_openai_api_key
-# or
-ANTHROPIC_API_KEY=your_anthropic_api_key
+cp deepagent_sop/.env.example deepagent_sop/.env
 ```
+
+2. Edit `deepagent_sop/.env` with your API keys:
+```bash
+# For OpenAI-compatible API (recommended)
+OPENVIKING_LLM_API_KEY=your_api_key_here
+OPENVIKING_LLM_MODEL=gpt-4o
+OPENVIKING_LLM_API_BASE=https://aihubmix.com/v1
+
+# Or for direct OpenAI
+# OPENAI_API_KEY=your_openai_key
+# DEEPAGENT_LLM_PROVIDER=openai
+
+# Or for Anthropic
+# ANTHROPIC_API_KEY=your_anthropic_key
+# DEEPAGENT_LLM_PROVIDER=anthropic
+```
+
+### Configuration Options
+
+| Environment Variable | Default | Description |
+|-------------------|----------|-------------|
+| `DEEPAGENT_LLM_PROVIDER` | `openai` | LLM provider: `openai` or `anthropic` |
+| `OPENVIKING_LLM_MODEL` | `gpt-4o` | Model name for OpenAI-compatible API |
+| `OPENVIKING_LLM_API_KEY` | - | API key for OpenAI-compatible API |
+| `OPENVIKING_LLM_API_BASE` | `https://aihubmix.com/v1` | Base URL for OpenAI-compatible API |
+| `DEEPAGENT_LLM_TEMPERATURE` | `0.7` | LLM generation temperature |
+| `DEEPAGENT_LLM_MAX_TOKENS` | `4096` | Max tokens for LLM responses |
+| `DEEPAGENT_MEMORY_PATH` | `deepagent_sop/memory/memory.md` | Path to memory file |
+| `DEEPAGENT_LEARNING_ENABLED` | `true` | Enable/disable learning loop |
+| `DEEPAGENT_DEBUG` | `false` | Enable debug mode |
+
+For a complete list of configuration options, see `deepagent_sop/.env.example`.
 
 ## Development
 

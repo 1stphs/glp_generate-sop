@@ -10,15 +10,15 @@ import re
 from typing import Dict, Any, List
 from datetime import datetime
 
-from ..base_agent import DeepAgent
-from ..subagents.writer_agent import WriterAgent
-from ..subagents.simulator_agent import SimulatorAgent
-from ..subagents.reviewer_agent import ReviewerAgent
-from ..learning.reflector_agent import ReflectorAgent
-from ..learning.curator_agent import CuratorAgent
-from ..utils.memory_manager import MemoryManager
-from ..utils.trajectory_logger import TrajectoryLogger
-from ..utils.prompt_manager import get_prompt
+from .base_agent import DeepAgent
+from .subagents.writer_agent import WriterAgent
+from .subagents.simulator_agent import SimulatorAgent
+from .subagents.reviewer_agent import ReviewerAgent
+from .learning.reflector_agent import ReflectorAgent
+from .learning.curator_agent import CuratorAgent
+from .utils.memory_manager import MemoryManager
+from .utils.trajectory_logger import TrajectoryLogger
+from .utils.prompt_manager import get_prompt
 
 
 class MainAgent:

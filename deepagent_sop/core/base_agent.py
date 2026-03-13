@@ -5,8 +5,9 @@ Simple, clean, universal base class for all agents.
 """
 
 import time
-from typing import Dict, Any
-import os
+from typing import Dict, Any, Optional
+
+from .config import Config
 
 
 def DeepAgent(system_prompt: str, **config):
@@ -47,32 +48,29 @@ class _DeepAgentImpl:
 
     def _init_llm_client(self):
         """Initialize LLM client based on api_provider."""
-        provider = self.config.get("api_provider", "openai")
+        provider = self.config.get("api_provider", Config.get_llm_provider())
 
         if provider == "openai":
             from openai import OpenAI
+            import httpx
+
+            api_key = self.config.get("api_key") or Config.get_llm_api_key()
+            api_base = self.config.get("api_base") or Config.get_llm_api_base()
 
             return OpenAI(
-                api_key=self._get_api_key(), base_url=self.config.get("api_base", None)
+                api_key=api_key,
+                base_url=api_base,
+                http_client=httpx.Client(timeout=Config.get_llm_timeout()),
             )
         elif provider == "anthropic":
             from anthropic import Anthropic
 
-            return Anthropic(api_key=self._get_api_key())
+            api_key = self.config.get("api_key") or Config.get_llm_api_key()
+            api_base = self.config.get("api_base") or Config.get_llm_api_base()
+
+            return Anthropic(api_key=api_key, base_url=api_base)
         else:
             raise ValueError(f"Unsupported api_provider: {provider}")
-
-    def _get_api_key(self) -> str:
-        """Get API key from environment."""
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            # Try Anthropic key as fallback
-            api_key = os.getenv("ANTHROPIC_API_KEY")
-        if not api_key:
-            raise RuntimeError(
-                "Neither OPENAI_API_KEY nor ANTHROPIC_API_KEY environment variable is set"
-            )
-        return api_key
 
     def run(self, query: str) -> str:
         """
@@ -99,16 +97,22 @@ class _DeepAgentImpl:
         for attempt in range(max_retries):
             try:
                 response = self.client.chat.completions.create(
-                    model=self.config["model"],
+                    model=self.config.get("model", Config.get_llm_model()),
                     messages=messages,
-                    temperature=self.config.get("temperature", 0.7),
-                    max_tokens=self.config.get("max_tokens", 2048),
+                    temperature=self.config.get(
+                        "temperature", Config.get_llm_temperature()
+                    ),
+                    max_tokens=self.config.get(
+                        "max_tokens", Config.get_llm_max_tokens()
+                    ),
                 )
-                return response.choices[0].message.content
+                content = response.choices[0].message.content
+                if content is None:
+                    raise ValueError("LLM returned empty response")
+                return content
             except Exception as e:
                 last_error = e
                 if attempt < max_retries - 1:
-                    # Exponential backoff: 2^attempt seconds
                     wait_time = 2**attempt
                     print(
                         f"⚠️  Retry {attempt + 1}/{max_retries} after {wait_time}s: {e}"

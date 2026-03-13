@@ -37,8 +37,9 @@ See deepagent_sop/README.md for details.
 
 import sys
 import argparse
-import os
 from typing import Dict, Any
+
+from core.config import Config
 
 
 def main():
@@ -55,45 +56,56 @@ def main():
     parser.add_argument(
         "--api-provider",
         type=str,
-        default="openai",
+        default=None,
         choices=["openai", "anthropic"],
-        help="LLM API provider (default: openai)",
+        help=f"LLM API provider (default: {Config.get_llm_provider()})",
     )
     parser.add_argument(
-        "--model", type=str, default="gpt-4o", help="Model name (default: gpt-4o)"
+        "--model",
+        type=str,
+        default=None,
+        help=f"Model name (default: {Config.get_llm_model()})",
     )
     parser.add_argument(
         "--temperature",
         type=float,
-        default=0.7,
-        help="Generation temperature (default: 0.7)",
+        default=None,
+        help=f"Generation temperature (default: {Config.get_llm_temperature()})",
     )
     parser.add_argument(
         "--memory-path",
         type=str,
-        default="deepagent_sop/memory/memory.md",
-        help="Path to memory.md file",
+        default=None,
+        help=f"Path to memory.md file (default: {Config.get_memory_path()})",
+    )
+    parser.add_argument(
+        "--config",
+        action="store_true",
+        help="Print current configuration and exit",
     )
 
     args = parser.parse_args()
 
+    # Print config if requested
+    if args.config:
+        Config.print_config()
+        sys.exit(0)
+
     # Check API key
-    api_key = os.getenv("OPENAI_API_KEY") or os.getenv("ANTHROPIC_API_KEY")
-    if not api_key:
-        print(
-            "Error: Neither OPENAI_API_KEY nor ANTHROPIC_API_KEY environment variable is set"
-        )
+    try:
+        api_key = Config.get_llm_api_key()
+    except RuntimeError as e:
+        print(f"Error: {e}")
         sys.exit(1)
 
     # Import after environment check
-    from deepagent_sop import MainAgent
+    from core.main_agent import MainAgent
 
-    # Configure LLM
     llm_config: Dict[str, Any] = {
-        "api_provider": args.api_provider,
-        "model": args.model,
-        "temperature": args.temperature,
-        "max_tokens": 4096,
+        "api_provider": args.api_provider or Config.get_llm_provider(),
+        "model": args.model or Config.get_llm_model(),
+        "temperature": args.temperature or Config.get_llm_temperature(),
+        "max_tokens": Config.get_llm_max_tokens(),
     }
 
     # Initialize Main Agent
