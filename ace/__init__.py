@@ -17,37 +17,31 @@ Usage:
         reflector_model="model-name",
         curator_model="model-name"
     )
-    
-    # Offline adaptation
-    results = ace_system.run(
-        mode='offline',
-        train_samples=train_data,
-        val_samples=val_data,
-        test_samples=test_data,  # Optional
-        data_processor=processor,
-        config=config
-    )
-
-    # Online adaptation
-    results = ace_system.run(
-        mode='online',
-        test_samples=test_data,
-        data_processor=processor,
-        config=config
-    )
-
-    # Evaluation only
-    results = ace_system.run(
-        mode='eval_only',
-        test_samples=test_data,
-        data_processor=processor,
-        config=config
-    )
 """
 
 from .engine import ACE
 from .core import Generator, Reflector, Curator, BulletpointAnalyzer
 
-__all__ = ['ACE', 'Generator', 'Reflector', 'Curator', 'BulletpointAnalyzer']
+# Extended components from remote for SOP management
+from .audit_log import AuditLog
+from .rules_manager import RulesManager
+from .sop_templates import SOPTemplates
+from .agents.sop_writer import SOPWriter
+from .agents.sop_simulator import SOPSimulator
+from .agents.sop_reviewer import SOPReviewer
+
+__all__ = [
+    'ACE', 
+    'Generator', 
+    'Reflector', 
+    'Curator', 
+    'BulletpointAnalyzer',
+    'AuditLog',
+    'RulesManager',
+    'SOPTemplates',
+    'SOPWriter',
+    'SOPSimulator',
+    'SOPReviewer',
+]
 
 __version__ = "1.0.0"

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "rule-sys-001",
+    "tags": ["基础规范", "通用"],
+    "content": "在执行所有任务前，必须仔细阅读相关的上下文和需求，切勿凭空猜测。如果遇到不确定的参数，应当停止并询问或查询标准文档。",
+    "metrics": {
+      "helpful": 0,
+      "harmful": 0
+    },
+    "created_at": "2026-03-10",
+    "source_task": "system_init"
+  }
+]
