@@ -41,6 +41,8 @@ class WriterAgent:
         experiment_type: str = "小分子模板",
         memory: str = "",
         feedback: str = "",
+        pathology_analysis: str = "",
+        extra_instructions: str = "",
         existing_sop: str = "",
     ) -> Dict[str, Any]:
         """
@@ -53,22 +55,14 @@ class WriterAgent:
             experiment_type: The overall domain categorization.
             memory: Relevant memory content (Rules)
             feedback: Feedback from previous iteration (optional)
+            pathology_analysis: Root cause analysis from Reflector (optional)
+            extra_instructions: Dynamic instructions from Main Agent (optional)
             existing_sop: Existing SOP for retry (optional)
-
-        Returns:
-            {
-                "experiment_type": "...",
-                "current_sop": "Structured SOP content block",
-                "reasoning": "Chain of thought",
-                "core_rules": [...],
-                "template_text": "...",
-                "examples": "..."
-            }
         """
 
         # Build user prompt
-        if feedback and existing_sop:
-            # Retry case
+        if feedback or pathology_analysis or extra_instructions or existing_sop:
+            # Retry or refinement case
             user_prompt = self._build_retry_prompt(
                 experiment_type,
                 section_title,
@@ -76,6 +70,8 @@ class WriterAgent:
                 target_generate_content,
                 existing_sop,
                 feedback,
+                pathology_analysis,
+                extra_instructions,
                 memory,
             )
         else:
@@ -141,6 +137,8 @@ class WriterAgent:
         target_content: str,
         existing_sop: str,
         feedback: str,
+        pathology_analysis: str,
+        extra_instructions: str,
         memory: str,
     ) -> str:
         """Build prompt for retry after feedback."""
@@ -152,31 +150,27 @@ class WriterAgent:
 
 **目标优质报告内容(Ground Truth):**:
 {target_content}
-
-**【上一轮被打回的 SOP 草案】**:
-{existing_sop}
-
-**【判卷老师(Reviewer)反馈指令】**:
-{feedback}
 """
+        if existing_sop:
+            prompt += f"\n**【上一轮生成的 SOP 草案】**:\n{existing_sop}\n"
+        
+        if feedback:
+            prompt += f"\n**【判卷老师(Reviewer)反馈指令】**:\n{feedback}\n"
+            
+        if pathology_analysis:
+            prompt += f"\n**【病灶深度诊断(Reflector Analysis)】**:\n{pathology_analysis}\n"
+
+        if extra_instructions:
+            prompt += f"\n**【主控 Agent 特别纠偏指令(Extra Instructions)】**:\n{extra_instructions}\n"
 
         if memory:
-            prompt += f"""
-**该实验类型相关的专属经验(Rules)**:
-{memory}
-"""
+            prompt += f"\n**该实验类型相关的专属经验(Rules)**:\n{memory}\n"
 
         prompt += """
 **你的任务：**
-这是针对之前失败生成的修复尝试。上一轮生成的 SOP 因为判卷老师指出的一系列错误而被驳回。
-
-在 reasoning 中分析：
-1. 之前的 `current_sop` 哪里出了错（少了换行？漏了标点？忽略了该实验类型里的特定数值提取）？
-2. 我该如何修订 `core_rules` 或 `template_text` 才能绕开这些错误？
-
-务必死死盯住老师指令中的"遗漏"或"排版错位"问题，定向重组 SOP 结构。请直接输出完全合法的 JSON 对象。
+根据以上多维上下文进行 SOP 的精密重构。
+务必结合“病灶诊断”和“主控指令”进行定向纠偏。直接输出完全合法的 JSON 对象。
 """
-
         return prompt
 
     def _parse_response(self, response: str) -> Dict[str, Any]:

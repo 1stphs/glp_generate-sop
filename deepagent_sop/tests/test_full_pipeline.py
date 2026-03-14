@@ -4,7 +4,7 @@ from pathlib import Path
 import json
 
 # Add project root to path
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.append(str(PROJECT_ROOT))
 
 from deepagent_sop.core.config import Config
@@ -69,111 +69,20 @@ def test_full_pipeline():
             memory_path="deepagent_sop/memory"
         )
         
-        # 为了展示真实学习过程，我们强行让主控台按如下路径调度：
-        # Writer -> Simulator -> Reviewer
-        current_state = {}
-        
-        # ----------------
-        # 步骤 1：Writer 生成 SOP
-        # ----------------
-        print("\n[STEP 1] -> 激活 Writer Agent 进行 SOP 逆向抽取 (使用 Smart Model)")
-        # 主查询，带出规则
-        precise_memory = main_agent.memory_manager.query_rules(experiment_type, chapter_id)
-        params["memory"] = "\n".join(precise_memory)
-        params["experiment_type"] = experiment_type
-        
-        writer_result = main_agent._execute_subagent("writer", params)
-        current_state.update(writer_result)
-        
-        print(f"📝 Writer 思考过程: {writer_result.get('reasoning', '无')[:100]}...")
-        print("📝 Writer 提取的 Core Rules:")
-        for r in writer_result.get("core_rules", []):
-            print(f"  - {r}")
-            
-        # ----------------
-        # 步骤 2：Simulator 盲测 SOP
-        # ----------------
-        print("\n[STEP 2] -> 激活 Simulator Agent 进行黑盒盲测 (使用 Fast Model)")
-        params["current_sop"] = current_state.get("current_sop", "")
-        sim_result = main_agent._execute_subagent("simulator", params)
-        current_state.update(sim_result)
-        
-        print(f"🤖 Simulator 模拟作答:\n{sim_result.get('simulated_generate_content', '无')[:200]}...")
-        
-        # ----------------
-        # 步骤 3：Reviewer 进行严密审查
-        # ----------------
-        print("\n[STEP 3] -> 激活 Reviewer Agent 进行差异排查 (使用 Fast Model)")
-        params["simulated_generate_content"] = current_state.get("simulated_generate_content", "")
-        rev_result = main_agent._execute_subagent("reviewer", params)
-        current_state.update(rev_result)
-        
-        is_passed = rev_result.get("is_passed", False)
-        print(f"✅ Reviewer 结论: {'通过' if is_passed else '打回重做'}")
-        print(f"🔍 根因分析: {rev_result.get('root_cause_analysis', '无')}")
-        print(f"🛠 修复建议: {rev_result.get('correct_approach', '无')}")
-
-        # ----------------
-        # 步骤 4：主干将结果落盘至 SOP Templates
-        # ----------------
-        print("\n[STEP 4] -> 如果通过，保存至独立的 SOP_Templates")
-        if is_passed and current_state.get("current_sop"):
-            sop_path = main_agent.memory_manager.save_sop(
-                experiment_type=experiment_type,
-                chapter_id=chapter_id,
-                content=current_state.get("current_sop"),
-                quality_score=current_state.get("score", 5.0)
-            )
-            print(f"💾 SOP 已保存至: {sop_path}")
-        else:
-            print("❌ SOP 考核未通过，暂不落盘。")
-
-        # ----------------
-        # 步骤 5：学习大脑提炼 Rules 并落盘
-        # ----------------
-        print("\n[STEP 5] -> 激活 Reflector & Curator 提炼深层防错规则 (使用 Smart Model)")
-        # 强行塞入一个假的 trajectory 记录以便反射
-        fake_trajectory = [
-            {"step": 1, "agent": "writer", "type": "gen", "output": writer_result},
-            {"step": 2, "agent": "simulator", "type": "sim", "output": sim_result},
-            {"step": 3, "agent": "reviewer", "type": "rev", "output": rev_result}
-        ]
-        insights_res = main_agent.reflector.extract(fake_trajectory, experiment_type=experiment_type)
-        insights = insights_res.get("insights", [])
-        print(f"🧠 Reflector 提炼的 Insight: {insights_res.get('key_insight', 'None')}")
-        
-        current_playbook_block = "\n".join(main_agent.memory_manager.query_rules(experiment_type, chapter_id))
-        curator_res = main_agent.curator.extract_operations(
-           current_playbook=current_playbook_block,
-           insights=insights,
-           question_context=f"针对 {experiment_type} 类型的 {chapter_id} 标准化抽取中暴露的排版映射问题"
+        # 使用重构后的 run 方法，支持自动迭代优化
+        print(f"\n🚀 发起主控任务请求...")
+        result = main_agent.run(
+            user_query=user_query,
+            experiment_type=experiment_type,
+            enable_learning=True,
+            max_retries=3
         )
-        
-        operations = curator_res.get("operations", [])
-        if operations:
-            print(f"✍ Curator 颁布的新版规则指令: {operations}")
-            main_agent.memory_manager.apply_rules_operations(experiment_type, chapter_id, operations)
-            print("💾 Rules 落盘完成。")
-        else:
-            print("ℹ️ Curator 判定无需增减新规则。")
 
-        # ----------------
-        # 步骤 6：审计日志落盘
-        # ----------------
-        print("\n[STEP 6] -> 写入当日系统审计日志 (Audit Log)")
-        iteration_data = {
-            "version": "TestVersion1",
-            "sop_id": "test_sop_xyz",
-            "experiment_type": experiment_type,
-            "chapter_id": chapter_id,
-            "quality_assessment": {"is_passed": is_passed, "feedback": rev_result.get("feedback")},
-            "curation": {"operations_added": len(operations)}
-        }
-        log_path = main_agent.memory_manager.log_iteration(iteration_data)
-        print(f"📜 审计日志写入完成: {log_path}")
+        final_result = result.get("final_result", {})
+        is_passed = final_result.get("is_passed", False)
 
         print("\n" + "=" * 60)
-        print("✅ 全链路白盒流转测试结束")
+        print(f"✅ 全链路自动化流转结束 | 最终状态: {'通过' if is_passed else '未通过'}")
         print("=" * 60)
 
     except Exception as e:

@@ -29,6 +29,7 @@ python deepagent_sop/tests/test_full_pipeline.py
 2.  **Simulator** 盲测该 SOP。
 3.  **Reviewer** 找茬并输出反馈。
 4.  **Reflector & Curator** 提炼经验并写入 Rules 层。
+5.  **Curator** 将SOP写入SOP Templates层。
 
 ### 3. 主程序入口
 您可以参考 `deepagent_sop/main.py` 通过 API 或者直接调用 `MainAgent` 类来启动任务：

@@ -45,5 +45,45 @@
       "is_passed": false,
       "feedback": "报告格式和内容不符合标准，需补充缺失字段并修正排版。"
     }
+  },
+  {
+    "timestamp": "2026-03-14T16:36:00.562460",
+    "experiment_type": "小分子模板",
+    "version": "TestVersion1",
+    "sop_id": "test_sop_xyz",
+    "sop_summary": "",
+    "curation": {
+      "operations_added": 1
+    },
+    "metrics": {},
+    "quality_assessment": {
+      "is_passed": false,
+      "feedback": "报告格式和信息缺失严重，需重构以符合标准。"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T17:19:51.768984",
+    "experiment_type": "小分子模板",
+    "version": "VersionIterative",
+    "sop_id": "sop_20260314171947",
+    "sop_summary": "",
+    "curation": {
+      "operations_added": 1
+    },
+    "metrics": {},
+    "quality_assessment": {
+      "is_passed": false,
+      "feedback": "报告格式不符合标准，需加强对表格排版的要求。"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T17:37:52.658770",
+    "experiment_type": "小分子模板",
+    "version": "ACE_Iterative_V2",
+    "sop_id": "N/A",
+    "sop_summary": "",
+    "curation": {},
+    "metrics": {},
+    "quality_assessment": {}
   }
 ]
