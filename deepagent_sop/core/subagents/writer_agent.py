@@ -43,7 +43,9 @@ class WriterAgent:
         feedback: str = "",
         pathology_analysis: str = "",
         extra_instructions: str = "",
-        existing_sop: str = "",
+        current_sop: str = "",
+        forged_skills: str = "",
+        **kwargs
     ) -> Dict[str, Any]:
         """
         Generate SOP from protocol and report.
@@ -57,22 +59,26 @@ class WriterAgent:
             feedback: Feedback from previous iteration (optional)
             pathology_analysis: Root cause analysis from Reflector (optional)
             extra_instructions: Dynamic instructions from Main Agent (optional)
-            existing_sop: Existing SOP for retry (optional)
+            current_sop: Existing SOP for retry (optional)
+            forged_skills: Forged Python skills (optional)
+            **kwargs: Additional keyword arguments.
         """
 
         # Build user prompt
-        if feedback or pathology_analysis or extra_instructions or existing_sop:
+        if feedback or pathology_analysis or extra_instructions or current_sop:
             # Retry or refinement case
             user_prompt = self._build_retry_prompt(
                 experiment_type,
                 section_title,
                 original_content,
                 target_generate_content,
-                existing_sop,
+                current_sop,
                 feedback,
                 pathology_analysis,
                 extra_instructions,
                 memory,
+                forged_skills,
+                **kwargs
             )
         else:
             # First generation
@@ -82,6 +88,8 @@ class WriterAgent:
                 original_content,
                 target_generate_content,
                 memory,
+                forged_skills,
+                **kwargs
             )
 
         # Call LLM
@@ -103,6 +111,8 @@ class WriterAgent:
         original_content: str,
         target_content: str,
         memory: str,
+        forged_skills: str = "",
+        **kwargs
     ) -> str:
         """Build prompt for first-time generation."""
         prompt = f"""【当前所属实验类型】：{experiment_type}
@@ -120,6 +130,8 @@ class WriterAgent:
 **该实验类型相关的专属经验(Rules)**:
 {memory}
 """
+        if forged_skills:
+            prompt += f"\n**【已锻造的 Python 技能输出(Forged Skills)】**:\n{forged_skills}\n"
 
         prompt += """
 **你的任务：**
@@ -135,11 +147,13 @@ class WriterAgent:
         section_title: str,
         original_content: str,
         target_content: str,
-        existing_sop: str,
+        current_sop: str,
         feedback: str,
         pathology_analysis: str,
         extra_instructions: str,
         memory: str,
+        forged_skills: str = "",
+        **kwargs
     ) -> str:
         """Build prompt for retry after feedback."""
         prompt = f"""【当前所属实验类型】：{experiment_type}
@@ -151,8 +165,8 @@ class WriterAgent:
 **目标优质报告内容(Ground Truth):**:
 {target_content}
 """
-        if existing_sop:
-            prompt += f"\n**【上一轮生成的 SOP 草案】**:\n{existing_sop}\n"
+        if current_sop:
+            prompt += f"\n**【上一轮生成的 SOP 草案】**:\n{current_sop}\n"
         
         if feedback:
             prompt += f"\n**【判卷老师(Reviewer)反馈指令】**:\n{feedback}\n"
@@ -165,6 +179,9 @@ class WriterAgent:
 
         if memory:
             prompt += f"\n**该实验类型相关的专属经验(Rules)**:\n{memory}\n"
+        
+        if forged_skills:
+            prompt += f"\n**【已锻造的 Python 技能输出(Forged Skills)】**:\n{forged_skills}\n"
 
         prompt += """
 **你的任务：**

@@ -31,9 +31,10 @@ class ReviewerAgent:
         self,
         simulated_generate_content: str,
         target_generate_content: str,
-        original_sop: str,
+        current_sop: str,
         original_content: str = "",
-        experiment_type: str = "小分子模板"
+        experiment_type: str = "小分子模板",
+        **kwargs
     ) -> Dict[str, Any]:
         """
         Review SOP quality.
@@ -41,7 +42,7 @@ class ReviewerAgent:
         user_prompt = self._build_prompt(
             simulated_generate_content,
             target_generate_content,
-            original_sop,
+            current_sop,
             original_content,
             experiment_type
         )
@@ -52,7 +53,7 @@ class ReviewerAgent:
         self,
         simulated_content: str,
         target_content: str,
-        original_sop: str,
+        current_sop: str,
         original_content: str,
         experiment_type: str
     ) -> str:
@@ -63,7 +64,7 @@ class ReviewerAgent:
 {target_content}
 
 **正在审查的 SOP 草案**:
-{original_sop}
+{current_sop}
 
 **盲测模拟作答结果**:
 {simulated_content}

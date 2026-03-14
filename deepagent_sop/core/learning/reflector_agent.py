@@ -26,11 +26,11 @@ class ReflectorAgent:
         self.llm_config = llm_config
         self.agent = DeepAgent(system_prompt=get_prompt("reflector"), **llm_config)
 
-    def extract(self, trajectory: List[Dict[str, Any]], experiment_type: str = "小分子模板") -> Dict[str, Any]:
+    def extract(self, turns: List[Dict[str, Any]], experiment_type: str = "小分子模板", **kwargs) -> Dict[str, Any]:
         """
-        Extract insights from trajectory.
+        Extract insights from cognitive turns history.
         """
-        trajectory_str = self._format_trajectory(trajectory)
+        trajectory_str = self._format_trajectory(turns)
 
         user_prompt = f"""【当前总结提炼的所属实验类型】：{experiment_type}
 
@@ -42,27 +42,31 @@ class ReflectorAgent:
         response = self.agent.run(user_prompt)
         return self._parse_response(response)
 
-    def _format_trajectory(self, trajectory: List[Dict[str, Any]]) -> str:
-        """Format trajectory as readable text."""
+    def _format_trajectory(self, turns: List[Dict[Dict[str, Any], Any]]) -> str:
+        """Format turns history as readable text."""
         lines = []
-        for entry in trajectory:
-            step_num = entry.get("step", "?")
+        for entry in turns:
+            turn_num = entry.get("turn", "?")
             agent = entry.get("agent", "unknown")
-            step_type = entry.get("type", "unknown")
-            reasoning = entry.get("reasoning", "")
+            directive = entry.get("directive", "")
+            result = entry.get("result", {})
 
-            lines.append(f"Step {step_num}: {agent} ({step_type})")
-            if reasoning:
-                lines.append(f"Reasoning: {reasoning}")
+            lines.append(f"Turn {turn_num}: [{agent}]")
+            if directive:
+                lines.append(f"Directive: {directive}")
+            
+            # Reasoning
+            if isinstance(result, dict) and "reasoning" in result:
+                lines.append(f"Reasoning: {result['reasoning']}")
+            
+            # Blocker escalation
+            if isinstance(result, dict) and result.get("blocker_escalation"):
+                lines.append(f"🚨 BLOCKER: {result['blocker_escalation']}")
 
-            # Include key input/output info
-            input_data = entry.get("input", {})
-            output_data = entry.get("output", {})
-
-            if input_data:
-                lines.append(f"Input keys: {list(input_data.keys())}")
-            if output_data:
-                lines.append(f"Output: {str(output_data)[:200]}...")
+            # Output highlight
+            if isinstance(result, dict):
+                output_str = json.dumps({k: v for k, v in result.items() if k not in ["current_sop", "template_text", "reasoning"]}, ensure_ascii=False)
+                lines.append(f"Output: {output_str[:300]}...")
 
             lines.append("---")
 

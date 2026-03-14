@@ -10,30 +10,10 @@ from typing import Dict, Any, Optional
 from .config import Config
 
 
-def DeepAgent(system_prompt: str, **config):
+class DeepAgent:
     """
-    Factory function to create DeepAgent instances.
-
-    This provides a simple interface to create agents with system prompts.
-
-    Args:
-        system_prompt: System prompt defining agent's role
-        **config: LLM configuration (api_provider, model, temperature, max_tokens)
-
-    Returns:
-        DeepAgent instance
-
-    Usage:
-        >>> writer = DeepAgent(system_prompt="writer_prompt", api_provider="openai", model="gpt-4o")
-        >>> result = writer.run("your task")
-    """
-    return _DeepAgentImpl(system_prompt=system_prompt, config=config)
-
-
-class _DeepAgentImpl:
-    """
-    Implementation of DeepAgent base class.
-
+    Unified LLM Framework - Base Class for all agents.
+    
     Responsibilities:
     - LLM client initialization
     - Unified run() interface
@@ -41,7 +21,7 @@ class _DeepAgentImpl:
     - Error handling
     """
 
-    def __init__(self, system_prompt: str, config: Dict[str, Any]):
+    def __init__(self, system_prompt: str, **config):
         self.system_prompt = system_prompt
         self.config = config
         self.client = self._init_llm_client()

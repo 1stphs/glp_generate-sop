@@ -36,6 +36,7 @@ class SimulatorAgent:
         original_content: str,
         current_sop: str,
         experiment_type: str = "小分子模板",
+        **kwargs
     ) -> Dict[str, Any]:
         """
         Simulate SOP execution (blind test).
