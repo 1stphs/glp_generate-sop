@@ -23,109 +23,98 @@ from .utils.prompt_manager import get_prompt
 
 class MainAgent:
     """
-    Main Agent - Autonomous Orchestrator, not executor.
-
-    Only makes decisions, delegates work to sub-agents.
+    Main Agent - Autonomous Orchestrator
 
     Responsibilities:
     - Understand user tasks from natural language
-    - Autonomous planning (NO hardcoded workflows)
-    - Dynamic sub-agent selection and coordination
-    - Record complete trajectory
-    - Handle learning loop if enabled
+    - Query context precisely by experiment_type and chapter_id
+    - Coordinate sub-agents (Writer, Simulator, Reviewer)
+    - Pass learning metadata to Reflector and Curator
+    - Atomically save SOP and Audit Logs to designated paths
     """
 
     def __init__(
         self,
         llm_config: Dict[str, Any],
-        memory_path: str = "deepagent_sop/memory/memory.md",
+        memory_path: str = "deepagent_sop/memory",
     ):
-        """
-        Initialize Main Agent.
-
-        Args:
-            llm_config: LLM configuration
-            memory_path: Path to memory.md
-        """
         self.llm_config = llm_config
-        self.memory_path = memory_path
+        
+        from .config import Config
+        smart_config = llm_config.copy()
+        smart_config["model"] = Config.get_smart_llm_model()
+        
+        fast_config = llm_config.copy()
+        fast_config["model"] = Config.get_fast_llm_model()
 
-        # Initialize Main Agent's own LLM for planning
-        self.agent = DeepAgent(system_prompt=get_prompt("main"), **llm_config)
+        # 主控台需要高智商
+        self.agent = DeepAgent(system_prompt=get_prompt("main"), **smart_config)
 
-        # Initialize sub-agents
-        self.writer = WriterAgent(llm_config)
-        self.simulator = SimulatorAgent(llm_config)
-        self.reviewer = ReviewerAgent(llm_config)
-        self.reflector = ReflectorAgent(llm_config)
-        self.curator = CuratorAgent(llm_config)
+        # 核心写作与反思需最高能力
+        self.writer = WriterAgent(smart_config)
+        self.reflector = ReflectorAgent(smart_config)
+        self.curator = CuratorAgent(smart_config)
+        
+        # 刻板机械的步骤执行与对撞审查用极速版降本增效
+        self.simulator = SimulatorAgent(fast_config)
+        self.reviewer = ReviewerAgent(fast_config)
 
-        # Initialize utilities
-        self.memory_manager = MemoryManager(memory_path)
+        # Uses the new multi-dimensional storage manager
+        self.memory_manager = MemoryManager(base_dir=memory_path)
         self.trajectory_logger = TrajectoryLogger()
 
-    def run(self, user_query: str, enable_learning: bool = True) -> Dict[str, Any]:
+    def run(self, user_query: str, experiment_type: str = "小分子模板", enable_learning: bool = True) -> Dict[str, Any]:
         """
         Execute task autonomously.
 
         Args:
-            user_query: User task description (e.g., "生成验证报告章节SOP，3轮迭代")
+            user_query: Task description
+            experiment_type: Global categorization domain for rules/sops (e.g. 小分子模板)
             enable_learning: Whether to trigger learning loop
-
-        Returns:
-            {
-                "task_understanding": "Main Agent's understanding of the task",
-                "plan": "Autonomous execution plan",
-                "trajectory": [Complete decision+execution records],
-                "final_result": "Final result",
-                "summary": "Summary for the user"
-            }
         """
-        # Step 1: Load memory
-        memory_content = self.memory_manager.read()
+        # Step 1: Pre-fetch global rules for this exact experiment type to give MainAgent some basic idea
+        # We fetch all chapters for planning
+        global_memory_context = "\n".join(self.memory_manager.query_rules(experiment_type=experiment_type))
 
-        # Step 2: Understand task and plan (core: autonomous decision, not fixed workflow)
         planning_query = f"""
 任务：{user_query}
+当前指定的实验类型 (experiment_type)：{experiment_type}
 
-Memory上下文（前2000字）：
-{memory_content[:2000]}
+该实验类型下 Rules 层的存量规则库速览：
+{global_memory_context[:2000]}
 
 请自主决策：
-- 需要哪些sub-agent？
-- 以什么顺序？
-- 每个agent传什么参数？
+- 提取任务中的目标章节 (chapter_id) 是什么？
+- 规划流转步骤（Writer -> Simulator -> Reviewer 是标准路径）。
 
-输出JSON格式：
+输出 JSON 格式：
 {{
-    "understanding": "你如何理解这个任务",
+    "understanding": "...",
     "task_type": "sop_generation | query_only | ...",
+    "chapter_id": "提取到的章节名，如果无可填'全局'",
     "steps": [
         {{
-            "step": 1,
+            "step_num": 1,
             "agent": "writer | simulator | reviewer | ...",
-            "params": {{具体的参数}},
-            "reasoning": "为什么选这个agent做这件事"
+            "params": {{"需要填入哪些参数"}},
+            "reasoning": "..."
         }}
     ]
 }}
-
-🔑 关键：不要预设固定流程！每任务都要重新规划！
 """
-
         planning_response = self.agent.run(planning_query)
         plan = self._parse_planning(planning_response)
+        
+        chapter_id = plan.get("chapter_id", "未分类章节")
 
-        # Log planning decision
         self.trajectory_logger.log_decision(
             step_num=1,
             agent_name="main_agent",
-            input_data={"user_query": user_query},
+            input_data={"user_query": user_query, "experiment_type": experiment_type},
             output_data={"plan": plan},
             reasoning=plan.get("understanding", ""),
         )
 
-        # Step 3: Execute plan (dynamic, non-fixed)
         current_state = {}
         for step_info in plan.get("steps", []):
             step_num = len(self.trajectory_logger.trajectory) + 1
@@ -133,7 +122,15 @@ Memory上下文（前2000字）：
             params = step_info.get("params", {})
             reasoning = step_info.get("reasoning", "")
 
-            # Record decision
+            # 注入 experiment_type 标签，解决上下文真空问题
+            params["experiment_type"] = experiment_type
+
+            # If assigning to writer, fetch surgically precise rules as its context
+            if agent_name == "writer":
+                precise_memory = self.memory_manager.query_rules(experiment_type, chapter_id)
+                params["memory"] = "\n".join(precise_memory)
+                params["section_title"] = chapter_id  # 确保章节名传递
+
             self.trajectory_logger.log_decision(
                 step_num=step_num,
                 agent_name="main_agent",
@@ -142,63 +139,66 @@ Memory上下文（前2000字）：
                 reasoning=reasoning,
             )
 
-            # Execute (delegate to sub-agent)
             result = self._execute_subagent(agent_name, params)
 
-            # Record execution result
             self.trajectory_logger.log_execution(
                 step_num=len(self.trajectory_logger.trajectory) + 1,
                 agent_name=agent_name,
                 input_data=params,
                 output_data=result,
             )
-
-            # Update state (pass to next step)
             current_state.update(result)
 
-        # Step 4: Learning loop (if enabled)
+        # Log daily Audit
+        iteration_data = {
+            "version": "Version1",
+            "sop": str(current_state.get("current_sop", current_state.get("simulated_generate_content", "")))[:1000],
+            "sop_id": f"sop_{datetime.now().strftime('%Y%m%d%H%M%S')}",
+            "experiment_type": experiment_type,
+            "quality_assessment": {"is_passed": current_state.get("is_passed"), "feedback": current_state.get("feedback")}
+        }
+        
+        # Save SOP conditionally
+        if current_state.get("current_sop") and current_state.get("is_passed", True):
+            self.memory_manager.save_sop(
+                experiment_type=experiment_type,
+                chapter_id=chapter_id,
+                content=current_state.get("current_sop"),
+                quality_score=current_state.get("score", 5.0)
+            )
+
+        # Step 4: Learning loop
         if enable_learning:
-            # Record learning stage decision
             self.trajectory_logger.log_decision(
                 step_num=len(self.trajectory_logger.trajectory) + 1,
                 agent_name="main_agent",
                 input_data={"enable_learning": True},
-                output_data={"decision": "进入学习阶段"},
-                reasoning=f"任务执行完成，开始学习",
+                output_data={"decision": "进入学习反思阶段"},
+                reasoning="提取本次运行高价值经验并固化至 Rules 层",
             )
 
-            # Reflector extracts insights
-            trajectory = self.trajectory_logger.get_trajectory()
-            insights = self.reflector.extract(trajectory)
+            trajectory_log = self.trajectory_logger.get_trajectory()
+            insights_res = self.reflector.extract(trajectory_log, experiment_type=experiment_type)
+            insights = insights_res.get("insights", []) or [insights_res]
 
-            self.trajectory_logger.log_decision(
-                step_num=len(self.trajectory_logger.trajectory) + 1,
-                agent_name="main_agent",
-                input_data={"trajectory_length": len(trajectory)},
-                output_data={"insights_count": len(insights.get("insights", []))},
-                reasoning=f"提取了{len(insights.get('insights', []))}条insights",
+            # Fetch the precise current playbook block to let Curator know what already exists
+            current_playbook_block = "\n".join(self.memory_manager.query_rules(experiment_type, chapter_id))
+            
+            curator_res = self.curator.extract_operations(
+               current_playbook=current_playbook_block,
+               insights=insights,
+               question_context=f"针对 {experiment_type} 类型的 {chapter_id} 相关的 SOP 验证"
             )
 
-            # Curator updates memory
-            new_memory = self.curator.update(
-                memory_content, insights.get("insights", [])
-            )
+            # Apply ADD operations specifically to the experimental domain and chapter
+            operations = curator_res.get("operations", [])
+            self.memory_manager.apply_rules_operations(experiment_type, chapter_id, operations)
+            
+            iteration_data["curation"] = {"operations_added": len(operations)}
 
-            self.trajectory_logger.log_decision(
-                step_num=len(self.trajectory_logger.trajectory) + 1,
-                agent_name="main_agent",
-                input_data={"insights_count": len(insights.get("insights", []))},
-                output_data={
-                    "updated_memory": True,
-                    "changes_summary": new_memory.get("changes_summary", {}),
-                },
-                reasoning=f"用insights更新memory",
-            )
+        # Persist audit
+        self.memory_manager.log_iteration(iteration_data)
 
-            # Write back to memory
-            self.memory_manager.write(new_memory.get("updated_memory", memory_content))
-
-        # Step 5: Return
         return {
             "task_understanding": plan.get("understanding", ""),
             "plan": plan,
@@ -207,24 +207,13 @@ Memory上下文（前2000字）：
             "summary": self._generate_summary(plan, current_state),
         }
 
-    def _execute_subagent(
-        self, agent_name: str, params: Dict[str, Any]
-    ) -> Dict[str, Any]:
-        """
-        Execute sub-agent based on name and params.
-
-        Args:
-            agent_name: Name of agent to execute
-            params: Parameters to pass to agent
-
-        Returns:
-            Agent execution result
-        """
+    def _execute_subagent(self, agent_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
         if agent_name == "writer":
             return self.writer.generate_sop(
                 original_content=params.get("original_content", ""),
                 target_generate_content=params.get("target_generate_content", ""),
                 section_title=params.get("section_title", ""),
+                experiment_type=params.get("experiment_type", "小分子模板"),
                 memory=params.get("memory", ""),
                 feedback=params.get("feedback", ""),
                 existing_sop=params.get("existing_sop", ""),
@@ -234,6 +223,7 @@ Memory上下文（前2000字）：
                 section_title=params.get("section_title", ""),
                 original_content=params.get("original_content", ""),
                 current_sop=params.get("current_sop", ""),
+                experiment_type=params.get("experiment_type", "小分子模板"),
             )
         elif agent_name == "reviewer":
             return self.reviewer.review(
@@ -241,25 +231,15 @@ Memory上下文（前2000字）：
                 target_generate_content=params.get("target_generate_content", ""),
                 original_sop=params.get("original_sop", ""),
                 original_content=params.get("original_content", ""),
+                experiment_type=params.get("experiment_type", "小分子模板"),
             )
         else:
             return {"error": f"Unknown agent: {agent_name}"}
 
     def _parse_planning(self, response: str) -> Dict[str, Any]:
-        """
-        Parse Main Agent's planning response.
-
-        Args:
-            response: LLM response string
-
-        Returns:
-            Parsed plan dictionary
-        """
         try:
-            # Try to parse as JSON directly
             return json.loads(response)
         except json.JSONDecodeError:
-            # Try to extract JSON from markdown code block
             match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", response, re.DOTALL)
             if match:
                 try:
@@ -267,7 +247,6 @@ Memory上下文（前2000字）：
                 except:
                     pass
 
-            # Try to find first JSON object
             match = re.search(r"\{.*\}", response, re.DOTALL)
             if match:
                 try:
@@ -275,33 +254,21 @@ Memory上下文（前2000字）：
                 except:
                     pass
 
-            # If not JSON, return a simple plan
             return {
-                "understanding": f"未找到JSON格式，Main Agent返回：{response[:200]}...",
+                "understanding": f"未找到JSON格式: {response[:200]}...",
                 "task_type": "query_only",
+                "chapter_id": "全局",
                 "steps": [
                     {
                         "step": 1,
                         "agent": "writer",
                         "params": {},
-                        "reasoning": "默认执行writer",
+                        "reasoning": "默认流转",
                     }
                 ],
             }
 
-    def _generate_summary(
-        self, plan: Dict[str, Any], final_result: Dict[str, Any]
-    ) -> str:
-        """
-        Generate natural language summary.
-
-        Args:
-            plan: Execution plan
-            final_result: Final execution result
-
-        Returns:
-            Summary text
-        """
+    def _generate_summary(self, plan: Dict[str, Any], final_result: Dict[str, Any]) -> str:
         understanding = plan.get("understanding", "未知任务")
         steps_executed = len(plan.get("steps", []))
         final_status = "completed"
@@ -315,7 +282,6 @@ Memory上下文（前2000字）：
 - 记录了{len(self.trajectory_logger.trajectory)}条trajectory
 
 总结：
-- 主要成果：{final_result.get("current_sop", "N/A")}
-- 关键洞察：已记录到trajectory
+- 主要成果已落地为 JSON 或文本。
 """
         return summary

@@ -14,13 +14,12 @@ from ..utils.prompt_manager import get_prompt
 
 class CuratorAgent:
     """
-    Curator Agent: Maintains and optimizes memory
+    Curator Agent: Maintains and optimizes memory Rules
 
     Responsibilities:
-    - Integrate new insights into memory
-    - Deduplicate existing content
-    - Clean up ineffective insights
-    - Maintain memory quality
+    - Receive insights from Reflector
+    - Generate specific ADD operations for the Playbook/Rules
+    - Strictly guard against data leakage (no specific values allowed in rules)
     """
 
     def __init__(self, llm_config: Dict[str, Any]):
@@ -33,39 +32,39 @@ class CuratorAgent:
         self.llm_config = llm_config
         self.agent = DeepAgent(system_prompt=get_prompt("curator"), **llm_config)
 
-    def update(
-        self, memory_content: str, insights: List[Dict[str, Any]]
+    def extract_operations(
+        self, current_playbook: str, insights: List[Dict[str, Any]], question_context: str
     ) -> Dict[str, Any]:
         """
-        Update memory with new insights.
+        Extract 'operations' to be applied to the Rules file.
 
         Args:
-            memory_content: Current memory content
-            insights: New insights to integrate
+            current_playbook: Existing Rules
+            insights: New insights extracted by Reflector
+            question_context: Context of the current task/chapter
 
         Returns:
             {
-                "updated_memory": "Complete updated memory",
-                "changes_summary": {
-                    "added_insights": 5,
-                    "updated_insights": 3,
-                    "removed_insights": 1,
-                    "duplicates_found": 2
-                },
-                "recommendations": "Management recommendations"
+                "reasoning": "...",
+                "operations": [
+                    {
+                        "type": "ADD",
+                        "section": "rules",
+                        "content": "..."
+                    }
+                ]
             }
         """
-        # Format insights as text
         insights_str = self._format_insights(insights)
 
-        # Build user prompt
-        user_prompt = f"""**Current Memory**:
-{memory_content[:5000]}...
-
-**New Insights**:
-{insights_str}
-
-Please integrate these new insights into the memory.
+        # Build user prompt according to the new prompt requirements
+        user_prompt = f"""
+{{
+  "playbook_stats": "Total Rules Count: {len(current_playbook.split('Rule ID:')) - 1}",
+  "recent_reflection": {json.dumps(insights_str, ensure_ascii=False)},
+  "current_playbook": {json.dumps(current_playbook, ensure_ascii=False)},
+  "question_context": {json.dumps(question_context, ensure_ascii=False)}
+}}
 """
 
         # Call LLM
@@ -74,17 +73,10 @@ Please integrate these new insights into the memory.
         # Parse response
         result = self._parse_response(response)
 
-        # If parsing failed, return original memory
-        if not result or "updated_memory" not in result:
+        if not result or "operations" not in result:
             return {
-                "updated_memory": memory_content,
-                "changes_summary": {
-                    "added_insights": 0,
-                    "updated_insights": 0,
-                    "removed_insights": 0,
-                    "duplicates_found": 0,
-                },
-                "recommendations": "Failed to update memory - returned original",
+                "reasoning": "解析失败或未产生有效操作",
+                "operations": []
             }
 
         return result
@@ -115,10 +107,8 @@ Please integrate these new insights into the memory.
             Parsed dictionary
         """
         try:
-            # Try to parse as JSON directly
             return json.loads(response)
         except json.JSONDecodeError:
-            # Try to extract JSON from markdown code block
             match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", response, re.DOTALL)
             if match:
                 try:
@@ -126,7 +116,6 @@ Please integrate these new insights into the memory.
                 except:
                     pass
 
-            # Try to find first JSON object
             match = re.search(r"\{.*\}", response, re.DOTALL)
             if match:
                 try:
@@ -134,14 +123,7 @@ Please integrate these new insights into the memory.
                 except:
                     pass
 
-            # Return mock data if parsing fails
             return {
-                "updated_memory": "",
-                "changes_summary": {
-                    "added_insights": 0,
-                    "updated_insights": 0,
-                    "removed_insights": 0,
-                    "duplicates_found": 0,
-                },
-                "recommendations": f"解析失败: {response[:200]}...",
+                "reasoning": f"JSON解析致命失败: {response[:200]}...",
+                "operations": []
             }

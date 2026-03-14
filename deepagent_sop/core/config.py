@@ -36,13 +36,33 @@ class Config:
 
     @staticmethod
     def get_llm_model() -> str:
-        """Get LLM model name."""
+        """Get LLM model name (legacy/fallback)."""
         provider = Config.get_llm_provider()
         if provider == "openai":
             return os.getenv("OPENVIKING_LLM_MODEL", "gpt-4o")
         elif provider == "anthropic":
             return os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-20241022")
         return "gpt-4o"
+
+    @staticmethod
+    def get_smart_llm_model() -> str:
+        """Get the most capable LLM model for complex reasoning."""
+        provider = Config.get_llm_provider()
+        if provider == "openai":
+            return os.getenv("DEEPAGENT_SMART_MODEL", os.getenv("OPENVIKING_LLM_MODEL", "gpt-4o"))
+        elif provider == "anthropic":
+            return os.getenv("DEEPAGENT_SMART_MODEL", os.getenv("ANTHROPIC_MODEL", "claude-3-5-sonnet-20241022"))
+        return "gpt-4o"
+
+    @staticmethod
+    def get_fast_llm_model() -> str:
+        """Get the fastest/cheapest LLM model for simple execution."""
+        provider = Config.get_llm_provider()
+        if provider == "openai":
+            return os.getenv("DEEPAGENT_FAST_MODEL", "gpt-4o-mini")
+        elif provider == "anthropic":
+            return os.getenv("DEEPAGENT_FAST_MODEL", "claude-3-haiku-20240307")
+        return "gpt-4o-mini"
 
     @staticmethod
     def get_llm_api_key() -> str:
@@ -158,7 +178,8 @@ class Config:
         print("DeepAgent SOP Configuration")
         print("=" * 60)
         print(f"LLM Provider: {Config.get_llm_provider()}")
-        print(f"LLM Model: {Config.get_llm_model()}")
+        print(f"LLM Smart Model: {Config.get_smart_llm_model()}")
+        print(f"LLM Fast Model: {Config.get_fast_llm_model()}")
         print(f"LLM API Base: {Config.get_llm_api_base() or 'default'}")
         print(f"LLM Temperature: {Config.get_llm_temperature()}")
         print(f"LLM Max Tokens: {Config.get_llm_max_tokens()}")

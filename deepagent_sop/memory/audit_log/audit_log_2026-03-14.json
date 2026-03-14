@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": "2026-03-14T15:11:57.137407",
+    "experiment_type": "LC-MS_MS结构化验证",
+    "version": "ColdStart_V1",
+    "sop_id": "N/A",
+    "sop_summary": "N/A",
+    "curation": {
+      "operations_added": 0
+    },
+    "metrics": {},
+    "quality_assessment": {
+      "is_passed": false,
+      "score": 2.0,
+      "feedback": "请在 SOP 中增加对'委托方负责人'字段的要求，并明确地址信息的换行格式。"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T15:12:24.154938",
+    "experiment_type": "LC-MS_MS结构化验证",
+    "version": "ColdStart_V1",
+    "sop_id": "N/A",
+    "sop_summary": "N/A",
+    "curation": {
+      "operations_added": 0
+    },
+    "metrics": {},
+    "quality_assessment": {
+      "is_passed": false,
+      "score": 2.0,
+      "feedback": "请在签字页中添加机构负责人和委托方负责人的签字信息，并确保遵从性段落的位置和格式符合标准答案的要求。"
+    }
+  },
+  {
+    "timestamp": "2026-03-14T15:53:35.844644",
+    "experiment_type": "小分子模板",
+    "version": "TestVersion1",
+    "sop_id": "test_sop_xyz",
+    "sop_summary": "",
+    "curation": {
+      "operations_added": 1
+    },
+    "metrics": {},
+    "quality_assessment": {
+      "is_passed": false,
+      "feedback": "报告格式和内容不符合标准，需补充缺失字段并修正排版。"
+    }
+  }
+]

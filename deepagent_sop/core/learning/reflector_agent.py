@@ -18,58 +18,29 @@ class ReflectorAgent:
 
     Responsibilities:
     - Analyze complete trajectory
-    - Identify successful patterns and failed attempts
-    - Extract actionable insights
-    - Tag insights with applicability metadata
+    - Identify deep cognitive root causes
+    - Extract Rules specifically tailored to experiment_type
     """
 
     def __init__(self, llm_config: Dict[str, Any]):
-        """
-        Initialize Reflector Agent.
-
-        Args:
-            llm_config: LLM configuration
-        """
         self.llm_config = llm_config
         self.agent = DeepAgent(system_prompt=get_prompt("reflector"), **llm_config)
 
-    def extract(self, trajectory: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def extract(self, trajectory: List[Dict[str, Any]], experiment_type: str = "小分子模板") -> Dict[str, Any]:
         """
         Extract insights from trajectory.
-
-        Args:
-            trajectory: Complete execution trajectory
-
-        Returns:
-            {
-                "insights": [
-                    {
-                        "type": "rule_success | rule_failure | problem_solution | pattern_discovery",
-                        "content": "Insight content",
-                        "context": "Applicable scenario",
-                        "evidence": "Evidence from trajectory",
-                        "applicability": {...}
-                    }
-                ],
-                "summary": "Natural language summary"
-            }
         """
-        # Build prompt from trajectory
         trajectory_str = self._format_trajectory(trajectory)
 
-        user_prompt = f"""**Trajectory**:
+        user_prompt = f"""【当前总结提炼的所属实验类型】：{experiment_type}
+
+**运行轨线 (Trajectory)**:
 {trajectory_str}
 
-Please analyze this trajectory and extract valuable insights.
+请在全局上帝视角分析这份轨迹图，找出关键漏洞，并凝练出未来加入该实验类型【Rules 规则库】中的**纯普适性 Key Insight（反踩坑法则）**。
 """
-
-        # Call LLM
         response = self.agent.run(user_prompt)
-
-        # Parse response
-        result = self._parse_response(response)
-
-        return result
+        return self._parse_response(response)
 
     def _format_trajectory(self, trajectory: List[Dict[str, Any]]) -> str:
         """Format trajectory as readable text."""
@@ -91,7 +62,7 @@ Please analyze this trajectory and extract valuable insights.
             if input_data:
                 lines.append(f"Input keys: {list(input_data.keys())}")
             if output_data:
-                lines.append(f"Output keys: {list(output_data.keys())}")
+                lines.append(f"Output: {str(output_data)[:200]}...")
 
             lines.append("---")
 
@@ -100,18 +71,10 @@ Please analyze this trajectory and extract valuable insights.
     def _parse_response(self, response: str) -> Dict[str, Any]:
         """
         Parse LLM response as JSON.
-
-        Args:
-            response: LLM response string
-
-        Returns:
-            Parsed dictionary
         """
         try:
-            # Try to parse as JSON directly
             return json.loads(response)
         except json.JSONDecodeError:
-            # Try to extract JSON from markdown code block
             match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", response, re.DOTALL)
             if match:
                 try:
@@ -119,7 +82,6 @@ Please analyze this trajectory and extract valuable insights.
                 except:
                     pass
 
-            # Try to find first JSON object
             match = re.search(r"\{.*\}", response, re.DOTALL)
             if match:
                 try:
@@ -127,8 +89,7 @@ Please analyze this trajectory and extract valuable insights.
                 except:
                     pass
 
-            # Return mock data if parsing fails
             return {
-                "insights": [],
+                "insights": [{"type": "error", "content": "JSON 格式破裂，无法提炼insight"}],
                 "summary": f"解析失败: {response[:200]}...",
             }
