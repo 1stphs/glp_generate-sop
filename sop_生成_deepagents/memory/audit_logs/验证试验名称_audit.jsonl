@@ -1,1 +1,0 @@
-{"timestamp": "2026-03-16T16:18:00.328283", "experiment_type": "LC-MS_MS结构化验证", "section_title": "验证试验名称", "version": "V4_Concurrent", "sop_id": "350510725005316", "sop_summary": "N/A", "curation": {"operations_added": 0}, "metrics": {}, "quality_assessment": {"is_passed": false, "score": 1.0, "feedback": "并发处理完成"}}

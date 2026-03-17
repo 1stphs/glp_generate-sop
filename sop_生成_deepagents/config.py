@@ -11,8 +11,16 @@ load_dotenv()
 # LLM 配置
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://aihubmix.com/v1")
-SMART_MODEL = os.getenv("SMART_MODEL", "gpt-5-mini")  # 主模型用于复杂任务
-FAST_MODEL = os.getenv("FAST_MODEL", "grok-4-1-fast-reasoning")  # 子模型用于快速任务
+
+# V5 多模型配置
+WRITER_MODEL = "gpt-4o-mini"  # 生成：便宜快速
+SIMULATOR_MODEL = "gpt-4o-mini"  # 盲测：快速
+REVIEWER_MODEL = "grok-4-1-fast-reasoning"  # 评估：毒舌模型
+CURATOR_MODEL = "claude-opus"  # 沉淀：深度推理
+
+# 兼容旧版
+SMART_MODEL = os.getenv("SMART_MODEL", "gemini-3.1-flash-lite-preview")
+FAST_MODEL = os.getenv("FAST_MODEL", "grok-4-1-fast-reasoning")
 
 # 系统配置
 EXPERIMENT_TYPE = "小分子模板"
