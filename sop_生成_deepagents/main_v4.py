@@ -10,7 +10,7 @@ from config import SMART_MODEL
 
 # 初始化
 memory = MemoryManagerV4("./memory")
-backend = FilesystemBackend(root_dir="./")
+backend = FilesystemBackend(root_dir="./", virtual_mode=False)
 print_lock = threading.Lock()
 
 # 主 Agent 提示词
@@ -222,9 +222,6 @@ def main():
     safe_print("\n" + "="*70)
     safe_print("✅ 并发批量处理程序运行结束")
     safe_print("="*70)
-
-if __name__ == "__main__":
-    main()
 
 if __name__ == "__main__":
     main()

@@ -11,8 +11,8 @@ load_dotenv()
 # LLM 配置
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://aihubmix.com/v1")
-SMART_MODEL = "claude-opus-4-6"  # 主模型用于复杂任务
-FAST_MODEL = "claude-3-5-haiku-20241022"  # 子模型用于快速任务
+SMART_MODEL = os.getenv("SMART_MODEL", "gpt-5-mini")  # 主模型用于复杂任务
+FAST_MODEL = os.getenv("FAST_MODEL", "grok-4-1-fast-reasoning")  # 子模型用于快速任务
 
 # 系统配置
 EXPERIMENT_TYPE = "小分子模板"
