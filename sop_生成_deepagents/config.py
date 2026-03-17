@@ -16,7 +16,7 @@ OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://aihubmix.com/v1")
 WRITER_MODEL = "gpt-4o-mini"  # 生成：便宜快速
 SIMULATOR_MODEL = "gpt-4o-mini"  # 盲测：快速
 REVIEWER_MODEL = "grok-4-1-fast-reasoning"  # 评估：毒舌模型
-CURATOR_MODEL = "claude-opus"  # 沉淀：深度推理
+CURATOR_MODEL = "gpt-4o-mini"  # 沉淀：深度推理
 
 # 兼容旧版
 SMART_MODEL = os.getenv("SMART_MODEL", "gemini-3.1-flash-lite-preview")
