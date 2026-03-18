@@ -90,7 +90,7 @@ class MasterAgent:
 2. 复杂度只输出 "simple" 或 "complex"，不要输出 "standard"
 3. 路由路径：
    - simple: 简单章节 → simple_path (Writer → Format Verify → END)
-   - complex: 复杂章节 → complex_path (Writer → Simulator → Reviewer → (FAIL) → Analyzer → Curator → Writer (循环）
+   - complex: 复杂章节 → complex_path (Writer → Simulator → Reviewer → (FAIL)  → Curator → Writer (循环）
 4. 输出简洁的理由（50 字以内）
 5. 输出格式：JSON
 
