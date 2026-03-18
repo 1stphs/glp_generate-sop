@@ -1412,3 +1412,33 @@
 {"timestamp": "2026-03-18T17:04:39.099313", "event_type": "execution_complete", "section_title": "归档", "final_score": 5.0, "total_iterations": 1, "success": true}
 {"timestamp": "2026-03-18T17:04:39.100897", "event_type": "template_save", "section_title": "归档", "metadata": {"complexity": "simple", "score": 5.0, "iteration": 1, "route": "simple_path", "is_pass": true}}
 {"timestamp": "2026-03-18T17:04:39.101332", "event_type": "execution_complete", "section_title": "归档", "final_score": 5.0, "total_iterations": 1, "success": true}
+{"timestamp": "2026-03-18T17:38:32.891961", "event_type": "execution_start", "section_title": "引言", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-18T17:38:32.892709", "event_type": "node_execution", "section_title": "引言", "node_name": "master", "output": {"complexity": "simple", "route": "simple_path", "reasoning": "纯信息展示，包含缩略词表、目录等静态内容，字数<200，相似度>95%"}}
+{"timestamp": "2026-03-18T17:38:32.894889", "event_type": "node_execution", "section_title": "引言", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:34.504889", "event_type": "execution_start", "section_title": "材料和方法", "complexity": "complex", "route": "complex_path"}
+{"timestamp": "2026-03-18T17:38:34.505572", "event_type": "node_execution", "section_title": "材料和方法", "node_name": "master", "output": {"complexity": "complex", "route": "complex_path", "reasoning": "包含详细操作步骤（配制、样品处理）和方法学验证参数，变量熵高，相似度<70%"}}
+{"timestamp": "2026-03-18T17:38:34.507003", "event_type": "node_execution", "section_title": "材料和方法", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:36.350108", "event_type": "execution_start", "section_title": "方法学验证内容和接受标准", "complexity": "complex", "route": "complex_path"}
+{"timestamp": "2026-03-18T17:38:36.350902", "event_type": "node_execution", "section_title": "方法学验证内容和接受标准", "node_name": "master", "output": {"complexity": "complex", "route": "complex_path", "reasoning": "包含系统适用性、残留、选择性、基质效应、准确度精密度、回收率、稳定性等验证参数，涉及统计分析和接受标准"}}
+{"timestamp": "2026-03-18T17:38:36.352232", "event_type": "node_execution", "section_title": "方法学验证内容和接受标准", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:38.067275", "event_type": "execution_start", "section_title": "数据处理", "complexity": "complex", "route": "complex_path"}
+{"timestamp": "2026-03-18T17:38:38.067967", "event_type": "node_execution", "section_title": "数据处理", "node_name": "master", "output": {"complexity": "complex", "route": "complex_path", "reasoning": "数据处理章节涉及统计计算和分析逻辑，包含标准曲线参数、精密度准确度等动态推导，相似度<70%"}}
+{"timestamp": "2026-03-18T17:38:38.069289", "event_type": "node_execution", "section_title": "数据处理", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:39.622770", "event_type": "execution_start", "section_title": "归档", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-18T17:38:39.623436", "event_type": "node_execution", "section_title": "归档", "node_name": "master", "output": {"complexity": "simple", "route": "simple_path", "reasoning": "纯信息展示，关键词匹配附录/归档，字数<200，相似度>95%"}}
+{"timestamp": "2026-03-18T17:38:39.624635", "event_type": "node_execution", "section_title": "归档", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:41.045900", "event_type": "execution_start", "section_title": "引言", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-18T17:38:41.046594", "event_type": "node_execution", "section_title": "引言", "node_name": "master", "output": {"complexity": "simple", "route": "simple_path", "reasoning": "纯信息展示，包含缩略词表、目录等静态内容，字数<200，相似度>95%"}}
+{"timestamp": "2026-03-18T17:38:41.047698", "event_type": "node_execution", "section_title": "引言", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:42.598701", "event_type": "execution_start", "section_title": "材料和方法", "complexity": "complex", "route": "complex_path"}
+{"timestamp": "2026-03-18T17:38:42.599325", "event_type": "node_execution", "section_title": "材料和方法", "node_name": "master", "output": {"complexity": "complex", "route": "complex_path", "reasoning": "包含多步操作步骤（配制、样品处理）和分析系统描述，变量熵高，相似度<70%"}}
+{"timestamp": "2026-03-18T17:38:42.600583", "event_type": "node_execution", "section_title": "材料和方法", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:44.324786", "event_type": "execution_start", "section_title": "方法学验证内容和接受标准", "complexity": "complex", "route": "complex_path"}
+{"timestamp": "2026-03-18T17:38:44.325580", "event_type": "node_execution", "section_title": "方法学验证内容和接受标准", "node_name": "master", "output": {"complexity": "complex", "route": "complex_path", "reasoning": "包含系统适用性、标准曲线、质控、稳定性等验证参数，涉及统计分析和接受标准，关键词匹配复杂特征"}}
+{"timestamp": "2026-03-18T17:38:44.327845", "event_type": "node_execution", "section_title": "方法学验证内容和接受标准", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:45.900383", "event_type": "execution_start", "section_title": "数据处理", "complexity": "complex", "route": "complex_path"}
+{"timestamp": "2026-03-18T17:38:45.901039", "event_type": "node_execution", "section_title": "数据处理", "node_name": "master", "output": {"complexity": "complex", "route": "complex_path", "reasoning": "包含计算、统计分析及表格描述，文本相似度低，变量熵高"}}
+{"timestamp": "2026-03-18T17:38:45.902346", "event_type": "node_execution", "section_title": "数据处理", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
+{"timestamp": "2026-03-18T17:38:47.635627", "event_type": "execution_start", "section_title": "归档", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-18T17:38:47.636418", "event_type": "node_execution", "section_title": "归档", "node_name": "master", "output": {"complexity": "simple", "route": "simple_path", "reasoning": "关键词匹配：目录、附录类，纯信息展示，字数<200，相似度>95%"}}
+{"timestamp": "2026-03-18T17:38:47.637483", "event_type": "node_execution", "section_title": "归档", "node_name": "writer", "output": {"sop_content": "", "iteration": 1}}
