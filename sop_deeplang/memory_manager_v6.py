@@ -43,6 +43,9 @@ class MemoryManagerV6:
         # Markdown output directory (separate folder for all MD files)
         self.markdown_dir = MEMORY_DIR / "markdown_sops"
 
+        # Previous SOPs storage (for enhancement iteration)
+        self.previous_sops_file = MEMORY_DIR / "previous_sops.json"
+
         # Ensure all directories exist
         for d in [
             self.skills_dir,
@@ -55,6 +58,66 @@ class MemoryManagerV6:
             self.markdown_dir,
         ]:
             d.mkdir(parents=True, exist_ok=True)
+
+    def save_previous_sop(self, section_title: str, sop_content: str):
+        """保存上一次生成的SOP，用于下一次增强"""
+        try:
+            previous_sops = self._load_previous_sops()
+            previous_sops[section_title] = sop_content
+            self._write_previous_sops(previous_sops)
+        except Exception as e:
+            print(f"   ✗ 保存Previous SOP失败: {e}")
+
+    def load_previous_sop(self, section_title: str) -> str:
+        """加载上一次生成的SOP"""
+        try:
+            previous_sops = self._load_previous_sops()
+            return previous_sops.get(section_title, "")
+        except Exception as e:
+            print(f"   ✗ 加载Previous SOP失败: {e}")
+            return ""
+
+    def _load_previous_sops(self) -> dict:
+        """加载所有previous_sops（内部方法）"""
+        if self.previous_sops_file.exists():
+            with open(self.previous_sops_file, "r", encoding="utf-8") as f:
+                return json.load(f)
+        return {}
+
+    def _write_previous_sops(self, previous_sops: dict):
+        """写入所有previous_sops（内部方法）"""
+        with open(self.previous_sops_file, "w", encoding="utf-8") as f:
+            json.dump(previous_sops, f, ensure_ascii=False, indent=2)
+
+    def get_checkpoint(self) -> int:
+        """
+        获取最后一次处理的数据集索引。
+
+        Returns:
+            最后处理的数据集索引（从1开始），如果没有checkpoint则返回0
+        """
+        checkpoint_file = MEMORY_DIR / "dataset_checkpoint.json"
+        if checkpoint_file.exists():
+            try:
+                with open(checkpoint_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    return data.get("last_processed_index", 0)
+            except Exception:
+                return 0
+        return 0
+
+    def save_checkpoint(self, dataset_index: int):
+        """
+        保存当前处理的数据集索引。
+
+        Args:
+            dataset_index: 当前处理的数据集索引（从1开始）
+        """
+        checkpoint_file = MEMORY_DIR / "dataset_checkpoint.json"
+        with open(checkpoint_file, "w", encoding="utf-8") as f:
+            json.dump(
+                {"last_processed_index": dataset_index}, f, ensure_ascii=False, indent=2
+            )
 
     def _sanitize_filename(self, name: str) -> str:
         """Sanitize filename to be safe for filesystem"""

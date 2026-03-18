@@ -70,9 +70,12 @@ def parse_sections_from_protocol(content: str) -> List[Dict[str, str]]:
     return sections
 
 
-def load_real_data() -> tuple[str, str]:
+def load_real_data(index: int) -> tuple[str, str]:
     """
     加载真实的验证方案和GLP报告数据。
+
+    Args:
+        index: 数据集索引（从1开始）
 
     Returns:
         (protocol_content, report_content)
@@ -91,9 +94,9 @@ def load_real_data() -> tuple[str, str]:
     with open(report_file, "r", encoding="utf-8") as f:
         report_data = json.load(f)
 
-    # 使用第一条数据
-    protocol_content = protocol_data.get("protocol_content1", "")
-    report_content = report_data.get("report_content1", "")
+    # 使用指定索引的数据
+    protocol_content = protocol_data.get(f"protocol_content{index}", "")
+    report_content = report_data.get(f"report_content{index}", "")
 
     return protocol_content, report_content
 
@@ -270,19 +273,29 @@ class SOPSGeneratorV6:
 
         return state
 
-    def process_section(self, section: Dict[str, Any]) -> Dict[str, Any]:
+    def process_section(
+        self,
+        section: Dict[str, Any],
+        data_index: int = 1,
+        previous_sop: str = "",
+    ) -> Dict[str, Any]:
         """
         Process a single section through workflow.
 
         Args:
             section: Dictionary with section_title, original_content, generate_content
+            data_index: Current dataset index (1-based)
+            previous_sop: Previous SOP for enhancement mode
 
         Returns:
             Result dictionary with processing status and metrics
         """
         section_title = section.get("section_title", "")
+        mode = "增强模式" if data_index > 1 else "初始模式"
         print(f"\n{'=' * 70}")
-        print(f"📋 开始处理章节: {section_title}")
+        print(f"📋 开始处理章节: {section_title} (数据集{data_index} | {mode})")
+        if previous_sop:
+            print(f"📚 使用上一次SOP作为参考 (长度: {len(previous_sop)} 字符)")
         print(f"{'=' * 70}\n")
 
         # Initial state
@@ -298,6 +311,10 @@ class SOPSGeneratorV6:
             "reviewer_score": 1.0,
             "is_pass": False,
             "failure_cause": "",
+            "data_index": data_index,
+            "previous_sop": previous_sop,
+            "all_protocol_contents": [],
+            "all_report_contents": [],
         }
 
         try:
@@ -312,6 +329,7 @@ class SOPSGeneratorV6:
                 "iteration_count": result.get("iteration", 1),
                 "complexity": result.get("complexity", "unknown"),
                 "route": result.get("route", "unknown"),
+                "sop_content": result.get("sop_content", ""),
             }
 
         except Exception as e:
@@ -332,9 +350,9 @@ class SOPSGeneratorV6:
 
 
 def main():
-    """Main execution function"""
+    """Main execution function with multi-dataset iteration"""
     print("\n" + "=" * 70)
-    print("🚀 SOP 生成系统 V6 - DeepLang (使用真实数据)")
+    print("🚀 SOP 生成系统 V6 - DeepLang (多数据集迭代模式)")
     print("=" * 70 + "\n")
 
     # Validate configuration
@@ -344,53 +362,168 @@ def main():
         print("\n   提示: 如果没有配置API，系统将无法正常运行。")
         return
 
-    # Load real data
-    print("📂 加载真实数据...")
-    try:
-        protocol_content, report_content = load_real_data()
-        print(f"   ✓ 验证方案加载完成 ({len(protocol_content)} 字符)")
-        print(f"   ✓ GLP报告加载完成 ({len(report_content)} 字符)")
-    except Exception as e:
-        print(f"   ✗ 加载数据失败: {e}")
+    # Initialize memory and ensure previous_sops.json exists
+    memory = MemoryManagerV6()
+    if not memory.previous_sops_file.exists():
+        with open(memory.previous_sops_file, "w") as f:
+            json.dump({}, f)
+
+    # Load all available datasets
+    print("📂 加载数据集...")
+    all_protocol_contents = []
+    all_report_contents = []
+
+    max_data_sets = 10  # Try to load up to 10 datasets
+    for i in range(max_data_sets):
+        protocol, report = load_real_data(i + 1)
+        if protocol and report:
+            all_protocol_contents.append(protocol)
+            all_report_contents.append(report)
+            print(f"   ✓ 数据集 {i + 1}: {len(protocol)} + {len(report)} 字符")
+        else:
+            break
+
+    if not all_protocol_contents:
+        print("   ✗ 没有可用数据集")
         return
 
-    # Parse sections from protocol
-    print("\n📋 解析章节结构...")
-    sections = prepare_sections(protocol_content, report_content, max_sections=5)
-    print(f"   ✓ 识别到 {len(sections)} 个章节:")
-    for i, section in enumerate(sections, 1):
-        print(f"      {i}. {section['section_title']}")
+    print(f"\n   共 {len(all_protocol_contents)} 份数据集可用")
+
+    # Check for existing checkpoint
+    checkpoint = memory.get_checkpoint()
+    if checkpoint > 0:
+        print(f"   📍 检测到checkpoint: 数据集 {checkpoint} 已处理")
+        print(f"   📚 将从数据集 {checkpoint + 1} 开始继续...")
+    else:
+        print(f"   📍 无checkpoint，从头开始处理...")
+
+    print()
 
     # Initialize generator
     generator = SOPSGeneratorV6()
 
-    # Process sections
-    results = []
-    for section in sections:
-        result = generator.process_section(section)
-        results.append(result)
+    # Process each dataset sequentially
+    all_results = []
+    start_index = checkpoint  # 0 means start from beginning, 1 means dataset 1 is done
 
-    # Summary
-    print("\n" + "=" * 70)
-    print("📊 处理汇总")
-    print("=" * 70)
-
-    success_count = sum(1 for r in results if r.get("success", False))
-    print(f"✓ 成功: {success_count}/{len(results)}")
-    print(f"✗ 失败: {len(results) - success_count}/{len(results)}")
-
-    # Detailed results
-    for result in results:
-        status = "✓" if result.get("success") else "✗"
+    # Check if checkpoint indicates all datasets are already processed
+    if checkpoint >= len(all_protocol_contents):
+        print(f"\n⚠️  所有 {len(all_protocol_contents)} 个数据集均已处理完成")
+        print(f"   最后处理的数据集: {checkpoint}")
+        print(f"\n提示:")
+        print(f"   1. 如需重新处理，删除 checkpoint: rm memory/dataset_checkpoint.json")
         print(
-            f"{status} {result['section_title']}: "
-            f"评分={result.get('final_score', 0):.1f}, "
-            f"复杂度={result.get('complexity', '?')}, "
-            f"迭代={result.get('iteration_count', 0)}次"
+            f"   2. 如需添加新数据集，请在 protocol_content.json 和 report_content.json 中添加"
+        )
+        print(
+            f"      protocol_content{checkpoint + 1} 和 report_content{checkpoint + 1}"
+        )
+        print(f"\n✨ 无需处理的数据集")
+        return
+
+    for dataset_idx in range(start_index, len(all_protocol_contents)):
+        data_index = dataset_idx + 1  # 1-based index
+        print(f"\n{'=' * 70}")
+        print(f"🔄 开始处理数据集 {data_index}/{len(all_protocol_contents)}")
+        print(f"{'=' * 70}\n")
+
+        protocol_content = all_protocol_contents[dataset_idx]
+        report_content = all_report_contents[dataset_idx]
+
+        # Parse sections from current dataset
+        sections = prepare_sections(protocol_content, report_content, max_sections=5)
+        print(f"   识别到 {len(sections)} 个章节:")
+        for i, section in enumerate(sections, 1):
+            print(f"      {i}. {section['section_title']}")
+
+        # Load previous SOPs for enhancement mode (if not first dataset)
+        previous_sops = {}
+        if data_index > 1:
+            print(f"\n   📚 加载上一次生成的SOP作为参考...")
+            for section in sections:
+                section_title = section["section_title"]
+                previous_sop = memory.load_previous_sop(section_title)
+                if previous_sop:
+                    previous_sops[section_title] = previous_sop
+                    print(f"      ✓ {section_title}: {len(previous_sop)} 字符")
+                else:
+                    print(f"      ⚠ {section_title}: 未找到上一次SOP")
+        else:
+            print(f"\n   🆕 初始模式: 生成第一批SOP")
+
+        # Process sections
+        dataset_results = []
+        for section in sections:
+            section_title = section["section_title"]
+            previous_sop = previous_sops.get(section_title, "")
+            result = generator.process_section(
+                section, data_index=data_index, previous_sop=previous_sop
+            )
+            dataset_results.append(result)
+            all_results.append(result)
+
+        # Save generated SOPs for next iteration
+        print(f"\n   💾 保存生成的SOP用于下一次迭代...")
+        for result in dataset_results:
+            section_title = result["section_title"]
+            sop_content = result.get("sop_content", "")
+            if sop_content:
+                memory.save_previous_sop(section_title, sop_content)
+                print(f"      ✓ {section_title}: {len(sop_content)} 字符")
+
+        # Save checkpoint
+        memory.save_checkpoint(data_index)
+        print(f"\n   ✅ 数据集 {data_index} 处理完成，checkpoint已保存")
+
+        # Dataset summary
+        success_count = sum(1 for r in dataset_results if r.get("success", False))
+        print(f"\n   📊 数据集 {data_index} 汇总:")
+        print(f"      ✓ 成功: {success_count}/{len(dataset_results)}")
+        print(
+            f"      ✗ 失败: {len(dataset_results) - success_count}/{len(dataset_results)}"
         )
 
+        # Detailed results for this dataset
+        for result in dataset_results:
+            status = "✓" if result.get("success") else "✗"
+            print(
+                f"      {status} {result['section_title']}: "
+                f"评分={result.get('final_score', 0):.1f}, "
+                f"复杂度={result.get('complexity', '?')}, "
+                f"迭代={result.get('iteration_count', 0)}次"
+            )
+
+    # Overall summary
     print("\n" + "=" * 70)
-    print("✨ 所有任务处理完毕")
+    print("📊 全局汇总")
+    print("=" * 70)
+
+    total_success = sum(1 for r in all_results if r.get("success", False))
+    print(f"✓ 总成功: {total_success}/{len(all_results)}")
+    print(f"✗ 总失败: {len(all_results) - total_success}/{len(all_results)}")
+    if all_results:
+        print(
+            f"📈 平均评分: {sum(r.get('final_score', 0) for r in all_results) / len(all_results):.2f}"
+        )
+
+    # Show score progression across datasets
+    print("\n📈 各数据集平均评分:")
+    for dataset_idx in range(len(all_protocol_contents)):
+        data_index = dataset_idx + 1
+        dataset_results = [
+            r
+            for r in all_results
+            if r.get("section_title", "").startswith("章节")
+            and f"数据集{data_index}" in str(r)
+        ]
+        if dataset_results:
+            avg_score = sum(r.get("final_score", 0) for r in dataset_results) / len(
+                dataset_results
+            )
+            print(f"   数据集 {data_index}: {avg_score:.2f}")
+
+    print("\n" + "=" * 70)
+    print("✨ 所有数据集处理完毕")
     print("=" * 70)
 
 

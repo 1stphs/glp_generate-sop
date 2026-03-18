@@ -24,60 +24,64 @@ class WriterNode:
 
     def __call__(self, state: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Generate SOP based on validation plan, GLP report reference, and Writer Skill.
+        Generate SOP using Grok with enhancement mode.
 
         Args:
             state: Current workflow state
 
         Returns:
-            Updated state with SOP content
+            Updated state with generated SOP content
         """
         section_title = state["section_title"]
         protocol_content = state.get("protocol_content", "")
-        original_report_content = state.get("original_report_content", "")
-        iteration = state.get("iteration", 1)
+        report_content = state.get("original_report_content", "")
+        previous_sop = state.get("previous_sop", "")
+        data_index = state.get("data_index", 1)
 
-        # Load Writer Skill
+        self.memory.log_node_execution(
+            section_title,
+            "writer",
+            {"data_index": data_index, "has_previous_sop": bool(previous_sop)},
+        )
+
         skill_content = self.memory.load_skill("writer")
 
-        # Load existing template if available
-        existing_template = self.memory.load_sop_template(section_title)
-        template_context = ""
-        if existing_template:
-            template_context = (
-                f"\n【现有参考模板】：\n{existing_template['sop_content'][:500]}...\n"
-            )
+        if data_index == 1:
+            prompt_suffix = f"""
+            
+【本次生成目标】：
+生成初始SOP版本。
 
-        # Build prompt
-        prompt = f"""你是SOP生成专家，请基于以下内容生成高质量的GLP标准操作程序（SOP）。
+【新数据集】：
+协议：{len(protocol_content)} 字符
+报告：{len(report_content)} 字符
+
+请输出SOP内容。
+"""
+        else:
+            prompt_suffix = f"""
+            
+【上一次SOP（已优化）】：
+{previous_sop}
+
+【本次增强目标】：
+基于上一次SOP，结合新的验证方案和报告，生成更泛化、更通用的SOP版本。
+
+【新数据集】：
+协议：{len(protocol_content)} 字符
+报告：{len(report_content)} 字符
+
+请输出增强后的SOP内容。
+"""
+
+        prompt = f"""你是GLP-SOP生成专家，精通FDA 21 CFR Part 11/GLP法规要求。
 
 # Writer Skill (v{WRITER_SKILL_VERSION})
 {skill_content}
 
-# 输入内容
-
-【章节名称】：{section_title}
-
-【验证方案】：
-{protocol_content[:3000]}
-
-【GLP 报告参考】：
-{original_report_content[:3000]}
-
-{template_context}
-
-# 任务要求
-
-1. 严格遵守Writer Skill中的所有核心原则和禁止事项
-2. 必须包含5个必需章节：目的、适用范围、操作步骤、文档记录、异常处理
-3. 所有操作步骤必须包含完整的参数（温度、时间、转速等）
-4. 禁止编造验证方案中未出现的具体数值
-5. 输出格式：纯净的Markdown格式，不要任何前言或后语
-
-请直接输出SOP内容，以Markdown格式。"""
+{prompt_suffix}"""
 
         try:
-            # Generate using Grok
             response = self.client.chat.completions.create(
                 model=self.config["model"],
                 messages=[{"role": "system", "content": prompt}],
@@ -88,7 +92,8 @@ class WriterNode:
             content = response.choices[0].message.content
             sop_content = content.strip() if content else ""
 
-            # Log node execution
+            iteration = state.get("iteration", 1)
+
             self.memory.log_node_execution(
                 section_title,
                 "writer",

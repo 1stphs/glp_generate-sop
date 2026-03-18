@@ -14,8 +14,8 @@ from config_v6 import MODEL_CONFIG, MASTER_SKILL_VERSION
 
 class MasterState(TypedDict):
     section_title: str
-    protocol_content: str  # 验证方案内容
-    original_report_content: str  # GLP 报告内容
+    protocol_content: str
+    original_report_content: str
     complexity: str
     route: str
     reasoning: str
@@ -24,6 +24,11 @@ class MasterState(TypedDict):
     reviewer_score: float
     is_pass: bool
     failure_cause: str
+    data_index: int
+    previous_sop: str
+    all_protocol_contents: list
+    all_report_contents: list
+    previous_sop: str
 
 
 class MasterAgent:
