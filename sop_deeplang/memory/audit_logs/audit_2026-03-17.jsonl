@@ -1,0 +1,9 @@
+{"timestamp": "2026-03-17T18:35:32.870550", "event_type": "execution_start", "section_title": "引言", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-17T18:35:32.871213", "event_type": "execution_complete", "section_title": "引言", "final_score": 1.0, "total_iterations": 1, "success": false}
+{"timestamp": "2026-03-17T18:35:32.871562", "event_type": "execution_start", "section_title": "材料和方法", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-17T18:35:32.871906", "event_type": "execution_complete", "section_title": "材料和方法", "final_score": 1.0, "total_iterations": 1, "success": false}
+{"timestamp": "2026-03-17T18:35:32.872187", "event_type": "execution_start", "section_title": "方法学验证内容和接受标准", "complexity": "complex", "route": "complex_path"}
+{"timestamp": "2026-03-17T18:35:33.213147", "event_type": "execution_start", "section_title": "数据处理", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-17T18:35:33.214844", "event_type": "execution_complete", "section_title": "数据处理", "final_score": 1.0, "total_iterations": 1, "success": false}
+{"timestamp": "2026-03-17T18:35:33.216097", "event_type": "execution_start", "section_title": "归档", "complexity": "simple", "route": "simple_path"}
+{"timestamp": "2026-03-17T18:35:33.217109", "event_type": "execution_complete", "section_title": "归档", "final_score": 1.0, "total_iterations": 1, "success": false}
