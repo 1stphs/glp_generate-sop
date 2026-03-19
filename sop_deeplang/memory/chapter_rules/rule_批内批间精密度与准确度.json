@@ -1,0 +1,12 @@
+{
+  "section_title": "批内批间精密度与准确度",
+  "core_requirements": [
+    "必须涵盖 LLOQ, LQC, MQC, HQC 以及 GMQC 浓度水平",
+    "精密度 (CV%) 必须按批内 (Intra-run) 和 批间 (Inter-run) 分别统计",
+    "必须明确统计学计算公式或引用相关统计 SOP"
+  ],
+  "data_mapping": {
+    "precision_summary_table": "表9_批内_批间样品检测的精密度和准确度"
+  },
+  "writing_guidelines": "SOP 必须明确区分‘合格标准’与‘实测结果’。建议使用插槽格式：[批内精密度范围 %], [批间精密度范围 %]。"
+}

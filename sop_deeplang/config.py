@@ -16,12 +16,14 @@ MEMORY_DIR = BASE_DIR / "memory"
 SKILLS_DIR = MEMORY_DIR / "skills"
 TEMPLATES_DIR = MEMORY_DIR / "sop_templates"
 AUDIT_LOGS_DIR = MEMORY_DIR / "audit_logs"
+CHAPTER_RULES_DIR = MEMORY_DIR / "chapter_rules"
 
 # Ensure directories exist
 MEMORY_DIR.mkdir(parents=True, exist_ok=True)
 SKILLS_DIR.mkdir(parents=True, exist_ok=True)
 TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
 AUDIT_LOGS_DIR.mkdir(parents=True, exist_ok=True)
+CHAPTER_RULES_DIR.mkdir(parents=True, exist_ok=True)
 
 # ============== API Configuration ==============
 # OpenAI-compatible API (for Grok)

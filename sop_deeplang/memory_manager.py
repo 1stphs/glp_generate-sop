@@ -21,6 +21,7 @@ from config import (
     SIMULATOR_SKILL_VERSION,
     REVIEWER_SKILL_VERSION,
     CURATOR_SKILL_VERSION,
+    CHAPTER_RULES_DIR,
     CLEAN_OUTPUT,
 )
 
@@ -37,6 +38,7 @@ class MemoryManager:
         self.skills_dir = SKILLS_DIR
         self.templates_dir = TEMPLATES_DIR
         self.audit_logs_dir = AUDIT_LOGS_DIR
+        self.chapter_rules_dir = CHAPTER_RULES_DIR
 
         # Subdirectories for skills
         self.writing_dir = self.skills_dir / "writing"
@@ -60,6 +62,7 @@ class MemoryManager:
             self.templates_dir,
             self.audit_logs_dir,
             self.markdown_dir,
+            self.chapter_rules_dir,
         ]:
             d.mkdir(parents=True, exist_ok=True)
 
@@ -488,6 +491,56 @@ class MemoryManager:
         all_logs.sort(key=lambda x: x.get("timestamp", ""))
 
         return all_logs
+
+    # ============== Chapter Rules Management ==============
+
+    def save_chapter_rule(self, section_title: str, rule_content: Dict[str, Any]):
+        """
+        Save a specific rule for a chapter/section.
+        
+        Args:
+            section_title: Title of the section
+            rule_content: The rule data (structure, requirements, etc.)
+        """
+        safe_name = self._sanitize_filename(section_title)
+        rule_file = self.chapter_rules_dir / f"rule_{safe_name}.json"
+        
+        with _file_lock:
+            with open(rule_file, "w", encoding="utf-8") as f:
+                json.dump(rule_content, f, ensure_ascii=False, indent=2)
+        
+        # Log to audit
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "event_type": "chapter_rule_save",
+            "section_title": section_title,
+            "rule_file": str(rule_file.name)
+        }
+        self._write_audit_log(log_entry)
+
+    def load_chapter_rule(self, section_title: str) -> Optional[Dict[str, Any]]:
+        """
+        Load the rule for a specific section.
+        """
+        safe_name = self._sanitize_filename(section_title)
+        rule_file = self.chapter_rules_dir / f"rule_{safe_name}.json"
+        
+        if not rule_file.exists():
+            return None
+            
+        with open(rule_file, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    def get_all_chapter_rules(self) -> Dict[str, Dict[str, Any]]:
+        """
+        Retrieve all stored chapter rules.
+        """
+        all_rules = {}
+        for rule_file in self.chapter_rules_dir.glob("rule_*.json"):
+            section_name = rule_file.stem.replace("rule_", "")
+            with open(rule_file, "r", encoding="utf-8") as f:
+                all_rules[section_name] = json.load(f)
+        return all_rules
 
     # ============== Complexity Analysis Helpers ==============
 
