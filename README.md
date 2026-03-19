@@ -1,217 +1,80 @@
-# SOP 生成系统 V6 - DeepLang
+# SOP 生成系统 V6 - DeepLang (两阶段演进版)
 
-基于 LangGraph 的多模型 SOP 自动生成系统
+基于 LangGraph 的“压测进化型” SOP 自动生成系统。
 
 ## 🎯 系统概述
 
-**V6 DeepLang** 是一个基于 LangGraph 工作流引擎的智能 SOP（标准操作程序）生成系统，采用多模型协作架构：
+**DeepLang V6** 抛弃了传统的“单次生成”模式，引入了业界领先的**两阶段解耦架构**：
 
-- **LangGraph**: 工作流编排引擎
-- **Grok 4.1 Fast Reasoning**: Master/Simulator/Reviewer/Curator/Analyzer
-- **Gemini 3.1 Flash Lite**: Writer（快速且经济）
+- **阶段一：形式导向生成 (Phase 1)** - 屏蔽复杂数据，利用 Protocol/Report 快速构建带 `[XXX]` 插槽的泛化 SOP 骨架，解决 LLM 幻觉问题。
+- **阶段二：数据盲测进化 (Phase 2)** - 接入真实 Excel 数据进行“压力测试”。通过 Simulator 模拟执行与专家节点比对，倒逼 SOP 结构进化并沉淀章节级规则库。
 
-### 核心特性
+## 📁 核心资源包结构 (Resource Pack)
 
-- ✅ **真正的 AI Agent 控制**：Master Agent 使用 Grok 和专属 Skill 进行上下文复杂度分析
-- ✅ **Skill 驱动架构**：所有节点基于动态维护的 .md 技能库
-- ✅ **进化闭环**：失败自动分析和学习，由 Curator 自动更新 Writer 技能库
-- ✅ **三层记忆系统**：动态 Skill 库、静态模板库、历史审计日志库
-- ✅ **统一命名与结构化数据**：清晰整合前置数据源，提供精准的上下文切片
-- ✅ **干净输出**：脚本严格过滤控制节点输出，存储整洁
-
-## 📁 项目结构
+系统产出的资产实现绝对的“脑机分离”：
 
 ```text
-.
-├── sop_deeplang/                   # 核心代码与工作流引擎
-│   ├── main.py                  # LangGraph 主程序
-│   ├── config.py                # 配置（API Keys/模型/控制参数）
-│   ├── memory_manager.py        # 记忆管理器（Skill / Template / Log）
-│   ├── integrate_data.py           # 数据整合预处理脚本
-│   ├── requirements.txt            # 依赖包
-│   ├── .env.example                # 环境变量示例
-│   ├── nodes/                      # LangGraph 节点 (master, writer等)
-│   └── memory/                     # 记忆库 (skills, sop_templates, audit_logs)
-├── docs/                           # 项目文档合集
-│   ├── architecture_proposal.md    # 架构设计方案
-│   ├── v6_workflow_refactor_plan.md# V6 版本工作流重构计划
-│   ├── 提示词工程分析_prompts.md      # 提示词工程分析
-│   └── dev_logs/                   # 历史开发与重构日志
-├── scripts/                        # 辅助执行脚本
-│   ├── extract_excel.py            # 导出 Excel 标记数据
-│   └── final_fix.py                # 清理和实验脚本
-├── tests/                          # 系统及单元测试
-│   └── test_system.py              # 系统级主干流程测试
-├── mockData/                       # 外部测试数据存放路径
-├── original_docx/                  # 原始 Docx 文档
-└── README.md                       # 本说明文件
+sop_resource_pack/
+├── 1_memory_skills/       # 【大脑层】Agent 节点的生存技能 (.md)
+│   ├── master_skill.md    # 统筹与分发
+│   ├── writer_skill.md    # 写作底座与插槽铁律
+│   ├── simulator_skill.md # 宏微观双轨模拟压测
+│   ├── review_skill.md    # 结构/流程覆盖度审计
+│   └── curator_skill.md   # 规则提炼与记忆固化
+├── 2_chapter_rules/       # 【经验层】从 Phase 2 失败中学习到的章节细则 (.json)
+├── 3_sandbox_scripts/     # 【工具层】Excel 解析沙盒与映射脚本 (.py)
+└── 4_sop_template/        # 【产物层】唯一交付的极致泛化 SOP 模板 (.md)
 ```
 
-## 🚀 快速开始
-
-### 1. 安装依赖
-
-```bash
-cd sop_deeplang
-pip install -r requirements.txt
-```
-
-### 2. 配置环境变量
-
-```bash
-cp .env.example .env
-```
-
-编辑 `.env` 文件，填入你的 API 配置：
-
-```env
-# Grok API（通过 OpenAI 兼容接口）
-OPENAI_API_KEY=your_grok_api_key
-OPENAI_BASE_URL=https://api.openai.com/v1
-
-# Gemini API
-GEMINI_API_KEY=your_gemini_api_key
-```
-
-### 3. 数据预处理（如需）
-
-系统目前直接加载整合后的数据 `integrated_data.json`：
-```bash
-python integrate_data.py
-```
-*备注：执行后将根据原始协议与报告在对应 `mockData` 目录下生成 `integrated_data.json`。*
-
-### 4. 运行系统
-
-```bash
-python main.py
-```
-
-## 📊 工作流程
-
-### 复杂度评估（Master Agent）
-
-通过 Grok + Master Skill 对当前章节内容进行动态复杂度分析：
-
-- **简单章节（Simple）**：信息明确、逻辑直接的章节 → `simple_path`
-- **复杂章节（Complex）**：涉及深入计算、专业数据论证或不确定性步骤的章节 → `complex_path`
-
-### 路由决策
+## 🚀 工作流程 (LangGraph)
 
 ```mermaid
 graph TD
-    Master[Master Agent]
-    Analyzer[Analyzer]
+    classDef phase1 fill:#e1f5fe,stroke:#01579b;
+    classDef phase2 fill:#fff3e0,stroke:#e65100;
 
-    %% Simple Path
-    Master -- simple_path --> WriterS[Writer]
-    WriterS --> FV[Format Verify]
-    FV --> END
+    Start((Start)) --> Master[Master Agent]
+    Master --> Phase_Router{阶段判定}
 
-    %% Complex Path (Retry Loop)
-    Master -- complex_path --> WriterC[Writer]
-    WriterC --> SimC[Simulator]
-    SimC --> RevC[Reviewer]
-    RevC -- PASS --> END
-    RevC -- FAIL --> Analyzer
-    Analyzer --> Curator[Curator]
-    Curator --> WriterC
+    %% Phase 1
+    Phase_Router -->|Phase 1: 骨架生成| W1[Writer Node]:::phase1
+    W1 --> V1[Format Verify]:::phase1
+    V1 --> End1((保存带插槽 V1_Draft)):::phase1
+
+    %% Phase 2
+    End1 -.-> DataSync[注入 Excel/Report/Protocol 验证源]:::phase2
+    Phase_Router -->|Phase 2: 压测进化| DataSync
+    DataSync --> W2[Writer Node + 章节规则]:::phase2
+    W2 --> S2[Simulator 宏微观双轨盲测]:::phase2
+    S2 --> R2[Reviewer 健壮度核验]:::phase2
+    
+    R2 -- 结构/工艺缺陷 --> C2[Curator 规则提炼]:::phase2
+    C2 -- 更新章节 Rules --> W2
+    R2 -- 完美覆盖 --> End2((产出终极标准化 SOP)):::phase2
 ```
 
-## 🧠 Skill 驱动架构
+## 🧠 核心技术内涵
 
-### Skill 库管理
+1. **双轨盲测 (Double-Blind Testing)**：Simulator 既拿着 Excel 试填插槽（微观），又拿着 SOP 尝试盲写实验报告（宏观），全方位暴露 SOP 的描述死角。
+2. **章节专家进化**：Curator 不再修改全局 Skill，而是针对特定章节生成 `.json` 细则，让系统跑的项目越多，对特定章节（如精密度、稳定性）的“直觉”越敏锐。
+3. **强制插槽制**：禁止 AI 编造任何不确定的数值，所有变动点必须以 `[XXX]` 占位符体现，确保 SOP 的纯粹泛化性。
 
-所有核心认知逻辑（Skills）以 `.md` 文件存储在 `memory/skills/` 各自的分类目录中：
+## 🔧 快速开始
 
-1. **统一驱动**：所有 Agent 节点均受到其专属 Skill 的引导和校准
-2. **读写分离机制**：人类可读、可直接通过编辑 `.md` 进行干预
-3. **自进化更新**：Curator 能够根据审核反馈自动更新 Writer Skill
-4. **版本控制追踪**：每次更新自动生成新版本（v1.0 → v1.1 → ...）
-
-## 💾 记忆管理
-
-### 三层动态与静态记忆库
-
-1. **Skill 库** (`memory/skills/`)
-   - 具有生命力和进化能力的组件
-   - System Prompts 与校验规则的持久化形态
-
-2. **模板库** (`memory/sop_templates/`)
-   - 最终验证过的 SOP 产物，支持 `.md` 和 `.json` 双格式输出
-   - 高分确认，即可直接用作最终模板
-
-3. **审计日志库** (`memory/audit_logs/`)
-   - 存放于按日期归档的历史流水中（如：`audit_2026-03-18.jsonl`）
-   - JSON 结构化留存关键轨迹和执行指标
-
-## 📝 结构化输入数据
-
-引入了全新的整合数据模型：系统将前置方案 (`protocol_content`) 和历史报告 (`report_content`) 切片对齐到具体章节下，允许 AI 高效抓取对应上下文。
-
-```json
-{
-  "datasets": [
-    {
-      "dataset_id": 1,
-      "protocol_content": "完整验证方案文本",
-      "report_content": "完整GLP报告文本",
-      "sections": [
-        {
-          "section_title": "方法学验证",
-          "protocol_context": "...（切片上文）...",
-          "report_context": "...（切片下文）..."
-        }
-      ]
-    }
-  ]
-}
-```
-
-## 🔧 配置调整
-
-编辑 `config.py` 修改系统策略：
-
-```python
-# 数据处理深度控制
-MAX_DATASETS = 1  # 运行的数据集数量
-
-# 最大迭代次数（防止死循环）
-MAX_ITERATIONS = 3
-
-# 模型调配组合
-MASTER_MODEL = "grok-4-1-fast-reasoning"
-WRITER_MODEL = "gemini-3.1-flash-lite"
-SIMULATOR_MODEL = "grok-4-1-fast-reasoning"
-REVIEWER_MODEL = "grok-4-1-fast-reasoning"
-ANALYZER_MODEL = "grok-4-1-fast-reasoning"
-CURATOR_MODEL = "grok-4-1-fast-reasoning"
-```
-
-## 🎯 设计迭代优势 (对比 V5)
-
-1. **重构 Master**：由生硬规则转向基于 Skill 的高灵敏度 Agent 判决。
-2. **简化流转架构**：削减了中度混合路径，优化为 `Simple/Complex` 二元判决。
-3. **明确意图边界**：将参数和内容变量词条如 `original_content` 切实打标为 `protocol_content` 消除语义混淆。
-4. **输出精炼化**：LangGraph 通道中的有效信息将被裁剪记录以维持清晰。
-
-## 🐛 故障排查
-
-### 问题：API 调用失败或响应异常
-
+### 1. 环境准备
 ```bash
-# 检查 API Key 配置映射
-cat .env
-# Grok 调用受阻确认 OPENAI_BASE_URL 指定是否正确
+git clone ...
+pip install -r requirements.txt
+cp .env.example .env # 填入 Grok & Gemini API Key
 ```
 
-### 问题：LangGraph 依赖或工作流阻滞
+### 2. 执行流程
+- **执行第一阶段**：在 `main.py` 中设置 `phase=1`，产出初始骨架初稿。
+- **执行第二阶段**：将 Excel 数据放入 `mockData/`，设置 `phase=2`，对骨架进行极限压测。
 
-```bash
-# 拉取/重新校准依赖版本
-pip install -r requirements.txt --upgrade
-```
+## 📝 开发者说明
+- **代码重构**：所有文件已移除 `_v6` 后缀，由 Git 负责版本管理。
+- **项目文档**：详尽的设计方案请参考 `docs/architecture_proposal.md`。
 
-## 📄 License
-
-MIT
+---
+*Powered by DeepLang Team - 致力于构建最具工业美感的 GLP 数字化工具*
