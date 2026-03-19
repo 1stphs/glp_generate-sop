@@ -12,9 +12,9 @@
 
 | 文件 | 行数 | 状态 | 说明 |
 |------|------|------|------|
-| config_v6.py | 147 | ✅ | 配置文件，包含所有模型和系统配置 |
-| memory_manager_v6.py | 462 | ✅ | 记忆管理器，管理技能、模板、审计日志 |
-| main_v6.py | 400 | ✅ | 主程序，使用真实数据 |
+| config.py | 147 | ✅ | 配置文件，包含所有模型和系统配置 |
+| memory_manager.py | 462 | ✅ | 记忆管理器，管理技能、模板、审计日志 |
+| main.py | 400 | ✅ | 主程序，使用真实数据 |
 | nodes/__init__.py | ~30 | ✅ | 节点包初始化 |
 | nodes/master.py | 201 | ✅ | Master Agent（AI 复杂度判断） |
 | nodes/writer.py | 103 | ✅ | Writer Node（SOP 生成） |
@@ -38,9 +38,9 @@
 
 ```
 sop_deeplang/
-├── config_v6.py
-├── memory_manager_v6.py
-├── main_v6.py
+├── config.py
+├── memory_manager.py
+├── main.py
 ├── nodes/                          # 6 个节点文件
 ├── memory/                         # 记忆库根目录
 │   ├── skills/                     # 5 个 skill 子目录
@@ -145,7 +145,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 ```bash
 cd sop_deeplang
-python main_v6.py
+python main.py
 ```
 
 ### 预期输出

@@ -8,9 +8,9 @@
 ### 1. Python 文件检查（12 个文件）✅
 | 文件 | 状态 | 说明 |
 |------|------|------|
-| config_v6.py | ✓ | 147 行 |
-| memory_manager_v6.py | ✓ | 462 行 |
-| main_v6.py | ✓ | 400 行 |
+| config.py | ✓ | 147 行 |
+| memory_manager.py | ✓ | 462 行 |
+| main.py | ✓ | 400 行 |
 | nodes/__init__.py | ✓ | 节点包初始化 |
 | nodes/master.py | ✓ | 201 行，MasterAgent 重构完成 |
 | nodes/writer.py | ✓ | 103 行，命名已统一 |
@@ -48,9 +48,9 @@
 ### 4. 编译状态（12 个文件）✅
 | 文件 | 状态 | 说明 |
 |------|------|------|
-| config_v6.py | ✓ | 编译成功 |
-| memory_manager_v6.py | ✓ | 编译成功 |
-| main_v6.py | ✓ | 编译成功 |
+| config.py | ✓ | 编译成功 |
+| memory_manager.py | ✓ | 编译成功 |
+| main.py | ✓ | 编译成功 |
 | nodes/__init__.py | ✓ | 编译成功 |
 | nodes/master.py | ✓ | 编译成功 |
 | nodes/writer.py | ✓ | 编译成功 |
@@ -75,8 +75,8 @@
 | generate_content | original_report_content | 全局统一 |
 
 **修改的文件**：
-- config_v6.py: 新增 MASTER_SKILL_VERSION
-- memory_manager_v6.py: 更新 master skill 加载路径
+- config.py: 新增 MASTER_SKILL_VERSION
+- memory_manager.py: 更新 master skill 加载路径
 - nodes/master.py: MasterAgent 实现，命名更新
 - nodes/writer.py: 命名更新
 - nodes/reviewer.py: 命名更新
@@ -92,8 +92,8 @@
 ### 4. 数据流验证 ✓
 ```
 protocol_content.json (验证方案)
-    ↓ main_v6.py: load_real_data()
-    ↓ main_v6.py: prepare_sections()
+    ↓ main.py: load_real_data()
+    ↓ main.py: prepare_sections()
     ↓ section["protocol_content"] = protocol_snippet
     ↓ state["protocol_content"]
     ↓ MasterAgent.__call__()
@@ -105,8 +105,8 @@ protocol_content.json (验证方案)
 
 ```
 report_content.json (GLP 报告)
-    ↓ main_v6.py: load_real_data()
-    ↓ main_v6.py: prepare_sections()
+    ↓ main.py: load_real_data()
+    ↓ main.py: prepare_sections()
     ↓ section["original_report_content"] = report_snippet
     ↓ state["original_report_content"]
     ↓ MasterAgent.__call__()
@@ -148,7 +148,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ### 4. 运行系统
 ```bash
 cd sop_deeplang
-python main_v6.py
+python main.py
 ```
 
 ## 📊 预期输出

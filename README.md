@@ -22,31 +22,29 @@
 ## 📁 项目结构
 
 ```text
-sop_deeplang/
-├── main_v6.py                      # LangGraph 主程序
-├── config_v6.py                    # 配置（API Keys/模型/控制参数）
-├── memory_manager_v6.py            # 记忆管理器（Skill / Template / Log）
-├── integrate_data.py               # 数据整合预处理脚本
-├── requirements.txt                # 依赖包
-├── .env.example                    # 环境变量示例
-├── nodes/                          # LangGraph 节点
-│   ├── master.py                   # Master Agent 节点（AI 复杂度评估）
-│   ├── writer.py                   # Writer 节点（SOP 生成）
-│   ├── simulator.py                # Simulator 节点（盲测执行）
-│   ├── reviewer.py                 # Reviewer 节点（质量审核）
-│   ├── analyzer.py                 # Analyzer 节点（失败分析）
-│   └── curator.py                  # Curator 节点（技能更新）
-├── memory/                         # 记忆库
-│   ├── skills/                     # Skill 库（动态维护）
-│   │   ├── master/                 # Master Skill (复杂度分析标准)
-│   │   ├── writing/                # Writer Skill (生成原则)
-│   │   ├── simulation/             # Simulator Skill (盲测规则)
-│   │   ├── evaluation/             # Reviewer Skill (审核清单)
-│   │   ├── analysis/               # Analyzer Skill (根因分析)
-│   │   └── curation/               # Curator Skill (更新规则)
-│   ├── sop_templates/              # 最终产物：通过审核的 SOP
-│   └── audit_logs/                 # 审计日志
-└── mockData/                       # 外部测试数据存放路径
+.
+├── sop_deeplang/                   # 核心代码与工作流引擎
+│   ├── main.py                  # LangGraph 主程序
+│   ├── config.py                # 配置（API Keys/模型/控制参数）
+│   ├── memory_manager.py        # 记忆管理器（Skill / Template / Log）
+│   ├── integrate_data.py           # 数据整合预处理脚本
+│   ├── requirements.txt            # 依赖包
+│   ├── .env.example                # 环境变量示例
+│   ├── nodes/                      # LangGraph 节点 (master, writer等)
+│   └── memory/                     # 记忆库 (skills, sop_templates, audit_logs)
+├── docs/                           # 项目文档合集
+│   ├── architecture_proposal.md    # 架构设计方案
+│   ├── v6_workflow_refactor_plan.md# V6 版本工作流重构计划
+│   ├── 提示词工程分析_prompts.md      # 提示词工程分析
+│   └── dev_logs/                   # 历史开发与重构日志
+├── scripts/                        # 辅助执行脚本
+│   ├── extract_excel.py            # 导出 Excel 标记数据
+│   └── final_fix.py                # 清理和实验脚本
+├── tests/                          # 系统及单元测试
+│   └── test_system.py              # 系统级主干流程测试
+├── mockData/                       # 外部测试数据存放路径
+├── original_docx/                  # 原始 Docx 文档
+└── README.md                       # 本说明文件
 ```
 
 ## 🚀 快速开始
@@ -86,7 +84,7 @@ python integrate_data.py
 ### 4. 运行系统
 
 ```bash
-python main_v6.py
+python main.py
 ```
 
 ## 📊 工作流程
@@ -172,7 +170,7 @@ graph TD
 
 ## 🔧 配置调整
 
-编辑 `config_v6.py` 修改系统策略：
+编辑 `config.py` 修改系统策略：
 
 ```python
 # 数据处理深度控制

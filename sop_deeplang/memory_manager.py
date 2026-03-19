@@ -12,7 +12,7 @@ from pathlib import Path
 _file_lock = threading.Lock()
 from typing import Dict, List, Any, Optional
 from datetime import datetime
-from config_v6 import (
+from config import (
     SKILLS_DIR,
     TEMPLATES_DIR,
     AUDIT_LOGS_DIR,
@@ -25,7 +25,7 @@ from config_v6 import (
 )
 
 
-class MemoryManagerV6:
+class MemoryManager:
     """
     V6 Memory Manager - Manages three core libraries:
     1. Skill Library (memory/skills/) - Dynamic, versioned .md files
@@ -501,7 +501,7 @@ class MemoryManagerV6:
         Returns:
             Complexity level: "simple", "standard", or "complex"
         """
-        from config_v6 import SIMPLE_SECTIONS, COMPLEX_SECTIONS
+        from config import SIMPLE_SECTIONS, COMPLEX_SECTIONS
 
         # Simple sections (direct match)
         for simple in SIMPLE_SECTIONS:
@@ -526,7 +526,7 @@ class MemoryManagerV6:
         Returns:
             Complexity level: "simple", "standard", or "complex"
         """
-        from config_v6 import COMPLEX_KEYWORDS, SIMPLE_WORD_COUNT, COMPLEX_WORD_COUNT
+        from config import COMPLEX_KEYWORDS, SIMPLE_WORD_COUNT, COMPLEX_WORD_COUNT
 
         word_count = len(content.split())
 

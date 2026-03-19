@@ -54,8 +54,8 @@ DeepAgents的 **skills** 不是你想象的普通prompt，而是：
 成本砍70%，质量翻倍，GLP合规直接及格——这才是2026年的正确打开方式！
 
 **要不要我直接甩你改完后的代码骨架？**  
-- `subagents_config_v6.py`（多LLM + skills加载）
+- `subagents_config.py`（多LLM + skills加载）
 - `skills/evaluation_rubric/SKILL_CREATOR.md`（meta-skill模板）
-- `main_v6.py` 里加的“每轮动态rubric”循环
+- `main.py` 里加的“每轮动态rubric”循环
 
 说一声，3分钟出货。继续炼，这次别再烧钱了，哥盯着你呢😂

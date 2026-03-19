@@ -6,15 +6,15 @@ SOP Generation System V6 - DeepLang
 import json
 from typing import Dict, Any
 from openai import OpenAI
-from memory_manager_v6 import MemoryManagerV6
-from config_v6 import MODEL_CONFIG, REVIEWER_SKILL_VERSION
+from memory_manager import MemoryManager
+from config import MODEL_CONFIG, REVIEWER_SKILL_VERSION
 
 
 class ReviewerNode:
     """Reviewer Node: Quality audit and scoring (harsh mode)"""
 
     def __init__(self):
-        self.memory = MemoryManagerV6()
+        self.memory = MemoryManager()
         self.config = MODEL_CONFIG["reviewer"]
 
         # Initialize OpenAI client (for Grok)

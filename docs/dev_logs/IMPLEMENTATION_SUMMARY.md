@@ -8,9 +8,9 @@
 ### 目录结构
 ```
 sop_deeplang/
-├── main_v6.py                      ✓ LangGraph 主程序
-├── config_v6.py                    ✓ 配置文件（Grok + Gemini）
-├── memory_manager_v6.py            ✓ 记忆管理器
+├── main.py                      ✓ LangGraph 主程序
+├── config.py                    ✓ 配置文件（Grok + Gemini）
+├── memory_manager.py            ✓ 记忆管理器
 ├── requirements.txt                ✓ 依赖包列表
 ├── .env.example                    ✓ 环境变量示例
 ├── README.md                       ✓ 使用说明
@@ -130,7 +130,7 @@ cp .env.example .env
 
 ### 3. 运行系统
 ```bash
-python main_v6.py
+python main.py
 ```
 
 ## 📊 预期输出
@@ -207,16 +207,16 @@ memory/skills/writing/
 
 1. 配置 API Keys（.env 文件）
 2. 安装依赖（pip install -r requirements.txt）
-3. 运行测试（python main_v6.py）
+3. 运行测试（python main.py）
 4. 查看生成的 SOP 模板
 5. 检查 Skill 版本更新（如果触发了重试）
 
 ## 📄 文件清单
 
 ### 核心文件（7 个）
-1. `main_v6.py` - 主程序入口
-2. `config_v6.py` - 配置文件
-3. `memory_manager_v6.py` - 记忆管理器
+1. `main.py` - 主程序入口
+2. `config.py` - 配置文件
+3. `memory_manager.py` - 记忆管理器
 4. `requirements.txt` - 依赖列表
 5. `.env.example` - 环境变量示例
 6. `README.md` - 使用文档

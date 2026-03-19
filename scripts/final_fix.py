@@ -6,7 +6,7 @@
 import re
 
 # Read file
-with open("main_v6.py", "r", encoding="utf-8") as f:
+with open("main.py", "r", encoding="utf-8") as f:
     lines = f.readlines()
 
 new_lines = []
@@ -35,13 +35,13 @@ for i, line in enumerate(lines):
     new_lines.append(line)
 
 # Write back
-with open("main_v6.py", "w", encoding="utf-8") as f:
+with open("main.py", "w", encoding="utf-8") as f:
     f.writelines(new_lines)
 
 print("✓ Final cleanup applied")
 print("\n✅ All fixes complete!")
 print("\nSummary of changes:")
-print("  1. ✓ Added MAX_DATASETS to config_v6.py imports")
+print("  1. ✓ Added MAX_DATASETS to config.py imports")
 print("  2. ✓ Added load_integrated_data() function")
 print("  3. ✓ Added prepare_sections_from_integrated() function")
 print("  4. ✓ Removed old parse_sections_from_protocol() function")
@@ -49,4 +49,4 @@ print("  5. ✓ Removed old load_real_data() function")
 print("  6. ✓ Removed old prepare_sections() function")
 print("  7. ✓ Updated main() to use integrated data")
 print("  8. ✓ Updated process_section() to use integrated data")
-print("\nReady to run: python3 main_v6.py")
+print("\nReady to run: python3 main.py")

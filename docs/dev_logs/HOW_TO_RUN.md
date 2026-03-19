@@ -35,7 +35,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ### 步骤 3: 运行系统
 
 ```bash
-python main_v6.py
+python main.py
 ```
 
 ## 📊 数据说明
@@ -123,7 +123,7 @@ memory/skills/writing/
 
 ## ⚙️ 配置说明
 
-可以修改 `config_v6.py` 来调整系统行为：
+可以修改 `config.py` 来调整系统行为：
 
 ```python
 # 最大迭代次数（复杂章节）

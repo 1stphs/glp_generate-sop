@@ -74,13 +74,13 @@ class MasterAgent:
 
 ### 4. 文件修改清单
 
-#### config_v6.py
+#### config.py
 ```python
 # 新增
 MASTER_SKILL_VERSION = "1.0"
 ```
 
-#### memory_manager_v6.py
+#### memory_manager.py
 ```python
 # 修改 master skill 加载路径
 def load_skill(self, skill_type: str, skill_name: str = None) -> str:
@@ -96,7 +96,7 @@ def load_skill(self, skill_type: str, skill_name: str = None) -> str:
 - ✅ 调用 LLM 并解析 JSON 结果
 - ✅ 返回 complexity, route, reasoning
 
-#### main_v6.py
+#### main.py
 ```python
 # 更新导入
 from nodes.master import (
@@ -228,10 +228,10 @@ original_report_content
 ## ✅ 验证结果
 
 ### 编译检查
-- ✅ main_v6.py: 编译成功
+- ✅ main.py: 编译成功
 - ✅ nodes/master.py: 编译成功
-- ✅ memory_manager_v6.py: 编译成功
-- ✅ config_v6.py: 编译成功
+- ✅ memory_manager.py: 编译成功
+- ✅ config.py: 编译成功
 
 ### 文件检查
 - ✅ Skill 文件创建：`memory/skills/master/complexity_analysis_skill_v1.md`
@@ -250,13 +250,13 @@ cd sop_deeplang
 pip install -r requirements.txt
 cp .env.example .env
 # 编辑 .env，填入 API Keys
-python main_v6.py
+python main.py
 ```
 
 ## 📚 相关文件
 
 1. `nodes/master.py` - Master Agent 实现
 2. `memory/skills/master/complexity_analysis_skill_v1.md` - 复杂度分析 Skill
-3. `memory_manager_v6.py` - 技能加载管理
-4. `config_v6.py` - 配置文件
-5. `main_v6.py` - 主程序
+3. `memory_manager.py` - 技能加载管理
+4. `config.py` - 配置文件
+5. `main.py` - 主程序

@@ -8,8 +8,8 @@ SOP Generation System V6 - DeepLang
 import json
 from typing import Dict, Any, TypedDict
 from openai import OpenAI
-from memory_manager_v6 import MemoryManagerV6
-from config_v6 import MODEL_CONFIG, MASTER_SKILL_VERSION
+from memory_manager import MemoryManager
+from config import MODEL_CONFIG, MASTER_SKILL_VERSION
 
 
 class MasterState(TypedDict):
@@ -35,7 +35,7 @@ class MasterAgent:
     """Master Agent: Uses LLM to assess complexity and determine routing path"""
 
     def __init__(self):
-        self.memory = MemoryManagerV6()
+        self.memory = MemoryManager()
         self.config = MODEL_CONFIG["master"]
 
         # Initialize OpenAI client (for Grok)
@@ -172,7 +172,7 @@ def format_verify_node(state: MasterState) -> MasterState:
     state["reviewer_score"] = 5.0 if is_pass else 1.0
 
     # Log completion
-    memory = MemoryManagerV6()
+    memory = MemoryManager()
     if is_pass:
         memory.save_sop_template(
             section_title,

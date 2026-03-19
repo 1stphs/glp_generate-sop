@@ -77,23 +77,23 @@
 
 ```
 protocol_content.json (验证方案)
-    ↓ main_v6.py: load_real_data()
-    ↓ main_v6.py: prepare_sections()
+    ↓ main.py: load_real_data()
+    ↓ main.py: prepare_sections()
     ↓ section["original_content"] = protocol_snippet
     ↓ state["original_content"]
     ↓ writer.py: original_content
     ↓ Prompt: 【验证方案】
 
 report_content.json (GLP 报告)
-    ↓ main_v6.py: load_real_data()
-    ↓ main_v6.py: prepare_sections()
+    ↓ main.py: load_real_data()
+    ↓ main.py: prepare_sections()
     ↓ section["generate_content"] = report_snippet
     ↓ state["generate_content"]
     ↓ writer.py: generate_content
     ↓ Prompt: 【GLP 报告参考】
 
 memory/sop_templates/ (现有模板)
-    ↓ main_v6.py: load_sop_template()
+    ↓ main.py: load_sop_template()
     ↓ writer.py: existing_template
     ↓ writer.py: template_context
     ↓ Prompt: {template_context} (仅在有模板时)
@@ -135,7 +135,7 @@ memory/sop_templates/ (现有模板)
 
 ```bash
 cd sop_deeplang
-python main_v6.py
+python main.py
 ```
 
 系统现在会正确使用真实的客户数据（protocol_content.json 和 report_content.json）。

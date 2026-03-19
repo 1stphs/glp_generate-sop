@@ -20,7 +20,7 @@ except ImportError:
     exit(1)
 
 # Local imports
-from config_v6 import (
+from config import (
     BASE_DIR,
     MEMORY_DIR,
     MAX_ITERATIONS,
@@ -28,7 +28,7 @@ from config_v6 import (
     validate_config,
     MASTER_SKILL_VERSION,
 )
-from memory_manager_v6 import MemoryManagerV6
+from memory_manager import MemoryManager
 from nodes.master import (
     MasterState,
     format_verify_node,
@@ -91,7 +91,7 @@ class SOPSGeneratorV6:
     """SOP Generator V6 - LangGraph-based workflow"""
 
     def __init__(self):
-        self.memory = MemoryManagerV6()
+        self.memory = MemoryManager()
 
         # Initialize nodes
         self.master = MasterAgent()
@@ -319,7 +319,7 @@ def main():
         return
 
     # Initialize memory and ensure previous_sops.json exists
-    memory = MemoryManagerV6()
+    memory = MemoryManager()
     if not memory.previous_sops_file.exists():
         with open(memory.previous_sops_file, "w") as f:
             json.dump({}, f)

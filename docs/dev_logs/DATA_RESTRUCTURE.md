@@ -16,11 +16,11 @@
 
 ### 2. 修改文件
 
-**config_v6.py**
+**config.py**
 - 新增配置项：`MAX_DATASETS = 1`
 - 用法：设置为1测试第一份数据集，设为3测试前3份数据集
 
-**main_v6.py**
+**main.py**
 - 新增函数：`load_integrated_data()` - 加载整合数据
 - 新增函数：`prepare_sections_from_integrated()` - 从整合数据准备章节
 - 修改 main 函数：使用新的数据加载逻辑
@@ -88,14 +88,14 @@ python3 integrate_data.py
 会生成 `../mockData/workflow-b/integrated_data.json`
 
 ### 配置数据集数量
-编辑 `config_v6.py`:
+编辑 `config.py`:
 ```python
 MAX_DATASETS = 1  # 只测试第一份数据集
 ```
 
 ### 运行主程序
 ```bash
-python3 main_v6.py
+python3 main.py
 ```
 
 程序会：

@@ -17,9 +17,9 @@ def check_system():
     # 1. 检查核心文件
     print("1. 核心文件检查...")
     core_files = [
-        "config_v6.py",
-        "memory_manager_v6.py",
-        "main_v6.py",
+        "sop_deeplang/config.py",
+        "sop_deeplang/memory_manager.py",
+        "sop_deeplang/main.py",
     ]
 
     for file in core_files:
@@ -32,13 +32,12 @@ def check_system():
     # 2. 检查 nodes
     print("\n2. 节点检查...")
     nodes = [
-        "nodes/__init__.py",
-        "nodes/master.py",
-        "nodes/writer.py",
-        "nodes/simulator.py",
-        "nodes/reviewer.py",
-        "nodes/analyzer.py",
-        "nodes/curation.py",
+        "sop_deeplang/nodes/__init__.py",
+        "sop_deeplang/nodes/master.py",
+        "sop_deeplang/nodes/writer.py",
+        "sop_deeplang/nodes/simulator.py",
+        "sop_deeplang/nodes/reviewer.py",
+        "sop_deeplang/nodes/curator.py",
     ]
 
     for node in nodes:
@@ -51,12 +50,11 @@ def check_system():
     # 3. 检查 skill 文件
     print("\n3. Skill 文件检查...")
     skills = [
-        "memory/skills/master/complexity_analysis_skill_v1.md",
-        "memory/skills/writing/writer_skill_v1.0.md",
-        "memory/skills/simulation/simulator_skill_v1.md",
-        "memory/skills/evaluation/reviewer_skill_v1.md",
-        "memory/skills/analysis/failure_analyzer_skill_v1.md",
-        "memory/skills/curation/curator_skill_v1.md",
+        "sop_deeplang/memory/skills/master/complexity_analysis_skill_v1.md",
+        "sop_deeplang/memory/skills/writing/writer_skill_v1.md",
+        "sop_deeplang/memory/skills/simulation/simulator_skill_v1.md",
+        "sop_deeplang/memory/skills/evaluation/reviewer_skill_v1.md",
+        "sop_deeplang/memory/skills/curation/curator_skill_v1.md",
     ]
 
     for skill in skills:
@@ -82,10 +80,10 @@ def check_system():
 
     # 5. 检查 .env.example
     print("\n5. 配置文件检查...")
-    env_example = Path(".env.example")
+    env_example = Path("sop_deeplang/.env.example")
     if env_example.exists():
         print(f"   ✓ .env.example: 存在")
-        print(f"   → cp .env.example .env 命令可用")
+        print(f"   → cp sop_deeplang/.env.example sop_deeplang/.env 命令可用")
     else:
         print(f"   ✗ .env.example: 不存在")
         return False
@@ -129,7 +127,7 @@ def check_system():
     print("=" * 70 + "\n")
 
     print("运行命令:")
-    print("  python main_v6.py")
+    print("  python main.py")
     print()
     print("如遇 API 错误，请检查 .env 文件中的 API Keys 配置。")
 
