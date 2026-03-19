@@ -10,25 +10,35 @@ from typing import Dict, List, Any
 
 
 def extract_section_context(
-    full_text: str, section_title: str, window: int = 1000
+    full_text: str, section_title: str, window: int = 2000
 ) -> str:
     """从完整文本中提取章节的上下文片段"""
-    # 尝试找到章节标题
     import re
 
+    # 剥离 section_title 中可能自带的序号 (例如 "1. 目的" -> "目的")
+    clean_title = re.sub(r"^[\d\.\s、]+", "", section_title).strip()
+    if not clean_title:
+        clean_title = section_title
+        
     patterns = [
-        rf"(?:[\d\.]+\s*)?{re.escape(section_title)}",
-        rf"【{re.escape(section_title)}】",
-        rf"\[{re.escape(section_title)}\]",
+        # 精确匹配（带或不带前置编号）
+        rf"(?:[\d\.\s、]+)?{re.escape(clean_title)}",
+        rf"【\s*{re.escape(clean_title)}\s*】",
+        rf"\[\s*{re.escape(clean_title)}\s*\]",
+        # 宽容的 fallback
+        rf"{re.escape(clean_title)}"
     ]
 
     for pattern in patterns:
-        match = re.search(pattern, full_text)
-        if match:
-            # 提取章节标题前后的内容
-            start = max(0, match.start() - window)
-            end = min(len(full_text), match.end() + window)
-            return full_text[start:end]
+        try:
+            match = re.search(pattern, full_text)
+            if match:
+                # 提取章节标题前后的内容
+                start = max(0, match.start() - window)
+                end = min(len(full_text), match.end() + window)
+                return full_text[start:end]
+        except Exception:
+            pass
 
     # 如果找不到标题，返回空字符串
     return ""
@@ -85,11 +95,11 @@ def main():
         protocol_text = protocol_data[protocol_key]
         report_text = report_data[report_key]
 
-        # 提取主要章节的上下文（用于AI快速定位）
-        main_sections = [s for s in structure if s.get("parent_section_id") is None]
+        # 提取所有章节的上下文（移除仅过滤主要章节的限制）
+        target_sections = structure
 
         sections_with_context = []
-        for section in main_sections:
+        for section in target_sections:
             section_title = section["section_title"]
 
             # 提取 protocol 和 report 的上下文片段

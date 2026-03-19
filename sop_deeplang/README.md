@@ -7,50 +7,46 @@
 **V6 DeepLang** 是一个基于 LangGraph 工作流引擎的智能 SOP（标准操作程序）生成系统，采用多模型协作架构：
 
 - **LangGraph**: 工作流编排引擎
-- **Grok 4.1 Fast Reasoning**: Master/Simulator/Reviewer/Curator
+- **Grok 4.1 Fast Reasoning**: Master/Simulator/Reviewer/Curator/Analyzer
 - **Gemini 3.1 Flash Lite**: Writer（快速且经济）
 
 ### 核心特性
 
-- ✅ **规则驱动的复杂度分析**：零成本复杂度判断
-- ✅ **Skill 驱动架构**：动态维护的 .md 技能库
-- ✅ **进化闭环**：失败自动学习，更新技能库
-- ✅ **三层记忆**：Skill 库、模板库、审计日志库
-- ✅ **干净输出**：脚本控制节点输出，存储整洁
+- ✅ **真正的 AI Agent 控制**：Master Agent 使用 Grok 和专属 Skill 进行上下文复杂度分析
+- ✅ **Skill 驱动架构**：所有节点基于动态维护的 .md 技能库
+- ✅ **进化闭环**：失败自动分析和学习，由 Curator 自动更新 Writer 技能库
+- ✅ **三层记忆系统**：动态 Skill 库、静态模板库、历史审计日志库
+- ✅ **统一命名与结构化数据**：清晰整合前置数据源，提供精准的上下文切片
+- ✅ **干净输出**：脚本严格过滤控制节点输出，存储整洁
 
 ## 📁 项目结构
 
-```
+```text
 sop_deeplang/
 ├── main_v6.py                      # LangGraph 主程序
-├── config_v6.py                    # 配置（API Keys + 模型）
-├── memory_manager_v6.py            # 记忆管理器
+├── config_v6.py                    # 配置（API Keys/模型/控制参数）
+├── memory_manager_v6.py            # 记忆管理器（Skill / Template / Log）
+├── integrate_data.py               # 数据整合预处理脚本
 ├── requirements.txt                # 依赖包
 ├── .env.example                    # 环境变量示例
 ├── nodes/                          # LangGraph 节点
-│   ├── master.py                   # Master 节点（复杂度评估）
+│   ├── master.py                   # Master Agent 节点（AI 复杂度评估）
 │   ├── writer.py                   # Writer 节点（SOP 生成）
-│   ├── simulator.py                # Simulator 节点（盲测）
+│   ├── simulator.py                # Simulator 节点（盲测执行）
 │   ├── reviewer.py                 # Reviewer 节点（质量审核）
 │   ├── analyzer.py                 # Analyzer 节点（失败分析）
 │   └── curator.py                  # Curator 节点（技能更新）
 ├── memory/                         # 记忆库
 │   ├── skills/                     # Skill 库（动态维护）
-│   │   ├── master_skill.md
-│   │   ├── writing/
-│   │   │   └── writer_skill_v1.0.md
-│   │   ├── simulation/
-│   │   │   └── simulator_skill_v1.md
-│   │   ├── evaluation/
-│   │   │   └── reviewer_skill_v1.md
-│   │   ├── analysis/
-│   │   │   └── failure_analyzer_skill_v1.md
-│   │   └── curation/
-│   │       └── curator_skill_v1.md
+│   │   ├── master/                 # Master Skill (复杂度分析标准)
+│   │   ├── writing/                # Writer Skill (生成原则)
+│   │   ├── simulation/             # Simulator Skill (盲测规则)
+│   │   ├── evaluation/             # Reviewer Skill (审核清单)
+│   │   ├── analysis/               # Analyzer Skill (根因分析)
+│   │   └── curation/               # Curator Skill (更新规则)
 │   ├── sop_templates/              # 最终产物：通过审核的 SOP
 │   └── audit_logs/                 # 审计日志
-└── mockData/                       # 测试数据
-    └── report.json                 # 输入数据示例
+└── mockData/                       # 外部测试数据存放路径
 ```
 
 ## 🚀 快速开始
@@ -79,7 +75,15 @@ OPENAI_BASE_URL=https://api.openai.com/v1
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
-### 3. 运行系统
+### 3. 数据预处理（如需）
+
+系统目前直接加载整合后的数据 `integrated_data.json`：
+```bash
+python integrate_data.py
+```
+*备注：执行后将根据原始协议与报告在对应 `mockData` 目录下生成 `integrated_data.json`。*
+
+### 4. 运行系统
 
 ```bash
 python main_v6.py
@@ -87,32 +91,24 @@ python main_v6.py
 
 ## 📊 工作流程
 
-### 复杂度评估（Master）
+### 复杂度评估（Master Agent）
 
-基于规则的复杂度分析（零 LLM 调用）：
+通过 Grok + Master Skill 对当前章节内容进行动态复杂度分析：
 
-- **简单章节**：缩略词表、参考文献等 → `simple_path`
-- **标准章节**：样品制备、主要仪器等 → `standard_path`
-- **复杂章节**：方法学验证、稳定性研究等 → `complex_path`
+- **简单章节（Simple）**：信息明确、逻辑直接的章节 → `simple_path`
+- **复杂章节（Complex）**：涉及深入计算、专业数据论证或不确定性步骤的章节 → `complex_path`
 
 ### 路由决策
 
 ```mermaid
 graph TD
-    Master[SOP Master Agent]
-    Analyzer[复杂度评估]
+    Master[Master Agent]
+    Analyzer[Analyzer]
 
     %% Simple Path
     Master -- simple_path --> WriterS[Writer]
     WriterS --> FV[Format Verify]
     FV --> END
-
-    %% Standard Path
-    Master -- standard_path --> WriterSt[Writer]
-    WriterSt --> SimSt[Simulator]
-    SimSt --> RevSt[Reviewer]
-    RevSt -- PASS --> END
-    RevSt -- FAIL --> END
 
     %% Complex Path (Retry Loop)
     Master -- complex_path --> WriterC[Writer]
@@ -128,156 +124,95 @@ graph TD
 
 ### Skill 库管理
 
-Skills 以 `.md` 文件存储在 `memory/skills/` 目录，支持：
+所有核心认知逻辑（Skills）以 `.md` 文件存储在 `memory/skills/` 各自的分类目录中：
 
-1. **人类可读**：直接编辑 `.md` 文件
-2. **动态更新**：Curator 自动更新 Writer Skill
-3. **版本控制**：每次更新生成新版本（v1.0 → v1.1 → ...）
-
-### Skill 类型
-
-| Skill | 文件 | 职责 |
-|-------|------|------|
-
-| Master Skill | `master_skill.md` | 复杂度评估规则 |
-| Writer Skill | `writing/writer_skill_v1.0.md` | SOP 生成原则 |
-| Simulator Skill | `simulation/simulator_skill_v1.md` | 盲测执行规则 |
-| Reviewer Skill | `evaluation/reviewer_skill_v1.md` | 质量审核清单 |
-| Analyzer Skill | `analysis/failure_analyzer_skill_v1.md` | 失败根因分析 |
-| Curator Skill | `curation/curator_skill_v1.md` | Skill 更新规则 |
+1. **统一驱动**：所有 Agent 节点均受到其专属 Skill 的引导和校准
+2. **读写分离机制**：人类可读、可直接通过编辑 `.md` 进行干预
+3. **自进化更新**：Curator 能够根据审核反馈自动更新 Writer Skill
+4. **版本控制追踪**：每次更新自动生成新版本（v1.0 → v1.1 → ...）
 
 ## 💾 记忆管理
 
-### 三层记忆库
+### 三层动态与静态记忆库
 
 1. **Skill 库** (`memory/skills/`)
-   - 动态维护的技能库
-   - AI (Curator) 可自动更新
-   - 人类可直接编辑
+   - 具有生命力和进化能力的组件
+   - System Prompts 与校验规则的持久化形态
 
 2. **模板库** (`memory/sop_templates/`)
-   - 最终通过审核的 SOP
-   - 同时保存 `.md` 和 `.json` 格式
-   - 标记为 "Verified" 可直接使用
+   - 最终验证过的 SOP 产物，支持 `.md` 和 `.json` 双格式输出
+   - 高分确认，即可直接用作最终模板
 
 3. **审计日志库** (`memory/audit_logs/`)
-   - 完整的执行历史
-   - 按日期归档（`audit_2026-03-17.jsonl`）
-   - 节点输出经过清洗，存储整洁
+   - 存放于按日期归档的历史流水中（如：`audit_2026-03-18.jsonl`）
+   - JSON 结构化留存关键轨迹和执行指标
 
-### 干净输出控制
+## 📝 结构化输入数据
 
-所有节点输出通过脚本控制，只保存结构化数据：
-
-- **Writer**: SOP 内容
-- **Simulator**: JSON 格式的盲测结果
-- **Reviewer**: 评分和关键问题
-- **Analyzer**: 根因和修复策略
-- **Curator**: 更新类型和新规则
-
-## 📝 输入数据格式
-
-输入数据为 JSON 格式，包含章节列表：
+引入了全新的整合数据模型：系统将前置方案 (`protocol_content`) 和历史报告 (`report_content`) 切片对齐到具体章节下，允许 AI 高效抓取对应上下文。
 
 ```json
-[
-  {
-    "section_title": "样品制备",
-    "original_content": "验证方案内容...",
-    "generate_content": "GLP 报告内容..."
-  },
-  {
-    "section_title": "方法学验证",
-    "original_content": "验证方案内容...",
-    "generate_content": "GLP 报告内容..."
-  }
-]
+{
+  "datasets": [
+    {
+      "dataset_id": 1,
+      "protocol_content": "完整验证方案文本",
+      "report_content": "完整GLP报告文本",
+      "sections": [
+        {
+          "section_title": "方法学验证",
+          "protocol_context": "...（切片上文）...",
+          "report_context": "...（切片下文）..."
+        }
+      ]
+    }
+  ]
+}
 ```
 
-将数据保存为 `mockData/report.json`，系统会自动加载。
+## 🔧 配置调整
 
-## 🔧 配置说明
-
-编辑 `config_v6.py` 修改系统配置：
+编辑 `config_v6.py` 修改系统策略：
 
 ```python
-# 复杂度规则
-SIMPLE_SECTIONS = ["缩略词表", "缩写", "参考文献", ...]
-COMPLEX_SECTIONS = ["方法学验证", "稳定性研究", "统计分析", ...]
+# 数据处理深度控制
+MAX_DATASETS = 1  # 运行的数据集数量
 
-# 最大迭代次数
+# 最大迭代次数（防止死循环）
 MAX_ITERATIONS = 3
 
-# 模型配置
+# 模型调配组合
 MASTER_MODEL = "grok-4-1-fast-reasoning"
 WRITER_MODEL = "gemini-3.1-flash-lite"
 SIMULATOR_MODEL = "grok-4-1-fast-reasoning"
 REVIEWER_MODEL = "grok-4-1-fast-reasoning"
+ANALYZER_MODEL = "grok-4-1-fast-reasoning"
 CURATOR_MODEL = "grok-4-1-fast-reasoning"
 ```
 
-## 📊 查看结果
+## 🎯 设计迭代优势 (对比 V5)
 
-### 查看生成的 SOP 模板
-
-```bash
-ls memory/sop_templates/
-cat memory/sop_templates/样品制备_20260317_123456.md
-```
-
-### 查看 Skill 版本
-
-```bash
-ls memory/skills/writing/
-# writer_skill_v1.0.md
-# writer_skill_v1.1.md  (Curator 更新后)
-```
-
-### 查看审计日志
-
-```bash
-cat memory/audit_logs/audit_2026-03-17.jsonl
-```
-
-## 🎯 核心优势
-
-1. **简单**：规则匹配代替 LLM，零成本复杂度分析
-2. **透明**：Skill 是 `.md` 文件，人类可读可编辑
-3. **经济**：成本降低 75%（标准章节约 $0.005）
-4. **快速**：简单章节 <3 秒完成
-5. **可维护**：Skill 可手动编辑，支持版本控制
-6. **自进化**：失败案例自动更新 Skill 库
+1. **重构 Master**：由生硬规则转向基于 Skill 的高灵敏度 Agent 判决。
+2. **简化流转架构**：削减了中度混合路径，优化为 `Simple/Complex` 二元判决。
+3. **明确意图边界**：将参数和内容变量词条如 `original_content` 切实打标为 `protocol_content` 消除语义混淆。
+4. **输出精炼化**：LangGraph 通道中的有效信息将被裁剪记录以维持清晰。
 
 ## 🐛 故障排查
 
-### 问题：API 调用失败
+### 问题：API 调用失败或响应异常
 
 ```bash
-# 检查 .env 配置
+# 检查 API Key 配置映射
 cat .env
-
-# 确认 API Key 有效
-python -c "import os; print(os.getenv('OPENAI_API_KEY'))"
+# Grok 调用受阻确认 OPENAI_BASE_URL 指定是否正确
 ```
 
-### 问题：找不到 langgraph 模块
+### 问题：LangGraph 依赖或工作流阻滞
 
 ```bash
-# 重新安装依赖
+# 拉取/重新校准依赖版本
 pip install -r requirements.txt --upgrade
 ```
-
-### 问题：输出文件未生成
-
-- 检查 `memory/` 目录权限
-- 确认评分 >= 4（只有高分 SOP 才保存到 templates/）
-
-## 📚 更多文档
-
-- `V6_workflow_refactor_plan.md` - 重构方案详解
-- `V6_精简版_Skills_Part1.md` - Skill 定义（Part 1）
-- `V6_精简版_Skills_Part2.md` - Skill 定义（Part 2）
-- `V6_精简版_Skills_Part3.md` - Skill 定义（Part 3）
 
 ## 📄 License
 

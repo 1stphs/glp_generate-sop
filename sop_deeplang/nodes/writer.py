@@ -53,10 +53,13 @@ class WriterNode:
 生成初始SOP版本。
 
 【新数据集】：
-协议：{len(protocol_content)} 字符
-报告：{len(report_content)} 字符
+--- 验证方案 (Protocol) 内容片段 ---
+{protocol_content}
 
-请输出SOP内容。
+--- GLP 报告 (Report) 内容片段 ---
+{report_content}
+
+请根据上述真实数据切片输出该章节对应的SOP内容，切勿编造虚假数据项。
 """
         else:
             prompt_suffix = f"""
@@ -68,10 +71,13 @@ class WriterNode:
 基于上一次SOP，结合新的验证方案和报告，生成更泛化、更通用的SOP版本。
 
 【新数据集】：
-协议：{len(protocol_content)} 字符
-报告：{len(report_content)} 字符
+--- 验证方案 (Protocol) 内容片段 ---
+{protocol_content}
 
-请输出增强后的SOP内容。
+--- GLP 报告 (Report) 内容片段 ---
+{report_content}
+
+请根据最新的数据切片输出增强后的SOP内容，确保只覆盖文档中实际存在的数据项和要求。
 """
 
         prompt = f"""你是GLP-SOP生成专家，精通FDA 21 CFR Part 11/GLP法规要求。
