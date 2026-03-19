@@ -233,6 +233,25 @@ class SOPSGeneratorV6:
         print(f"📋 开始处理章节: {section_title} (数据集{data_index} | {mode})")
         if previous_sop:
             print(f"📚 使用上一次SOP作为参考 (长度: {len(previous_sop)} 字符)")
+
+        # 打印传入的方案和报告数据
+        protocol_data = section.get("protocol_content", "")
+        report_data = section.get("original_report_content", "")
+        
+        print(f"\n--- [传入数据预览] ---")
+        print(f"📄 方案数据 (protocol_content) | 长度: {len(protocol_data)} 字符")
+        if protocol_data:
+            preview = protocol_data[:200].replace('\n', ' ')
+            print(f"   预览: {preview}..." if len(protocol_data) > 200 else f"   预览: {preview}")
+        else:
+            print("   状态: 空 / 未在验证方案中找到对应内容")
+            
+        print(f"\n📄 报告数据 (original_report_content) | 长度: {len(report_data)} 字符")
+        if report_data:
+            preview = report_data[:200].replace('\n', ' ')
+            print(f"   预览: {preview}..." if len(report_data) > 200 else f"   预览: {preview}")
+        else:
+            print("   状态: 空")
         print(f"{'=' * 70}\n")
 
         # Initial state
@@ -390,16 +409,46 @@ def main():
         else:
             print(f"\n   🆕 初始模式: 生成第一批SOP")
 
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
         # Process sections
         batch_results = []
-        for section in sections:
-            section_title = section["section_title"]
-            previous_sop = previous_sops.get(section_title, "")
-            result = generator.process_section(
-                section, data_index=batch_num, previous_sop=previous_sop
-            )
-            batch_results.append(result)
-            all_results.append(result)
+        
+        # Determine number of workers
+        max_workers = min(5, len(sections)) if sections else 0
+        if max_workers > 0:
+            print(f"\n   ⚡ 启用并发处理: {max_workers} 线程")
+            
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                future_to_section = {
+                    executor.submit(
+                        generator.process_section,
+                        section,
+                        data_index=batch_num,
+                        previous_sop=previous_sops.get(section["section_title"], "")
+                    ): section["section_title"]
+                    for section in sections
+                }
+                
+                for future in as_completed(future_to_section):
+                    section_title = future_to_section[future]
+                    try:
+                        result = future.result()
+                        batch_results.append(result)
+                        all_results.append(result)
+                    except Exception as exc:
+                        print(f"❌ [{section_title}] 并发处理异常: {exc}")
+                        failed_result = {
+                            "section_title": section_title,
+                            "success": False,
+                            "final_score": 1.0,
+                            "iteration_count": 0,
+                            "complexity": "unknown",
+                            "route": "unknown",
+                            "error": str(exc),
+                        }
+                        batch_results.append(failed_result)
+                        all_results.append(failed_result)
 
         # Save generated SOPs for next iteration
         print(f"\n   💾 保存生成的SOP用于下一次迭代...")

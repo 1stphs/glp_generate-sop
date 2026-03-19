@@ -5,7 +5,11 @@ SOP Generation System - V6 DeepLang
 
 import json
 import re
+import threading
 from pathlib import Path
+
+# Create a module-level lock for thread-safe file operations
+_file_lock = threading.Lock()
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 from config_v6 import (
@@ -62,9 +66,10 @@ class MemoryManagerV6:
     def save_previous_sop(self, section_title: str, sop_content: str):
         """保存上一次生成的SOP，用于下一次增强"""
         try:
-            previous_sops = self._load_previous_sops()
-            previous_sops[section_title] = sop_content
-            self._write_previous_sops(previous_sops)
+            with _file_lock:
+                previous_sops = self._load_previous_sops()
+                previous_sops[section_title] = sop_content
+                self._write_previous_sops(previous_sops)
         except Exception as e:
             print(f"   ✗ 保存Previous SOP失败: {e}")
 
@@ -99,9 +104,10 @@ class MemoryManagerV6:
         checkpoint_file = MEMORY_DIR / "dataset_checkpoint.json"
         if checkpoint_file.exists():
             try:
-                with open(checkpoint_file, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    return data.get("last_processed_index", 0)
+                with _file_lock:
+                    with open(checkpoint_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                        return data.get("last_processed_index", 0)
             except Exception:
                 return 0
         return 0
@@ -114,10 +120,11 @@ class MemoryManagerV6:
             dataset_index: 当前处理的数据集索引（从1开始）
         """
         checkpoint_file = MEMORY_DIR / "dataset_checkpoint.json"
-        with open(checkpoint_file, "w", encoding="utf-8") as f:
-            json.dump(
-                {"last_processed_index": dataset_index}, f, ensure_ascii=False, indent=2
-            )
+        with _file_lock:
+            with open(checkpoint_file, "w", encoding="utf-8") as f:
+                json.dump(
+                    {"last_processed_index": dataset_index}, f, ensure_ascii=False, indent=2
+                )
 
     def _sanitize_filename(self, name: str) -> str:
         """Sanitize filename to be safe for filesystem"""
@@ -171,79 +178,80 @@ class MemoryManagerV6:
         Returns:
             New version number (e.g., "1.1")
         """
-        # Load current version
-        current_file = self.writing_dir / f"writer_skill_v{WRITER_SKILL_VERSION}.md"
-        with open(current_file, "r", encoding="utf-8") as f:
-            content = f.read()
-
-        # Parse version number
-        version_match = re.search(r"v(\d+\.\d+)", current_file.name)
-        if version_match:
-            current_version = float(version_match.group(1))
-            new_version = f"{current_version + 0.1:.1f}"
-        else:
-            new_version = "1.1"
-
-        # Insert new rule based on update_type
-        update_type = new_rule.get("update_type", "add_principle")
-
-        if update_type == "add_principle":
-            # Find and update "核心原则" section
-            marker = "## 核心原则"
-            if marker in content:
-                # Find existing principles count
-                principle_lines = []
-                in_section = False
-                for line in content.split("\n"):
-                    if marker in line:
-                        in_section = True
-                    elif in_section and line.startswith("## "):
-                        break
-                    elif in_section and line.startswith(("## ", "### ")):
-                        break
-                    elif in_section:
-                        principle_lines.append(line)
-
-                new_line = f"N. **{new_rule['new_rule']}**：{new_rule['rationale']}"
-                updated_content = content.replace(marker, marker + "\n" + new_line)
+        with _file_lock:
+            # Load current version
+            current_file = self.writing_dir / f"writer_skill_v{WRITER_SKILL_VERSION}.md"
+            with open(current_file, "r", encoding="utf-8") as f:
+                content = f.read()
+    
+            # Parse version number
+            version_match = re.search(r"v(\d+\.\d+)", current_file.name)
+            if version_match:
+                current_version = float(version_match.group(1))
+                new_version = f"{current_version + 0.1:.1f}"
             else:
-                updated_content = (
-                    content
-                    + "\n\n## 核心原则\nN. **{new_rule['new_rule']}**：{new_rule['rationale']}"
-                )
-
-        elif update_type == "add_prohibition":
-            # Find and update "禁止事项" section
-            marker = "## 禁止事项"
-            if marker in content:
-                new_line = f"❌ {new_rule['new_rule']}"
-                if marker + "\n" in content:
-                    updated_content = content.replace(
-                        marker + "\n", marker + "\n" + new_line + "\n"
-                    )
-                else:
+                new_version = "1.1"
+    
+            # Insert new rule based on update_type
+            update_type = new_rule.get("update_type", "add_principle")
+    
+            if update_type == "add_principle":
+                # Find and update "核心原则" section
+                marker = "## 核心原则"
+                if marker in content:
+                    # Find existing principles count
+                    principle_lines = []
+                    in_section = False
+                    for line in content.split("\n"):
+                        if marker in line:
+                            in_section = True
+                        elif in_section and line.startswith("## "):
+                            break
+                        elif in_section and line.startswith(("## ", "### ")):
+                            break
+                        elif in_section:
+                            principle_lines.append(line)
+    
+                    new_line = f"N. **{new_rule['new_rule']}**：{new_rule['rationale']}"
                     updated_content = content.replace(marker, marker + "\n" + new_line)
+                else:
+                    updated_content = (
+                        content
+                        + f"\n\n## 核心原则\nN. **{new_rule['new_rule']}**：{new_rule['rationale']}"
+                    )
+    
+            elif update_type == "add_prohibition":
+                # Find and update "禁止事项" section
+                marker = "## 禁止事项"
+                if marker in content:
+                    new_line = f"❌ {new_rule['new_rule']}"
+                    if marker + "\n" in content:
+                        updated_content = content.replace(
+                            marker + "\n", marker + "\n" + new_line + "\n"
+                        )
+                    else:
+                        updated_content = content.replace(marker, marker + "\n" + new_line)
+                else:
+                    updated_content = content + f"\n\n## 禁止事项\n❌ {new_rule['new_rule']}"
             else:
-                updated_content = content + "\n\n## 禁止事项\n❌ {new_rule['new_rule']}"
-        else:
-            # Default to add_principle if update_type is unknown
-            print(f"⚠️  Unknown update_type: {update_type}, defaulting to add_principle")
-            new_line = f"N. **{new_rule.get('new_rule', '未知规则')}**：{new_rule.get('rationale', '未知理由')}"
-            marker = "## 核心原则"
-            if marker in content:
-                updated_content = content.replace(marker, marker + "\n" + new_line)
-            else:
-                updated_content = content + "\n\n## 核心原则\n" + new_line
-
-        # Save new version
-        new_file = self.writing_dir / f"writer_skill_v{new_version}.md"
-        with open(new_file, "w", encoding="utf-8") as f:
-            f.write(updated_content)
-
-        # Log to audit
-        self.log_skill_update("writer", new_version, new_rule)
-
-        return new_version
+                # Default to add_principle if update_type is unknown
+                print(f"⚠️  Unknown update_type: {update_type}, defaulting to add_principle")
+                new_line = f"N. **{new_rule.get('new_rule', '未知规则')}**：{new_rule.get('rationale', '未知理由')}"
+                marker = "## 核心原则"
+                if marker in content:
+                    updated_content = content.replace(marker, marker + "\n" + new_line)
+                else:
+                    updated_content = content + "\n\n## 核心原则\n" + new_line
+    
+            # Save new version
+            new_file = self.writing_dir / f"writer_skill_v{new_version}.md"
+            with open(new_file, "w", encoding="utf-8") as f:
+                f.write(updated_content)
+    
+            # Log to audit outside file operations but inside lock
+            self.log_skill_update("writer", new_version, new_rule)
+    
+            return new_version
 
     def log_skill_update(
         self, skill_type: str, new_version: str, update_data: Dict[str, Any]
@@ -279,16 +287,17 @@ class MemoryManagerV6:
             f.write(sop_content)
 
         all_sops_file = self.templates_dir / "all_sops.json"
-        all_sops = []
-
-        if all_sops_file.exists():
-            with open(all_sops_file, "r", encoding="utf-8") as f:
-                try:
-                    all_sops = json.load(f)
-                    if not isinstance(all_sops, list):
+        
+        with _file_lock:
+            all_sops = []
+            if all_sops_file.exists():
+                with open(all_sops_file, "r", encoding="utf-8") as f:
+                    try:
+                        all_sops = json.load(f)
+                        if not isinstance(all_sops, list):
+                            all_sops = []
+                    except json.JSONDecodeError:
                         all_sops = []
-                except json.JSONDecodeError:
-                    all_sops = []
 
         new_entry = {
             "section_title": section_title,
@@ -298,13 +307,14 @@ class MemoryManagerV6:
             "verified": metadata.get("is_pass", False) if metadata else False,
         }
 
-        all_sops = [
-            sop for sop in all_sops if sop.get("section_title") != section_title
-        ]
-        all_sops.append(new_entry)
-
-        with open(all_sops_file, "w", encoding="utf-8") as f:
-            json.dump(all_sops, f, ensure_ascii=False, indent=2)
+        with _file_lock:
+            all_sops = [
+                sop for sop in all_sops if sop.get("section_title") != section_title
+            ]
+            all_sops.append(new_entry)
+            
+            with open(all_sops_file, "w", encoding="utf-8") as f:
+                json.dump(all_sops, f, ensure_ascii=False, indent=2)
 
         # Log to audit
         self.log_template_save(section_title, metadata)
@@ -449,8 +459,9 @@ class MemoryManagerV6:
         timestamp = datetime.now().strftime("%Y-%m-%d")
         log_file = self.audit_logs_dir / f"audit_{timestamp}.jsonl"
 
-        with open(log_file, "a", encoding="utf-8") as f:
-            f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
+        with _file_lock:
+            with open(log_file, "a", encoding="utf-8") as f:
+                f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
 
     def get_audit_logs(self, section_title: str = None) -> List[Dict[str, Any]]:
         """
