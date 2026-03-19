@@ -47,6 +47,26 @@ class CuratorNode:
 3. 规则必须明确可检查
 4. 输出JSON格式结果，不要任何其他文本
 
+# JSON输出格式（必须严格遵循）
+
+请严格按照以下JSON格式输出，不要修改字段名：
+
+```json
+{{
+  "update_type": "add_principle",
+  "new_rule": "这里填写新规则的简短描述",
+  "rationale": "这里填写更新理由，说明为什么需要这条规则"
+}}
+```
+
+**字段说明**：
+- `update_type`: 必须是以下三个值之一
+  - "add_principle"：添加核心原则
+  - "add_prohibition"：添加禁止事项
+  - "add_requirement"：添加具体要求
+- `new_rule`: 规则的简短描述（10-30字）
+- `rationale`: 更新理由（20-50字）
+
 请输出JSON格式的更新建议。"""
 
         try:
@@ -54,7 +74,6 @@ class CuratorNode:
             response = self.client.chat.completions.create(
                 model=self.config["model"],
                 messages=[{"role": "system", "content": prompt}],
-                temperature=self.config["temperature"],
                 response_format={"type": "json_object"},
             )
 
@@ -90,6 +109,11 @@ class CuratorNode:
 
         except Exception as e:
             print(f"❌ [{section_title}] Curator更新失败: {e}")
+
+            # Still increment iteration count to prevent infinite loop
+            current_iteration = state.get("iteration", 1)
+            new_iteration = current_iteration + 1
+
             return {
                 **state,
                 "curator_result": {
@@ -97,5 +121,6 @@ class CuratorNode:
                     "new_rule": "",
                     "rationale": f"更新失败: {str(e)}",
                 },
+                "iteration": new_iteration,
                 "error": str(e),
             }

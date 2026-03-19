@@ -185,7 +185,9 @@ class MemoryManagerV6:
             new_version = "1.1"
 
         # Insert new rule based on update_type
-        if new_rule["update_type"] == "add_principle":
+        update_type = new_rule.get("update_type", "add_principle")
+
+        if update_type == "add_principle":
             # Find and update "核心原则" section
             marker = "## 核心原则"
             if marker in content:
@@ -210,7 +212,7 @@ class MemoryManagerV6:
                     + "\n\n## 核心原则\nN. **{new_rule['new_rule']}**：{new_rule['rationale']}"
                 )
 
-        elif new_rule["update_type"] == "add_prohibition":
+        elif update_type == "add_prohibition":
             # Find and update "禁止事项" section
             marker = "## 禁止事项"
             if marker in content:
@@ -224,7 +226,14 @@ class MemoryManagerV6:
             else:
                 updated_content = content + "\n\n## 禁止事项\n❌ {new_rule['new_rule']}"
         else:
-            raise ValueError(f"Unknown update_type: {new_rule['update_type']}")
+            # Default to add_principle if update_type is unknown
+            print(f"⚠️  Unknown update_type: {update_type}, defaulting to add_principle")
+            new_line = f"N. **{new_rule.get('new_rule', '未知规则')}**：{new_rule.get('rationale', '未知理由')}"
+            marker = "## 核心原则"
+            if marker in content:
+                updated_content = content.replace(marker, marker + "\n" + new_line)
+            else:
+                updated_content = content + "\n\n## 核心原则\n" + new_line
 
         # Save new version
         new_file = self.writing_dir / f"writer_skill_v{new_version}.md"

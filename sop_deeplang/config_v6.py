@@ -33,18 +33,25 @@ OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
 
 # ============== Model Configuration (V6 - Grok + Gemini) ==============
 # Master/Simulator/Reviewer/Curator: Grok 4.1 Fast Reasoning
-MASTER_MODEL = "grok-4-1-fast-non-reasoning"
-SIMULATOR_MODEL = "grok-4-1-fast-non-reasoning"
-REVIEWER_MODEL = "grok-4-1-fast-non-reasoning"
-CURATOR_MODEL = "grok-4-1-fast-non-reasoning"
+
+# gpt-5-mini， grok-4-1-fast-non-reasoning
+
+MASTER_MODEL = "gpt-5-mini"
+SIMULATOR_MODEL = "gpt-5-mini"
+REVIEWER_MODEL = "gpt-5-mini"
+CURATOR_MODEL = "gpt-5-mini"
 
 # Writer: Gemini 3.1 Flash Lite (fast and cost-effective)
 # WRITER_MODEL = "gemini-3.1-flash-lite"
-WRITER_MODEL = "grok-4-1-fast-non-reasoning"
+WRITER_MODEL = "gpt-5-mini"
 
 # ============== System Configuration ==============
-EXPERIMENT_TYPE = "LC-MS_MS结构化验证"
+EXPERIMENT_TYPE = "BV实验"
 MAX_ITERATIONS = 3  # Maximum iteration attempts for complex sections
+
+# Dataset processing control
+# Set to 1 to test only the first dataset, 3 for first 3, or a larger number for all
+MAX_DATASETS = 1  # Number of datasets to process (1, 3, 10, etc.)
 
 # Complexity thresholds
 SIMPLE_WORD_COUNT = 200  # If content < 200 words -> simple
@@ -125,31 +132,25 @@ MODEL_CONFIG = {
         "model": MASTER_MODEL,
         "api_key": OPENAI_API_KEY,
         "base_url": OPENAI_BASE_URL,
-        "temperature": 0.3,
     },
     "writer": {
         "model": WRITER_MODEL,
-        # "api_key": GEMINI_API_KEY,
         "api_key": OPENAI_API_KEY,
         "base_url": OPENAI_BASE_URL,
-        "temperature": 0.5,
     },
     "simulator": {
         "model": SIMULATOR_MODEL,
         "api_key": OPENAI_API_KEY,
         "base_url": OPENAI_BASE_URL,
-        "temperature": 0.7,
     },
     "reviewer": {
         "model": REVIEWER_MODEL,
         "api_key": OPENAI_API_KEY,
         "base_url": OPENAI_BASE_URL,
-        "temperature": 0.1,
     },
     "curator": {
         "model": CURATOR_MODEL,
         "api_key": OPENAI_API_KEY,
         "base_url": OPENAI_BASE_URL,
-        "temperature": 0.3,
     },
 }

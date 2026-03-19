@@ -85,8 +85,6 @@ class WriterNode:
             response = self.client.chat.completions.create(
                 model=self.config["model"],
                 messages=[{"role": "system", "content": prompt}],
-                temperature=self.config["temperature"],
-                max_tokens=4000,
             )
 
             content = response.choices[0].message.content

@@ -101,7 +101,6 @@ class MasterAgent:
             response = self.client.chat.completions.create(
                 model=self.config["model"],
                 messages=[{"role": "system", "content": prompt}],
-                temperature=self.config["temperature"],
                 response_format={"type": "json_object"},
             )
 

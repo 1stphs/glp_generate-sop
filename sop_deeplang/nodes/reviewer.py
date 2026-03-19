@@ -73,7 +73,6 @@ class ReviewerNode:
             response = self.client.chat.completions.create(
                 model=self.config["model"],
                 messages=[{"role": "system", "content": prompt}],
-                temperature=self.config["temperature"],
                 response_format={"type": "json_object"},
             )
 
@@ -92,9 +91,18 @@ class ReviewerNode:
                 f"🔍 [{section_title}] Reviewer评分: {score}/5 {'✓通过' if is_pass else '✗失败'}"
             )
             if summary:
-                print(f"   {summary}")
+                print(f"   📝 总结: {summary}")
             if critical_issues:
-                print(f"   Critical问题: {len(critical_issues)}个")
+                print(f"   ⚠️  Critical问题 ({len(critical_issues)}个):")
+                for i, issue in enumerate(critical_issues, 1):
+                    issue_text = issue.get("issue", str(issue))
+                    location = issue.get("location", "")
+                    suggestion = issue.get("suggestion", "")
+                    print(f"      {i}. {issue_text}")
+                    if location:
+                        print(f"         位置: {location}")
+                    if suggestion:
+                        print(f"         建议: {suggestion}")
 
             return {
                 **state,
