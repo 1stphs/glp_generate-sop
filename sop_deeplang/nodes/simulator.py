@@ -6,8 +6,8 @@ SOP Generation System V6 - DeepLang
 import json
 from typing import Dict, Any
 from openai import OpenAI
-from memory_manager import MemoryManager
-from config import MODEL_CONFIG, SIMULATOR_SKILL_VERSION
+from sop_deeplang.utils.memory_manager import MemoryManager
+from sop_deeplang.utils.config import MODEL_CONFIG, SIMULATOR_SKILL_VERSION
 
 
 class SimulatorNode:

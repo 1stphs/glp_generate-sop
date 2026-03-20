@@ -17,8 +17,10 @@ def check_system():
     # 1. 检查核心文件
     print("1. 核心文件检查...")
     core_files = [
-        "sop_deeplang/config.py",
-        "sop_deeplang/memory_manager.py",
+        "sop_deeplang/utils/config.py",
+        "sop_deeplang/utils/memory_manager.py",
+        "sop_deeplang/core/engine.py",
+        "sop_deeplang/core/state.py",
         "sop_deeplang/main.py",
     ]
 

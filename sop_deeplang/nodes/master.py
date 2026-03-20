@@ -7,28 +7,11 @@ SOP Generation System V6 - DeepLang
 
 import json
 from typing import Dict, Any, TypedDict
+from typing import Dict, Any
 from openai import OpenAI
-from memory_manager import MemoryManager
-from config import MODEL_CONFIG, MASTER_SKILL_VERSION
-
-
-class MasterState(TypedDict):
-    section_title: str
-    protocol_content: str
-    original_report_content: str
-    complexity: str
-    route: str
-    reasoning: str
-    iteration: int
-    sop_content: str
-    reviewer_score: float
-    is_pass: bool
-    failure_cause: str
-    data_index: int
-    previous_sop: str
-    all_protocol_contents: list
-    all_report_contents: list
-    previous_sop: str
+from sop_deeplang.utils.memory_manager import MemoryManager
+from sop_deeplang.utils.config import MODEL_CONFIG, MASTER_SKILL_VERSION
+from sop_deeplang.core.state import MasterState
 
 
 class MasterAgent:
