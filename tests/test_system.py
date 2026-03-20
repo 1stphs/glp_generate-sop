@@ -52,11 +52,11 @@ def check_system():
     # 3. 检查 skill 文件
     print("\n3. Skill 文件检查...")
     skills = [
-        "sop_deeplang/memory/skills/master/complexity_analysis_skill_v1.md",
-        "sop_deeplang/memory/skills/writing/writer_skill_v1.md",
-        "sop_deeplang/memory/skills/simulation/simulator_skill_v1.md",
-        "sop_deeplang/memory/skills/evaluation/reviewer_skill_v1.md",
-        "sop_deeplang/memory/skills/curation/curator_skill_v1.md",
+        "sop_deeplang/skills/master/complexity_analysis_skill_v1.md",
+        "sop_deeplang/skills/writing/writer_skill_v1.md",
+        "sop_deeplang/skills/simulation/simulator_skill_v1.md",
+        "sop_deeplang/skills/evaluation/reviewer_skill_v1.md",
+        "sop_deeplang/skills/curation/curator_skill_v1.md",
     ]
 
     for skill in skills:

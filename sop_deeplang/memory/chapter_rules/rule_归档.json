@@ -1,0 +1,17 @@
+{
+  "section_title": "归档",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在SOP中明确定义所有统计参数的修约规则，确保一致性",
+      "rationale": "防止因修约规则不明确导致数值精度错误，提高SOP的准确性和可检查性",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
+      "rationale": "确保Writer生成的SOP避免数值修约错误，提高报告的准确性和一致性，回应Reviewer对统计参数处理的反馈",
+      "iteration": 2
+    }
+  ]
+}

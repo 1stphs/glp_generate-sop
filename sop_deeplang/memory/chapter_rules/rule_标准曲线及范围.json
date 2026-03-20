@@ -1,0 +1,17 @@
+{
+  "section_title": "标准曲线及范围",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成中，必须显式定义所有统计参数的修约规则和精度要求",
+      "rationale": "针对Reviewer反馈中发现的数值修约错误，确保Writer在SOP中标准化处理，避免精度不一致导致的计算偏差",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成中，必须系统检索并明确定义VP中的所有折算因子及其应用公式",
+      "rationale": "为避免反义链游离型/盐型折算逻辑缺失，确保Writer Skill在生成SOP时强制包含折算因子的识别和公式定义，提升数据处理的一致性和准确性",
+      "iteration": 2
+    }
+  ]
+}

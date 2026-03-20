@@ -29,3 +29,4 @@ class MasterState(TypedDict):
     all_protocol_contents: List[str]
     all_report_contents: List[str]
     phase: int  # 1: Skeleton, 2: Expert
+    report_id: str  # Added for organized persistence

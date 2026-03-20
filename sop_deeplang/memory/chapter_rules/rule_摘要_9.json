@@ -1,0 +1,11 @@
+{
+  "section_title": "摘要\t9",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型的折算因子及计算公式定义",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时强制识别并纳入VP中的折算因子，避免类似遗漏",
+      "iteration": 1
+    }
+  ]
+}

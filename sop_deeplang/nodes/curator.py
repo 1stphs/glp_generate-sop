@@ -71,6 +71,7 @@ class CuratorNode:
 
         try:
             # Generate using Grok
+            phase = state.get("phase", 1)
             response = self.client.chat.completions.create(
                 model=self.config["model"],
                 messages=[{"role": "system", "content": prompt}],
@@ -86,13 +87,43 @@ class CuratorNode:
             new_rule = result.get("new_rule", "")
             rationale = result.get("rationale", "")
 
-            # Update Writer Skill file
-            new_version = self.memory.update_writer_skill(result)
+            if phase == 2:
+                # Update Chapter-specific Rule
+                existing_rules = self.memory.load_chapter_rule(section_title) or {
+                    "section_title": section_title,
+                    "rules": []
+                }
+                
+                # Append new rule
+                new_rule_entry = {
+                    "type": update_type,
+                    "content": new_rule,
+                    "rationale": rationale,
+                    "iteration": state.get("iteration", 1)
+                }
+                
+                # Ensure it's a dict and has 'rules'
+                if not isinstance(existing_rules, dict):
+                    existing_rules = {"section_title": section_title, "rules": []}
+                if "rules" not in existing_rules:
+                    existing_rules["rules"] = [] # type: ignore
+                
+                # Append new rule
+                rules_list = existing_rules["rules"]
+                if isinstance(rules_list, list):
+                    rules_list.append(new_rule_entry)
+                
+                self.memory.save_chapter_rule(section_title, existing_rules) # type: ignore
+                print(f"📚 [{section_title}] Curator更新章节规则: {new_rule}")
+                new_version = "chapter_v1" # Placeholder for chapter versioning
+            else:
+                # Phase 1 or Fallback: Update Global Writer Skill file
+                new_version = self.memory.update_writer_skill(result)
+                print(f"📚 [{section_title}] Curator更新全局Skill: v{new_version}")
 
             # Log node execution
             self.memory.log_node_execution(section_title, "curator", result)
 
-            print(f"📚 [{section_title}] Curator更新Skill: v{new_version}")
             print(f"   类型: {update_type}")
             print(f"   规则: {new_rule}")
 

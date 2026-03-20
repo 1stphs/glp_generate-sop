@@ -1,0 +1,11 @@
+{
+  "section_title": "残留",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在 SOP 模板中强制包含数据源核对步骤，确保所有参数来源明确定义",
+      "rationale": "基于 Reviewer 反馈中数据路径提取错误，需强化 Writer Skill 以避免 Simulator 漏掉关键逻辑，确保通用模板逻辑完整性",
+      "iteration": 1
+    }
+  ]
+}

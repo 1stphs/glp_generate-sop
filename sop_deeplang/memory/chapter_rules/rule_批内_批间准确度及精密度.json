@@ -1,0 +1,11 @@
+{
+  "section_title": "批内/批间准确度及精密度",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
+      "rationale": "防止因修约标准模糊导致的数值精度错误，确保Writer生成的SOP包含清晰可执行的格式规范",
+      "iteration": 1
+    }
+  ]
+}

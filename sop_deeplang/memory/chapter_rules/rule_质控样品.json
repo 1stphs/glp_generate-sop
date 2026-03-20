@@ -1,0 +1,17 @@
+{
+  "section_title": "质控样品",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确包含游离型/盐型化合物的折算逻辑和因子定义",
+      "rationale": "防止Simulator漏掉VP中折算逻辑，确保SOP完整覆盖化合物形式转换，避免报告不一致",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成中，强制识别并包含VP中折算因子及其公式定义",
+      "rationale": "针对Reviewer反馈中反义链游离型/盐型折算逻辑缺失，确保Writer Skill系统性包含数据折算步骤，避免类似遗漏错误",
+      "iteration": 2
+    }
+  ]
+}

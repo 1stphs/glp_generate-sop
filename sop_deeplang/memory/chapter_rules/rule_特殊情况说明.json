@@ -1,0 +1,11 @@
+{
+  "section_title": "特殊情况说明",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则，确保一致性",
+      "rationale": "防止Writer生成SOP时遗漏或错误处理修约要求，导致模拟报告在数值精度上失败",
+      "iteration": 2
+    }
+  ]
+}

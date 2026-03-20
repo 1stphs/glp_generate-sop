@@ -36,10 +36,23 @@ class ReviewerNode:
         sop_content = state.get("sop_content", "")
         original_report_content = state.get("original_report_content", "")
         simulation_result = state.get("simulation_result", {})
+        phase = state.get("phase", 1)
 
         simulated_output = simulation_result.get("simulated_output", "")
 
         skill_content = self.memory.load_skill("reviewer")
+
+        phase_context = ""
+        if phase == 2:
+            chapter_rules = self.memory.load_chapter_rule(section_title)
+            rules_str = json.dumps(chapter_rules, ensure_ascii=False, indent=2) if chapter_rules else "无特定章节规则"
+            phase_context = f"""
+### 【阶段 2：审计重点 (Phase 2 Audit Focus)】
+1. **规则一致性**：SOP 中的“核心填写规则”部分是否准确体现了以下章节规则？
+   {rules_str}
+2. **插槽健壮度**：根据 Simulator 的模拟报告，插槽是否足以支撑复杂数据的代入？是否出现了“插槽维度不足”的标记？
+3. **去幻觉校验**：即便在第二阶段，SOP 模板中也严禁出现具体实测数值，必须保持插槽化。
+"""
 
         prompt = f"""你是GLP质量审计专家（FDA Inspector风格）。
 
@@ -47,6 +60,8 @@ class ReviewerNode:
 
 # Reviewer Skill (v{REVIEWER_SKILL_VERSION})
 {skill_content}
+
+{phase_context}
 
 【待评审的SOP规程】：
 {sop_content}
@@ -57,16 +72,11 @@ class ReviewerNode:
 【原始GLP报告参考】：
 {original_report_content[:2000]}
 
-# 评审标准
+# 评分要求 (1-5分)
+- **4分及以上**：结构完整，规则清晰，插槽足以应对真实数据，无数据幻觉。
+- **3分及以下**：规则遗漏，或插槽维度不足导致真实数据无法准确装载（需在 critical_issues 中说明）。
 
-1. 对比准确性：模拟报告的内容是否与原始报告的关键信息一致
-2. 完整性检查：SOP是否包含了所有必要的参数和步骤
-3. 可执行性判断：按照SOP能否真正生成可用的报告
-4. 评分标准：1-5分，4分及以上为通过
-
-# 任务要求
-
-输出JSON格式的审核结果。
+输出结果必须为纯 JSON 格式。
 """
 
         try:
@@ -87,17 +97,26 @@ class ReviewerNode:
 
             self.memory.log_node_execution(section_title, "reviewer", result)
 
+            status_str = '✓通过' if is_pass else '✗失败'
             print(
-                f"🔍 [{section_title}] Reviewer评分: {score}/5 {'✓通过' if is_pass else '✗失败'}"
+                f"🔍 [{section_title}] Reviewer评分: {score}/5 {status_str}"
             )
+            if score >= 4 and not is_pass:
+                print(f"   ⚠️  [警告] 评分虽高，但因关键项审计严重不合规被“一票否决”！")
             if summary:
                 print(f"   📝 总结: {summary}")
             if critical_issues:
                 print(f"   ⚠️  Critical问题 ({len(critical_issues)}个):")
                 for i, issue in enumerate(critical_issues, 1):
-                    issue_text = issue.get("issue", str(issue))
-                    location = issue.get("location", "")
-                    suggestion = issue.get("suggestion", "")
+                    if isinstance(issue, dict):
+                        issue_text = issue.get("issue", issue.get("title", str(issue)))
+                        location = issue.get("location", "")
+                        suggestion = issue.get("suggestion", "")
+                    else:
+                        issue_text = str(issue)
+                        location = ""
+                        suggestion = ""
+                    
                     print(f"      {i}. {issue_text}")
                     if location:
                         print(f"         位置: {location}")

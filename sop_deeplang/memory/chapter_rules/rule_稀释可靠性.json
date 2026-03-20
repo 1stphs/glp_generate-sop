@@ -1,0 +1,11 @@
+{
+  "section_title": "稀释可靠性",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型与盐型的折算逻辑及因子定义",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时系统性识别并纳入相关计算基准，避免类似遗漏。",
+      "iteration": 1
+    }
+  ]
+}

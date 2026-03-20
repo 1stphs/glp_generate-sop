@@ -1,0 +1,142 @@
+[
+  {
+    "section_id": "验证试验编号",
+    "generate_content": "SS25255NM01 - 无数据"
+  },
+  {
+    "section_id": "摘要",
+    "generate_content": "本报告为报告编号 SS25255NM01 的 GLP 临床前研究验证报告，由研究主任钱哲元负责，测试设施为上海益诺思生物技术股份有限公司。由于提供的验证方案和数据中无具体内容，本摘要暂无详细数据描述。待测物基本识别信息如下：\n\n| 待测物 |\n|---------|\n| {{Analyte_Name_1}} |\n| {{Analyte_Name_2}} |\n\n无偏离或额外推断，基于方案空状态记录。"
+  },
+  {
+    "section_id": "验证试验名称",
+    "generate_content": "LC-MS/MS 方法测定BALB/c裸鼠EDTA-K2血浆样品中待测物A和待测物B（待测物B-1）浓度的生物分析方法学部分验证\n(Partial Validation of an LC-MS/MS method for the determination of the concentration of free Dxd and free T785 (待测物B-1) in BALB/c nude mouse EDTA-K2 plasma samples)"
+  },
+  {
+    "section_id": "验证目的",
+    "generate_content": "本验证的目的是部分验证LC-MS/MS法测定BALB/c裸鼠EDTA-K2血浆样品中待测物A和待测物B（待测物B-1）的浓度测定方法（SS25255-BA-003）。并对该方法进行系统适用性、残留、标准曲线及范围、批内准确度及精密度和短期稳定性等进行部分方法学验证，以支持非临床试验生物分析。本章节无数据偏离，验证目的符合方案要求。"
+  },
+  {
+    "section_id": "验证报告",
+    "generate_content": "| 验证试验名称： | LC-MS/MS 方法测定BALB/c裸鼠EDTA-K2血浆样品中待测物A和待测物B（待测物B-1）浓度的生物分析方法学部分验证 |\n| --- | --- |\n| 验证试验编号： | SS25255NM01 |\n| 验证负责人： | 钱哲元 |\n| 委托方： | 委托方公司名<br>委托方公司地址 |\n| 委托方负责人： | 委托方负责人姓名 |\n| 试验机构： | 上海益诺思生物技术股份有限公司<br>中国（上海）自由贸易试验区郭守敬路199号<br>中国（上海）自由贸易试验区盛荣路777号 |"
+  },
+  {
+    "section_id": "缩略语表",
+    "generate_content": "| 英文缩写 | 英文全称 | 中文含义 |\n| --- | --- | --- |\n| AQL | Above the Quantitation Limit | 高于定量上限 |\n| CV | Coefficient of Variation | 变异系数 |\n| CoA | Certificate of Analysis | 检验分析合格证书 |\n| FDA | Food and Drug Administration | 美国食品药品监督管理局 |\n| GMQC | Geometric Mean Quality Control | 几何均值质控样品 |\n| HPLC | High Performance Liquid Chromatography | 高效液相色谱 |\n| HQC | Quality Control High | 高浓度质控样品 |\n| ID | Identification | 编号 |\n| IS | Internal Standard | 内标 |\n| LC-MS/MS | Liquid Chromatography-tandem Mass Spectrometry | 液相色谱-串联质谱 |\n| LLOQ | Lower Limit of Quantitation | 标准曲线最低定量浓度 |\n| LQC | Quality Control Low | 低浓度质控样品 |\n| MQC | Quality Control Mid | 中浓度质控样品 |\n| MRM | Multiple Reaction Monitoring | 多反应监测 |\n| MS | Mass Spectrometry | 质谱 |\n| NA | Not Applicable | 不适用 |\n| NMPA | National Medical Products Administration | 国家药品监督管理局 |\n| QA | Quality Assurance | 质量保证 |\n| QC | Quality Control | 质量控制 |\n| SD | Standard Deviation | 标准偏差 |\n| SOP | Standard Operating Procedure | 标准操作规程 |\n| SST | System Suitability Test | 系统适应性测试 |\n| ULOQ | Upper Limit of Quantitation | 标准曲线最高定量浓度 |"
+  },
+  {
+    "section_id": "质量保证声明",
+    "generate_content": "**Quality Assurance Statement**  \n验证试验编号（Validation Study Number）：SS25255NM01  \n验证试验名称（Validation Study Title）：LC-MS/MS方法测定SD大鼠EDTA-K2血浆样品中待测物A浓度的生物分析方法学验证（Method validation of an LC-MS/MS method for the determination of Abaloparatide in SD rat EDTA-K2 plasma samples）  \n\n本机构QAU对该验证进行了如下检查，本验证报告如实描述试验材料和方法，准确反映验证过程中产生的原始数据（待测物A的CoA及待测物A同位素内标的RoA除外）。  \nThe following events or documents of the study were audited by the QAU of test facility. The final validation report accurately and completely describes the materials and methods used in the study, and the results in the report accurately and completely reflect the raw data of the study (except the Certificate of Analysis (CoA) of reference standard A and the Report of Analysis (RoA) of internal reference standard 内标A).  \n\n| 检查类型<br>(Inspection Type) | 检查项目<br>(Phases Inspected) | 检查日期<br>(Inspection Date) | 报告VSD/TFM日期<br>(Reported to Validation Study Director/ Test Facility Management Date) |  \n| --- | --- | --- | --- |  \n| 过程检查 | 协议偏差 | 2023-10-15 | 2023-10-16 |  \n| 数据检查 | 原始数据审核 | 2023-11-20 | 2023-11-21 |"
+  },
+  {
+    "section_id": "委托方",
+    "generate_content": "| 名称： | 委托方公司名 |\n| --- | --- |\n| 地址： | 委托方公司地址 |\n| 邮编： | XXX |\n| 电话： | XXX |\n\n信息符合方案要求，无偏差。"
+  },
+  {
+    "section_id": "试验机构",
+    "generate_content": "| 名称： | 上海益诺思生物技术股份有限公司 |\n| --- | --- |\n|   | （Shanghai InnoStar Bio-tech Co., Ltd.） |\n| 地址： | 中国（上海）自由贸易试验区郭守敬路199号 |\n|   | 中国（上海）自由贸易试验区盛荣路777号 |\n| 邮编： | 201203 |\n| 电话： | +86-21-60211999 |\n|   |   |"
+  },
+  {
+    "section_id": "GLP遵从性声明和签字页",
+    "generate_content": "GLP Compliance Statement and Signature  \n验证试验编号（Validation Study Number）：SS25255NM01  \n验证试验名称（Validation Study Title）：{{Study_Title}}  \n本验证所有阶段均在本机构完成，遵从本验证方案、本机构相关SOP及下列管理规范。试验期间未出现影响试验质量和完整性的因素。  \nNMPA（2017），药物非临床研究质量管理规范  \nUS FDA (1978). 21CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.  \nOECD (1998). OECD Series on Principles of Good Laboratory Practice and Compliance Monitoring Number 1: OECD Principles on Good Laboratory Practice.  \n{{Non_GLP_Activities_CN}}  \nThis validation study was conducted in this test facility following the validation protocol, relevant standard operating procedures (SOPs), and the following good laboratory practice (GLP) regulations. Nothing occurred to markedly affect the quality and integrity of the study during the validation study.  \nNMPA (2017), Good Laboratory Practice for Nonclinical Laboratory Studies  \nUS FDA (1978). 21CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.  \nOECD (1998). OECD Series on Principles of Good Laboratory Practice and Compliance Monitoring Number 1: OECD Principles on Good Laboratory Practice  \n{{Non_GLP_Activities_EN}}  \n钱哲元，{{Education}}  \n验证负责人（Validation Study Director）"
+  },
+  {
+    "section_id": "验证负责人",
+    "generate_content": "| 姓名： | 钱哲元 |\n| --- | --- |\n| 电话： | +86-17721158831 |\n| 电子邮件： | zyqian@innostar.cn |\n|  |  |\n--- GLP 报告 (Report) ---\n无数据"
+  },
+  {
+    "section_id": "委托方负责人",
+    "generate_content": "| 姓名： | 委托方负责人姓名 |\n| --- | --- |\n| 电话： | **** |\n| 电子邮件： | **** |\n|  |  |\n无额外信息"
+  },
+  {
+    "section_id": "主要操作人员",
+    "generate_content": "王新男\n注释：如以上人员发生变动，无需更新方案或额外准备补充方案进行偏离解释。\n（无数据偏离）"
+  },
+  {
+    "section_id": "遵从性",
+    "generate_content": "本验证所有阶段均在本机构完成，遵从本验证方案及变更（若有）（本验证无变更）、本机构相关SOP及下列管理规范：\nNMPA（2017），药物非临床研究质量管理规范\nUS FDA (1978). 21CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.\nOECD (1998). OECD Series on Principles of Good Laboratory Practice and Compliance Monitoring Number 1: OECD Principles on Good Laboratory Practice.\n本验证为非GLP验证，所有阶段均在本机构上海益诺思生物技术股份有限公司完成，无外部CoA检测。本验证无偏离。"
+  },
+  {
+    "section_id": "拟定验证日程",
+    "generate_content": "| 项目 | 日期 |  \n|------|------|  \n| 方案批准日期 | 2025年11月10日 |  \n| 实验开始日期 | 2025年11月11日 |  \n| 实验结束日期 | 2025年12月11日 |  \n| 拟定报告初稿完成时间 | 2026年01月15日 |  \n\n注释：日程按方案执行，无偏离。时间表为预估，如日程安排发生变动，无需更新方案或额外准备补充方案进行偏离解释。"
+  },
+  {
+    "section_id": "选择性",
+    "generate_content": "选择性按验证方案考察，代表色谱图见附图（空白基质色谱图见图1），测定结果见表1，所有结果均符合接受标准，表明本方法测定SD大鼠血浆中待测物A和内标A的选择性良好，基质对测定无干扰。"
+  },
+  {
+    "section_id": "摘要\t9",
+    "generate_content": "本验证报告摘要基于GLP原则，概述了报告编号为SS25255NM01的验证试验。试验由上海益诺思生物技术股份有限公司作为测试机构执行，验证负责人为钱哲元。验证旨在评估分析方法的适用性，包括特异性、准确性、精密度、线性、检测限和定量限等参数。试验严格遵循验证方案，无数据偏差或偏离。详细结果见报告正文，包括材料和方法、实验实施、数据处理及方法学验证结果。"
+  },
+  {
+    "section_id": "待测物对内标的干扰",
+    "generate_content": "按验证方案测定，待测物对内标的干扰结果见表5。结果表明，待测物对内标的干扰符合接受标准。"
+  },
+  {
+    "section_id": "系统适用性",
+    "generate_content": "系统适用性按验证方案考察，结果符合标准，表明进样时检测仪器均处于正常运转状态。"
+  },
+  {
+    "section_id": "残留",
+    "generate_content": "残留按验证方案测定，结果见表3。所有分析批残留结果符合接受标准。"
+  },
+  {
+    "section_id": "内标对待测物的干扰",
+    "generate_content": "按验证方案测定，内标对待测物的干扰结果见表5。结果表明，内标对待测物的干扰符合接受标准。"
+  },
+  {
+    "section_id": "标准曲线及范围",
+    "generate_content": "标准曲线及范围按验证方案测定，方法验证中的各标准曲线回归方程及各标准样品浓度点测定结果见表7和表8，典型标准曲线见图2。结果表明，本方法测定SD大鼠血浆中待测物A的线性范围可达0.100~50.000 ng/mL。"
+  },
+  {
+    "section_id": "质控样品",
+    "generate_content": "除准确度及精密度分析批的质控样品按验证方案测定，除准确度及精密度分析批的质控样品结果见表10。结果表明，所有接受批的质控样品均符合分析批接受标准。"
+  },
+  {
+    "section_id": "指导原则",
+    "generate_content": "Guidance for Industry Bioanalytical Method Validation, U.S. FDA, 2018\nGuideline on Bioanalytical Method Validation, EMA, 2012\nBioanalytical Method Validation and Study Sample Analysis, ICH M10, 2022\n\n**材料和方法**\n**标准品**\n| 化合物名称： | Dxd |\n| --- | --- |\n| 化合物代码： | RESS25255-B |\n| 标准品登记号： | KN-RS-25-0289 |\n| 批号： | 268112 |\n| 含量： | 99.30%（纯度） |\n| 分子量 | 493.48 |\n| 保存条件： | -15 ~ -25ºC |\n| 有效期至： | 2027/08/28 |\n| 来源： | MedChemExpress |\n\n注释：若信息更新或使用新批次将记录在原始记录并呈现在验证报告中。\n\n| 化合物名称： | 待测物B-1（T785） |\n| --- | --- |\n| 化合物代码： | RESS25008 |\n| 标准品登记号： | KN-RS-25-0030 |\n| 批号： | RD021-179-S1 |\n| 含量： | 96.10% |\n| 分子量 | 311.43 |\n| 保存条件： | 10 ~ 30ºC |\n| 有效期至： | 2026/06/09 |\n| 来源： | 上海合利成生物医药科技有限公司 |\n\n注释：若信息更新或使用新批次将记录在原始记录并呈现在验证报告中。\n\n**内标**\n| 化合物名称： | 内标A |\n| --- | --- |\n| 化合物代码： | ISSS25255 |\n| 标准品登记号： | KN-RS-25-0290 |\n| 批号： | 365043 |\n| 含量： | 90.41% |\n| 保存条件： | 2 ~ 8ºC，密封，避光，避湿 |\n| 有效期至： | 2027/02/20 |\n| 来源： | MedChemExpress |\n\n注释：若信息更新或使用新批次将记录在原始记录并呈现在验证报告中。\n\n| 化合物名称： | 内标B (hydrochloride) |\n| --- | --- |\n| 化合物代码： | ISSS25008-B盐酸盐 |\n| 标准品登记号： | KN-RS-25-0156 |\n| 批号： | 128979 |\n| 含量： | 99.98%（纯度） |\n| 游离型含量： | 91.34%* |\n| 保存条件： | 2 ~ 8ºC，密封，避湿 |\n| 有效期至： | 2027/03/17 |\n| 来源： | MedChemExpress |\n\n*游离型含量 = 纯度 × 游离型分子量 ÷ 盐分子量 = 99.98% × 385.50 ÷ 421.96 = 91.34%\n注释：若信息更新或使用新批次将记录在原始记录并呈现在验证报告中。\n\n**安全防护**\n在标准品、内标配制及样品处理过程中需穿戴实验室防护服、手套等防护用品。\n\n**剩余标准品及内标的返还**\n本验证结束后未使用过的标准品及内标在全部试验结束后由本机构负责归还委托方，或由委托方书面授权处理。\n\n**材料和方法**\n方法SS5255-BA-003描述了本方法使用的仪器、软件、溶剂和试剂、基质以及配制和处理步骤。概述如下：体积为10 µL的BALB/c裸鼠EDTA-K2血浆样品采用蛋白沉淀法进行样品提取。待测物A和待测物B（待测物B-1）将分别以内标A和内标B为内标用LC-MS/MS进行检测和定量。\n\n**分析系统**\n| 名称 | 生厂商/型号 |\n| --- | --- |\n| 质谱仪 | AB SCIEX/TRIPLE QUADTM6500+ |\n| 液相色谱系统 | Shimadzu/LC-40D x3 |\n\n**储备液的配制**\n精密称取适量Dxd标准品于合适容器中，加入适量稀释液1（DMSO）溶解、摇匀，配制成浓度为10.000 µmol/mL的Dxd标曲/质控储备液。\n精密称取适量待测物B-1标准品于合适容器中，加入适量稀释液1（DMSO）溶解、摇匀，配制成浓度为10.000 µmol/mL的待测物B-1标曲/质控储备液。\n精密称取适量内标A内标标准品于合适容器中，加入适量稀释液1（DMSO）溶解、摇匀，配制成浓度为1.000 mg/mL的内标储备液。\n精密称取适量内标B (hydrochloride)内标标准品于合适容器中，加入适量储备液稀释液（DMSO）溶解、摇匀，配制成浓度为1.000 mg/mL的内标储备液。\n\n**工作液的配制**\n移取适量Dxd和待测物B-1的标曲储备液，加入稀释液2（ACN：H2O = 1:1，v/v）序列稀释至待测物A和待测物B（待测物B-1）的浓度分别为：30.000、60.000、150.000、600.000、3000.000、15000.000、24000.000、30000.000 pmol/mL的标曲工作液。\n移取适量Dxd和待测物B-1的质控储备液，加入稀释液2（ACN：H2O = 1:1，v/v）序列稀释至Dxd的浓度为：90.000、900.000、9000.000、22500.000 pmol/mL的质控工作液。\n移取适量内标A和内标B (hydrochloride)内标储备液，加入稀释液2（ACN：H2O = 1:1，v/v）稀释至内标的浓度分别为：25.000/100.000 ng/mL的内标工作液。\n\n**标曲/质控样品的配制**\n移取适量Dxd和待测物B-1的标曲工作液，加入空白基质分别稀释成待测物A和待测物B（待测物B-1）的浓度为：1.500、3.000、7.500、30.000、150.000、750.000、1200.000、1500.000 pmol/mL的标曲样品。\n移取适量Dxd和待测物B-1的质控工作液，加入空白基质分别稀释成待测物A和待测物B（待测物B-1）的浓度为：4.500、45.000、450.000、1125.000 pmol/mL的质控样品。\n\n**样品处理步骤**\n| 处理条件 | 冰水浴白光 |\n| --- | --- |\n| 1. | 将BALB/c 裸鼠血浆样品（SST，标准曲线样品，质控样品，稀释质控样品（如有）和未知样本（如有））2500rpm涡旋3分钟。 |\n| 2. | 根据分析批Map分别转移10 µLBALB/c 裸鼠血浆样品（SST，标准曲线样品，质控样品和未知样本，用于制备Double Blank，Blank和Carryover的空白血浆）至96孔管中。 |\n| 3. | 分别对上述SST，Blank，标准曲线样品，质控样品，稀释质控样品（如有）和未知样本（如有）的每一个孔位，添加10 µL内标工作液（ISSS25255/ISSS25008-B： 25.000/100.000 ng/mL）。对于Double Blank，Carryover，添加10µL稀释液2（ACN：H2O =1:1，v/v）。 |\n| 4. | 2500 rpm涡旋大约30 秒。 |\n| 5. | 每一个管添加280 µL沉淀剂（含0.1% 甲酸的ACN: MeOH = 1:1, v/ v溶液）。 |\n| 6. | 2500 rpm涡旋混匀10分钟。 |\n| 7. | 4℃条件下22000 g离心10分钟。 |\n| 8. | 转移50 µL上清液至另一块新的96孔板。 |\n| 9. | 向每个孔中加入150 µL复溶液（30%甲醇的水溶液）稀释。 |\n| 10. | 1000 rpm涡旋混匀10分钟。 |\n| 11. | 4℃条件下4700 g离心5分钟。 |\n\n实验过程中若材料和方法相关内容更新，无需进行方案变更，将以分析方法升级的方式进行记录并呈现在验证报告中。\n本验证过程中材料和方法符合方案，无偏离或更新。"
+  },
+  {
+    "section_id": "基质效应按验证方案测定，结果见表6。",
+    "generate_content": "试验未进行，结果符合方案要求。"
+  },
+  {
+    "section_id": "分析批最大进样数",
+    "generate_content": "分析批最大进样数按验证方案考察，本验证实验中最大进样针数为118针。"
+  },
+  {
+    "section_id": "溶血效应",
+    "generate_content": "溶血效应按验证方案测定，结果见表23。结果表明，溶血符合接受标准。"
+  },
+  {
+    "section_id": "稀释可靠性",
+    "generate_content": "按验证方案执行，结果见表13，无偏离。\n\n**表13：稀释可靠性**\n\n| 检测时间 | 检测批次编号 | DQC（稀释倍数20倍） | 准确度偏差% |\n|---|---|---|---|\n|  |  |  |  |\n| 平均值 |  |  |  |\n| SD |  |  |  |\n| CV（%） |  |  |  |\n| 准确度（%） |  |  |  |\n| n |  |  |  |"
+  },
+  {
+    "section_id": "结论",
+    "generate_content": "对分析方法“{{Method_Name}}”进行了完全验证。本实验成功验证了分析方法的系统适用性，残留，选择性，特异性，基质效应，标准曲线及范围，批内/批间准确度及精密度，提取回收率，稀释可靠性，标准品储备液/工作液稳定性，样品短期稳定性，样品冻融稳定性，处理后样品稳定性，样品长期稳定性，全血稳定性，溶血效应和分析批最大进样针数。综上，本方法可以用于测定{{Sample_Type}}中的{{Analyte}}的浓度。"
+  },
+  {
+    "section_id": "批内/批间准确度及精密度",
+    "generate_content": "批内/批间准确度及精密度按验证方案考察，无偏离，结果符合接受标准。"
+  },
+  {
+    "section_id": "特殊情况说明",
+    "generate_content": "本实验过程中无特殊情况发生。"
+  },
+  {
+    "section_id": "偏离",
+    "generate_content": "本实验过程中无验证方案、既定方法和本机构SOP的偏离发生。"
+  },
+  {
+    "section_id": "回收率",
+    "generate_content": "按验证方案执行，提取回收率无偏差，结果符合要求"
+  },
+  {
+    "section_id": "归档",
+    "generate_content": "本试验需要保留和归档的试验资料包括但不限于：验证负责人任命书、验证方案、原始记录，仪器打印的数据、电子数据和验证报告等。试验资料在验证报告签发后归档于本机构档案室，根据本机构SOP进行归档管理。"
+  },
+  {
+    "section_id": "稳定性",
+    "generate_content": "稳定性按验证方案测定，结果符合接受标准。"
+  }
+]

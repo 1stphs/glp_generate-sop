@@ -1,0 +1,17 @@
+{
+  "section_title": "委托方负责人",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则，确保一致性与可追溯性。",
+      "rationale": "为避免模拟报告中数值修约错误导致FAIL判定，强化Writer在生成SOP时对统计参数处理的标准化要求，提升输出质量。",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则，包括位数和四舍五入标准",
+      "rationale": "防止Writer在生成SOP时遗漏或错误定义修约规则，确保输出符合通用统计规范，避免类似CV%位数错误的重现",
+      "iteration": 2
+    }
+  ]
+}

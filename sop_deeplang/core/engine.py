@@ -48,10 +48,11 @@ class SOPSGeneratorV6:
         workflow.add_edge("master", "writer")
 
         def should_format_verify_or_simulator(state: MasterState) -> str:
-            # If Phase 1 (Skeleton), skip iteration
-            if state.get("phase") == 1:
+            # If phase 1 OR section is not complex, skip simulator/reviewer loop
+            s_type = state.get("section_type", "COMPLEX")
+            if state.get("phase") == 1 or s_type != "COMPLEX":
                  return "format_verify"
-            return "format_verify" if state["route"] == "simple_path" else "simulator"
+            return "simulator"
 
         workflow.add_conditional_edges(
             "writer",
@@ -90,7 +91,8 @@ class SOPSGeneratorV6:
         sop_content = state.get("sop_content", "")
         score = state.get("reviewer_score", 1.0)
         iteration = state.get("iteration", 1)
-        is_pass = score >= 4
+        # Use is_pass from state if it exists, otherwise fallback to score-based
+        is_pass = state.get("is_pass", score >= 4)
 
         self.memory.save_sop_template(
             section_title,
@@ -101,8 +103,10 @@ class SOPSGeneratorV6:
                 "iteration": iteration,
                 "route": state.get("route", "unknown"),
                 "is_pass": is_pass,
-                "phase": state.get("phase", 1)
+                "phase": state.get("phase", 1),
+                "report_id": state.get("report_id", "default")
             },
+            report_id=state.get("report_id", "default")
         )
         return state
 

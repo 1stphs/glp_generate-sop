@@ -6,7 +6,6 @@ SOP Generation System V6 - DeepLang
 """
 
 import json
-from typing import Dict, Any, TypedDict
 from typing import Dict, Any
 from openai import OpenAI
 from sop_deeplang.utils.memory_manager import MemoryManager
@@ -40,14 +39,18 @@ class MasterAgent:
         protocol_content = state.get("protocol_content", "")
         original_report_content = state.get("original_report_content", "")
 
+        # Phase 1 Shortcut: Skeleton Mode
+        if state.get("phase") == 1:
+            print(f"🎬 [{section_title}] Phase 1: 骨架模式 (自动路由: simple_path)")
+            return {
+                **state,
+                "complexity": "simple",
+                "route": "simple_path",
+                "reasoning": "阶段 1：基础骨架生成，无需复杂迭代。",
+            }
+
         # Load Complexity Analysis Skill
         skill_content = self.memory.load_skill("master")
-
-        # Load existing template if available (for reference)
-        existing_template = self.memory.load_sop_template(section_title)
-        template_context = ""
-        if existing_template:
-            template_context = f"\n【现有 SOP 模板参考】：\n{existing_template['sop_content'][:300]}...\n"
 
         # Build prompt
         prompt = f"""你是复杂度分析专家，请基于以下内容判断章节的复杂度并确定路由路径。
@@ -64,8 +67,6 @@ class MasterAgent:
 
 【GLP 报告参考】：
 {original_report_content[:3000]}
-
-{template_context}
 
 # 任务要求
 

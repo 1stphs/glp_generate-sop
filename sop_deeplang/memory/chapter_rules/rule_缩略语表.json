@@ -1,0 +1,11 @@
+{
+  "section_title": "缩略语表",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式包含游离型与盐型的折算因子定义及计算公式",
+      "rationale": "防止遗漏反义链中游离型/盐型折算逻辑，确保Writer在生成SOP时系统性识别并定义相关计算基准",
+      "iteration": 1
+    }
+  ]
+}

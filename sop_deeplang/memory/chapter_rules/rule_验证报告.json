@@ -1,0 +1,17 @@
+{
+  "section_title": "验证报告",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "必须在SOP中显式定义所有计算参数的修约规则与精度要求",
+      "rationale": "Reviewer反馈显示数值修约错误导致报告不准确，此规则确保Writer生成SOP时强制包含通用修约逻辑，避免类似精度偏差",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含VP中折算因子的识别与公式定义，确保计算基准明确",
+      "rationale": "针对反义链游离型/盐型折算逻辑缺失的反馈，强化Writer在生成SOP时对VP数据源的检索和逻辑闭环，避免类似遗漏",
+      "iteration": 2
+    }
+  ]
+}

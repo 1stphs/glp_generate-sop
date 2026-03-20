@@ -1,0 +1,11 @@
+{
+  "section_title": "验证目的",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式包含游离型/盐型折算逻辑及计算基准来源",
+      "rationale": "针对Reviewer反馈中反义链游离型/盐型折算逻辑缺失问题，确保Writer在生成SOP时强制识别并定义折算因子，避免类似数据处理漏洞",
+      "iteration": 1
+    }
+  ]
+}

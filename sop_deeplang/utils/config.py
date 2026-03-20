@@ -5,115 +5,106 @@ SOP Generation System V6 - Configuration
 
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+
+    # Load environment variables
+    load_dotenv()
+except ImportError:
+    print("WARNING: python-dotenv not found, skipping load_dotenv()")
 
 # ============== Base Configuration ==============
-BASE_DIR = Path(__file__).parent.resolve()
+BASE_DIR = Path(__file__).parent.parent.resolve()
 MEMORY_DIR = BASE_DIR / "memory"
-SKILLS_DIR = MEMORY_DIR / "skills"
+SKILLS_DIR = BASE_DIR / "skills"
 TEMPLATES_DIR = MEMORY_DIR / "sop_templates"
 AUDIT_LOGS_DIR = MEMORY_DIR / "audit_logs"
 CHAPTER_RULES_DIR = MEMORY_DIR / "chapter_rules"
 
 # Ensure directories exist
-MEMORY_DIR.mkdir(parents=True, exist_ok=True)
-SKILLS_DIR.mkdir(parents=True, exist_ok=True)
-TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
-AUDIT_LOGS_DIR.mkdir(parents=True, exist_ok=True)
-CHAPTER_RULES_DIR.mkdir(parents=True, exist_ok=True)
+for d in [MEMORY_DIR, SKILLS_DIR, TEMPLATES_DIR, AUDIT_LOGS_DIR, CHAPTER_RULES_DIR]:
+    d.mkdir(parents=True, exist_ok=True)
 
 # ============== API Configuration ==============
-# OpenAI-compatible API (for Grok)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
 
-# Google Gemini API
-# GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+# ============== Model Configuration ==============
+MASTER_MODEL = "grok-4-fast-non-reasoning"
+SIMULATOR_MODEL = "grok-4-fast-non-reasoning"
+REVIEWER_MODEL = "grok-4-fast-non-reasoning"
+CURATOR_MODEL = "grok-4-fast-non-reasoning"
+WRITER_MODEL = "grok-4-fast-non-reasoning"
 
-# ============== Model Configuration (V6 - Grok + Gemini) ==============
-# Master/Simulator/Reviewer/Curator: Grok 4.1 Fast Reasoning
-
-# gpt-5-mini， grok-4-1-fast-non-reasoning
-
-MASTER_MODEL = "gpt-5-mini"
-SIMULATOR_MODEL = "gpt-5-mini"
-REVIEWER_MODEL = "gpt-5-mini"
-CURATOR_MODEL = "gpt-5-mini"
-
-# Writer: Gemini 3.1 Flash Lite (fast and cost-effective)
-# WRITER_MODEL = "gemini-3.1-flash-lite"
-WRITER_MODEL = "gpt-5-mini"
-
-# ============== System Configuration ==============
-EXPERIMENT_TYPE = "BV实验"
-MAX_ITERATIONS = 3  # Maximum iteration attempts for complex sections
-
-# Dataset processing control
-# Set to 1 to test only the first dataset, 3 for first 3, or a larger number for all
-MAX_DATASETS = 1  # Number of datasets to process (1, 3, 10, etc.)
-
-# Complexity thresholds
-SIMPLE_WORD_COUNT = 200  # If content < 200 words -> simple
-COMPLEX_WORD_COUNT = 1000  # If content > 1000 words -> complex
-COMPLEX_KEYWORDS = ["计算", "统计", "验证", "分析", "数据", "稳定", "方法", "质量"]
-
-# ============== Complexity Rules ==============
-SIMPLE_SECTIONS = [
-    "缩略词表",
-    "缩写",
+# ============== Section Classification ==============
+STATIC_SECTIONS = [
+    "签字页",
+    "GLP遵从性声明",
+    "质量保证声明",
+    "目录",
+    "附表目录",
+    "附图目录",
+    "缩略语表",
     "参考文献",
+    "附录",
+]
+
+SIMPLE_SECTIONS = [
+    "验证目的",
+    "前言",
+    "摘要",
+    "验证试验名称",
+    "验证试验编号",
+    "结论",
     "版本历史",
     "修订记录",
-    "目录",
-    "附录",
-    "致谢",
-    "术语",
-    "符号说明",
-    "单位说明",
+    "主要操作人员",
+    "验证负责人",
 ]
 
 COMPLEX_SECTIONS = [
+    "稳定性",
+    "精密度",
+    "准确度",
     "方法学验证",
-    "稳定性研究",
-    "统计分析",
-    "数据分析",
-    "结果与讨论",
-    "质量控制",
+    "定量下限",
+    "标准曲线",
+    "特异性",
+    "稀释可靠性",
+    "提取回收率",
+    "基质效应",
     "系统适用性",
-    "样品制备",
-    "色谱条件",
-    "质谱条件",
-    "定量分析",
-    "定性与定量",
+    "残留",
+    "干扰",
 ]
 
-# ============== Skill Versioning ==============
-# MASTER_SKILL_VERSION = "1.0"
-# WRITER_SKILL_VERSION = "1.0"
-# SIMULATOR_SKILL_VERSION = "1.0"
-# REVIEWER_SKILL_VERSION = "1.0"
-# ANALYZER_SKILL_VERSION = "1.0"
-# CURATOR_SKILL_VERSION = "1.0"
+COMPLEX_KEYWORDS = [
+    "计算",
+    "统计",
+    "验证",
+    "分析",
+    "数据",
+    "稳定",
+    "方法",
+    "回收",
+    "精密度",
+    "准确度",
+]
 
+# ============== System Configuration ==============
+EXPERIMENT_TYPE = "BV实验"
+MAX_ITERATIONS = 3
+MAX_DATASETS = 1
+CLEAN_OUTPUT = True
+
+# ============== Skill Versioning ==============
 MASTER_SKILL_VERSION = "1"
 WRITER_SKILL_VERSION = "1"
 SIMULATOR_SKILL_VERSION = "1"
 REVIEWER_SKILL_VERSION = "1"
 ANALYZER_SKILL_VERSION = "1"
 CURATOR_SKILL_VERSION = "1"
-
-# ============== Node Configuration ==============
-# Output control: clean JSON/Markdown only
-CLEAN_OUTPUT = True
-INCLUDE_THINKING = False
-
-# ============== Logging Configuration ==============
-LOG_LEVEL = "INFO"
-ENABLE_AUDIT_LOG = True
-ENABLE_SKILL_VERSIONING = True
 
 
 # ============== Validation ==============
@@ -122,9 +113,6 @@ def validate_config() -> bool:
     if not OPENAI_API_KEY:
         print("WARNING: OPENAI_API_KEY not set")
         return False
-    # if not GEMINI_API_KEY:
-    #     print("WARNING: GEMINI_API_KEY not set")
-    #     return False
     return True
 
 

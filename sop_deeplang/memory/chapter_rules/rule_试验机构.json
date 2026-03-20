@@ -1,0 +1,17 @@
+{
+  "section_title": "试验机构",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "Writer必须在SOP中识别并包含VP中折算因子的定义与公式",
+      "rationale": "基于Reviewer反馈，Simulator常漏掉游离型/盐型折算逻辑，需强化Writer在生成SOP时强制提取VP中的折算因子，确保数据路径完整性与计算基准明确",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则，确保一致性",
+      "rationale": "防止因修约规则未定义导致的数值精度错误，提升SOP通用性和可检查性",
+      "iteration": 2
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "section_title": "回收率",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
+      "rationale": "防止因修约规则缺失导致的数值精度错误，确保SOP生成时包含完整的数据处理标准",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则，确保数值精度一致性",
+      "rationale": "Reviewer反馈显示数值修约错误导致报告不准确，需通过明确规则强化Writer生成SOP时的精度控制，避免类似逻辑漏洞",
+      "iteration": 2
+    }
+  ]
+}

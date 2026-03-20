@@ -1,0 +1,11 @@
+{
+  "section_title": "验证试验编号",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型与盐型的折算因子定义及计算公式",
+      "rationale": "针对反义链游离型/盐型折算逻辑缺失的反馈，确保Writer生成SOP时系统性识别并包含相关计算基准，避免类似遗漏",
+      "iteration": 1
+    }
+  ]
+}

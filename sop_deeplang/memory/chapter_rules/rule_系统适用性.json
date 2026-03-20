@@ -1,0 +1,11 @@
+{
+  "section_title": "系统适用性",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显性定义所有统计参数的修约规则，确保一致性",
+      "rationale": "Reviewer反馈显示Simulator报告中统计参数修约不一致，导致FAIL判定。此规则强化Writer在生成SOP时对修约逻辑的标准化处理，避免类似逻辑漏洞。",
+      "iteration": 1
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "section_title": "验证试验名称",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "必须在SOP中明确定义所有统计参数的修约规则，确保一致性",
+      "rationale": "针对Reviewer反馈中统计参数修约不精确的问题，防止Writer遗漏通用修约逻辑，提高SOP的准确性和可检查性",
+      "iteration": 1
+    }
+  ]
+}

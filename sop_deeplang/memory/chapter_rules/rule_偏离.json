@@ -1,0 +1,11 @@
+{
+  "section_title": "偏离",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在 SOP 模板中强制包含数据源核对步骤，确保提取路径的准确性",
+      "rationale": "针对 Reviewer 反馈中 Simulator 数据路径提取错误，需优化 Writer 模板逻辑以避免遗漏关键验证环节，提升整体 SOP 生成质量",
+      "iteration": 2
+    }
+  ]
+}

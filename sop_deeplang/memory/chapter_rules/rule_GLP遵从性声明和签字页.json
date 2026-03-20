@@ -1,0 +1,17 @@
+{
+  "section_title": "GLP遵从性声明和签字页",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则及应用标准",
+      "rationale": "Reviewer反馈显示Writer Skill中缺少对统计参数修约的标准化指导，导致SOP生成时出现不一致性和遗漏，确保未来输出符合通用质量要求",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则，确保数据一致性",
+      "rationale": "为避免报告中出现未定义的数值修约错误，强化Writer生成SOP时对统计参数处理的明确性",
+      "iteration": 2
+    }
+  ]
+}

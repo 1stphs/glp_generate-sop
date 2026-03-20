@@ -1,0 +1,11 @@
+{
+  "section_title": "拟定验证日程",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算逻辑及数据源核对步骤",
+      "rationale": "针对反义链折算逻辑缺失，确保Writer生成SOP时强制识别VP中折算因子并定义公式，防止类似遗漏",
+      "iteration": 1
+    }
+  ]
+}

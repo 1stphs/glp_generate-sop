@@ -1,0 +1,11 @@
+{
+  "section_title": "摘要",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式包含游离型与盐型数据的折算逻辑及公式定义",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时系统性纳入折算因子，避免数据处理遗漏",
+      "iteration": 1
+    }
+  ]
+}

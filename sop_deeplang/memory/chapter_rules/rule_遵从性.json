@@ -1,0 +1,17 @@
+{
+  "section_title": "遵从性",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则，确保数值精度一致性",
+      "rationale": "防止因修约不明确导致的数值误差，强化Writer生成SOP时对统计参数处理的标准化要求",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算逻辑及计算公式定义",
+      "rationale": "防止Simulator遗漏VP中折算因子，确保SOP完整覆盖数据转换步骤，避免报告生成中的逻辑缺失",
+      "iteration": 2
+    }
+  ]
+}

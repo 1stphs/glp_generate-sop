@@ -1,0 +1,13 @@
+{
+  "验证报告": ["Summary", "Report"],
+  "精密度与准确度": ["Inter_QC", "Precision", "Accuracy", "QC", "精密度", "准确度"],
+  "回收率": ["Recovery", "回收率"],
+  "基质效应": ["ME", "Matrix Effect", "基质效应"],
+  "特异性": ["Selectivity", "特异性", "特异性考察"],
+  "稳定性": ["ST", "FT", "PSS", "Stability", "稳定性", "长期", "短期", "冻融"],
+  "溶血效应": ["Blood", "溶血"],
+  "稀释可靠性": ["Dilution", "稀释"],
+  "内标回收率": ["IS_Recov", "内标"],
+  "系统适用性": ["System Suitability", "Sys_Suit", "系统适用性"],
+  "残留": ["Carryover", "Residual", "残留"]
+}

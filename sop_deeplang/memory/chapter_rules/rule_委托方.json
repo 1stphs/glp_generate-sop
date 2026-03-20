@@ -1,0 +1,11 @@
+{
+  "section_title": "委托方",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "必须识别并在SOP中包含VP中定义的折算因子及计算基准来源",
+      "rationale": "为修正反义链游离型/盐型折算逻辑缺失，确保SOP通用模板显性定义所有计算因子来源，避免数据路径认知偏差",
+      "iteration": 2
+    }
+  ]
+}

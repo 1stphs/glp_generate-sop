@@ -1,0 +1,17 @@
+{
+  "section_title": "溶血效应",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成时，必须识别并包含VP中定义的任何折算因子及其计算公式",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer Skill在处理复杂数据源时强制包含折算步骤，避免类似遗漏",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则",
+      "rationale": "为避免因修约标准不清晰导致的数值精度错误，确保Writer在生成SOP时强制包含通用修约指导",
+      "iteration": 2
+    }
+  ]
+}

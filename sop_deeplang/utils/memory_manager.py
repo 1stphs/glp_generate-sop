@@ -12,7 +12,7 @@ from pathlib import Path
 _file_lock = threading.Lock()
 from typing import Dict, List, Any, Optional
 from datetime import datetime
-from config import (
+from sop_deeplang.utils.config import (
     SKILLS_DIR,
     TEMPLATES_DIR,
     AUDIT_LOGS_DIR,
@@ -24,12 +24,13 @@ from config import (
     CHAPTER_RULES_DIR,
     CLEAN_OUTPUT,
 )
+from sop_deeplang.utils.section_aligner import SectionAligner
 
 
 class MemoryManager:
     """
     V6 Memory Manager - Manages three core libraries:
-    1. Skill Library (memory/skills/) - Dynamic, versioned .md files
+    1. Skill Library (skills/) - Dynamic, versioned .md files
     2. Template Library (memory/sop_templates/) - Final verified SOPs
     3. Audit Log Library (memory/audit_logs/) - Complete execution history
     """
@@ -39,6 +40,7 @@ class MemoryManager:
         self.templates_dir = TEMPLATES_DIR
         self.audit_logs_dir = AUDIT_LOGS_DIR
         self.chapter_rules_dir = CHAPTER_RULES_DIR
+        self.report_maps_dir = MEMORY_DIR / "report_maps"
 
         # Subdirectories for skills
         self.writing_dir = self.skills_dir / "writing"
@@ -63,8 +65,12 @@ class MemoryManager:
             self.audit_logs_dir,
             self.markdown_dir,
             self.chapter_rules_dir,
+            self.report_maps_dir,
         ]:
             d.mkdir(parents=True, exist_ok=True)
+
+        # Initialize Aligner
+        self.aligner = SectionAligner(MEMORY_DIR)
 
     def save_previous_sop(self, section_title: str, sop_content: str):
         """保存上一次生成的SOP，用于下一次增强"""
@@ -126,7 +132,10 @@ class MemoryManager:
         with _file_lock:
             with open(checkpoint_file, "w", encoding="utf-8") as f:
                 json.dump(
-                    {"last_processed_index": dataset_index}, f, ensure_ascii=False, indent=2
+                    {"last_processed_index": dataset_index},
+                    f,
+                    ensure_ascii=False,
+                    indent=2,
                 )
 
     def _sanitize_filename(self, name: str) -> str:
@@ -186,7 +195,7 @@ class MemoryManager:
             current_file = self.writing_dir / f"writer_skill_v{WRITER_SKILL_VERSION}.md"
             with open(current_file, "r", encoding="utf-8") as f:
                 content = f.read()
-    
+
             # Parse version number
             version_match = re.search(r"v(\d+\.\d+)", current_file.name)
             if version_match:
@@ -194,10 +203,10 @@ class MemoryManager:
                 new_version = f"{current_version + 0.1:.1f}"
             else:
                 new_version = "1.1"
-    
+
             # Insert new rule based on update_type
             update_type = new_rule.get("update_type", "add_principle")
-    
+
             if update_type == "add_principle":
                 # Find and update "核心原则" section
                 marker = "## 核心原则"
@@ -214,7 +223,7 @@ class MemoryManager:
                             break
                         elif in_section:
                             principle_lines.append(line)
-    
+
                     new_line = f"N. **{new_rule['new_rule']}**：{new_rule['rationale']}"
                     updated_content = content.replace(marker, marker + "\n" + new_line)
                 else:
@@ -222,7 +231,7 @@ class MemoryManager:
                         content
                         + f"\n\n## 核心原则\nN. **{new_rule['new_rule']}**：{new_rule['rationale']}"
                     )
-    
+
             elif update_type == "add_prohibition":
                 # Find and update "禁止事项" section
                 marker = "## 禁止事项"
@@ -233,27 +242,33 @@ class MemoryManager:
                             marker + "\n", marker + "\n" + new_line + "\n"
                         )
                     else:
-                        updated_content = content.replace(marker, marker + "\n" + new_line)
+                        updated_content = content.replace(
+                            marker, marker + "\n" + new_line
+                        )
                 else:
-                    updated_content = content + f"\n\n## 禁止事项\n❌ {new_rule['new_rule']}"
+                    updated_content = (
+                        content + f"\n\n## 禁止事项\n❌ {new_rule['new_rule']}"
+                    )
             else:
                 # Default to add_principle if update_type is unknown
-                print(f"⚠️  Unknown update_type: {update_type}, defaulting to add_principle")
+                print(
+                    f"⚠️  Unknown update_type: {update_type}, defaulting to add_principle"
+                )
                 new_line = f"N. **{new_rule.get('new_rule', '未知规则')}**：{new_rule.get('rationale', '未知理由')}"
                 marker = "## 核心原则"
                 if marker in content:
                     updated_content = content.replace(marker, marker + "\n" + new_line)
                 else:
                     updated_content = content + "\n\n## 核心原则\n" + new_line
-    
+
             # Save new version
             new_file = self.writing_dir / f"writer_skill_v{new_version}.md"
             with open(new_file, "w", encoding="utf-8") as f:
                 f.write(updated_content)
-    
+
             # Log to audit outside file operations but inside lock
             self.log_skill_update("writer", new_version, new_rule)
-    
+
             return new_version
 
     def log_skill_update(
@@ -272,29 +287,40 @@ class MemoryManager:
     # ============== Template Library Management ==============
 
     def save_sop_template(
-        self, section_title: str, sop_content: str, metadata: Dict[str, Any] = None
+        self,
+        section_title: str,
+        sop_content: str,
+        metadata: Dict[str, Any] = None,
+        report_id: str = "default",
     ):
         """
-        Save SOP template to unified JSON and separate MD files.
+        Save SOP template to report-specific JSON and MD files.
 
         Args:
             section_title: Title of section
             sop_content: Complete SOP content (Markdown)
             metadata: Additional metadata (score, iteration count, etc.)
+            report_id: Identifier for the report (e.g. NS25315BV01)
         """
-        safe_name = self._sanitize_filename(section_title)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        # Flatten storage: Save directly to markdown_dir as requested
+        safe_report_id = self._sanitize_filename(report_id)
+        # report_md_dir = self.markdown_dir / safe_report_id
+        # report_md_dir.mkdir(parents=True, exist_ok=True)
 
+        # Save directly to markdown_sops/
+        safe_name = self._sanitize_filename(section_title)
         md_file = self.markdown_dir / f"{safe_name}.md"
+
         with open(md_file, "w", encoding="utf-8") as f:
             f.write(sop_content)
 
-        all_sops_file = self.templates_dir / "all_sops.json"
-        
+        # Save to report-specific JSON
+        report_json_file = self.templates_dir / f"{safe_report_id}_all_sops.json"
+
         with _file_lock:
             all_sops = []
-            if all_sops_file.exists():
-                with open(all_sops_file, "r", encoding="utf-8") as f:
+            if report_json_file.exists():
+                with open(report_json_file, "r", encoding="utf-8") as f:
                     try:
                         all_sops = json.load(f)
                         if not isinstance(all_sops, list):
@@ -302,21 +328,22 @@ class MemoryManager:
                     except json.JSONDecodeError:
                         all_sops = []
 
-        new_entry = {
-            "section_title": section_title,
-            "sop_content": sop_content,
-            "metadata": metadata or {},
-            "created_at": datetime.now().isoformat(),
-            "verified": metadata.get("is_pass", False) if metadata else False,
-        }
+            new_entry = {
+                "section_title": section_title,
+                "sop_content": sop_content,
+                "metadata": metadata or {},
+                "created_at": datetime.now().isoformat(),
+                "verified": metadata.get("is_pass", False) if metadata else False,
+                "report_id": report_id,
+            }
 
-        with _file_lock:
+            # Filter out existing entry for this section in THIS report
             all_sops = [
                 sop for sop in all_sops if sop.get("section_title") != section_title
             ]
             all_sops.append(new_entry)
-            
-            with open(all_sops_file, "w", encoding="utf-8") as f:
+
+            with open(report_json_file, "w", encoding="utf-8") as f:
                 json.dump(all_sops, f, ensure_ascii=False, indent=2)
 
         # Log to audit
@@ -497,24 +524,24 @@ class MemoryManager:
     def save_chapter_rule(self, section_title: str, rule_content: Dict[str, Any]):
         """
         Save a specific rule for a chapter/section.
-        
+
         Args:
             section_title: Title of the section
             rule_content: The rule data (structure, requirements, etc.)
         """
         safe_name = self._sanitize_filename(section_title)
         rule_file = self.chapter_rules_dir / f"rule_{safe_name}.json"
-        
+
         with _file_lock:
             with open(rule_file, "w", encoding="utf-8") as f:
                 json.dump(rule_content, f, ensure_ascii=False, indent=2)
-        
+
         # Log to audit
         log_entry = {
             "timestamp": datetime.now().isoformat(),
             "event_type": "chapter_rule_save",
             "section_title": section_title,
-            "rule_file": str(rule_file.name)
+            "rule_file": str(rule_file.name),
         }
         self._write_audit_log(log_entry)
 
@@ -524,10 +551,10 @@ class MemoryManager:
         """
         safe_name = self._sanitize_filename(section_title)
         rule_file = self.chapter_rules_dir / f"rule_{safe_name}.json"
-        
+
         if not rule_file.exists():
             return None
-            
+
         with open(rule_file, "r", encoding="utf-8") as f:
             return json.load(f)
 
@@ -554,7 +581,7 @@ class MemoryManager:
         Returns:
             Complexity level: "simple", "standard", or "complex"
         """
-        from config import SIMPLE_SECTIONS, COMPLEX_SECTIONS
+        from sop_deeplang.utils.config import SIMPLE_SECTIONS, COMPLEX_SECTIONS
 
         # Simple sections (direct match)
         for simple in SIMPLE_SECTIONS:
@@ -579,7 +606,11 @@ class MemoryManager:
         Returns:
             Complexity level: "simple", "standard", or "complex"
         """
-        from config import COMPLEX_KEYWORDS, SIMPLE_WORD_COUNT, COMPLEX_WORD_COUNT
+        from sop_deeplang.utils.config import (
+            COMPLEX_KEYWORDS,
+            SIMPLE_WORD_COUNT,
+            COMPLEX_WORD_COUNT,
+        )
 
         word_count = len(content.split())
 
