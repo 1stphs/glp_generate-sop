@@ -6,6 +6,24 @@
       "content": "SOP必须包含游离型/盐型折算因子的识别与公式定义",
       "rationale": "防止遗漏VP中折算逻辑，确保SOP覆盖数据转换步骤，提高报告完整性",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "在 SOP 模板中强制包含数据源核对步骤，确保提取路径准确无误",
+      "rationale": "针对 Reviewer 反馈中 Simulator 数据提取路径错误的问题，需优化 Writer Skill 以避免类似逻辑漏洞，确保通用模板引导更清晰",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
+      "rationale": "确保Writer生成的SOP包含完整的数值处理标准，避免因修约缺失导致的模拟报告FAIL",
+      "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算逻辑及相关因子定义",
+      "rationale": "防止Simulator漏掉VP中反义链折算逻辑，确保Writer生成SOP时强制识别并定义所有计算因子",
+      "iteration": 2
     }
   ]
 }

@@ -6,6 +6,18 @@
       "content": "SOP必须显式包含游离型与盐型数据的折算逻辑及公式定义",
       "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时系统性纳入折算因子，避免数据处理遗漏",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "必须在 SOP 模板中包含数据源核对步骤，确保提取路径准确无误",
+      "rationale": "针对 Reviewer 反馈中 Simulator 提取数据路径错误的问题，增加此要求以强化 Writer 的逻辑闭环，避免类似认知偏差反复发生",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "Writer必须在SOP中明确定义所有统计参数的修约规则，确保数值精度一致性",
+      "rationale": "Reviewer反馈显示Simulator在统计参数处理上出现精度不一致问题，此规则强化Writer在生成SOP时对修约逻辑的显性定义，避免类似认知偏差",
+      "iteration": 2
     }
   ]
 }

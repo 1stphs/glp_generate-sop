@@ -1,0 +1,11 @@
+{
+  "section_title": "分析批最大进样数",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "必须在SOP中识别并包含VP中的折算因子及其公式定义",
+      "rationale": "防止反义链游离型/盐型折算逻辑缺失，确保SOP覆盖数据转换步骤，提高报告完整性",
+      "iteration": 2
+    }
+  ]
+}

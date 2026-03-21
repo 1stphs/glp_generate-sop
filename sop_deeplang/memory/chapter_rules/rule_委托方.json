@@ -6,6 +6,18 @@
       "content": "必须识别并在SOP中包含VP中定义的折算因子及计算基准来源",
       "rationale": "为修正反义链游离型/盐型折算逻辑缺失，确保SOP通用模板显性定义所有计算因子来源，避免数据路径认知偏差",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "必须在SOP中显式定义所有统计参数的修约规则，确保精度一致性",
+      "rationale": "防止因修约标准不明确导致的数值偏差，提升SOP的通用性和可检查性，规避Reviewer指出的精度错误",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含VP中折算因子的识别与公式定义",
+      "rationale": "防止反义链游离型/盐型折算逻辑缺失，确保Writer生成SOP时系统性覆盖数据转换步骤",
+      "iteration": 2
     }
   ]
 }

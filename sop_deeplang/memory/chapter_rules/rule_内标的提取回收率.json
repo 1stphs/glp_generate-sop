@@ -1,0 +1,11 @@
+{
+  "section_title": "内标的提取回收率",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在 SOP 中强制包含数据源核对步骤，确保模板引导清晰",
+      "rationale": "Reviewer 反馈表明 Simulator 提取数据路径有误，需通过优化 Writer 模板逻辑强化数据源验证，避免类似认知偏差",
+      "iteration": 1
+    }
+  ]
+}

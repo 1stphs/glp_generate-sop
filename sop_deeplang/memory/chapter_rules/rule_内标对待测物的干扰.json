@@ -1,0 +1,29 @@
+{
+  "section_title": "内标对待测物的干扰",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算逻辑及计算公式定义",
+      "rationale": "针对Reviewer反馈中反义链游离型/盐型折算逻辑缺失的问题，确保Writer在生成SOP时识别并明确包含相关折算因子及公式，避免类似遗漏",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在生成 SOP 时，必须系统识别并包含 VP 中定义的所有数据折算因子及公式",
+      "rationale": "Reviewer 反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保 Writer 全面提取并定义折算规则，避免类似遗漏，提高 SOP 完整性",
+      "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "Writer必须在SOP中显式定义所有统计参数的修约规则，确保数值精度一致性",
+      "rationale": "针对Reviewer反馈中提到的CV%等统计参数修约错误，防止Writer遗漏通用修约逻辑，确保SOP输出标准化，避免类似精度偏差反复发生",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算因子的识别与公式定义",
+      "rationale": "防止遗漏VP中折算逻辑，确保SOP完整覆盖数据转换步骤，提升报告准确性",
+      "iteration": 2
+    }
+  ]
+}

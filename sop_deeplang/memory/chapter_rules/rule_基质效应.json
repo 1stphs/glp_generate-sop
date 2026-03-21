@@ -1,0 +1,17 @@
+{
+  "section_title": "基质效应",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成中，必须系统检索VP所有章节以识别潜在折算因子和数据转换逻辑，确保完整覆盖",
+      "rationale": "为防止遗漏如游离型/盐型折算等关键逻辑，强化Writer对VP文档的全面分析要求，提升SOP的逻辑完整性和准确性",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "必须识别并定义VP中的折算因子，确保SOP包含公式及来源说明",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时系统性纳入数据折算步骤，避免类似遗漏",
+      "iteration": 2
+    }
+  ]
+}

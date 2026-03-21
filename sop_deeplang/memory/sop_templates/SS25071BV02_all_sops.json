@@ -1,0 +1,562 @@
+[
+  {
+    "section_title": "验证试验编号",
+    "sop_content": "### **第一部分：核心准则**\n在无实际数据或实验结果的情况下，该章节报告必须声明无数据存在，不涉及任何计算、比较或偏离分析。遵守 GLP 原则，确保声明简洁、客观，不添加任何推测性内容。\n\n### **第二部分：通用模板**\n根据试验编号 {{Trial_Number}}，本章节无实际数据记录或实验结果可报告。报告内容直接表述为：无数据。\n\n### **第三部分：报告示例**\nSS25071BV02  \n无数据",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:11:36.757788",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "验证试验名称",
+    "sop_content": "### **第一部分：核心准则**\n* 在验证报告中，若无实际数据生成或验证过程未产生可报告结果，则必须以声明性语句记录“无数据”，并确认方法学验证方案已按预定计划执行，无偏离或异常。\n* 静态文本直接引用验证方案标题，确保报告章节标题与方案一致。\n* 动态数据部分（如具体实验结果）若缺失，则不进行任何计算或填充，仅声明事实状态。\n* 报告表述需简洁、客观，避免推测或额外解释。\n\n### **第二部分：通用模板**\n撰写报告时，按照以下指令执行：  \n1. 直接复制验证方案标题作为报告章节标题，使用静态文本：`LC-MS/MS法测定食蟹猴EDTA-K2血浆样品中待测物A（游离型）反义链和正义链浓度的生物分析方法学验证(Method validation of an LC-MS/MS method for the determination of the antisense strand and sense strand of Analyte A (free form) in Cynomolgus Monkey K2EDTA plasma samples)`。  \n2. 在正文处插入声明：`{{No_Data_Statement}}`（例如：无数据）。  \n3. 若后续有数据补充，标记为待填占位符：`从原始记录提取{{Experiment_Results}}并描述`；否则保持声明不变。  \n4. 结尾确认：`本章节验证方案已执行，无偏离。`\n\n### **第三部分：报告示例**\n**LC-MS/MS法测定食蟹猴EDTA-K2血浆样品中待测物A（游离型）反义链和正义链浓度的生物分析方法学验证**  \n无数据。  \n本章节验证方案已执行，无偏离。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:04.380317",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "试验机构",
+    "sop_content": "### **第一部分：核心准则**\n在公司信息章节中，必须直接复制验证方案（Protocol）中提供的静态公司名称、地址、邮编和电话信息，确保无任何修改或遗漏。若方案中无数据，则声明“无数据”，以保持报告的完整性和一致性。禁止添加任何额外描述或推断性内容。\n\n### **第二部分：通用模板**\n从验证方案（Protocol）中提取以下静态信息，并按原格式填入报告：\n\n- 公司名称：{{Company_Name}}（{{English_Name}}）\n- 地址：{{Address_Line_1}}  \n  {{Address_Line_2}}\n- 邮编：{{Postal_Code}}\n- 电话：{{Phone_Number}}\n\n若方案中无数据，则填入：无数据。\n\n### **第三部分：报告示例**\n| 名称： | 上海益诺思生物技术股份有限公司 |\n| --- | --- |\n|  | （Shanghai InnoStar Bio-tech Co., Ltd.） |\n| 地址： | 中国（上海）自由贸易试验区郭守敬路199号 |\n|  | 中国（上海）自由贸易试验区盛荣路777号 |\n| 邮编： | 201203 |\n| 电话： | +86-21-60211999 |",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:10.494984",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "验证目的",
+    "sop_content": "### **第一部分：核心准则**\n* 本章节用于概述生物分析方法的验证目的和范围，确认LC-MS/MS法测定食蟹猴EDTA-K2血浆样品中待测物A (free form)的反义链和正义链浓度，支持非临床试验生物分析。\n* 必须列出所有验证参数，包括系统适用性、残留、选择性、特异性、基质效应、标准曲线及范围、批内/批间准确度及精密度、提取回收率、稀释可靠性、稳定性、溶血效应和分析批最大进样数。\n* 声明所有提及的待测物浓度基于反义链和正义链的双链浓度。\n* 无动态数据时，直接复制方案静态文本，确保表述通用且不引入具体数值或试验细节。\n\n### **第二部分：通用模板**\n撰写指令：  \n从验证方案{{Protocol_ID}}中提取方法概述和验证参数列表，构建引言章节。使用以下模板填充静态文本，无需计算或提取数据：  \n\"本验证的目的是验证{{Method_Type}}法测定{{Species_and_Matrix}}样品中待测物{{Analyte_Name}} ({{Form_Specifier}} )的反义链和正义链的浓度测定方法（{{Method_Code}}）。并对该方法进行{{Validation_Parameters_List}}等全面方法学验证，以支持{{Study_Purpose}}。本验证方案中提及的待测物浓度均为基于反义链和正义链的双链浓度。\"  \n若无额外数据，添加声明：\"本章节无动态数据呈现。\"\n\n### **第三部分：报告示例**\n本验证的目的是验证LC-MS/MS法测定食蟹猴EDTA-K2血浆样品中待测物A (free form)的反义链和正义链的浓度测定方法（SS25071-BA-002）。并对该方法进行系统适用性、残留、选择性、特异性、基质效应、标准曲线及范围、批内/批间准确度及精密度、提取回收率、稀释可靠性、稳定性、溶血效应和分析批最大进样数等全面方法学验证，以支持非临床试验生物分析。本验证方案中提及的待测物浓度均为基于反义链和正义链的双链浓度。  \n本章节无动态数据呈现。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:10.642885",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "委托方",
+    "sop_content": "### **第一部分：核心准则**\n在委托方信息章节中，必须严格按照验证方案（Protocol）中提供的静态文本进行报告，确保信息完整、无偏差、无动态数据计算。仅在方案中有明确内容时进行复制；若方案中无数据或仅为空声明，则报告中声明“无数据”以保持GLP合规性记录的透明性。禁止添加、修改或推断任何未在方案中出现的委托方细节。\n\n### **第二部分：通用模板**\n从验证方案（Protocol）中提取委托方信息，采用表格格式直接复制静态文本至报告中。若方案中无数据，报告中声明“无数据”。具体指令：  \n1. 读取Protocol的委托方部分。  \n2. 若存在数据，填入以下表格模板（使用{{委托方名称}}、{{地址}}、{{邮编}}等占位符）；若无，替换为“无数据”声明。  \n   | 名称： | {{委托方名称}} |  \n   | --- | --- |  \n   | 地址： | {{地址}} |  \n   | 邮编： | {{邮编}} |  \n3. 确保表格排版与Protocol对齐，无额外解释。\n\n### **第三部分：报告示例**\n--- GLP 报告 (Report) ---  \n无数据",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:13.998191",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "摘要",
+    "sop_content": "### **第一部分：核心准则**\n在该章节中，报告必须以表格形式呈现待测物的名称和链类型信息，仅限于方案中指定的游离型待测物A的反义链和正义链。无具体数据或偏差时，使用声明式表述确认信息完整性，不引入任何计算或比较逻辑。若无额外数据支持，直接复制方案中定义的待测物描述，确保报告仅作为信息汇总，无需判定合规性。\n\n### **第二部分：通用模板**\n以表格格式报告待测物信息，使用以下结构：\n\n| 待测物 | {{链类型1}}；{{链类型2}} | {{链类型1}}；{{链类型2}} | {{链类型1}}；{{链类型2}} |\n\n- 从方案中提取{{待测物名称}}（如游离型待测物A）和相关链描述，填入占位符。\n- 若无偏差或数据，添加声明：\"该章节无偏离，信息基于方案确认。\"\n- 表格列数固定为4列，仅用于重复呈现相同信息以匹配报告布局。\n\n### **第三部分：报告示例**\n| 待测物 | 待测物A（游离型）反义链；待测物A（游离型）正义链 | 待测物A（游离型）反义链；待测物A（游离型）正义链 | 待测物A（游离型）反义链；待测物A（游离型）正义链 |",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:14.686239",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "质量保证声明",
+    "sop_content": "### **第一部分：核心准则**\n质量保证声明章节作为验证报告的独立部分，必须确保内容客观、完整地反映QAU对验证试验的审计情况，包括试验编号、名称及审计细节。准则要求：仅在有审计事件时填写表格；若无具体审计数据，则使用标准声明模板确认报告的准确性；严禁添加未审计的假设信息；所有描述必须符合GLP原则，确保数据真实性（排除标准品RoA及内标CoA）。\n\n### **第二部分：通用模板**\n生成质量保证声明时，按照以下指令执行：  \n1. 标题：QUALITY ASSURANCE STATEMENT  \n2. 插入占位符：验证试验编号（Validation Study Number）：{{Study_Number}}  \n   验证试验名称（Validation Study Title）：{{Study_Title}}  \n3. 声明文本：本机构QAU对该验证进行了如下检查，本验证报告如实描述试验材料和方法，准确反映验证过程中产生的原始数据（待测物A标准品的RoA及内标内标A标准品CoA除外）。  \n   英文翻译：The following events or documents of the study were audited by the QAU of test facility. The final validation report accurately and completely describes the materials and methods used in the study, and the results in the report accurately and completely reflect the raw data of the study (except the report of analysis (RoA) testing of reference standard 待测物A and certificate of analysis (CoA) of internal reference standard 内标A).  \n4. 表格：若有审计数据，填充以下结构；否则，插入空表格或省略。  \n| 检查类型 (Inspection Type) | 检查项目 (Phases Inspected) | 检查日期 (Inspection Date) | 报告VSD/TFM日期 (Reported to Validation Study Director/ Test Facility Management Date) |  \n|--------------------|------------------------|-----------------------|-------------------------------------------------------------|  \n| {{Inspection_Type}} | {{Phases_Inspected}} | {{Inspection_Date}} | {{Report_Date}} |\n\n### **第三部分：报告示例**\nQUALITY ASSURANCE STATEMENT  \n验证试验编号（Validation Study Number）：SS25071BV02  \n验证试验名称（Validation Study Title）：LC-MS/MS法测定食蟹猴EDTA-K2血浆样品中待测物A（游离型）反义链和正义链浓度的生物分析方法学验证（Method validation of an LC-MS/MS method for the determination of the antisense strand and sense strand of 待测物A (free form)  in Cynomolgus Monkey K2EDTA plasma samples）  \n本机构QAU对该验证进行了如下检查，本验证报告如实描述试验材料和方法，准确反映验证过程中产生的原始数据（待测物A标准品的RoA及内标内标A标准品CoA除外）。  \nThe following events or documents of the study were audited by the QAU of test facility. The final validation report accurately and completely describes the materials and methods used in the study, and the results in the report accurately and completely reflect the raw data of the study (except the report of analysis (RoA) testing of reference standard 待测物A and certificate of analysis (CoA) of internal reference standard 内标A).  \n| 检查类型 (Inspection Type) | 检查项目 (Phases Inspected) | 检查日期 (Inspection Date) | 报告VSD/TFM日期 (Reported to Validation Study Director/ Test Facility Management Date) |  \n|--------------------|------------------------|-----------------------|-------------------------------------------------------------|",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:33.495355",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "缩略语表",
+    "sop_content": "### **第一部分：核心准则**\n* 该章节用于列出验证方案中涉及的英文缩写及其全称和中文含义，作为报告的辅助参考，确保术语一致性和合规性。  \n* 必须严格按照方案提供的表格格式呈现，不得添加、删除或修改任何缩写项；若方案无缩写数据，则声明“无特定缩写定义”。  \n* 表格列固定为“英文缩写”、“英文全称”和“中文含义”，内容直接复制自方案，不涉及任何计算或动态数据提取。\n\n### **第二部分：通用模板**\n使用以下表格格式直接复制方案中的缩写列表至报告相应位置。若方案为空，则插入声明文本“该验证方案中无特定缩写定义”。  \n\n| 英文缩写 | 英文全称 | 中文含义 |  \n| --- | --- | --- |  \n{{Abbreviation_Table_Content}}  <!-- 从方案直接复制表格内容 -->  \n\n页码占位符：{{Page_Number}}。\n\n### **第三部分：报告示例**\n| 英文缩写 | 英文全称 | 中文含义 |  \n| --- | --- | --- |  \n| AQL | Above the Quantitation Limit | 高于定量上限 |  \n| CV | Coefficient of Variation | 变异系数 |  \n| COA | Certificate of Analysis | 检验分析合格证书 |  \n| FDA | Food and Drug Administration | 美国食品药品监督管理局 |  \n| GMQC | Geometric Mean Quality Control | 几何均值质控样品 |  \n| HPLC | High Performance Liquid Chromatography | 高效液相色谱 |  \n| HQC | Quality Control High | 高浓度质控样品 |  \n| ID | Identification | 编号 |  \n| IS | Internal Standard | 内标 |  \n| LC-MS/MS | Liquid Chromatography-tandem Mass Spectrometry | 液相色谱-串联质谱 |  \n| LLOQ | Lower Limit of Quantitation | 标准曲线最低定量浓度 |  \n| LQC | Quality Control Low | 低浓度质控样品 |  \n| MQC | Quality Control Mid | 中浓度质控样品 |  \n| MRM | Multiple Reaction Monitoring | 多反应监测 |  \n| MS | Mass Spectrometry | 质谱 |  \n| NA | Not Applicable | 不适用 |  \n| NMPA | National Medical Products Administration | 国家药品监督管理局 |  \n| OECD | Organization for Economic Co-operation and Development | 经济合作与发展组织 |  \n| QA | Quality Assurance | 质量保证 |  \n| QC | Quality Control | 质量控制 |  \n| SD | Standard Deviation | 标准偏差 |  \n| SOP | Standard Operating Procedure | 标准操作规程 |  \n| SST | System Suitability Test | 系统适应性测试 |  \n| ULOQ | Upper Limit of Quantitation | 标准曲线最高定量浓度 |",
+    "metadata": {
+      "complexity": "simple",
+      "score": 2,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:34.992738",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "验证报告",
+    "sop_content": "## 一、核心填写规则\n1. **文本一致性**：验证报告的基本信息（如试验名称、编号、负责人、委托方及机构详情）必须与验证方案（Protocol）中对应内容100%一致，直接复制静态文本，无任何修改或动态数据插入。\n2. **修约规则**：所有数值参数（如日期、编号）采用原始格式保留，不进行任何修约；文本字段（如地址、姓名）保持完整，不截断或省略。\n3. **无数据场景处理**：若方案中缺少特定字段，直接标注为“未提供”或从上下文推断；确保逻辑闭环，避免空值导致报告不完整。\n4. **折算因子识别**：本章节无计算或折算需求，若后续章节涉及（如浓度折算），须追溯方案中定义的基准公式；此处仅限于描述性填写，无统计参数要求。\n5. **合规底线**：报告开头必须完整呈现所有行政元数据，作为验证全流程的起始标识；禁止添加未在方案中出现的额外声明。\n\n## 二、通用标准化模板\n**验证报告标题与基本信息填写指令**：\n1. 从验证方案（Protocol）提取静态文本，填充以下模板结构。\n2. 占位符替换规则：使用方案中原值直接替换{{字段}}，无计算需求；若字段为空，填入“未提供”。\n3. 输出格式：表格或列表形式，确保商务正式语气。\n\n**模板**：\n| 验证试验名称： | {{Protocol_Trial_Name}}（直接复制方案中完整名称，包括方法描述、样品类型及待测物细节） |\n| --- | --- |\n| 验证试验编号： | {{Protocol_Trial_Number}}（从方案提取，无修约） |\n| 验证负责人： | {{Protocol_Responsible_Person}}（姓名直接复制） |\n| 委托方： | {{Protocol_Client_Name}}<br>{{Protocol_Client_Address}}（分行显示地址） |\n| 委托方负责人： | {{Protocol_Client_Responsible_Person}}（姓名直接复制） |\n| 试验机构： | {{Protocol_Institution_Name}}<br>{{Protocol_Institution_Address_1}}<br>{{Protocol_Institution_Address_2}}（多行地址完整呈现） |\n\n**执行路径**：从附件Protocol文档第1页提取数据 → 逐字段复制 → 验证一致性 → 插入报告开头。若无偏差，添加声明：“本报告基于验证方案SS25071BV02执行，无偏离。”\n\n## 三、报告示例\n| 验证试验名称： | LC-MS/MS法测定食蟹猴EDTA-K2血浆样品中待测物A（游离型）反义链和正义链浓度的生物分析方法学验证 |\n| --- | --- |\n| 验证试验编号： | SS25071BV02 |\n| 验证负责人： | 庄蒙 |\n| 委托方： | 委托方公司名<br>委托方公司地址 |\n| 委托方负责人： | 委托方负责人姓名 |\n| 试验机构： | 上海益诺思生物技术股份有限公司<br>中国（上海）自由贸易试验区郭守敬路199号<br>中国（上海）自由贸易试验区盛荣路777号",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:50.413466",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "GLP遵从性声明和签字页",
+    "sop_content": "### **第一部分：核心准则**\nGLP 合规声明必须声明验证试验的所有阶段在本机构完成，严格遵守验证方案及变更、机构相关 SOP，以及指定的 GLP 管理规范（NMPA 2017、US FDA 1978、OECD 1998）。声明试验期间无影响质量和完整性的因素。注明标准品和内标检测由指定外部机构在非 GLP 条件下完成。提供中英文双语版本，确保签名部分包括验证负责人姓名、职称和日期。无数据偏差时，直接使用静态声明文本。\n\n### **第二部分：通用模板**\nGLP Compliance Statement and Signature  \n验证试验编号（Validation Study Number）：{{Validation_Study_Number}}  \n验证试验名称（Validation Study Title）：{{Validation_Study_Title}}  \n\n本验证所有阶段均在本机构完成，遵从本验证方案及变更、本机构相关SOP及下列管理规范。试验期间未出现影响试验质量和完整性的因素。  \n{{GLP_Regulations_List}}  \n\n{{Standard_and_Internal_Standard_NonGLP_Note}}  \n\nThis validation study was conducted in this test facility following the validation protocol and amendment, relevant standard operating procedures (SOPs), and the following good laboratory practice (GLP) regulations. Nothing occurred that affected the quality and integrity of the study during the validation study.  \n{{GLP_Regulations_List_EN}}  \n\n{{Standard_and_Internal_Standard_NonGLP_Note_EN}}  \n\n{{Validation_Director_Name}}，{{Degree}}  \n验证负责人（Validation Study Director）  \n日期（Date）：{{Date}}\n\n### **第三部分：报告示例**\nGLP Compliance Statement and Signature  \n验证试验编号（Validation Study Number）：SS25071BV02  \n验证试验名称（Validation Study Title）：LC-MS/MS法测定食蟹猴EDTA-K2血浆样品中待测物A（游离型）反义链和正义链浓度的生物分析方法学验证（Method validation of an LC-MS/MS method for the determination of the antisense strand and sense strand of Analyte A (free form)  in Cynomolgus Monkey K2EDTA plasma samples）  \n\n本验证所有阶段均在本机构完成，遵从本验证方案及变更、本机构相关SOP及下列管理规范。试验期间未出现影响试验质量和完整性的因素。  \nNMPA（2017），药物非临床研究质量管理规范。  \nUS FDA (1978). 21CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.  \nOECD (1998). OECD Series on Principles of Good Laboratory Practice and Compliance Monitoring Number 1: OECD Principles on Good Laboratory Practice.  \n\n待测物A标准品的RoA检测由杭州诺泰诺和生物医药科技有限公司在非GLP条件下完成；内标内标A标准品CoA检测由GenScript在非GLP条件下完成。  \n\nThis validation study was conducted in this test facility following the validation protocol and amendment, relevant standard operating procedures (SOPs), and the following good laboratory practice (GLP) regulations. Nothing occurred that affected the quality and integrity of the study during the validation study.  \nNMPA (2017), Good Laboratory Practice for Nonclinical Laboratory Studies.  \nUS FDA (1978). 21CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.  \nOECD (1998). OECD Series on Principles of Good Laboratory Practice and Compliance Monitoring Number 1: OECD Principles on Good Laboratory Practice.  \n\nThe report of analysis (RoA） testing of reference standard 待测物A was performed by Hangzhou ApexTide Biomedical Technology Co., Ltd. under non-GLP conditions. The certificate of analysis (CoA） of internal reference standard 内标A was performed by GenScript under non-GLP conditions.  \n\n庄蒙（Meng Zhuang），B.S.  \n验证负责人（Validation Study Director）",
+    "metadata": {
+      "complexity": "simple",
+      "score": 1.0,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:50.461901",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "委托方负责人",
+    "sop_content": "### **第一部分：核心准则**\n在委托方信息章节的撰写中，必须严格从验证方案（Protocol）中提取静态信息，包括姓名、电话和电子邮件字段，仅报告实际提供的文本内容。如果任何字段为空或未指定，则明确标注为“无数据”或类似声明，避免推测或填充。确保信息完整性，不添加任何额外描述或分析，保持商务中立语气。\n\n### **第二部分：通用模板**\n使用以下表格格式从 Protocol 提取并呈现委托方负责人信息：\n\n| 字段： | {{负责人姓名}} |\n| --- | --- |\n| 电话： | {{电话号码}} |\n| 电子邮件： | {{电子邮件地址}} |\n\n如果 Protocol 中任何字段为空，则使用“无数据”填充对应占位符。指令执行路径：1. 从 Protocol 文档的指定章节定位表格；2. 直接复制静态文本到占位符；3. 若无内容，输出“无数据”并结束。\n\n### **第三部分：报告示例**\n| 姓名： | 委托方负责人姓名 |\n| --- | --- |\n| 电话： | **** |\n| 电子邮件： | **** |",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:12:56.609772",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "验证负责人",
+    "sop_content": "### **第一部分：核心准则**\n在 GLP 报告的个人信息章节中，必须记录验证方案中提供的联系人姓名、电话号码和电子邮件地址，作为方案执行者的身份标识。无数据偏离时，直接声明“无数据”以确认该章节仅为静态信息录入，无需动态计算或提取额外数据。确保信息准确复制，不得修改或省略任何字段。\n\n### **第二部分：通用模板**\n从验证方案中提取联系人信息，填入以下报告模板：  \n| 姓名： | {{Contact_Name}} |  \n| --- | --- |  \n| 电话： | {{Contact_Phone}} |  \n| 电子邮件： | {{Contact_Email}} |  \n|  |  |  \n--- GLP 报告 ---  \n无数据  \n\n### **第三部分：报告示例**\n--- GLP 报告 (Report) ---  \n无数据",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:13:22.519324",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "主要操作人员",
+    "sop_content": "### **第一部分：核心准则**\n在撰写人员变更注释章节时，必须严格基于验证方案（Protocol）中提供的作者或负责人信息进行声明性描述。核心规则包括：仅记录指定人员名单及变动处理逻辑；不引入任何数据计算或外部变量；如果方案中无变动信息，直接声明无偏离；确保描述保持简洁、事实性，不添加解释性内容；适用于无数据或低信息量场景时，输出标准化声明以确认合规。\n\n### **第二部分：通用模板**\n从验证方案（Protocol）中提取作者或负责人名单 {{Author_Names}}，并应用变动处理逻辑 {{Change_Note}}。如果无变动或无额外数据，插入标准声明“无数据”或“无偏离”。完整指令脚本：  \n1. 定位方案中的人员信息部分。  \n2. 复制名单并标注为 {{Author_Names}}。  \n3. 附加注释：如 {{Author_Names}} 发生变动，{{Change_Handling}}（无需更新方案或额外准备补充方案进行偏离解释）。  \n4. 如果方案为空或仅含声明，输出：{{Author_Names}}；注释：{{Change_Note}}。无数据时，直接声明“无数据”。\n\n### **第三部分：报告示例**\n严婕、沈佳艺  \n注释：如以上人员发生变动，无需更新方案或额外准备补充方案进行偏离解释。  \n无数据",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:13:27.347515",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "拟定验证日程",
+    "sop_content": "## 一、核心填写规则\n1. **日程信息提取与一致性核对**：从验证方案（Protocol）中直接提取批准日期、实验开始日期、实验结束日期及报告初稿完成时间，确保日期格式统一为“YYYY年MM月DD日”。若方案中存在注释，需完整复制至报告中，作为日程灵活性的说明。\n2. **无变动原则**：若实际日程与方案预估一致，直接声明“无偏离”；若发生变动，仅在注释中说明原因，无需修改方案或额外补充文件。统计参数（如日期差计算）修约至整数天，不涉及小数精度。\n3. **数据源优先级**：优先使用方案原文日期；若报告阶段发现实际日期变动，记录实际值并标注“实际完成日期：{{Actual_Date}}（原预估：{{Planned_Date}}）”。\n4. **逻辑闭环**：确保所有日期形成时间线（批准 → 开始 → 结束 → 报告），总时长计算公式：{{End_Date}} - {{Start_Date}}，修约至整数天。若无数据或无变动，输出标准声明“日程按方案执行，无偏离”。\n\n## 二、通用标准化模板\n**拟定验证日程**\n\n**方案批准日期**：{{Approval_Date}}  \n**实验开始日期**：{{Start_Date}}  \n**实验结束日期**：{{End_Date}}  \n**拟定报告初稿完成时间**：{{Draft_Completion_Date}}  \n\n**注释**：{{Schedule_Notes}}（时间表为预估，如日程安排发生变动，无需更新方案或额外准备补充方案进行偏离解释。若有实际变动，记录为：实际{{Changed_Event}}日期：{{Actual_Date}}，原因：{{Change_Reason}}。总实验时长：{{Duration_Days}}天。）\n\n**填写指令**：  \n1. 从验证方案附件提取{{Approval_Date}}、{{Start_Date}}、{{End_Date}}、{{Draft_Completion_Date}}和{{Schedule_Notes}}。  \n2. 计算时长：{{Duration_Days}} = ({{End_Date}} - {{Start_Date}}) 修约至整数。  \n3. 若无变动，插入声明：“日程严格按照方案执行，无任何偏离。”  \n4. 验证日期逻辑：确保{{Approval_Date}} ≤ {{Start_Date}} ≤ {{End_Date}} ≤ {{Draft_Completion_Date}}；若不符合，标记为“需核对”。\n\n## 三、报告示例\n**拟定验证日程**\n\n**方案批准日期**：2025年05月20日  \n**实验开始日期**：2025年05月20日  \n**实验结束日期**：2025年10月10日  \n**拟定报告初稿完成时间**：2025年10月20日  \n\n**注释**：时间表为预估，如日程安排发生变动，无需更新方案或额外准备补充方案进行偏离解释。总实验时长：143天。日程严格按照方案执行，无任何偏离。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:13:39.855362",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "遵从性",
+    "sop_content": "## 一、核心填写规则\n- 本章节用于声明验证过程的整体遵从性，包括遵守机构SOP、相关法规及标准品检测条件；无具体数据时，直接复制协议中静态文本，确保逻辑闭环。\n- 静态文本直接从验证方案（Protocol）中提取，无动态数据计算需求；若存在变更或非GLP条件，必须完整列出，不得省略。\n- 统计参数（如日期、版本号）修约规则：日期保留完整格式（如“2017”），版本号（如“Part 58”）保持原样，无需四舍五入；确保数值精度一致性，避免任何主观调整。\n- 无游离型/盐型折算逻辑适用，本章节不涉及数据转换；若未来扩展，须在协议中定义折算因子公式（如：游离型含量 = 盐型含量 × 分子量比），并保留小数点后2位。\n- 分支逻辑：若无偏离或数据，直接声明“所有阶段遵从方案”；若有非GLP例外，标注为“非GLP条件下完成”。\n\n## 二、通用标准化模板\n从验证方案（Protocol）中提取静态文本，填入以下模板；无数据时，直接使用占位符替换具体法规名称，确保商务语气正式、排版对齐。\n\n**模板指令：**\n1. 开头声明：本验证所有阶段均在本机构完成，遵从本验证方案及变更（若有）、本机构相关SOP及下列管理规范：\n2. 列出法规：{{Regulation_1}}（{{Year_1}}），{{Regulation_Description_1}}  \n   {{Regulation_2}} ({{Year_2}}). {{Regulation_Description_2}}.  \n   {{Regulation_3}} ({{Year_3}}). {{Regulation_Description_3}}.\n3. 标准品声明：待测物{{Analyte_Name}}标准品的CoA检测由{{Vendor_1}}在{{GLP_Condition_1}}条件下完成；内标{{Internal_Standard}}标准品CoA检测由{{Vendor_2}}在{{GLP_Condition_2}}条件下完成。\n4. 结束：（若无数据，添加“本章节无额外数据偏离”）。\n\n执行路径：从附件Protocol提取法规列表 -> 替换占位符 -> 输出完整段落；确保无计算，仅文本复制。\n\n## 三、报告示例\n本验证所有阶段均在本机构完成，遵从本验证方案及变更（若有）、本机构相关SOP及下列管理规范：  \nNMPA（2017），药物非临床研究质量管理规范  \nUS FDA (1978). 21CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.  \nOECD (1998). OECD Series on Principles of Good Laboratory Practice and Compliance Monitoring Number 1: OECD Principles on Good Laboratory Practice.  \n待测物A标准品的CoA检测由杭州诺泰诺和生物医药科技有限公司在非GLP条件下完成；内标HBV263标准品CoA检测由GenScript在非GLP条件下完成。  \n本章节无额外数据偏离。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:13:51.240231",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "摘要\t10",
+    "sop_content": "### **第一部分：核心准则**\n引言章节作为GLP报告的开端，必须严格遵循验证方案（Protocol）的基本信息框架，列出试验的行政和管理细节，包括名称、编号、目的、机构、负责人、人员、日程和指导原则。无具体数据或偏离时，使用声明式表述，确保信息完整性和可追溯性。所有内容应直接来源于Protocol，不得添加未验证的推测或外部信息。结构需与报告目录对齐，保持商务正式语气，避免冗余描述。\n\n### **第二部分：通用模板**\n生成引言章节时，按照以下步骤执行：\n1. 从Protocol提取静态信息：试验名称（{{Trial_Name}}）、编号（{{Trial_Number}}）、目的（{{Trial_Purpose}}）、试验机构（{{Testing_Institution}}）、委托方（{{Sponsor}}）、委托方负责人（{{Sponsor_Contact}}）、验证负责人（{{Validator_Lead}}）、主要操作人员（{{Key_Operators}}）、验证日程（{{Schedule}}）、指导原则（{{Guiding_Principles}}）。\n2. 按目录顺序组织子节（1.1至1.10），每个子节直接填入对应占位符值。\n3. 如果Protocol中某项为空，使用“根据验证方案，无具体信息”作为默认表述。\n4. 确保章节末尾过渡至下一主要节（如“材料和方法”），并在无数据情况下声明“本章节基于Protocol标准信息，无实验偏离”。\n\n模板脚本：\n```\n1\t引言\n1.1\t验证试验名称：{{Trial_Name}}\n1.2\t验证试验编号：{{Trial_Number}}\n1.3\t验证目的：{{Trial_Purpose}}\n1.4\t试验机构：{{Testing_Institution}}\n1.5\t委托方：{{Sponsor}}\n1.6\t委托方负责人：{{Sponsor_Contact}}\n1.7\t验证负责人：{{Validator_Lead}}\n1.8\t主要操作人员：{{Key_Operators}}\n1.9\t验证日程：{{Schedule}}\n1.10\t指导原则：{{Guiding_Principles}}\n\n[过渡声明]：本章节概述验证试验的基本信息，后续章节详述材料、方法及结果。\n```\n\n### **第三部分：报告示例**\n1\t引言\t13  \n1.1\t验证试验名称\t13  \n1.2\t验证试验编号\t13  \n1.3\t验证目的\t13  \n1.4\t试验机构\t13  \n1.5\t委托方\t13  \n1.6\t委托方负责人\t14  \n1.7\t验证负责人\t14  \n1.8\t主要操作人员\t14  \n1.9\t验证日程\t14  \n1.10\t指导原则\t14",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:14:10.133297",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "系统适用性",
+    "sop_content": "## 一、核心填写规则\n\n系统适用性章节的撰写必须基于验证方案的要求，考察检测仪器的正常运转状态，包括保留时间（RT）的变异系数（%CV）等统计参数。核心合规底线如下：\n\n1. **数据来源与提取**：从原始记录（如表2）中提取所有相关测定结果，包括每个分析批的保留时间（RT）数据。优先使用Excel或原始数据文件，确保数据完整性。若无具体数据，仅声明“按验证方案考察，结果符合标准”。\n   \n2. **统计参数计算与修约规则**：\n   - 计算%CV：%CV = (标准差 / 平均值) × 100。使用所有相关针次（例如，系统适用性试验中的多针数据）的RT值进行计算。\n   - 修约规则：平均值（Mean）和标准差（SD）保留1位小数；%CV保留1位小数（例如，6.3%）。若计算结果为整数，保留1位小数（如10.0%）。对于多批次数据，按批次分别计算，并报告整体符合性。\n   - 接受标准对比：将计算的%CV与验证方案中的阈值（如±X%）进行比较。若所有批次均≤阈值，则判定“符合”；若个别批次超标，需说明具体原因（如单针异常）并评估整体仪器状态（例如，无漂移则仍视为正常）。\n\n3. **判定逻辑**：\n   - 整体符合：所有结果均满足标准，声明仪器正常。\n   - 部分不符合：详细描述不符合批次（如批号、%CV值），分析原因（如特定针次异常），并基于整体数据（如其他针次无漂移）给出仪器状态评估。禁止忽略不符合情况，必须包含分支说明。\n   - 无数据情况：直接声明“按验证方案考察，无偏离，所有结果符合接受标准”。\n\n4. **表述原则**：使用客观、商务语气，避免主观推测。确保逻辑闭环：数据提取 → 计算 → 对比 → 判定 → 结论。长度控制在100-200字，引用表号（如表2）。\n\n## 二、通用标准化模板\n\n**Prompt指令（供AI Generator执行）**：\n1. 从附件[原始数据文件，如Excel表2]中提取系统适用性试验数据，包括每个分析批的待测物[物名，如A（游离型）]正义链的保留时间（RT）值（至少{{针次数}}针）。\n2. 计算每个批次的%CV：使用公式 %CV = (SD / Mean) × 100，其中Mean和SD基于所有RT值计算，修约至1位小数。\n3. 对比验证方案接受标准[{{阈值描述，如%CV ≤ X%}}]：\n   - 若所有批次%CV ≤ {{阈值}}，输出：“系统适用性按验证方案考察，测定结果见表{{表号}}，所有结果均符合接受标准，表明进样时检测仪器均处于正常运转状态。”\n   - 若存在不符合（如批{{批号}}的%CV = {{计算值}}% > {{阈值}}），补充分析：检查各针RT漂移，若无整体异常，输出：“但该分析批中[具体描述，如除第二针SST外的其他样品保留时间均未发生漂移]，表明仪器状态无异常。”\n4. 组合输出完整段落，确保引用表号，并以“。”结尾每个句子。总长度不超过200字。\n\n**填充示例占位符**：\n- {{表号}}：实际表号，如2。\n- {{批号}}：如5。\n- {{计算值}}：如6.3%。\n- {{阈值}}：方案中具体标准，如15.0%。\n\n## 三、报告示例\n\n系统适用性按验证方案考察，测定结果见表2，所有结果均符合接受标准，表明进样时检测仪器均处于正常运转状态。待测物A（游离型）正义链的分析批5中，待测物保留时间的变异系数（%CV）为6.3%，不满足接受标准，但该分析批中除第二针SST外的其他样品保留时间均未发生漂移，表明仪器状态无异常。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:14:15.835062",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "选择性",
+    "sop_content": "### **第一部分：核心准则**\n在选择性章节中，必须验证方法对待测物A（游离型）反义链和正义链的检测专一性，确保空白基质（血浆）无干扰峰干扰目标峰。接受标准：所有检测结果符合验证方案要求，无显著干扰峰。报告需引用代表性色谱图和数据表，确认选择性良好。若存在干扰，需描述偏离并评估影响；若无偏离，直接声明符合标准。\n\n### **第二部分：通用模板**\n1. 从验证方案中提取选择性考察要求，包括待测物和基质类型。\n2. 从原始数据中提取代表性色谱图编号和数据表编号。\n3. 检查所有结果是否符合验证方案接受标准：若符合，生成声明“选择性按验证方案考察，代表色谱图见附图（空白基质色谱图见{{Chromatogram_Figure_Number}}），测定结果见{{Table_Number}}，所有结果均符合接受标准。表明本方法测定{{Matrix_Type}}中待测物A（游离型）反义链和正义链的选择性良好，{{Matrix_Type}}基质对测定无干扰。”；若不符合，添加“存在干扰峰于{{Interference_Details}}，需进一步优化”。\n4. 确保报告引用附图和表格，保持商务语气。\n\n### **第三部分：报告示例**\n选择性按验证方案考察，代表色谱图见附图（空白基质色谱图见图1），测定结果见表4，所有结果均符合接受标准。表明本方法测定食蟹猴血浆中待测物A（游离型）反义链和正义链的选择性良好，血浆基质对测定无干扰。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:14:24.994534",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "待测物对内标的干扰",
+    "sop_content": "## 一、核心填写规则\n- **合规性底线**：该章节仅报告待测物对内标的干扰测试结果，无具体数据输入时，默认表述“按验证方案测定，结果符合接受标准”。若有数据，必须从原始记录（如表5）提取干扰结果，并核对数据源路径（例如：从Excel附件指定列提取原始读数）。严禁引入具体数值或计算公式；若涉及游离型/盐型折算，必须在数据提取前识别分子量比（例如：{{Molecular_Weight_Free}} / {{Molecular_Weight_Salt}}），但本章节无数据时跳过。所有统计参数（如干扰率）修约至小数点后1位，无数据时不适用。\n- **分支逻辑**：无数据/无偏离时，使用声明式表述；有数据时，提取干扰指标（例如：干扰百分比{{Interference_Percent}}），计算平均值（Mean）并修约为整数或小数点后1位，对比VP接受标准（例如：干扰≤{{Acceptance_Limit}}%），生成符合/不符合判定。\n- **数据源核对**：始终验证提取路径，例如“从原始Excel表5的‘干扰读数’列提取{{Sample_Readings}}，确保无空值或异常”。\n\n## 二、通用标准化模板\n1. **数据提取与核对**：从原始记录{{Data_Source_Table}}（如表5）提取待测物对内标的干扰读数{{Raw_Readings}}。核对路径：确认列标签匹配VP描述，无数据时标记为“按验证方案测定”。\n2. **计算逻辑**（若适用）：计算干扰率{{Interference_Percent}} = ({{Interference_Reading}} - {{Baseline_Reading}}) / {{Baseline_Reading}} × 100%，修约至小数点后1位。若涉及折算，使用公式{{Adjusted_Value}} = {{Raw_Value}} × ({{Molecular_Weight_Free}} / {{Molecular_Weight_Salt}})，修约至小数点后2位。无数据时跳过。\n3. **判定与填充**：对比VP接受标准{{Acceptance_Criteria}}（例如：干扰≤±{{Limit}}%）。结果符合时，填入“结果表明，待测物对内标的干扰符合接受标准”；不符合时，填入“结果表明，待测物对内标的干扰不符合接受标准，实际值为{{Calculated_Result}}”。\n4. **完整表述**：按验证方案测定，待测物对内标的干扰结果见表{{Table_Number}}。{{Judgment_Statement}}。\n\n## 三、报告示例\n按验证方案测定，待测物对内标的干扰结果见表5。结果表明，待测物对内标的干扰符合接受标准。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:14:26.687647",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "残留",
+    "sop_content": "## 一、核心填写规则\n- 严格依据验证方案（Protocol）中的残留接受标准进行结果判定，优先报告整体合规性，并在不符合时补充残留影响评估。\n- 数据源核对：所有残留结果必须明确来源于指定表（如表3），并核对分析批次（正义链/反义链）、样品类型（游离型/盐型）与检测参数的来源路径；若涉及游离型与盐型转换，应用预定义折算因子（例如，基于分子量比计算：折算因子 = 盐型分子量 / 游离型分子量），步骤为：1) 提取原始残留浓度；2) 乘以折算因子；3) 修约至验证方案指定位数（通常2位小数）；4) 与接受标准对比。\n- 对于不符合标准的批次，必须评估每个样品是否受前一残留影响（交叉污染逻辑）：若无影响，则声明不需剔除；若有影响，记录剔除样品并说明理由。\n- 表述原则：先总述合规结果，后详述例外；确保逻辑闭环，无具体数值依赖，使用占位符如{{Batch_Numbers}}表示不符合批次。\n\n## 二、通用标准化模板\n1. 数据提取与核对：从验证方案指定的检测表（如{{Table_Number}}）中提取残留结果，核对每个分析批次的待测物类型（{{Analyte_Type}}，如游离型/盐型）、链类型（正义链/反义链）与样品序列；若需折算，应用公式：调整后残留 = 原始残留 × {{Conversion_Factor}}，保留{{Decimal_Places}}位小数。\n2. 合规性判定：计算每个批次的残留值与接受标准{{Acceptance_Criteria}}（如≤{{Threshold_Value}}）的偏差；标记不符合批次为{{Non_Compliant_Batches}}。\n3. 残留影响评估：针对{{Non_Compliant_Batches}}，逐个样品检查前一残留是否超过{{Influence_Threshold}}（基于验证方案定义）；若无样品受影响，输出“经残留评估，这些分析批中无样品受残留影响而需要被剔除”；若有，输出“剔除受影响样品{{Affected_Samples}}，理由：{{Reason}}”。\n4. 撰写指令：  \n   “残留按验证方案测定，结果见表{{Table_Number}}。除{{Non_Compliant_Batches}}（{{Details}}），其余结果均符合接受标准。  \n   {{Non_Compliant_Batches}}的待测物残留超出标准，根据验证方案对分析批中每一个样品受到上一个样品残留的影响进行评价。经残留评估，{{Assessment_Outcome}}。”\n\n## 三、报告示例\n残留按验证方案测定，结果见表3。除待测物A（游离型）反义链的分析批6，以及待测物A（游离型）正义链的分析批3和6，其余结果均符合接受标准。  \n待测物A（游离型）反义链的分析批6，以及待测物A（游离型）正义链的分析批3和6的待测物残留超出标准，根据验证方案对分析批中每一个样品受到上一个样品残留的影响进行评价。经残留评估，这些分析批中无样品受残留影响而需要被剔除。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:14:44.419502",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "内标对待测物的干扰",
+    "sop_content": "## 一、核心填写规则\n- **数据来源与判定依据**：从验证方案中提取内标对待测物干扰的测试设计和接受标准；若方案无具体数据或标准，默认采用报告中声明的合规性判定。实际数据（如干扰百分比、峰面积比）从原始记录或表中提取，确保干扰值符合方案红线（例如，干扰偏差 ≤ 接受阈值，未指定时默认无显著干扰）。\n- **静态 vs 动态区分**：静态文本直接复制方案描述（如“按验证方案测定”）；动态数据包括测试结果引用（如表号）和判定语（基于实际值 vs 标准生成，例如“符合接受标准”或“略超阈值但可接受”）。\n- **计算逻辑原子化**：若涉及游离型/盐型待测物干扰折算，应用公式：游离型含量 = 盐型含量 × (分子量_游离型 / 分子量_盐型)，保留小数点后2位；干扰计算为 (内标峰面积 - 待测物干扰峰面积) / 内标峰面积 × 100%，结果四舍五入至1位小数。系统识别方案中所有折算因子（如分子量比），若无则报告原始干扰值。\n- **分支逻辑**：符合标准时使用肯定判定；不符合时描述偏差并说明影响（例如“干扰为 {{Interference_Percent}}%，超出 {{Acceptance_Threshold}}% 但不影响定量”）。\n- **通用化要求**：使用占位符表示变量（如 {{Table_Number}}、{{Interference_Result}}），确保逻辑闭环覆盖无数据场景。\n\n## 二、通用标准化模板\n1. **数据提取**：从附件/原始记录中提取内标对待测物干扰数据，包括峰面积、干扰百分比；若方案无数据，默认引用“按验证方案测定”。\n2. **计算与对比**：计算干扰值 {{Interference_Percent}} = (内标峰面积 - 干扰峰面积) / 内标峰面积 × 100%；若涉及折算，应用游离型/盐型公式后对比接受标准 {{Acceptance_Threshold}}。\n3. **填充指令**：生成文本：“按验证方案测定，内标对待测物的干扰结果见表{{Table_Number}}。结果表明，内标对待测物的干扰{{Judgment_Phrase}}接受标准。” 其中 {{Judgment_Phrase}} 为“符合”或“不符合，偏差为{{Deviation_Description}}”。\n4. **无数据处理**：若无具体结果，直接输出：“按验证方案测定，内标对待测物的干扰结果符合接受标准，无显著偏差。”\n\n## 三、报告示例\n按验证方案测定，内标对待测物的干扰结果见表5。结果表明，内标对待测物的干扰符合接受标准。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:14:45.193586",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "质控样品",
+    "sop_content": "### **第一部分：核心准则**\n在撰写该章节时，必须确认所有接受批的质控样品（除准确度及精密度分析批外）均按验证方案测定，并符合分析批接受标准。仅报告质控样品结果的符合性声明，不涉及具体数值计算或偏离描述。若无质控样品数据或所有批次均符合标准，则使用通用声明句式，确保表述简洁且逻辑闭环：引用结果表格并总结符合性。\n\n### **第二部分：通用模板**\n从验证方案中提取质控样品测定要求。从报告附件中提取质控样品结果，填入{{Table_Number}}。撰写时，使用以下指令脚本：  \n\"除准确度及精密度分析批的质控样品按验证方案测定，除准确度及精密度分析批的质控样品结果见{{Table_Number}}。结果表明，所有接受批的质控样品均符合分析批接受标准。\"  \n若无偏离，结束撰写；若存在不符合情况，添加分支：\"{{Non_Compliance_Batches}}批次质控样品不符合标准，详见{{Table_Number}}。\"\n\n### **第三部分：报告示例**\n除准确度及精密度分析批的质控样品按验证方案测定，除准确度及精密度分析批的质控样品结果见表10。结果表明，所有接受批的质控样品均符合分析批接受标准。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:15:45.416584",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "标准曲线及范围",
+    "sop_content": "## 一、核心填写规则\n1. **数据来源与呈现**：从验证方案中确认标准曲线测定执行情况；从原始记录（Excel附件）中提取回归方程、标准样品浓度点结果，并引用对应表格（表7、表8）和图表（图2）。若无具体数据，仅声明“按验证方案测定”。\n2. **线性范围判定**：基于标准曲线数据，计算并描述线性范围，使用统计参数如相关系数（r）≥0.99（修约至小数点后3位）作为合规阈值。线性范围表述为“{{最低浓度}}~{{最高浓度}} ng/mL”，保留3位有效数字。\n3. **统计参数修约规则**：浓度值保留3位有效数字（如10.000）；回归系数r保留至小数点后3位；若有折算因子（如游离型/盐型转换），应用公式：实际浓度 = 测得浓度 × {{折算因子}}（因子定义从VP中提取，若VP无数据，默认无折算）；所有计算步骤须原子化记录，例如：(1) 提取各浓度点峰面积；(2) 拟合回归方程 y = ax + b；(3) 计算r并修约；(4) 验证范围覆盖率。\n4. **合规性检查**：若线性范围未达预期（如r < 0.99），分支描述为“线性范围{{实际范围}}，相关系数{{r值}}，符合/不符合验证标准”；无数据时，使用声明式表述，无需计算。\n5. **通用化处理**：严禁硬编码具体数值，使用占位符如{{线性范围}}；确保逻辑闭环：取数 → 计算 → 对比 → 描述。\n\n## 二、通用标准化模板\n执行以下脚本指令生成报告片段：\n1. 从附件Excel提取标准曲线数据，包括回归方程、各浓度点结果；引用表格为“表{{表7号}}和表{{表8号}}”，图表为“图{{图2号}}”。\n2. 计算线性范围：基于最低/最高浓度点，应用折算因子公式（若适用）：{{实际浓度}} = {{测得浓度}} × {{折算因子}}（{{折算因子}}定义：{{从VP提取的具体描述}}，默认1.0若无）。\n3. 修约参数：浓度保留3位有效数字，r保留小数点后3位。\n4. 填充模板文本：\n   “标准曲线及范围按验证方案测定，方法验证中的各标准曲线回归方程及各标准样品浓度点测定结果见表{{表7号}}和表{{表8号}}，典型标准曲线见图{{图2号}}。结果表明，本方法测定食蟹猴血浆中待测物A（游离型）反义链和正义链的线性范围可达{{线性范围}} ng/mL{{合规判定}}。”\n   - 若r ≥ 0.99，{{合规判定}} = “。”；否则，{{合规判定}} = “，相关系数{{r值}}，{{符合/不符合}}验证标准。”\n5. 若无数据，输出简化版：“标准曲线及范围按验证方案测定，无偏离。”\n\n## 三、报告示例\n标准曲线及范围按验证方案测定，方法验证中的各标准曲线回归方程及各标准样品浓度点测定结果见表7和表8，典型标准曲线见图2。结果表明，本方法测定食蟹猴血浆中待测物A（游离型）反义链和正义链的线性范围可达10.000~10000.000 ng/mL。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:15:50.989499",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "批内/批间准确度及精密度",
+    "sop_content": "### 第一部分：核心准则\n* **定义**：该章节撰写时必须死守的\"法律\"。\n1. **数据源识别与核对**：从报告附件（如表9）中提取质控样品测定结果，确保覆盖待测物所有形式（游离型反义链、正义链）和浓度水平（除LLOQ QC及其他）。核对数据源完整性，包括批内/批间重复次数、实际偏差值和精密度CV%。若无数据，仅声明“按验证方案考察，无偏离”。\n2. **统计参数修约规则**：准确度偏差以百分比(%)表示，范围修约至小数点后一位（如-4.7%~6.1%）；单个偏差值修约至小数点后一位（如-4.1%）。精密度（CV%）最大值修约至小数点后一位（如5.8%）。所有计算基于原始测定数据，偏差计算公式：((测定值 - 理论值)/理论值) × 100%；CV% = (标准差/均值) × 100%。接受标准：准确度偏差≤±15.0%（LLOQ QC≤±20.0%），精密度CV%≤15.0%（LLOQ QC≤20.0%）。\n3. **合规判定逻辑**：逐一描述各子项（形式、浓度水平）的批内/批间准确度范围和精密度最大值。若所有值符合标准，结尾声明“结果表明，质控样品的批内、批间精密度和准确度均符合接受标准”；若不符合，列出具体超标项并说明影响。\n4. **通用化处理**：使用占位符描述范围和最大值（如{{Accuracy_Range}}、{{Precision_Max}}），确保不依赖具体数值。处理LLOQ QC作为独立子项。\n\n### 第二部分：通用模板\n* **定义**：可直接由 AI Generator 执行的脚本指令。\n1. 从验证方案（VP）确认考察要求，从报告附件（如表{{Table_Number}}）提取质控样品数据，包括待测物{{Analyte_Form}}（{{Chain_Type}}）的{{Concentration_Level}}（除LLOQ QC及其他）。\n2. 计算批内准确度偏差范围{{Accuracy_Intra_Range}}（%)、批内精密度最大值{{Precision_Intra_Max}}（%）；批间准确度偏差范围{{Accuracy_Inter_Range}}（%)、批间精密度最大值{{Precision_Inter_Max}}（%）。应用修约规则：范围/最大值保留小数点后一位。\n3. 按以下模板填充描述：\n   - 待测物{{Analyte_Form}}（{{Chain_Type}}）{{Concentration_Level}}的批内准确度偏差范围为{{Accuracy_Intra_Range}}，批内精密度最大值为{{Precision_Intra_Max}}；批间准确度偏差范围为{{Accuracy_Inter_Range}}，批间精密度最大值为{{Precision_Inter_Max}}。\n4. 重复步骤2-3覆盖所有子项（反义链/正义链、除LLOQ QC/LLOQ QC）。\n5. 基于计算结果判定：若所有{{Accuracy_Range}}在±15.0%内（LLOQ QC±20.0%）且{{Precision_Max}}≤15.0%（LLOQ QC≤20.0%），添加“结果表明，质控样品的批内、批间精密度和准确度均符合接受标准”。否则，添加分支描述“{{Specific_Item}}不符合标准，偏差/精密度为{{Outlier_Value}}”。\n6. 开头固定句：“批内/批间准确度及精密度按验证方案考察，根据质控样品测定结果计算准确度及精密度，结果见表{{Table_Number}}。”若无数据，替换为“按验证方案考察，无偏离，结果符合接受标准。”\n\n### 第三部分：报告示例\n* **定义**：一个真实、完整的片段，用于让下游 AI 理解最终的商务语气和排版格式。\n批内/批间准确度及精密度按验证方案考察，根据质控样品测定结果计算准确度及精密度，结果见表9。  \n待测物A（游离型）反义链除LLOQ QC以外的所有浓度质控的批内准确度偏差范围为-4.7%~6.1%，批内精密度最大值为5.8%；批间准确度偏差范围为-2.2%~3.3%，批间精密度最大值为5.9%。  \n待测物A（游离型）反义链LLOQ QC的批内准确度偏差范围为-5.5%~-3.4%，批内精密度最大值为10.6%；批间准确度偏差为-4.1%，批间精密度最大值为7.4%。  \n待测物A（游离型）正义链除LLOQ QC以外的所有浓度质控的批内准确度偏差范围为-6.0%~5.2%，批内精密度最大值为11.3%；批间准确度偏差范围为-1.4%~2.2%，批间精密度最大值为6.9%。  \n待测物A（游离型）正义链LLOQ QC的批内准确度偏差范围为-9.3%~19.8%，批内精密度最大值为7.7%；批间准确度偏差为3.4%，批间精密度最大值为13.4%。  \n结果表明，质控样品的批内、批间精密度和准确度均符合接受标准。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:16:17.958071",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "分析批最大进样数",
+    "sop_content": "## 一、核心填写规则\n- **数据来源定位**：从验证方案（Protocol）中提取分析批最大进样数的考察要求；若方案无具体数据，则从实验原始记录（如仪器日志或附件）中统计实际最大进样针数（{{Max_Injections}}），确保记录完整性。\n- **合规判定**：报告中必须声明“按验证方案考察”，并直接呈现实际最大进样数作为事实陈述；无接受标准阈值要求，仅需确保数据准确、无偏差。若实验中进样数异常（如超出仪器容量），需在报告中注明偏离并解释原因。\n- **通用化处理**：禁止使用具体数值，采用占位符{{Max_Injections}}表示最大进样针数；若方案为空或无偏离，简要声明符合方案考察，无需额外计算或折算因子。\n- **分支逻辑**：若实际进样数与方案预期不符，添加“本实验实际为{{Max_Injections}}针，符合/不符合方案要求”的判定描述；否则，使用标准事实表述。\n\n## 二、通用标准化模板\n撰写指令：  \n根据验证方案（Protocol）的要求，报告分析批最大进样数。步骤如下：  \n1. 从验证方案中确认考察依据，若方案无数据，则从实验记录（如仪器日志）提取实际最大进样针数{{Max_Injections}}。  \n2. 构建报告语句：使用以下模板填充数据，确保商务语气正式、简洁。  \n模板：  \n“分析批最大进样数按验证方案考察，本验证实验中最大进样针数为{{Max_Injections}}针。”  \n3. 若存在偏离，扩展为：“分析批最大进样数按验证方案考察，本验证实验中最大进样针数为{{Max_Injections}}针，[描述偏离情况，如‘超出预期X针，已评估影响’]。”  \n4. 验证输出：确保语句不含具体数值占位符替换后的结果，并对齐报告整体格式（无额外计算公式或折算因子，除非方案指定）。\n\n## 三、报告示例\n分析批最大进样数按验证方案考察，本验证实验中最大进样针数为122针。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 1.0,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:16:20.518030",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "基质效应按验证方案测定，结果见表6。",
+    "sop_content": "### **第一部分：核心准则**\n* **定义**：该章节撰写时必须死守的\"法律\"。\n\n基质效应试验评估生物基质对分析方法准确度的影响，使用低质量对照（LQC，标称浓度{{Nominal_LQC}} ng/mL）和高质量对照（HQC，标称浓度{{Nominal_HQC}} ng/mL）在至少3个生物基质批号中进行平行测定。每个批号计算3个平行样本的平均值（Mean）、标准差（SD）、变异系数（%CV = (SD / Mean) × 100）、准确度%（Accuracy% = (Mean / Nominal) × 100）和准确度偏差%（Bias% = Accuracy% - 100）。所有数值修约规则：浓度值保留3位小数，百分比值（%CV、Accuracy%、Bias%）保留1位小数；若计算结果超出接受标准（{{Acceptance_Criterion}}，例如Bias%在±{{Max_Bias}}%以内，%CV < {{Max_CV}}%），则判定为不符合，并描述偏差原因及影响；无数据或无偏差时，直接声明“结果表明基质效应符合接受标准”。数据从附件表{{Table_Number}}_ME提取，确保逻辑闭环：提取原始数据 → 计算统计参数 → 对比接受标准 → 生成判定描述。\n\n### **第二部分：通用模板**\n* **定义**：可直接由 AI Generator 执行的脚本指令。\n\n1. 从附件{{Table_Number}}_ME提取数据：针对每个生物基质批号{{Matrix_Batch}}，获取LQC和HQC的3个平行浓度值{{Conc_1}}、{{Conc_2}}、{{Conc_3}}。\n2. 计算统计参数：\n   - Mean = ({{Conc_1}} + {{Conc_2}} + {{Conc_3}}) / 3，修约至3位小数。\n   - SD = √[Σ({{Conc_i}} - Mean)^2 / (n-1)]，n=3，修约至3位小数。\n   - %CV = (SD / Mean) × 100，修约至1位小数。\n   - Accuracy% = (Mean / {{Nominal_Conc}}) × 100，修约至1位小数。\n   - Bias% = Accuracy% - 100，修约至1位小数。\n3. 汇总所有批号的总体Mean、SD、%CV、Accuracy%、Bias%，并对比{{Acceptance_Criterion}}。\n4. 生成描述：若所有Bias% ∈ [-{{Max_Bias}}, +{{Max_Bias}}]且%CV < {{Max_CV}}，输出“结果表明基质效应符合接受标准，结果见表{{Table_Number}}。”；否则，输出“基质效应在{{Specific_Batch}}批号的{{LQC_or_HQC}}中{{Deviation_Description}}（实际{{Calculated_Bias}}%），不符合{{Acceptance_Criterion}}，详见表{{Table_Number}}。”。插入表{{Table_Number}}，包含批号、浓度、统计参数列。\n\n### **第三部分：报告示例**\n* **定义**：一个真实、完整的片段，用于让下游 AI 理解最终的商务语气和排版格式。\n\n基质效应按验证方案测定，使用LQC（30 ng/mL）和HQC（7500 ng/mL）在生物基质批号KN-BM-25-196 48-50、148-150中进行评估。结果显示，LQC的总体准确度偏差%范围为0.9%~10.6%，HQC为0.4%~5.8%，%CV范围为0.8%~6.7%，均符合接受标准（Bias% ±15.0%，%CV <15.0%）。结果表明基质效应符合接受标准，结果见表6。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:16:22.431510",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "偏离",
+    "sop_content": "### **第一部分：核心准则**\n在报告撰写时，必须声明实验过程中无任何方案、方法或机构SOP的偏离发生。若存在偏离，则需记录具体细节并评估影响；否则，使用标准无偏离表述，确保声明简洁、事实性，无需额外解释或数据支持。\n\n### **第二部分：通用模板**\n从实验记录中确认无偏离发生后，填入以下模板：  \n“本实验过程中无方案、方法和本机构SOP的偏离发生。”  \n若有偏离，扩展为：“本实验过程中发生以下偏离：[偏离描述]，评估影响为[影响评估]。”\n\n### **第三部分：报告示例**\n本实验过程中无方案、方法和本机构SOP的偏离发生。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:16:53.847987",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "溶血效应",
+    "sop_content": "### **第一部分：核心准则**\n溶血效应验证章节必须报告按验证方案执行的测定结果，包括溶血条件下待测物定量数据的评估。判定标准基于实际数据与非溶血条件的比较：若溶血条件下待测物的定量结果（例如反义链和正义链浓度）与非溶血条件无显著差异，则结论为“无影响”；否则，需报告具体偏差并说明潜在影响。数据来源限于验证方案指定的表或附件，结论表述需客观、基于事实，避免主观推测。\n\n### **第二部分：通用模板**\n溶血效应按验证方案测定，结果见表{{Table_Number}}。结果表明，溶血对本方法定量测定{{Matrix_Type}}中待测物{{Analyte_Name}}（{{Form_Type}}）{{Chain_Types}}无影响。\n\n执行步骤：\n1. 从验证方案中提取溶血效应测试协议和数据表引用。\n2. 从原始记录或附件{{Table_Number}}中提取溶血条件下的定量数据（例如{{Analyte_Name}}浓度）。\n3. 比较溶血与非溶血条件数据：若偏差≤{{Acceptance_Criterion}}（例如±15%），填入“无影响”；否则，调整结论为“存在影响，偏差为{{Deviation_Value}}”。\n4. 插入占位符：{{Table_Number}}为实际表号，{{Matrix_Type}}为基质类型（如食蟹猴血浆），{{Analyte_Name}}为待测物名称，{{Form_Type}}为形式（如游离型），{{Chain_Types}}为链类型（如反义链和正义链）。\n\n### **第三部分：报告示例**\n溶血效应按验证方案测定，结果见表23。结果表明，溶血对本方法定量测定食蟹猴血浆中待测物A（游离型）反义链和正义链无影响。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:17:00.527350",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "结论",
+    "sop_content": "### **第一部分：核心准则**\n在分析方法验证的总结章节中，必须全面列出验证的实验参数及其成功状态，确认所有参数均符合预设接受标准（基于方案中的系统适用性要求）。如果无偏离或数据不足以报告具体数值，仅声明验证成功并重述方法适用性。动态部分包括具体方法名称、样品类型和待测物标识，必须从原始记录中提取；静态部分直接沿用方案描述。验证结论必须逻辑闭环：若所有参数通过，则声明方法可用于目标测定；若存在未通过项，需分支报告偏离并建议改进，但本模板默认无偏离场景。\n\n### **第二部分：通用模板**\n撰写指令：从验证方案（VP）中提取方法名称、样品类型和待测物描述；从报告记录（VR）中提取验证参数列表（系统适用性、残留、选择性等）。使用以下模板填充占位符，确保商务语气正式、客观，无具体数值暴露：\n\n“本实验对分析方法{{Method_Name}}进行了完全验证。本实验成功验证了{{Parameter_List}}。综上，本方法可以用于测定{{Sample_Type}}中的{{Analyte_Description}}。”\n\n- 数据流转路径：1. 从VP提取静态描述（如方法类型、样品矩阵）；2. 从VR原始记录汇总通过的参数列表，用逗号分隔；3. 若无偏离，直接填充成功声明；4. 结尾重述适用性结论。\n\n### **第三部分：报告示例**\n本实验对分析方法“LC-MS/MS方法测定食蟹猴EDTA-K2血浆样品中待测物A（游离型）（RESS25071）反义链和正义链的浓度”进行了完全验证。本实验成功验证了分析方法的系统适用性，残留，选择性，特异性，基质效应，标准曲线及范围，批内/批间准确度及精密度，提取回收率，稀释可靠性，样品短期稳定性，样品冻融稳定性，处理后样品稳定性，样品长期稳定性，全血稳定性，溶血效应和分析批最大进样针数。综上，本方法可以用于测定食蟹猴EDTA-K2血浆中的待测物A（游离型）反义链和正义链的浓度。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:17:00.727910",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "指导原则",
+    "sop_content": "## 一、核心填写规则\n指导原则章节的撰写必须遵循验证方案（VP）中引用的监管指导文件，包括Guidance for Industry Bioanalytical Method Validation (U.S. FDA, 2018)、Guideline on Bioanalytical Method Validation (EMA, 2012)和Bioanalytical Method Validation and Study Sample Analysis (ICH M10, 2022)，确保报告（VR）中所有方法学验证内容和接受标准与这些指导一致。识别VP中所有折算因子及其公式定义，例如内标HBV263的游离型含量计算：游离型含量 = 纯度 × 游离型分子量 / 盐分子量（具体为92.7% × 13800.06 / 14766.06 = 86.6%，但在通用SOP中仅保留公式逻辑，不使用具体数值）。静态文本直接从VP复制，如标准品信息、保存条件和来源；动态数据（如批号更新）从原始记录提取，并在VR中注明。若无实际数据或偏离，声明“本验证遵循上述指导，无偏离发生”。对于计算逻辑，确保原子化步骤：(1) 提取纯度、分子量值；(2) 应用公式计算游离型含量；(3) 修约至1位小数。合规性底线：所有描述必须确保方法学验证的接受标准（如选择性、基质效应等）与VP中定义的阈值（如±15.0%、%CV ≤15.0%）逻辑闭环，若不符合，触发分支逻辑记录调查或优化。\n\n## 二、通用标准化模板\n在“指导原则”章节中，首先列出引用的监管指导文件，使用以下格式：[文件全称]，[发布机构]，[年份]。随后概述材料和方法，包括标准品、内标、安全防护和剩余处理，采用表格形式呈现静态信息（如化合物名称、代码、批号、含量、保存条件、有效期、来源），并插入折算公式占位符：{{游离型含量}} = {{纯度}} × {{游离型分子量}} / {{盐分子量}} = {{计算结果}}（从原始记录提取{{纯度}}和分子量值，计算后修约至1位小数）。若信息更新，添加注释：若信息更新或使用新批次将记录在原始记录并呈现在验证报告中。从附件[原始记录]提取动态数据（如实际批号），填入表格。接下来描述分析系统，使用表格列出名称、生厂商/型号。概述储备液、工作液、标曲/质控样品配制和样品处理步骤，按编号列表呈现，确保步骤中包含体积、温度、离心条件等参数。方法学验证内容部分，逐项列出系统适用性、残留、选择性、特异性、基质效应、标准曲线及范围、准确度及精密度等，定义接受标准使用占位符（如待测物及内标保留时间%CV ≤ {{阈值1}}%（默认5.0%），峰面积比值%CV ≤ {{阈值2}}%（默认15.0%）），并为残留计算插入公式：残留因子 = 1 / (双空白峰面积 / 前ULOQ峰面积)；影响率 = 上一个峰面积 / 残留因子 / 下一个峰面积 × 100%。若数据为空，填入声明：{{无数据或无偏离}}，本验证遵循VP中指导原则，无需额外计算。\n\n## 三、报告示例\n指导原则  \n本验证遵循以下监管指导文件：  \nGuidance for Industry Bioanalytical Method Validation, U.S. FDA, 2018.  \nGuideline on Bioanalytical Method Validation, EMA, 2012.  \nBioanalytical Method Validation and Study Sample Analysis, ICH M10, 2022.  \n\n材料和方法  \n标准品  \n| 化合物名称： | 待测物A |  \n| --- | --- |  \n| 化合物代码： | RESS25071钠盐 |  \n| 标准品登记号： | KN-RS-25-0094 |  \n| 批号： | 250102 |  \n| 含量： | 91.3% |  \n| 保存条件： | -15 ~ -25 ºC，遮光，密封 |  \n| 有效期至： | 2026/01/19 |  \n| 来源： | 前沿生物药业（南京）股份有限公司 |  \n\n注释：若信息更新或使用新批次将记录在原始记录并呈现在验证报告中。  \n\n内标  \n| 化合物名称： | HBV263 |  \n| --- | --- |  \n| 化合物代码： | ISSS25071钠盐 |  \n| 标准品登记号： | KN-RS-25-0158 |  \n| 批号： | C177Y485G0-3 (1&2) |  \n| 纯度： | 92.7% |  \n| 保存条件： | -20 ºC |  \n| 有效期至： | 2026/04/02 |  \n| 来源： | GenScript |  \n\n游离型含量 = 纯度 × 游离型分子量 / 盐分子量 = 92.7% × 13800.06 / 14766.06 = 86.6%  \n注释：若信息更新或使用新批次将记录在原始记录并呈现在验证报告中。  \n\n安全防护  \n在标准品、内标配制及样品处理过程中需穿戴实验室防护服、手套等防护用品。  \n\n剩余标准品及内标的返还  \n本验证结束后未使用过的标准品及内标在全部试验结束后由本机构负责归还委托方，或由委托方书面授权处理。  \n\n材料和方法  \n方法SS25071-BA-001描述了本方法使用的仪器、软件、溶剂和试剂、基质以及配制和处理步骤。概述如下：采用液液萃取法针对30 µL食蟹猴EDTA-K2血浆样品进行待测物A提取，并以HBV263为内标采用LC-MS/MS仪器 ESI离子源负离子模式进行检测和定量。其中：  \n\n分析系统  \n| 名称 | 生厂商/型号 |  \n| --- | --- |  \n| 质谱仪 | AB SCIEX/TRIPLE QUADTM6500+ |  \n| 液相色谱系统 | Shimadzu/LC-30AD |  \n\n（储备液、工作液、标曲/质控样品配制和样品处理步骤按VP编号列表呈现，此处省略以示格式。）  \n\n方法学验证内容和接受标准  \n系统适用性  \n系统适用性考察是在分析批开始前进行以确保系统正常运转。处理至少1份系统适用性样品并连续进样至少3次，以最后3次进样来评估系统适用性。  \n接受标准：在同一分析批中待测物及内标保留时间的变异系数（%CV）应不超出5.0%，待测物与内标色谱峰面积比值的变异系数（%CV）应不超出15.0%。  \n\n（后续验证项如残留、选择性等按VP定义呈现。）  \n\n本验证遵循上述指导，无偏离发生。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:17:04.531161",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "回收率",
+    "sop_content": "### **第一部分：核心准则**\n* **定义**：该章节撰写时必须死守的\"法律\"。\n1. 从表11（待测物提取回收率）中提取每个浓度水平（LQC、MQC、HQC）的平均回收率（%）、变异系数（%CV），以及总体回收率（%）和总体变异系数（%CV）。回收率计算公式：(提取后峰面积比 / 未提取峰面积比) × 100%，修约至小数点后一位；平均值修约至小数点后一位；SD修约至小数点后一位；CV% = (SD / 平均值) × 100%，修约至小数点后一位。接受标准：每个浓度水平的回收率平均值在 {{Recovery_Range_Min}}% ~ {{Recovery_Range_Max}}% 之间，CV% ≤ {{CV_Max}}%；总体CV% ≤ {{Overall_CV_Max}}%。若不符合，需添加“结果不符合验证方案要求”声明。\n2. 从表12（内标提取回收率）中提取平均回收率（%）和CV（%）。回收率计算公式同上，修约规则同上。接受标准：平均回收率在 {{IS_Recovery_Range_Min}}% ~ {{IS_Recovery_Range_Max}}% 之间，CV% ≤ {{IS_CV_Max}}%。若不符合，需添加不符合声明。\n3. 针对游离型与盐型化合物，若VP中指定折算因子（如分子量比），则在计算前应用公式：盐型回收率 = 游离型回收率 × (游离型分子量 / 盐型分子量)，修约至小数点后一位；否则直接使用峰面积比计算。所有统计参数必须确保精度一致：百分比保留一位小数，CV%保留一位小数。\n4. 区分化合物类型（AS为游离型反义链、SS为游离型正义链），分别报告每个类型的浓度水平数据。若无折算因子，默认无额外转换。\n5. 分支逻辑：若数据符合标准，使用“结果表明...符合要求”表述；若不符合，插入“结果不符合验证方案要求，详见表X”。\n\n### **第二部分：通用模板**\n* **定义**：可直接由 AI Generator 执行的脚本指令。\n1. 从附件表11提取待测物提取回收率数据：对于{{Compound_Type}}（{{Chain_Type}}），计算LQC平均回收率{{LQC_Mean_Recovery}}%、MQC{{MQC_Mean_Recovery}}%、HQC{{HQC_Mean_Recovery}}%；各CV%分别为{{LQC_CV}}%、{{MQC_CV}}%、{{HQC_CV}}%；总体回收率{{Overall_Recovery}}%、总体CV{{Overall_CV}}%。对比VP接受标准{{Recovery_Range}}和{{CV_Max}}，若符合，生成描述：“以峰面积比计算的本方法测定{{Compound_Type}}（{{Chain_Type}}）每一浓度的提取回收率平均值在{{Min_Mean}}%~{{Max_Mean}}%之间，变异系数（%CV）均不大于{{Max_CV}}%；总体变异系数（%CV）为{{Overall_CV}}%。”；若不符合，添加“结果不符合验证方案要求”。\n2. 从附件表12提取内标提取回收率数据：计算平均回收率{{IS_Mean_Recovery}}%、CV{{IS_CV}}%。对比VP接受标准{{IS_Recovery_Range}}和{{IS_CV_Max}}，生成描述：“以峰面积比计算的本方法测量的内标的提取回收率平均值为{{IS_Mean_Recovery}}%，变异系数（%CV）为{{IS_CV}}%。”；若不符合，添加“结果不符合验证方案要求”。\n3. 若存在盐型-游离型折算：应用公式“盐型回收率 = {{Free_Recovery}} × ({{Free_MW}} / {{Salt_MW}} )”，修约后填入模板。引用表格：“结果见表11/12”。\n\n### **第三部分：报告示例**\n* **定义**：一个真实、完整的片段，用于让下游 AI 理解最终的商务语气和排版格式。\n待测物的提取回收率  \n待测物的提取回收率按验证方案测定，结果见表11。结果表明，以峰面积比计算的本方法测定低、中、高浓度待测物A（游离型）反义链每一浓度的提取回收率平均值在86.7%~87.3%之间，变异系数（%CV）均不大于3.6%；总体变异系数（%CV）为0.4%。待测物A（游离型）正义链每一浓度的提取回收率均值在83.9%~86.8%之间，变异系数（%CV）均不大于3.1%；总体变异系数（%CV）为1.7%。  \n内标的提取回收率  \n内标的提取回收率按验证方案测定，结果见表12。结果表明，以峰面积比计算的本方法测量的内标的提取回收率平均值为96.4%，变异系数（%CV）为1.5%。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 1.0,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:17:08.838767",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "稀释可靠性",
+    "sop_content": "### 第一部分：核心准则\n稀释可靠性章节评估样品稀释后检测结果的准确性和稳定性，必须基于验证方案（如稀释倍数50倍）从表13提取数据，包括检测日期、批次编号、DQC浓度、准确度偏差（%）、平均值、SD、CV（%）、准确度（%）和n值。计算逻辑原子化如下：  \n1. **准确度（%）计算**：(测定平均值 / 理论浓度) × 100，四舍五入保留1位小数。理论浓度为标示值（如100000 ng/mL）。  \n2. **准确度偏差（%）计算**：(测定值 - 理论浓度) / 理论浓度 × 100，四舍五入保留1位小数。  \n3. **CV（%）计算**：(SD / 平均值) × 100，四舍五入保留1位小数。  \n4. **游离型与盐型折算**：若数据涉及盐型（如RESS25071-SS），使用分子量因子转换为游离型等效浓度。因子定义为：{{Molecular_Weight_Ratio}}（盐型分子量 / 游离型分子量），计算公式：游离型浓度 = 盐型浓度 × (1 / {{Molecular_Weight_Ratio}})，保留原有效位数。仅在数据中明确盐型时应用；否则，默认游离型（如RESS25071-AS）无需折算。  \n合规底线：准确度须在{{Acceptable_Accuracy_Range}}（如±15.0%）内，CV ≤ {{Acceptable_CV_Limit}}（如≤15.0%）。若不符合，报告中添加“超出接受标准，需进一步评估”分支描述。结论基于全数据集判定稀释不影响准确性，仅当所有指标均合规时使用肯定表述。\n\n### 第二部分：通用模板\n从表13_Dilution提取数据：检测日期={{Detection_Date}}，批次编号={{Batch_Number}}，DQC稀释倍数={{Dilution_Factor}}（如50倍），理论浓度={{Theoretical_Concentration}}（如100000 ng/mL）。对于每个分析物（如{{Analyte_ID}}，区分游离型AS或盐型SS）：  \n1. 提取6个重复测定值，计算准确度偏差（%）= ({{Measured_Value}} - {{Theoretical_Concentration}}) / {{Theoretical_Concentration}} × 100。  \n2. 若盐型，应用折算：{{Free_Form_Concentration}} = {{Measured_Value}} × (1 / {{Molecular_Weight_Ratio}})；否则，直接使用{{Measured_Value}}。  \n3. 计算平均值={{Mean}}，SD={{SD}}，CV（%）={{CV}} = ({{SD}} / {{Mean}}) × 100，准确度（%）={{Accuracy}} = ({{Mean}} / {{Theoretical_Concentration}}) × 100，四舍五入保留1位小数，n={{n}}（如6）。  \n4. 对比{{Acceptable_Accuracy_Range}}和{{Acceptable_CV_Limit}}：若{{Accuracy}}在范围内且{{CV}} ≤ 限值，判定“合规”；否则，添加“不符合，偏差为{{Deviation_Details}}”。  \n填入报告：稀释可靠性按验证方案测定，结果见表13。结果表明{{Sample_Type}}样品经{{Dilution_Factor}}稀释后测定{{Compliance_Statement}}（如“不影响结果的准确性”或“影响准确性，CV为{{CV}}%超出{{Acceptable_CV_Limit}}”）。\n\n### 第三部分：报告示例\n稀释可靠性按验证方案测定，结果见表13。结果表明食蟹猴血浆样品经空白血浆稀释50倍后测定不影响结果的准确性。（基于RESS25071-AS：准确度105.6%，CV 5.3%；RESS25071-SS：准确度106.3%，CV 5.5%，均在±15.0%和≤15.0%内，无需盐型折算。）",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:17:13.709540",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "特殊情况说明",
+    "sop_content": "### **第一部分：核心准则**\n在章节撰写中，必须确认实验过程整体合规，无任何异常或偏离事件发生。若存在特殊情况（如设备故障或操作偏差），需在报告中明确记录并评估影响；否则，直接声明无特殊情况，以确保报告简洁且符合GLP完整性要求。动态检查点：审视原始记录中是否有未记录的异常，若无，则使用标准声明句。\n\n### **第二部分：通用模板**\n1. 检查附件中的实验原始记录和日志，确认无设备故障、操作偏差或环境异常等特殊事件。\n2. 若确认无特殊情况，填入以下模板语句至报告对应章节：  \n   \"本实验过程中{{无特殊情况描述}}。\"  \n   （其中，{{无特殊情况描述}} 固定为“无特殊情况发生”。）\n3. 若存在特殊情况，扩展为：\"本实验过程中{{特殊情况描述}}，{{影响评估}}。\" 并附证据引用。\n\n### **第三部分：报告示例**\n本实验过程中无特殊情况发生。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:17:14.972992",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "归档",
+    "sop_content": "### **第一部分：核心准则**\n在GLP报告的归档管理章节中，必须列出试验需要保留和归档的资料清单，包括但不限于验证负责人任命书、验证方案、原始记录、仪器打印数据、电子数据和验证报告。归档管理需遵循机构SOP，确保资料在验证报告签发后归档至机构档案室。无具体数据时，使用通用声明描述归档范围和流程，不添加额外细节。\n\n### **第二部分：通用模板**\n撰写时，直接使用以下模板语句，替换占位符为实际机构或试验信息：  \n本试验需要保留和归档的试验资料包括但不限于：{{验证负责人任命书}}、{{验证方案}}、{{原始记录}}、{{仪器打印数据}}、{{电子数据}}和{{验证报告}}。试验资料在验证报告签发后归档于{{机构名称}}档案室，根据{{机构SOP}}进行归档管理。\n\n### **第三部分：报告示例**\n本试验需要保留和归档的试验资料包括但不限于：验证负责人任命书、验证方案、原始记录，仪器打印的数据、电子数据和验证报告。试验资料在验证报告签发后归档于本机构档案室，根据本机构SOP进行归档管理。",
+    "metadata": {
+      "complexity": "simple",
+      "score": 5,
+      "iteration": 3,
+      "route": "simple_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:17:40.390726",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  },
+  {
+    "section_title": "稳定性",
+    "sop_content": "### **第一部分：核心准则**\n* **定义**：该章节撰写时必须死守的\"法律\"。\n1. **合规性判断标准**：所有稳定性测试（短期、冻融、处理后、长期、全血）必须基于验证方案（VP）中定义的接受标准执行，通常为准确度（%）在85.0-115.0%范围内（低质控LQC和高质控HQC均适用），变异系数（CV%）≤15.0%。若无VP明确标准，默认采用上述阈值。结果描述必须声明“稳定至少{{Storage_Duration}}”（基于放置/冻融/保存时间），仅当所有LQC和HQC数据均符合阈值时判定为“稳定”；若不符合，需报告偏差并说明影响。\n2. **数据提取与计算规则**：从Excel表（如表18_ST、表19_FT、表20_PSS、表21_LT、表22_WB）提取原始数据，包括检测日期、批次、LQC/HQC浓度、准确度偏差（%）、平均值、SD、CV（%）、n。计算逻辑：准确度（%）= (平均测得浓度 / 理论浓度) × 100，偏差（%）= (测得浓度 - 理论浓度) / 理论浓度 × 100；SD和CV%使用标准公式，修约规则：浓度保留1位小数，准确度/偏差/CV%保留1位小数（例如，CV 6.64%修约为6.6%，偏差-3.15%修约为-3.2%），时间计算为结束时间-开始时间（小时/天，保留2位小数）。无折算因子需求，除非VP指定反义链/正义链转换公式（若有，步骤：提取游离型浓度 × 分子量比系数 → 盐型等效浓度）。\n3. **分支逻辑**：若数据符合标准，描述为“均可稳定至少{{Storage_Duration}}”；若部分不符合，添加“偏差见表X，整体稳定性{{Pass/Fail}}”；参考其他报告（如SS25071BV01）仅用于储备液/工作液稳定性，无需重复计算。\n4. **通用化要求**：描述中禁止使用具体数值（如17小时、5次），统一使用占位符；覆盖反义链（AS）和正义链（SS）双轨数据，确保并行报告；若无数据，声明“按验证方案测定，结果符合预期，无偏差”。\n\n### **第二部分：通用模板**\n* **定义**：可直接由 AI Generator 执行的脚本指令。\n1. **数据提取路径**：从附件Excel表{{Table_ID}}（例如表18_ST）提取：试验条件（{{Test_Condition}}，如“室温白光下{{Storage_Duration}}”）、开始/结束时间、放置时间（{{Storage_Duration}}，单位：小时/天/次）、检测日期、批次编号、LQC理论浓度（{{LQC_Nominal}} ng/mL）、HQC理论浓度（{{HQC_Nominal}} ng/mL）、各重复测得浓度、准确度偏差（%）、平均值、SD、CV（%）、准确度（%）、n。分别处理AS（反义链）和SS（正义链）子表。\n2. **计算与修约步骤**（思维链CoT）：\n   - 步骤1：计算每个重复的准确度偏差（%）：(测得浓度 - 理论浓度) / 理论浓度 × 100，修约至1位小数。\n   - 步骤2：计算平均浓度 = SUM(测得浓度) / n，修约至1位小数。\n   - 步骤3：计算准确度（%）= (平均浓度 / 理论浓度) × 100，修约至1位小数。\n   - 步骤4：计算SD = SQRT[SUM((测得浓度 - 平均浓度)^2) / (n-1)]，修约至3位小数（用于CV）。\n   - 步骤5：计算CV（%）= (SD / 平均浓度) × 100，修约至1位小数。\n   - 步骤6：判断合规：若LQC和HQC准确度均在85.0-115.0%且CV≤15.0%，则Pass；否则Fail。\n   - 步骤7：计算{{Storage_Duration}}：结束时间 - 开始时间（转换为小时/天/次，修约2位小数）。\n3. **填充指令**：生成报告段落，使用以下模板结构：\n   - 短期稳定性：短期稳定性按验证方案测定，测定结果见表{{Table_ID}}。结果表明，食蟹猴血浆样品中待测物A（游离型）反义链和正义链均可在{{Test_Condition}}稳定至少{{Storage_Duration}}。\n   - 冻融稳定性：冻融稳定性按验证方案测定，结果见表{{Table_ID}}。结果表明，食蟹猴血浆样品待测物A（游离型）反义链和正义链均可稳定至少{{Freeze_Thaw_Cycles}}次（-70~-90 ºC/室温白光）冻融循环。\n   - 处理后样品的稳定性：处理后样品的稳定性按验证方案测定，结果见表{{Table_ID}}。结果表明，处理后的食蟹猴血浆样品中待测物A（游离型）反义链和正义链在自动进样器温度（5ºC）下均可稳定至少{{Storage_Duration}}。\n   - 长期稳定性：长期稳定性按验证方案测定，结果见表{{Table_ID}}。结果表明，食蟹猴血浆样品中待测物A（游离型）反义链和正义链可在超低温冰箱（-70~-90 ºC）均可稳定至少{{Storage_Days}}天。\n   - 全血稳定性：全血稳定性按验证方案及变更测定，结果见表{{Table_ID}}。结果表明，食蟹猴全血样品中待测物A（游离型）反义链和正义链在室温白光和冰水浴白光放置均可稳定至少{{Storage_Duration}}。\n   - 若Fail：插入“部分偏差{{Deviation_Summary}}，详见表{{Table_ID}}”。\n4. **输出检查**：确保AS/SS数据并行描述，表格引用准确；若无数据，输出“按验证方案测定，结果符合预期，无偏差”。\n\n### **第三部分：报告示例**\n* **定义**：一个真实、完整的片段，用于让下游 AI 理解最终的商务语气和排版格式。\n短期稳定性  \n短期稳定性按验证方案测定，测定结果见表18。结果表明，食蟹猴血浆样品中待测物A（游离型）反义链和正义链均可在室温白光条件下稳定至少17小时。  \n\n冻融稳定性  \n冻融稳定性按验证方案测定，结果见表19。结果表明，食蟹猴血浆样品待测物A（游离型）反义链和正义链均可稳定至少5次（-70~-90 ºC/室温白光）冻融循环。  \n\n处理后样品的稳定性  \n处理后样品的稳定性按验证方案测定，结果见表20。结果表明，处理后的食蟹猴血浆样品中待测物A（游离型）反义链和正义链在自动进样器温度（5ºC）下均可稳定至少158小时。  \n\n长期稳定性  \n长期稳定性按验证方案测定，结果见表21。结果表明，食蟹猴血浆样品中待测物A（游离型）反义链和正义链可在超低温冰箱（-70~-90 ºC）均可稳定至少101天。  \n\n全血稳定性  \n全血稳定性按验证方案及变更测定，结果见表22。结果表明，食蟹猴全血样品中待测物A（游离型）反义链和正义链在室温白光和冰水浴白光放置均可稳定至少2小时。",
+    "metadata": {
+      "complexity": "complex",
+      "score": 5,
+      "iteration": 3,
+      "route": "complex_path",
+      "is_pass": false,
+      "phase": 2,
+      "report_id": "SS25071BV02"
+    },
+    "created_at": "2026-03-21T13:18:28.413379",
+    "verified": false,
+    "report_id": "SS25071BV02"
+  }
+]

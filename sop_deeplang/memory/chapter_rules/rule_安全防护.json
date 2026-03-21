@@ -1,0 +1,11 @@
+{
+  "section_title": "安全防护",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
+      "rationale": "防止Writer在生成SOP时遗漏数值修约细节，确保Simulator能准确提取和应用通用计算标准，避免报告偏差",
+      "iteration": 1
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 import os
 import sys
-import subprocess
-import shutil
+import re
+import json
+import traceback
 from pathlib import Path
 from docx import Document
-import pandas as pd
 from typing import Dict, List, Any
 
 # Add project root to sys.path to import sandbox components
@@ -13,41 +13,54 @@ from sop_deeplang.sandbox.excel_parser import ExcelParser_Sandbox
 
 class DocxParser:
     """
-    Parses .docx files and extracts sections with headings, text, and tables.
+    Parses .docx files and extracts sections using TOC indices as ground truth.
     """
-    def __init__(self, file_path: str):
+    def __init__(self, file_path: str, report_id: str = "Unknown"):
         self.file_path = Path(file_path)
+        self.report_id = report_id
         if self.file_path.suffix == '.doc':
+            # Note: doc to docx conversion is expected to be handled externally or via local tools
             self.file_path = self._convert_doc_to_docx(self.file_path)
         
         self.doc = Document(str(self.file_path))
+        self.toc_list = self._extract_toc()
         self.sections = self._parse_sections()
 
     def _convert_doc_to_docx(self, doc_path: Path) -> Path:
-        """Converts .doc to .docx using textutil on Mac."""
         docx_path = doc_path.with_suffix('.docx')
-        # If docx already exists (e.g. from previous run), use it
         if docx_path.exists():
             return docx_path
-            
-        print(f"Converting {doc_path} to {docx_path}...")
-        try:
-            subprocess.run(['textutil', '-convert', 'docx', str(doc_path)], check=True)
-            return docx_path
-        except Exception as e:
-            print(f"Error converting {doc_path}: {e}")
-            return doc_path # Fallback, though likely to fail docx.Document()
+        return doc_path 
 
-    SPECIAL_HEADERS = [
-        "验证报告", "验证方案", "GLP遵从性声明和签字页", "签字页",
-        "质量保证声明", "目录", "附表目录", "附图目录", "缩略语表", "摘要"
-    ]
+    def _extract_toc(self) -> List[str]:
+        """Extracts and cleans the Table of Contents from the document."""
+        toc = []
+        for p in self.doc.paragraphs:
+            style_name = p.style.name.lower()
+            if style_name.startswith('toc') and not style_name.startswith('toc heading'):
+                text = p.text.strip()
+                if text:
+                    # Remove ending page numbers and dots/tabs
+                    clean_text = re.sub(r'[\t\.\s]+\d+$', '', text).strip()
+                    # Remove leading sequence numbers (e.g. "1.1 ", "1\t", "一、")
+                    clean_text = re.sub(r'^(\d+(\.\d+)*|[\u2460-\u2473]|[一二三四五六七八九十百]+[、.])[\t\s]*', '', clean_text).strip()
+                    if clean_text:
+                        toc.append(clean_text)
+        return toc
 
     def _parse_sections(self) -> Dict[str, str]:
-        """
-        Parses the document into a dictionary of {Heading: MarkdownText}.
-        """
+        """Parses the document body sections based on the TOC and fixed headers."""
         sections = {}
+        fixed_headers = [
+            "验证报告", "GLP遵从性声明和签字页", "签字页", "质量保证声明", 
+            "目录", "附表目录", "附图目录", "缩略语表", "摘要"
+        ]
+        
+        # Combine fixed headers with TOC to form a complete list of targets
+        all_targets = fixed_headers + self.toc_list
+        # Use normalized (no spaces) keys for robust matching
+        normalized_targets = {re.sub(r'\s+', '', t): t for t in all_targets if t}
+        
         current_heading = "Header/Title"
         current_content = []
 
@@ -57,48 +70,56 @@ class DocxParser:
                 sections[current_heading] = "\n".join(current_content).strip()
             current_content = []
 
-        # Iterate through paragraphs and tables
         for child in self.doc.element.body.iterchildren():
-            # Check if it's a paragraph
             if child.tag.endswith('p'):
-                para = [p for p in self.doc.paragraphs if p._element == child][0]
+                paras = [p for p in self.doc.paragraphs if p._element == child]
+                if not paras: continue
+                para = paras[0]
                 text = para.text.strip()
-                if not text:
+                if not text: continue
+                
+                # Skip the paragraphs that ARE the TOC entries
+                if para.style.name.lower().startswith('toc'):
                     continue
                 
-                # Check if it's a heading (Level 1-3) or a special keyword
-                is_heading = para.style.name.startswith('Heading') or para.style.name == 'Title'
-                # Special check for user-requested keywords that might not be styled as headings
-                if not is_heading:
-                    for sh in self.SPECIAL_HEADERS:
-                        if text == sh or (len(text) < 20 and sh in text):
-                            is_heading = True
+                # Clean the body text for matching (remove leading numbers)
+                body_clean = re.sub(r'^(\d+(\.\d+)*|[\u2460-\u2473]|[一二三四五六七八九十百]+[、.])[\t\s]*', '', text).strip()
+                norm_text = re.sub(r'\s+', '', body_clean)
+                
+                is_new_section = False
+                matched_heading = None
+                
+                if norm_text in normalized_targets:
+                    is_new_section = True
+                    matched_heading = normalized_targets[norm_text]
+                else:
+                    # Try partial match for fixed headers if they are long or contain extra text
+                    for fh in fixed_headers:
+                        if fh in text and len(text) < 50:
+                            is_new_section = True
+                            matched_heading = fh
                             break
-
-                if is_heading:
+                
+                if is_new_section:
                     flush()
-                    current_heading = text
+                    current_heading = matched_heading
                 else:
                     current_content.append(text)
-            
-            # Check if it's a table
+                    
             elif child.tag.endswith('tbl'):
-                table = [t for t in self.doc.tables if t._element == child][0]
-                md_table = self._table_to_markdown(table)
-                current_content.append(md_table)
+                tables = [t for t in self.doc.tables if t._element == child]
+                if tables:
+                    md_table = self._table_to_markdown(tables[0])
+                    current_content.append(md_table)
 
         flush()
         return sections
 
     def _table_to_markdown(self, table) -> str:
-        """Converts a docx table to a Markdown table."""
         rows = []
         for row in table.rows:
-            # Handle empty cells or merged cells gracefully
-            rows.append([cell.text.replace('\n', '<br>').strip() for cell in row.cells])
-        
-        if not rows:
-            return ""
+            rows.append([cell.text.replace('\n', '<br>').replace('|', '\\|').strip() for cell in row.cells])
+        if not rows: return ""
         
         headers = rows[0]
         md = f"| {' | '.join(headers)} |\n"
@@ -107,125 +128,118 @@ class DocxParser:
             md += f"| {' | '.join(row)} |\n"
         return md
 
-def merge_sources(protocol_sections: Dict[str, str], report_sections: Dict[str, str]) -> str:
+def merge_sources(protocol_sections: Dict[str, str], report_sections: Dict[str, str], toc_order: List[str]) -> List[Dict]:
     """
-    Merges Protocol and Report sections into a single Markdown string.
-    Aligns specific terms between protocol and report.
+    Merges Protocol and Report sections into a JSON-friendly list of dictionaries.
+    toc_order comes from the report's DocxParser.toc_list.
     """
-    # Mapping to standardize headings
+    fixed_headers = [
+        "验证报告", "GLP遵从性声明和签字页", "质量保证声明", 
+        "目录", "附表目录", "附图目录", "缩略语表", "摘要"
+    ]
+    
+    # We use a mapping to align Protocol names to Report names where they differ
     HEADER_MAPPING = {
         "验证方案": "验证报告",
         "签字页": "GLP遵从性声明和签字页"
     }
     
-    # Apply mapping to protocol sections
+    # Pre-process protocol sections with mapping
     mapped_protocol = {}
     for h, content in protocol_sections.items():
-        new_h = HEADER_MAPPING.get(h, h)
-        if new_h in mapped_protocol:
-            mapped_protocol[new_h] += "\n\n" + content
+        standardized_h = HEADER_MAPPING.get(h, h)
+        if standardized_h in mapped_protocol:
+            mapped_protocol[standardized_h] += "\n\n" + content
         else:
-            mapped_protocol[new_h] = content
+            mapped_protocol[standardized_h] = content
             
-    # Apply mapping to report sections (just in case they use protocol terms)
-    mapped_report = {}
-    for h, content in report_sections.items():
-        new_h = HEADER_MAPPING.get(h, h)
-        if new_h in mapped_report:
-            mapped_report[new_h] += "\n\n" + content
-        else:
-            mapped_report[new_h] = content
+    # Combine fixed headers and report's TOC for the final sequence
+    ordered_sequence = []
+    # 1. Fixed headers
+    for h in fixed_headers:
+        ordered_sequence.append(h)
+    # 2. Add TOC items from report (avoiding duplicates with fixed headers)
+    for h in toc_order:
+        if h not in ordered_sequence:
+            ordered_sequence.append(h)
+            
+    output_data = []
+    for heading in ordered_sequence:
+        p_content = mapped_protocol.get(heading, "")
+        r_content = report_sections.get(heading, "")
+        
+        # If both are empty, we still keep the title but content is empty
+        output_data.append({
+            "section_title": heading,
+            "original_content": p_content,
+            "generate_content": r_content,
+            "sop": ""
+        })
+        
+        # Stop at "归档" as requested
+        if heading == "归档" or heading == "9 归档" or "归档" in heading and len(heading) < 10:
+             # Further ensure it is the '归档' section
+             if heading.strip().endswith("归档") or heading.strip() == "归档":
+                 break
 
-    all_headings = list(mapped_protocol.keys())
-    # Add missing headings from report
-    for h in mapped_report.keys():
-        if h not in all_headings:
-            all_headings.append(h)
-    
-    # Sort headings to keep special ones at top if they exist
-    special_order = ["验证报告", "GLP遵从性声明和签字页", "质量保证声明", "目录", "附表目录", "附图目录", "缩略语表", "摘要"]
-    
-    ordered_headings = []
-    for sh in special_order:
-        if sh in all_headings:
-            ordered_headings.append(sh)
-            all_headings.remove(sh)
-    
-    # Keep "Header/Title" at the very top if it's still there
-    if "Header/Title" in all_headings:
-        ordered_headings.insert(0, "Header/Title")
-        all_headings.remove("Header/Title")
-        
-    ordered_headings.extend(all_headings)
-
-    md_output = "# Merged Protocol & Report Data\n\n"
-    
-    for heading in ordered_headings:
-        md_output += f"## {heading}\n\n"
-        
-        # Protocol Content
-        md_output += "### Protocol (方案)\n"
-        md_output += mapped_protocol.get(heading, "无数据") + "\n\n"
-        
-        # Report Content
-        md_output += "### Report (报告)\n"
-        md_output += mapped_report.get(heading, "无数据") + "\n\n"
-        
-        md_output += "---\n\n"
-        
-    return md_output
+    return output_data
 
 def process_directory(dir_path: Path, output_root: Path):
-    """Processes a single report directory."""
-    print(f"Processing directory: {dir_path.name}")
+    """Processes a single project directory."""
+    print(f"--- Processing: {dir_path.name} ---")
     
-    # Identify files and filter out temporary/hidden files
-    protocol_files = [f for f in dir_path.glob("*方案*") if not f.name.startswith((".", ".~"))]
-    report_files = [f for f in (list(dir_path.glob("*REPORT*")) + list(dir_path.glob("*报告*"))) if not f.name.startswith((".", ".~"))]
-    excel_files = [f for f in dir_path.glob("*.xlsx") if not f.name.startswith((".", ".~"))]
+    # Doc discovery
+    protocol_files = [f for f in dir_path.glob("*方案*.docx") if not f.name.startswith((".", ".~"))]
+    if not protocol_files:
+        protocol_files = [f for f in dir_path.glob("*方案*.doc") if not f.name.startswith((".", ".~"))]
+        
+    report_files = [f for f in (list(dir_path.glob("*REPORT*.docx")) + list(dir_path.glob("*报告*.docx"))) if not f.name.startswith((".", ".~"))]
+    if not report_files:
+        report_files = [f for f in (list(dir_path.glob("*REPORT*.doc")) + list(dir_path.glob("*报告*.doc"))) if not f.name.startswith((".", ".~"))]
     
-    # Use the main files (avoid hidden files or variants if possible)
     protocol_path = protocol_files[0] if protocol_files else None
     report_path = report_files[0] if report_files else None
-    excel_path = excel_files[0] if excel_files else None
     
+    if not report_path:
+        print(f"Skipping {dir_path.name}: No report file found.")
+        return
+
     report_id = dir_path.name
     report_out_dir = output_root / report_id
     report_out_dir.mkdir(parents=True, exist_ok=True)
     
-    # Process Word Docs
-    protocol_sections = DocxParser(str(protocol_path)).sections if protocol_path else {}
-    report_sections = DocxParser(str(report_path)).sections if report_path else {}
-    
-    merged_md = merge_sources(protocol_sections, report_sections)
-    with open(report_out_dir / "merged_docs.md", "w", encoding="utf-8") as f:
-        f.write(merged_md)
-    
-    # Process Excel
-    if excel_path:
-        excel_out_dir = report_out_dir / "excel_data"
-        excel_out_dir.mkdir(exist_ok=True)
-        try:
-            parser = ExcelParser_Sandbox(str(excel_path))
-            sheets_data = parser.parse_all_sheets()
-            for sheet_name, content in sheets_data.items():
-                safe_name = "".join([c if c.isalnum() else "_" for c in sheet_name])
-                with open(excel_out_dir / f"{safe_name}.md", "w", encoding="utf-8") as f:
-                    f.write(content)
-        except Exception as e:
-            print(f"Error parsing Excel {excel_path}: {e}")
+    try:
+        # Report parser is primary as it provides the TOC order
+        report_parser = DocxParser(str(report_path), report_id)
+        protocol_parser = DocxParser(str(protocol_path), report_id) if protocol_path else None
+        
+        protocol_sections = protocol_parser.sections if protocol_parser else {}
+        report_sections = report_parser.sections
+        
+        # Merge using the report's TOC sequence
+        merged_json = merge_sources(protocol_sections, report_sections, report_parser.toc_list)
+        
+        out_file = report_out_dir / "filtered_data.json"
+        with open(out_file, "w", encoding="utf-8") as f:
+            json.dump(merged_json, f, ensure_ascii=False, indent=4)
+        print(f"Successfully saved to {out_file}")
+            
+    except Exception as e:
+        print(f"Error processing {dir_path.name}: {e}")
+        traceback.print_exc()
 
 def main():
-    base_dir = Path("original_docx/BV报告")
-    output_root = Path("data_parsed")
+    base_dir = Path(r"D:\益诺思\sop生成\original_docx\BV报告")
+    output_root = Path(r"D:\益诺思\sop生成\data_parsed")
     
     if not base_dir.exists():
         print(f"Source directory {base_dir} not found.")
         return
 
-    for report_dir in base_dir.iterdir():
-        if report_dir.is_dir() and not report_dir.name.startswith("."):
-            process_directory(report_dir, output_root)
+    # Process all project directories
+    for project_dir in base_dir.iterdir():
+        if project_dir.is_dir() and not project_dir.name.startswith("."):
+            process_directory(project_dir, output_root)
 
 if __name__ == "__main__":
     main()

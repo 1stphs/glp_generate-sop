@@ -6,6 +6,12 @@
       "content": "SOP必须显性定义所有统计参数的修约规则，确保数值精度一致性",
       "rationale": "针对Reviewer反馈中统计参数修约不一致的问题，增加此要求以避免Writer生成SOP时遗漏精度定义，确保通用性和可检查性",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在生成 SOP 时，必须识别并包含 VP 中的折算因子及其公式定义",
+      "rationale": "Reviewer 反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保 Writer 通用模板覆盖数据源复杂性，避免类似遗漏",
+      "iteration": 2
     }
   ]
 }

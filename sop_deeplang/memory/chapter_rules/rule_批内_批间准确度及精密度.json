@@ -6,6 +6,18 @@
       "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
       "rationale": "防止因修约标准模糊导致的数值精度错误，确保Writer生成的SOP包含清晰可执行的格式规范",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则，确保精度一致性",
+      "rationale": "防止因修约规则缺失导致数值精度错误，强化Writer在生成SOP时对统计参数的标准化处理",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含数据源复杂性识别与核对步骤，确保所有参数来源明确",
+      "rationale": "Reviewer反馈表明Writer未充分考虑数据源复杂性，导致逻辑漏洞。添加此要求强化Writer在生成SOP时的源头验证，确保通用性和准确性。",
+      "iteration": 2
     }
   ]
 }

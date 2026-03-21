@@ -12,6 +12,12 @@
       "content": "SOP必须显式定义所有统计参数的修约规则",
       "rationale": "为避免因修约标准不清晰导致的数值精度错误，确保Writer在生成SOP时强制包含通用修约指导",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式包含数据折算因子及其公式定义，确保所有链类型计算路径完整",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求强化Writer识别并定义折算因子的能力，避免类似遗漏，确保SOP计算逻辑闭环",
+      "iteration": 2
     }
   ]
 }

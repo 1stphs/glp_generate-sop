@@ -6,6 +6,24 @@
       "content": "必须在SOP中明确定义所有统计参数的修约规则，确保一致性",
       "rationale": "针对Reviewer反馈中统计参数修约不精确的问题，防止Writer遗漏通用修约逻辑，提高SOP的准确性和可检查性",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显性包含游离型/盐型折算因子及公式定义",
+      "rationale": "针对反义链折算逻辑缺失的反馈，确保Writer在生成SOP时强制识别并纳入VP中的折算因子，避免类似遗漏",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在 SOP 中必须显式定义并包含所有数据折算因子的计算公式及其来源",
+      "rationale": "为防止遗漏折算逻辑，确保 SOP 全面覆盖数据处理步骤，提高报告的准确性和完整性",
+      "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "必须识别VP中折算因子并在SOP中包含公式定义与来源说明",
+      "rationale": "Reviewer反馈显示Simulator漏掉游离型/盐型折算逻辑，导致报告不完整。此要求确保Writer在生成SOP时强制包含折算因子处理，避免类似遗漏。",
+      "iteration": 1
     }
   ]
 }

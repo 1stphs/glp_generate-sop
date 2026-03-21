@@ -12,6 +12,12 @@
       "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
       "rationale": "确保Writer生成的SOP避免数值修约错误，提高报告的准确性和一致性，回应Reviewer对统计参数处理的反馈",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "在 SOP 中明确定义所有统计参数的修约规则，确保数值一致性",
+      "rationale": "为避免 Writer 在生成 SOP 时遗漏或错误处理数值修约，需强制要求显性定义通用修约标准，提升输出准确性和可检查性",
+      "iteration": 1
     }
   ]
 }

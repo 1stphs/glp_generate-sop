@@ -1,0 +1,275 @@
+FOUND TOC HEADER: 目录 | Style: Normal
+TOC Line -> 缩略语表	9 | Style: toc 1
+TOC Line -> 摘要	10 | Style: toc 1
+TOC Line -> 1	引言	13 | Style: toc 1
+TOC Line -> 1.1	验证试验名称	13 | Style: toc 2
+TOC Line -> 1.2	验证试验编号	13 | Style: toc 2
+TOC Line -> 1.3	验证目的	13 | Style: toc 2
+TOC Line -> 1.4	试验机构	13 | Style: toc 2
+TOC Line -> 1.5	委托方	13 | Style: toc 2
+TOC Line -> 1.6	委托方负责人	13 | Style: toc 2
+TOC Line -> 1.7	验证负责人	14 | Style: toc 2
+TOC Line -> 1.8	主要操作人员	14 | Style: toc 2
+TOC Line -> 1.9	验证日程	14 | Style: toc 2
+TOC Line -> 1.10	指导原则	14 | Style: toc 2
+TOC Line -> 2	材料和方法	14 | Style: toc 1
+TOC Line -> 2.1	标准品	14 | Style: toc 2
+TOC Line -> 2.2	内标	15 | Style: toc 2
+TOC Line -> 2.3	安全防护	15 | Style: toc 2
+TOC Line -> 2.4	剩余标准品及内标的返还	15 | Style: toc 2
+TOC Line -> 2.5	试剂	15 | Style: toc 2
+TOC Line -> 2.6	空白基质	15 | Style: toc 2
+TOC Line -> 2.7	主要仪器	15 | Style: toc 2
+TOC Line -> 2.8	材料和方法	16 | Style: toc 2
+TOC Line -> 2.9	标准曲线和质控样品的配制	16 | Style: toc 2
+TOC Line -> 3	实验实施	16 | Style: toc 1
+TOC Line -> 4	数据处理	16 | Style: toc 1
+TOC Line -> 5	方法学验证结果	17 | Style: toc 1
+TOC Line -> 5.1	系统适用性	17 | Style: toc 2
+TOC Line -> 5.2	残留	17 | Style: toc 2
+TOC Line -> 5.3	选择性	17 | Style: toc 2
+TOC Line -> 5.4	特异性	18 | Style: toc 2
+TOC Line -> 5.4.1	待测物对内标的干扰	18 | Style: toc 3
+TOC Line -> 5.4.2	内标对待测物的干扰	18 | Style: toc 3
+TOC Line -> 5.5	基质效应	18 | Style: toc 2
+TOC Line -> 5.6	标准曲线及范围	18 | Style: toc 2
+TOC Line -> 5.7	批内/批间准确度及精密度	18 | Style: toc 2
+TOC Line -> 5.8	质控样品	19 | Style: toc 2
+TOC Line -> 5.9	回收率	19 | Style: toc 2
+TOC Line -> 5.9.1	待测物的提取回收率	19 | Style: toc 3
+TOC Line -> 5.9.2	内标的提取回收率	19 | Style: toc 3
+TOC Line -> 5.10	稀释可靠性	19 | Style: toc 2
+TOC Line -> 5.11	稳定性	19 | Style: toc 2
+TOC Line -> 5.11.1	标准品储备液/工作液稳定性	19 | Style: toc 3
+TOC Line -> 5.11.2	内标储备液/工作液稳定性	20 | Style: toc 3
+TOC Line -> 5.11.3	质控样品稳定性	20 | Style: toc 3
+TOC Line -> 5.11.4	样品离心分离前基质中待测物稳定性	20 | Style: toc 3
+TOC Line -> 5.12	溶血效应	21 | Style: toc 2
+TOC Line -> 5.13	分析批最大进样数	21 | Style: toc 2
+TOC Line -> 6	结论	21 | Style: toc 1
+TOC Line -> 7	偏离	21 | Style: toc 1
+TOC Line -> 8	特殊情况说明	21 | Style: toc 1
+TOC Line -> 9	归档	22 | Style: toc 1
+TOC Line -> 附表	23 | Style: toc 1
+TOC Line -> 附图	64 | Style: toc 1
+TOC Line -> 附录I验证方案及变更	68 | Style: toc 1
+TOC Line -> 附录II分析方法	95 | Style: toc 1
+TOC Line -> 附录III质检报告	118 | Style: toc 1
+TOC Line -> 1.	BPR-30160639	118 | Style: toc 2
+TOC Line -> 2.	Vutrisiran（内标）	124 | Style: toc 2
+TOC Line -> 附录IV不同游离酸含量折算的标准曲线和质控样品的浓度对照表	125 | Style: toc 1
+TOC Line -> 附表目录 | Style: Normal
+TOC Line -> 表1批量样品检测情况列表	23 | Style: table of figures
+TOC Line -> 表2系统适用性	25 | Style: table of figures
+TOC Line -> 表3批量样品检测过程的残留	26 | Style: table of figures
+TOC Line -> 表4选择性考察	27 | Style: table of figures
+TOC Line -> 表5待测物与内标间的干扰	28 | Style: table of figures
+TOC Line -> 表6基质效应试验	29 | Style: table of figures
+TOC Line -> 表7标准曲线参数汇总	35 | Style: table of figures
+TOC Line -> 表8标准曲线回算浓度	38 | Style: table of figures
+TOC Line -> 表9批内、批间样品检测的精密度和准确度	42 | Style: table of figures
+TOC Line -> 表10质控样品浓度数据汇总（除准确度精密度分析批外）	48 | Style: table of figures
+TOC Line -> 表11待测物提取回收率：以待测物与内标的峰面积比计	50 | Style: table of figures
+TOC Line -> 表12内标提取回收率：以内标与待测物的峰面积比计	52 | Style: table of figures
+TOC Line -> 表13稀释可靠性	53 | Style: table of figures
+TOC Line -> 表14储备液短期稳定性	54 | Style: table of figures
+TOC Line -> 表15工作液短期稳定性（LLOQ和内标工作液稳定性）	55 | Style: table of figures
+TOC Line -> 表16储备液长期稳定性	56 | Style: table of figures
+TOC Line -> 表17工作液长期稳定性（LLOQ和内标工作液稳定性）	57 | Style: table of figures
+TOC Line -> 表18生物样品前处理过程中的稳定性	58 | Style: table of figures
+TOC Line -> 表19冻融稳定性	59 | Style: table of figures
+TOC Line -> 表20处理后样品的稳定性	60 | Style: table of figures
+TOC Line -> 表21生物基质中待测物的长期稳定性	61 | Style: table of figures
+TOC Line -> 表22样品离心分离前基质中待测物稳定性	62 | Style: table of figures
+TOC Line -> 表23溶血效应	63 | Style: table of figures
+TOC Line -> 附图目录 | Style: Normal
+TOC Line -> 图1空白基质图谱	64 | Style: table of figures
+TOC Line -> 图2标准曲线图	66 | Style: table of figures
+TOC Line -> 缩略语表 | Style: Normal
+TOC Line -> 摘要 | Style: Normal
+TOC Line -> 方法学验证结果表明，该方法符合生物样品测定要求，可用于SD大鼠血浆中BPR-30160639（游离型）反义链和正义链浓度的测定。 | Style: Normal
+TOC Line -> 引言 | Style: List Paragraph
+TOC Line -> 验证试验名称 | Style: Normal
+TOC Line -> LC-MS/MS方法测定SD大鼠EDTA-K2血浆样品中BPR-30160639（游离型）反义链和正义链浓度的生物分析方法学验证（Validation of an LC-MS/MS method for the determination of the concentration of the antisense strand and sense strand of BPR-30160639 (free form) in SD rat EDTA-K2 plasma samples） | Style: Normal
+TOC Line -> 验证试验编号 | Style: Normal
+TOC Line -> NS25315BV01 | Style: Normal
+TOC Line -> 验证目的 | Style: Normal
+TOC Line -> 本研究的目的是验证LC-MS/MS法测定SD大鼠EDTA-K2血浆样品中BPR-30160639（游离型）的浓度测定方法（NS25315-BA-001），包括该方法的系统适用性、残留、选择性、特异性、基质效应、标准曲线及范围、批内/批间准确度及精密度、提取回收率、稀释可靠性、稳定性、溶血效应和分析批最大进样数等，以支持非临床试验生物分析。 | Style: Normal
+TOC Line -> 试验机构 | Style: Normal
+TOC Line -> 委托方 | Style: Normal
+TOC Line -> 委托方负责人 | Style: Normal
+TOC Line -> 验证负责人 | Style: Normal
+TOC Line -> 主要操作人员 | Style: Normal
+TOC Line -> 雷伟、胡幸华 | Style: Normal
+TOC Line -> 验证日程 | Style: Normal
+TOC Line -> 方案批准日期：	2025年09月02日 | Style: Normal
+TOC Line -> 实验开始日期：	2025年09月02日 | Style: Normal
+TOC Line -> 实验结束日期：	2025年11月29日 | Style: Normal
+TOC Line -> 报告终稿完成时间：	2025年12月31日 | Style: Normal
+TOC Line -> 指导原则 | Style: Normal
+TOC Line -> Guidance for Industry Bioanalytical Method Validation, U.S. FDA, 2018 | Style: List Paragraph
+TOC Line -> Guideline on Bioanalytical Method Validation, EMA, 2012 | Style: List Paragraph
+TOC Line -> Bioanalytical Method Validation and Study Sample Analysis, ICH M10, 2022 | Style: List Paragraph
+TOC Line -> 材料和方法 | Style: List Paragraph
+TOC Line -> 标准品 | Style: Normal
+TOC Line -> 内标 | Style: Normal
+TOC Line -> 安全防护 | Style: Normal
+TOC Line -> 在标准品、内标配制及样品处理过程中需穿戴实验室防护服、手套等防护用品。 | Style: Normal
+TOC Line -> 剩余标准品及内标的返还 | Style: Normal
+TOC Line -> 本验证结束后未使用过的标准品及内标在全部试验结束后由本机构负责归还委托方，或由委托方书面授权处理。 | Style: Normal
+TOC Line -> 试剂 | Style: Normal
+TOC Line -> 空白基质 | Style: Normal
+TOC Line -> 主要仪器 | Style: Normal
+TOC Line -> AB SCIEX TRIPLE QUADTM 6500+质谱仪联合Shimadzu LC-30AD液相色谱系统（设备编号：EQ2019F1&EQ2020B2） | Style: Normal
+TOC Line -> 分析天平：[METTLER TOLEDO, XP56DR（设备编号：EQ201590）；METTLER TOLEDO，XPR6UD5（设备编号：EQ202003&EQ2018B23）] | Style: Normal
+TOC Line -> 色谱柱：Thermo Scientific DNA PacTMRP (2.1×50 mm, 4 μm) | Style: Normal
+TOC Line -> 材料和方法 | Style: Normal
+TOC Line -> 方法NS25315-BA-001描述了本方法使用的仪器、软件、溶剂和试剂、基质以及配制和处理步骤。概述如下：采用液液萃取法针对30 µL SD大鼠EDTA-K2血浆样品进行BPR-30160639（游离型）反义链和正义链提取，并以Vutrisiran为内标采用LC-MS/MS仪器 ESI离子源负离子模式进行检测和定量。详见附录II。 | Style: Normal
+TOC Line -> 标准曲线和质控样品的配制 | Style: Normal
+TOC Line -> 分析方法描述了标准曲线和质控样品的配制，详见附录II。标准曲线和质控样品历次配制情况如下： | Style: Normal
+TOC Line -> 注：标准曲线样品和质控样品均在已建立的稳定期内使用。 | Style: Normal
+TOC Line -> 实验实施 | Style: List Paragraph
+TOC Line -> 验证方案及变更描述了本实验的实施，详见附录I。 | Style: Normal
+TOC Line -> 数据处理 | Style: List Paragraph
+TOC Line -> 由于不同的程序有效数位的取舍方法有一定的差异，某些表格中的数值和单独计算结果相比可能会有所差别，但数据的完整性和连续性并不会受其影响。本试验中使用的主要计算机化系统包括： | Style: List Paragraph
+TOC Line -> 方法准确度、精密度及偏差由以下公式计算： | Style: Normal
+TOC Line -> 准确度： | Style: Normal
+TOC Line -> 精密度： | Style: List Paragraph
+TOC Line -> 偏差： | Style: List Paragraph
+TOC Line -> 数据修约方式： | Style: Normal
+TOC Line -> 方法学验证结果 | Style: List Paragraph
+TOC Line -> 本验证考察项目各分析批测定情况，见表1。分析批接受标准，详见附录II。 | Style: Normal
+TOC Line -> 系统适用性 | Style: Heading 2
+TOC Line -> 系统适用性按验证方案考察，测定结果见表2，所有结果均符合接受标准，表明进样时检测仪器均处于正常运转状态。 | Style: Normal
+TOC Line -> 残留 | Style: Heading 2
+TOC Line -> 残留按验证方案测定，结果见表3。所有结果均符合接受标准。 | Style: Normal
+TOC Line -> 选择性 | Style: Heading 2
+TOC Line -> 选择性按验证方案考察，代表色谱图见附图（空白基质色谱图见图1），测定结果见表4，所有结果均符合接受标准。表明本方法测定SD大鼠血浆中BPR-30160639（游离型）反义链和正义链的选择性良好，血浆基质对测定无干扰。 | Style: Normal
+TOC Line -> 特异性 | Style: Heading 2
+TOC Line -> 待测物对内标的干扰 | Style: Heading 3
+TOC Line -> 按验证方案测定，待测物对内标的干扰结果见表5。结果表明，待测物对内标的干扰符合接受标准。 | Style: Normal
+TOC Line -> 内标对待测物的干扰 | Style: Heading 3
+TOC Line -> 按验证方案测定，内标对待测物的干扰结果见表5。结果表明，内标对待测物的干扰符合接受标准。 | Style: Normal
+TOC Line -> 基质效应 | Style: Heading 2
+TOC Line -> 基质效应按验证方案测定，结果见表6。 | Style: Normal
+TOC Line -> 结果表明基质效应符合接受标准。 | Style: Normal
+TOC Line -> 标准曲线及范围 | Style: Heading 2
+TOC Line -> 标准曲线及范围按验证方案测定，方法验证中的各标准曲线回归方程及各标准样品浓度点测定结果见表7和表8，典型标准曲线见图2。结果表明，本方法测定SD大鼠血浆中BPR-30160639（游离型）反义链的线性范围可达4.894 ~ 4893.704 ng/mL。SD大鼠血浆中BPR-30160639（游离型）正义链的线性范围可达5.676 ~ 5676.268 ng/mL。 | Style: Normal
+TOC Line -> 批内/批间准确度及精密度 | Style: Heading 2
+TOC Line -> 批内/批间准确度及精密度按验证方案考察，根据质控样品测定结果计算准确度及精密度，结果见表9。 | Style: Plain Text
+TOC Line -> BPR-30160639（游离型）反义链除LLOQ QC以外的所有浓度质控的批内准确度偏差范围为-4.6 %~ 2.5%，批内精密度最大值为7.4%；批间准确度偏差范围为-3.3% ~ 1.2%，批间精密度最大值为5.6%。 | Style: Plain Text
+TOC Line -> BPR-30160639（游离型）反义链LLOQ QC的批内准确度偏差范围为-4.5% ~ -2.0%，批内精密度最大值为6.3%；批间准确度偏差为-2.9%，批间精密度最大值为5.5%。 | Style: Plain Text
+TOC Line -> BPR-30160639（游离型）正义链除LLOQ QC以外的所有浓度质控的批内准确度偏差范围为-7.0 %~ 0.4%，批内精密度最大值为12.2%；批间准确度偏差范围为-5.3% ~ -0.9%，批间精密度最大值为7.7%。 | Style: Plain Text
+TOC Line -> BPR-30160639（游离型）正义链LLOQ QC的批内准确度偏差范围为-9.8% ~ -4.2%，批内精密度最大值为19.9%；批间准确度偏差为-7.0%，批间精密度最大值为11.9%。 | Style: Plain Text
+TOC Line -> 结果表明，质控样品的批内、批间精密度和准确度均符合接受标准。 | Style: Plain Text
+TOC Line -> 质控样品 | Style: Heading 2
+TOC Line -> 除准确度及精密度分析批的质控样品按验证方案测定，除准确度及精密度分析批的质控样品结果见表10。结果表明，所有接受批的质控样品均符合分析批接受标准。 | Style: Normal
+TOC Line -> 回收率 | Style: Heading 2
+TOC Line -> 待测物的提取回收率 | Style: Normal
+TOC Line -> 待测物的提取回收率按验证方案测定，结果见表11。结果表明，以峰面积比计算的本方法测定低、中、高浓度BPR-30160639（游离型）反义链每一浓度的提取回收率平均值在86.4%~92.3%之间，变异系数（%CV）均不大于3.7%；总体变异系数（%CV）为3.5%。BPR-30160639（游离型）正义链每一浓度的提取回收率均值在87.1%~88.1%之间，变异系数（%CV）均不大于2.3%；总体变异系数（%CV）为0.6%。 | Style: Normal
+TOC Line -> 内标的提取回收率 | Style: Normal
+TOC Line -> 内标的提取回收率按验证方案测定，结果见表12。结果表明，以峰面积比计算的本方法测量的内标的提取回收率平均值为92.6%，变异系数（%CV）为1.9%。 | Style: Plain Text
+TOC Line -> 稀释可靠性 | Style: Heading 2
+TOC Line -> 稀释可靠性按验证方案测定，结果见表13。结果表明SD大鼠血浆样品经空白血浆稀释20倍后测定不影响结果的准确性。 | Style: Normal
+TOC Line -> 稳定性 | Style: Heading 2
+TOC Line -> 标准品储备液/工作液稳定性 | Style: Normal
+TOC Line -> 标准品储备液稳定性按验证方案测定，结果见表14和表16。结果表明BPR-30160639（游离型）反义链和正义链标准品储备液可在室温白光条件下稳定至少22小时，在超低温冰箱（-70~-90 ºC）稳定至少71天。 | Style: Normal
+TOC Line -> 标准品工作液稳定性按验证方案测定，结果见表15和表17。结果表明BPR-30160639（游离型）反义链和正义链工作液均可在室温白光条件下稳定至少22小时，在超低温冰箱（-70~-90 ºC）稳定至少71天。 | Style: Normal
+TOC Line -> 内标储备液/工作液稳定性 | Style: Normal
+TOC Line -> 内标储备液稳定性按验证方案测定，结果见表14和表16。结果表明内标储备液可在室温白光条件下稳定至少22小时，可在超低温冰箱（-70~-90 ºC）稳定至少71天。 | Style: Normal
+TOC Line -> 内标工作液稳定性按验证方案测定，结果见表15和表17。结果表明内标工作液可在室温白光条件下稳定至少22小时，可在超低温冰箱（-70~-90 ºC）稳定至少71天。 | Style: Normal
+TOC Line -> 质控样品稳定性 | Style: Normal
+TOC Line -> 生物样品前处理过程中的稳定性 | Style: List Paragraph
+TOC Line -> 生物样品前处理过程中的稳定性按验证方案测定，测定结果见表18。结果表明，SD大鼠血浆样品中BPR-30160639（游离型）反义链和正义链均可在冰水浴白光条件下稳定至少21小时。 | Style: Normal
+TOC Line -> 冻融稳定性 | Style: List Paragraph
+TOC Line -> 冻融稳定性按验证方案测定，结果见表19。结果表明，SD大鼠血浆样品BPR-30160639（游离型）反义链和正义链均可稳定至少4次（-70~-90 ºC/冰水浴白光）冻融循环。 | Style: Normal
+TOC Line -> 处理后样品的稳定性 | Style: List Paragraph
+TOC Line -> 处理后样品的稳定性按验证方案测定，结果见表20。结果表明，处理后的SD大鼠血浆样品中BPR-30160639（游离型）反义链在自动进样器温度（5ºC）下可稳定至少135小时；BPR-30160639（游离型）正义链在自动进样器温度（5ºC）下可稳定至少92小时 | Style: Normal
+TOC Line -> 生物基质中待测物的长期稳定性 | Style: List Paragraph
+TOC Line -> 生物基质中待测物的长期稳定性按验证方案测定，结果见表21。结果表明，SD大鼠血浆样品中BPR-30160639（游离型）反义链和正义链可在超低温冰箱（-70~-90 ºC）均可稳定至少85天。 | Style: Normal
+TOC Line -> 样品离心分离前基质中待测物稳定性 | Style: Normal
+TOC Line -> 样品离心分离前基质中待测物稳定性按验证方案测定，结果见表22。结果表明，SD大鼠全血样品中BPR-30160639（游离型）反义链和正义链在冰水浴白光放置均可稳定至少1.5小时。 | Style: Normal
+TOC Line -> 溶血效应 | Style: Heading 2
+TOC Line -> 溶血效应按验证方案测定，结果见表23。结果表明，溶血对本方法定量测定SD大鼠血浆中BPR-30160639（游离型）反义链和正义链无影响。 | Style: Normal
+TOC Line -> 分析批最大进样数 | Style: Heading 2
+TOC Line -> 分析批最大进样数按验证方案考察，本验证实验中最大进样针数为106针。 | Style: Normal
+TOC Line -> 结论 | Style: Heading 1
+TOC Line -> 本实验对分析方法“LC-MS/MS方法测定SD大鼠EDTA-K2血浆样品中BPR-30160639（游离型）（RENS25315）反义链和正义链的浓度”进行了完全验证。本实验成功验证了分析方法的系统适用性，残留，选择性，特异性，基质效应，标准曲线及范围，批内/批间准确度及精密度，提取回收率，稀释可靠性，储备液/工作液稳定性，生物样品前处理过程中的稳定性，样品冻融稳定性，处理后样品稳定性，生物基质中待测物的长期稳定性，样品离心分离前基质中待测物稳定性，溶血效应和分析批最大进样针数。 | Style: Normal
+TOC Line -> 综上，本方法可以用于测定SD大鼠EDTA-K2血浆中的BPR-30160639（游离型）反义链和正义链的浓度。 | Style: Normal
+TOC Line -> 偏离 | Style: Heading 1
+TOC Line -> 本实验过程中无方案及变更、方法和本机构SOP的偏离发生。 | Style: Normal
+TOC Line -> 特殊情况说明 | Style: Heading 1
+TOC Line -> 于2025年08月25日与委托方邮件确认BPR-30160639标准品（批号：KA066-202508001）为钠盐，游离酸含量为83.26%（即含量×游离酸分子量÷盐分子量=88.0%×15066.94÷15924.23=83.26%）。本验证使用83.26%作为游离酸含量折算的BPR-30160639（游离型）反义链的标准曲线浓度范围为4.630 ng/mL到4629.805 ng/mL；标准曲线样品的浓度分别为：4.630、9.260、46.298、231.490、925.961、1851.922、3703.844和4629.805 ng/mL；质控样品的浓度分别为4.630 ng/mL（定量下限）、13.889 ng/mL（低）、138.894 ng/mL（几何均值）、1388.942 ng/mL（中）和3472.354 ng/mL（高）。正义链的标准曲线浓度范围为5.370 ng/mL到5370.168 ng/mL；标准曲线样品的浓度分别为：5.370、10.740、53.702、268.508、1074.034、2148.067、4296.134和5370.168 ng/mL；质控样品的浓度分别为5.370 ng/mL（定量下限）、16.111 ng/mL（低）、161.105 ng/mL（几何均值）、1611.050 ng/mL（中）和4027.626 ng/mL（高）。 | Style: Normal
+TOC Line -> 于2025年12月23日委托方告知CoA中的含量不包含钠盐，游离酸含量应为88.0%。使用88.0%作为游离酸含量折算的BPR-30160639（游离型）反义链的标准曲线浓度范围为4.894 ng/mL到4893.704 ng/mL；标准曲线样品的浓度分别为：4.894、9.787、48.937、244.685、978.741、1957.482、3914.963和4893.704 ng/mL；质控样品的浓度分别为4.894 ng/mL（定量下限）、14.681 ng/mL（低）、146.811 ng/mL（几何均值）、1468.111 ng/mL（中）和3670.278 ng/mL（高）。正义链的标准曲线浓度范围为5.676 ng/mL到5676.268 ng/mL；标准曲线样品的浓度分别为：5.676、11.353、56.763、283.813、1135.254、2270.507、4541.014和5676.268 ng/mL；质控样品的浓度分别为5.676 ng/mL（定量下限）、17.029 ng/mL（低）、170.288 ng/mL（几何均值）、1702.880 ng/mL（中）和4257.201 ng/mL（高）。 | Style: Normal
+TOC Line -> 原始记录与验证报告中均以83.26%为游离酸含量折算的浓度数据呈现，不同游离酸含量折算的标准曲线和质控样品的浓度对照表见附录IV，特此说明。 | Style: Normal
+TOC Line -> 归档 | Style: Heading 1
+TOC Line -> 本试验需要保留和归档的试验资料包括但不限于：验证负责人任命书、验证方案和变更、原始记录，仪器打印的数据、电子数据和验证报告。试验资料在验证报告签发后归档于本机构档案室，根据本机构SOP进行归档管理。 | Style: Normal
+TOC Line -> 附表 | Style: Heading 1
+TOC Line -> 表1批量样品检测情况列表 | Style: Heading 2
+TOC Line -> 表2系统适用性 | Style: Heading 2
+TOC Line -> 表3批量样品检测过程的残留 | Style: Heading 2
+TOC Line -> 表4选择性考察 | Style: Heading 2
+TOC Line -> 表5待测物与内标间的干扰 | Style: Heading 2
+TOC Line -> 表6基质效应试验 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为14.681和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为17.029和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表7标准曲线参数汇总 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LLOQ和ULOQ样品浓度为4.894和4893.704 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LLOQ和ULOQ样品浓度为5.676和5676.268 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LLOQ和ULOQ样品浓度为5.676和5676.268 ng/mL。 | Style: Normal
+TOC Line -> 表8标准曲线回算浓度 | Style: Heading 2
+TOC Line -> 表9批内、批间样品检测的精密度和准确度 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的质控样品浓度为5.676 ng/mL、17.029 ng/mL、170.288 ng/mL、1702.880 ng/mL和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表10质控样品浓度数据汇总（除准确度精密度分析批外） | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的质控样品浓度为14.681 ng/mL、146.811 ng/mL、1468.111 ng/mL和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的质控样品浓度为17.029 ng/mL、170.288 ng/mL、1702.880 ng/mL和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表11待测物提取回收率：以待测物与内标的峰面积比计 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的质控样品浓度为14.681 ng/mL、1468.111 ng/mL和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的质控样品浓度为17.029 ng/mL、1702.880 ng/mL和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表12内标提取回收率：以内标与待测物的峰面积比计 | Style: Heading 2
+TOC Line -> 表13稀释可靠性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的DQC样品浓度为24468.521 ng/mL | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的DQC样品浓度为28381.338 ng/mL | Style: Normal
+TOC Line -> 表14储备液短期稳定性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的储备液浓度为0.489 mg/mL | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的储备液浓度为0.568 mg/mL | Style: Normal
+TOC Line -> 表15工作液短期稳定性（LLOQ和内标工作液稳定性） | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LLOQ工作液浓度为97.874 mg/mL | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LLOQ工作液浓度为113.525 mg/mL | Style: Normal
+TOC Line -> 表16储备液长期稳定性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的储备液浓度为0.489 mg/mL | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的储备液浓度为0.568 mg/mL | Style: Normal
+TOC Line -> 表17工作液长期稳定性（LLOQ和内标工作液稳定性） | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LLOQ工作液浓度为97.874 mg/mL | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LLOQ工作液浓度为113.525 mg/mL | Style: Normal
+TOC Line -> 表18生物样品前处理过程中的稳定性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为14.681和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为17.029和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表19冻融稳定性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为14.681和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为17.029和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表20处理后样品的稳定性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为14.681和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为17.029和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表21生物基质中待测物的长期稳定性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为14.681和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为17.029和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表22样品离心分离前基质中待测物稳定性 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为14.681和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为17.029和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 表23溶血效应 | Style: Heading 2
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为14.681和3670.278 ng/mL。 | Style: Normal
+TOC Line -> ★：以88.0%作游离酸含量折算的LQC和HQC样品浓度为17.029和4257.201 ng/mL。 | Style: Normal
+TOC Line -> 附图 | Style: Heading Appendix
+TOC Line -> 图1空白基质图谱 | Style: Heading 2
+TOC Line -> 上图为BPR-30160639（游离型）反义链；下图为Vutrisiran | Style: Normal
+TOC Line -> 上图为BPR-30160639（游离型）正义链；下图为Vutrisiran | Style: Normal
+TOC Line -> 图2标准曲线图 | Style: Heading 2
+TOC Line -> BPR-30160639（游离型）反义链标准曲线图 | Style: Normal
+TOC Line -> BPR-30160639（游离型）正义链标准曲线图 | Style: Normal
+TOC Line -> 附录I验证方案及变更 | Style: Normal
+TOC Line -> 附录II分析方法 | Style: Normal
+TOC Line -> 附录III质检报告 | Style: Normal
+TOC Line -> BPR-30160639 | Style: List Paragraph
+TOC Line -> Vutrisiran（内标） | Style: List Paragraph
+TOC Line -> 附录IV不同游离酸含量折算的标准曲线和质控样品的浓度对照表 | Style: Normal

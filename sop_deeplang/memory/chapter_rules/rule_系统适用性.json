@@ -6,6 +6,18 @@
       "content": "SOP必须显性定义所有统计参数的修约规则，确保一致性",
       "rationale": "Reviewer反馈显示Simulator报告中统计参数修约不一致，导致FAIL判定。此规则强化Writer在生成SOP时对修约逻辑的标准化处理，避免类似逻辑漏洞。",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则和精度要求",
+      "rationale": "确保Writer生成的SOP避免因修约不一致导致的数值偏差，提高报告的标准化和可验证性",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则，确保一致性",
+      "rationale": "针对Reviewer反馈中统计参数修约不一致的问题，需在Writer Skill中添加通用修约定义要求，以避免未来SOP生成中的类似遗漏和错误",
+      "iteration": 2
     }
   ]
 }

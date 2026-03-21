@@ -1,0 +1,11 @@
+{
+  "section_title": "标准品",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在生成SOP时，必须识别并包含VP中定义的折算因子及其公式定义",
+      "rationale": "针对Reviewer反馈中反义链游离型/盐型折算逻辑缺失的问题，确保Writer在SOP中显性定义所有计算基准和因子，避免遗漏数据转换步骤",
+      "iteration": 1
+    }
+  ]
+}

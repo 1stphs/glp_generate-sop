@@ -1,0 +1,63 @@
+FOUND: 验证报告 (Original: 验证报告) | Style: Normal
+FOUND: GLP遵从性声明和签字页 (Original: GLP遵从性声明和签字页) | Style: Normal
+FOUND: 质量保证声明 (Original: 质量保证声明) | Style: Normal
+FOUND: 目录 (Original: 目录) | Style: Normal
+FOUND: 附表目录 (Original: 附表目录) | Style: Normal
+FOUND: 附图目录 (Original: 附图目录) | Style: Normal
+FOUND: 缩略语表 (Original: 缩略语表) | Style: Normal
+FOUND: 摘要 (Original: 摘要) | Style: Normal
+FOUND: 引言 (Original: 引言) | Style: List Paragraph
+FOUND: 验证试验名称 (Original: 验证试验名称) | Style: Normal
+FOUND: 验证试验编号 (Original: 验证试验编号) | Style: Normal
+FOUND: 验证目的 (Original: 验证目的) | Style: Normal
+FOUND: 试验机构 (Original: 试验机构) | Style: Normal
+FOUND: 委托方 (Original: 委托方) | Style: Normal
+FOUND: 委托方负责人 (Original: 委托方负责人) | Style: Normal
+FOUND: 验证负责人 (Original: 验证负责人) | Style: Normal
+FOUND: 主要操作人员 (Original: 主要操作人员) | Style: Normal
+FOUND: 验证日程 (Original: 验证日程) | Style: Normal
+FOUND: 指导原则 (Original: 指导原则) | Style: Normal
+FOUND: 材料和方法 (Original: 材料和方法) | Style: List Paragraph
+FOUND: 标准品 (Original: 标准品) | Style: Normal
+FOUND: 内标 (Original: 内标) | Style: Normal
+FOUND: 安全防护 (Original: 安全防护) | Style: Normal
+FOUND: 剩余标准品及内标的返还 (Original: 剩余标准品及内标的返还) | Style: Normal
+FOUND: 试剂 (Original: 试剂) | Style: Normal
+FOUND: 空白基质 (Original: 空白基质) | Style: Normal
+FOUND: 主要仪器 (Original: 主要仪器) | Style: Normal
+FOUND: 材料和方法 (Original: 材料和方法) | Style: Normal
+FOUND: 标准曲线和质控样品的配制 (Original: 标准曲线和质控样品的配制) | Style: Normal
+FOUND: 实验实施 (Original: 实验实施) | Style: List Paragraph
+FOUND: 数据处理 (Original: 数据处理) | Style: List Paragraph
+FOUND: 方法学验证结果 (Original: 方法学验证结果) | Style: List Paragraph
+FOUND: 系统适用性 (Original: 系统适用性) | Style: Heading 2
+FOUND: 残留 (Original: 残留) | Style: Heading 2
+FOUND: 选择性 (Original: 选择性) | Style: Heading 2
+FOUND: 特异性 (Original: 特异性) | Style: Heading 2
+FOUND: 待测物对内标的干扰 (Original: 待测物对内标的干扰) | Style: Heading 3
+FOUND: 内标对待测物的干扰 (Original: 内标对待测物的干扰) | Style: Heading 3
+FOUND: 基质效应 (Original: 基质效应) | Style: Heading 2
+FOUND: 标准曲线及范围 (Original: 标准曲线及范围) | Style: Heading 2
+FOUND: 批内/批间准确度及精密度 (Original: 批内/批间准确度及精密度) | Style: Heading 2
+FOUND: 质控样品 (Original: 质控样品) | Style: Heading 2
+FOUND: 回收率 (Original: 回收率) | Style: Heading 2
+FOUND: 待测物的提取回收率 (Original: 待测物的提取回收率) | Style: Normal
+FOUND: 内标的提取回收率 (Original: 内标的提取回收率) | Style: Normal
+FOUND: 稀释可靠性 (Original: 稀释可靠性) | Style: Heading 2
+FOUND: 稳定性 (Original: 稳定性) | Style: Heading 2
+FOUND: 标准品储备液/工作液稳定性 (Original: 标准品储备液/工作液稳定性) | Style: Normal
+FOUND: 内标储备液/工作液稳定性 (Original: 内标储备液/工作液稳定性) | Style: Normal
+FOUND: 质控样品稳定性 (Original: 质控样品稳定性) | Style: Normal
+FOUND: 样品离心分离前基质中待测物稳定性 (Original: 样品离心分离前基质中待测物稳定性) | Style: Normal
+FOUND: 溶血效应 (Original: 溶血效应) | Style: Heading 2
+FOUND: 分析批最大进样数 (Original: 分析批最大进样数) | Style: Heading 2
+FOUND: 结论 (Original: 结论) | Style: Heading 1
+FOUND: 偏离 (Original: 偏离) | Style: Heading 1
+FOUND: 特殊情况说明 (Original: 特殊情况说明) | Style: Heading 1
+FOUND: 归档 (Original: 归档) | Style: Heading 1
+FOUND: 附表 (Original: 附表) | Style: Heading 1
+FOUND: 附图 (Original: 附图) | Style: Heading Appendix
+FOUND: 附录I验证方案及变更 (Original: 附录I验证方案及变更) | Style: Normal
+FOUND: 附录II分析方法 (Original: 附录II分析方法) | Style: Normal
+FOUND: 附录III质检报告 (Original: 附录III质检报告) | Style: Normal
+FOUND: 附录IV不同游离酸含量折算的标准曲线和质控样品的浓度对照表 (Original: 附录IV不同游离酸含量折算的标准曲线和质控样品的浓度对照表) | Style: Normal

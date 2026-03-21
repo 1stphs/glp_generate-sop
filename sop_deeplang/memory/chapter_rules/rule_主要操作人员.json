@@ -1,0 +1,17 @@
+{
+  "section_title": "主要操作人员",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则，确保精度一致性",
+      "rationale": "Reviewer反馈表明Simulator在处理统计参数时精度不一致，导致报告错误。添加此要求确保Writer在生成SOP时强制包含通用修约指导，防止类似遗漏，提升输出准确性",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算逻辑及计算基准来源",
+      "rationale": "防止反义链折算逻辑缺失，确保Writer在生成SOP时强制识别VP中的折算因子和数据源差异",
+      "iteration": 2
+    }
+  ]
+}

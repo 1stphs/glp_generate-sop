@@ -1,0 +1,11 @@
+{
+  "section_title": "摘要\t10",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算因子识别及公式定义步骤",
+      "rationale": "Reviewer反馈指出反义链折算逻辑缺失，导致SOP不完整；此规则确保Writer自动纳入通用折算处理，避免类似数据路径错误",
+      "iteration": 2
+    }
+  ]
+}

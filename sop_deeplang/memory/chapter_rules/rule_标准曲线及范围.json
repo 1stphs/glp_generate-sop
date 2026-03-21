@@ -12,6 +12,18 @@
       "content": "在SOP生成中，必须系统检索并明确定义VP中的所有折算因子及其应用公式",
       "rationale": "为避免反义链游离型/盐型折算逻辑缺失，确保Writer Skill在生成SOP时强制包含折算因子的识别和公式定义，提升数据处理的一致性和准确性",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "Writer必须在SOP中识别并包含VP中的折算因子公式及其定义",
+      "rationale": "Reviewer反馈Simulator漏掉游离型/盐型折算逻辑，导致SOP缺失关键计算步骤。此要求确保Writer通用模板强制包含折算因子处理，避免类似数据路径错误",
+      "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成中，强制识别并定义VP中所有折算因子及其公式",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在模板中显性包含折算因子占位符及来源说明，避免类似遗漏",
+      "iteration": 2
     }
   ]
 }

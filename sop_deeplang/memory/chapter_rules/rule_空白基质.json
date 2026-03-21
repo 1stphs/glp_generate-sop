@@ -1,0 +1,17 @@
+{
+  "section_title": "空白基质",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则",
+      "rationale": "确保Writer在生成SOP时避免因修约不一致导致的数值精度错误，增强通用性和可检查性",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成中，必须显式包含数据折算因子及其来源说明",
+      "rationale": "为避免反义链游离型/盐型折算逻辑缺失，确保Writer在模板中强制定义折算公式和数据源核对步骤，提高SOP的完整性和准确性",
+      "iteration": 2
+    }
+  ]
+}

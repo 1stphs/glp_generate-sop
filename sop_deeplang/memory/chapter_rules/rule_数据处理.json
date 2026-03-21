@@ -1,0 +1,17 @@
+{
+  "section_title": "数据处理",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确包含游离型与盐型间的数据折算逻辑及因子定义",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时系统性识别并纳入相关计算公式，避免类似遗漏",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "必须在SOP中明确定义所有统计参数的修约规则，确保一致性",
+      "rationale": "针对Reviewer反馈的数值修约错误，防止Writer遗漏通用修约逻辑，确保SOP输出标准化且可验证",
+      "iteration": 2
+    }
+  ]
+}

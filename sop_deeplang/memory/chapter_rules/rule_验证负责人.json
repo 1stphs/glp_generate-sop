@@ -6,6 +6,18 @@
       "content": "SOP必须明确定义所有统计参数的修约规则和精度要求",
       "rationale": "防止因修约不一致导致的计算误差，确保SOP在数据处理阶段的标准化和可追溯性",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在生成SOP时，必须明确定义所有统计参数的修约规则，包括位数和四舍五入标准",
+      "rationale": "为避免统计数据修约错误，确保SOP中显性包含通用修约指导，防止模糊表述导致的计算偏差",
+      "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "在SOP中强制包含游离型/盐型折算逻辑及数据源核对步骤",
+      "rationale": "防止Simulator漏掉VP中折算因子，确保Writer生成SOP时显性定义计算基准和公式，提升报告完整性",
+      "iteration": 2
     }
   ]
 }

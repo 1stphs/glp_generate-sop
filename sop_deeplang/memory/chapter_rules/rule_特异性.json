@@ -1,0 +1,11 @@
+{
+  "section_title": "特异性",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须包含游离型/盐型折算逻辑及公式定义",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，为确保SOP完整性，Writer需强制识别VP中相关因子并显性定义计算步骤，避免类似遗漏。",
+      "iteration": 2
+    }
+  ]
+}

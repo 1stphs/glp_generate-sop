@@ -12,6 +12,18 @@
       "content": "在SOP生成中，强制识别并包含VP中折算因子及其公式定义",
       "rationale": "针对Reviewer反馈中反义链游离型/盐型折算逻辑缺失，确保Writer Skill系统性包含数据折算步骤，避免类似遗漏错误",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则与精度要求",
+      "rationale": "确保Writer生成的SOP避免数值修约错误，通用化处理类似偏差，提升输出一致性和准确性",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则和精度要求",
+      "rationale": "防止因修约不一致导致的计算偏差，确保SOP通用性和准确性，响应Reviewer对数值处理规范化的反馈",
+      "iteration": 1
     }
   ]
 }

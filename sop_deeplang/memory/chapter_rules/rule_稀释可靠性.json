@@ -6,6 +6,12 @@
       "content": "SOP必须包含游离型与盐型的折算逻辑及因子定义",
       "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时系统性识别并纳入相关计算基准，避免类似遗漏。",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则和精度要求",
+      "rationale": "为避免生成SOP时遗漏数值修约细节，确保计算结果的一致性和准确性，响应Reviewer对统计参数处理的反馈",
+      "iteration": 1
     }
   ]
 }

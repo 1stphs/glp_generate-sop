@@ -6,6 +6,12 @@
       "content": "SOP必须显式包含游离型/盐型折算逻辑及计算基准来源",
       "rationale": "针对Reviewer反馈中反义链游离型/盐型折算逻辑缺失问题，确保Writer在生成SOP时强制识别并定义折算因子，避免类似数据处理漏洞",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "必须在 SOP 中显性包含游离型与盐型的折算公式及因子来源说明",
+      "rationale": "针对反义链游离型/盐型折算逻辑缺失的反馈，确保 Writer 生成 SOP 时强制识别并定义折算因子，避免数据计算偏差",
+      "iteration": 2
     }
   ]
 }

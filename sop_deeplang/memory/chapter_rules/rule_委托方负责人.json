@@ -12,6 +12,18 @@
       "content": "SOP必须明确定义所有统计参数的修约规则，包括位数和四舍五入标准",
       "rationale": "防止Writer在生成SOP时遗漏或错误定义修约规则，确保输出符合通用统计规范，避免类似CV%位数错误的重现",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显性定义所有统计参数的修约规则，确保一致性",
+      "rationale": "Reviewer反馈显示Simulator在统计参数修约上出现错误，导致报告不准确。此规则强化Writer在SOP生成时对修约逻辑的明确描述，防止类似遗漏。",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确包含游离型/盐型数据的折算因子定义及计算公式",
+      "rationale": "Reviewer反馈指出反义链游离型/盐型折算逻辑缺失，此要求确保Writer在生成SOP时系统性识别并纳入VP中的折算因子，避免类似遗漏",
+      "iteration": 2
     }
   ]
 }

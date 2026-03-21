@@ -1,0 +1,11 @@
+{
+  "section_title": "基质效应按验证方案测定，结果见表6。",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则，确保一致性",
+      "rationale": "防止因修约规则缺失导致数值精度错误，强化Writer在生成SOP时对统计参数的完整描述",
+      "iteration": 1
+    }
+  ]
+}

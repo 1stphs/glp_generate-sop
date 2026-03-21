@@ -12,6 +12,18 @@
       "content": "SOP必须包含VP中折算因子的识别与公式定义，确保计算基准明确",
       "rationale": "针对反义链游离型/盐型折算逻辑缺失的反馈，强化Writer在生成SOP时对VP数据源的检索和逻辑闭环，避免类似遗漏",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则和精度要求",
+      "rationale": "防止Writer遗漏或错误处理数值精度问题，确保生成的SOP具有明确可检查的标准化计算规范",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须显式定义所有统计参数的修约规则，确保精度一致性",
+      "rationale": "防止Writer在生成SOP时遗漏或错误定义数值修约规则，避免因精度不一致导致的模拟报告FAIL",
+      "iteration": 2
     }
   ]
 }

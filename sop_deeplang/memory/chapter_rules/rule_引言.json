@@ -1,0 +1,11 @@
+{
+  "section_title": "引言",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "必须识别并包含 VP 中折算因子及其公式定义",
+      "rationale": "Reviewer 反馈指出反义链游离型/盐型折算逻辑缺失，导致 SOP 计算基准不清晰。此要求确保 Writer 自动检索并显性定义折算规则，提升报告准确性",
+      "iteration": 2
+    }
+  ]
+}

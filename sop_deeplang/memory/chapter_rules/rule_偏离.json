@@ -6,6 +6,12 @@
       "content": "在 SOP 模板中强制包含数据源核对步骤，确保提取路径的准确性",
       "rationale": "针对 Reviewer 反馈中 Simulator 数据路径提取错误，需优化 Writer 模板逻辑以避免遗漏关键验证环节，提升整体 SOP 生成质量",
       "iteration": 2
+    },
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则和精度要求",
+      "rationale": "为避免数值修约错误，确保SOP生成时显性包含通用修约标准，防止因模糊定义导致的计算偏差",
+      "iteration": 2
     }
   ]
 }

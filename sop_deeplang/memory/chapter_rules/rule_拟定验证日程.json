@@ -6,6 +6,12 @@
       "content": "SOP必须包含游离型/盐型折算逻辑及数据源核对步骤",
       "rationale": "针对反义链折算逻辑缺失，确保Writer生成SOP时强制识别VP中折算因子并定义公式，防止类似遗漏",
       "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "在SOP中必须显式定义所有统计参数的修约规则，确保数值精度一致性。",
+      "rationale": "防止因修约规则缺失导致数值偏差，确保Writer生成SOP时覆盖数据处理标准，提高报告准确性。",
+      "iteration": 2
     }
   ]
 }

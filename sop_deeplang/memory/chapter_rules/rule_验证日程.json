@@ -1,0 +1,17 @@
+{
+  "section_title": "验证日程",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "在SOP生成时，必须显式定义所有统计参数的修约规则，确保一致性和可追溯性",
+      "rationale": "基于Reviewer反馈，Writer未定义修约规则导致模拟报告FAIL，需通过强制要求补全逻辑漏洞，提升SOP通用性和准确性",
+      "iteration": 1
+    },
+    {
+      "type": "add_requirement",
+      "content": "必须在 SOP 中显性定义所有统计参数的修约规则",
+      "rationale": "确保 Writer 生成的 SOP 避免数值修约错误，提高报告一致性和准确性，规避 Reviewer 反馈中的逻辑漏洞",
+      "iteration": 2
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "section_title": "试剂",
+  "rules": [
+    {
+      "type": "add_requirement",
+      "content": "SOP必须明确定义所有统计参数的修约规则，确保一致性",
+      "rationale": "Reviewer反馈指出数值修约错误频发，需通过强制要求在Writer Skill中嵌入通用修约逻辑，以避免具体数值偏差并提升SOP的标准化输出",
+      "iteration": 2
+    }
+  ]
+}
