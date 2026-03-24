@@ -12,15 +12,17 @@ from sop_deeplang.nodes.curator import CuratorNode
 class SOPSGeneratorV6:
     """SOP Generator V6 - LangGraph-based workflow"""
 
-    def __init__(self):
-        self.memory = MemoryManager()
+    def __init__(self, experiment_type: str = "default", report_id: str = "default"):
+        self.memory = MemoryManager(experiment_type=experiment_type, report_id=report_id)
+        self.experiment_type = experiment_type
+        self.report_id = report_id
 
         # Initialize nodes
         self.master = MasterAgent()
         self.writer = WriterNode()
         self.simulator = SimulatorNode()
         self.reviewer = ReviewerNode()
-        self.curator = CuratorNode()
+        self.curation = CuratorNode()
 
         # Build workflow graph
         self.workflow = self._build_workflow()
@@ -36,7 +38,7 @@ class SOPSGeneratorV6:
         workflow.add_node("writer", self.writer)
         workflow.add_node("simulator", self.simulator)
         workflow.add_node("reviewer", self.reviewer)
-        workflow.add_node("curator", self.curator)
+        workflow.add_node("curator", self.curation) # Fixed typo in node name assignment if any
         workflow.add_node("format_verify", format_verify_node)
         workflow.add_node("save_template", self._save_template_node)
         workflow.add_node("log_complete", self._log_complete_node)
@@ -121,6 +123,10 @@ class SOPSGeneratorV6:
     def process_section(self, initial_state: MasterState) -> Dict[str, Any]:
         """Process a single section through workflow."""
         try:
+            # Ensure context is passed
+            if "experiment_type" not in initial_state:
+                initial_state["experiment_type"] = self.experiment_type
+            
             result = self.workflow.invoke(initial_state)
             return {
                 "section_title": result["section_title"],

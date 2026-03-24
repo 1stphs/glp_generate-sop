@@ -30,7 +30,11 @@ class CuratorNode:
         section_title = state["section_title"]
         reviewer_result = state.get("reviewer_result", {})
 
-        skill_content = self.memory.load_skill("curator")
+        memory = MemoryManager(
+            experiment_type=state.get("experiment_type", "default"),
+            report_id=state.get("report_id", "default")
+        )
+        skill_content = memory.load_skill("curator")
 
         prompt = f"""你是知识库管理员，负责根据Reviewer的反馈更新Writer Skill。
 

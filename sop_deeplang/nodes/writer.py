@@ -22,7 +22,6 @@ class WriterNode:
     """Writer Node: Generates SOP using Grok"""
 
     def __init__(self):
-        self.memory = MemoryManager()
         self.table_mapper = TableMapper()
         self.config = MODEL_CONFIG["writer"]
 
@@ -71,13 +70,15 @@ class WriterNode:
             print(f"⏩ [{section_title}] 检测为纯数据表，跳过 SOP 生成")
             return {**state, "sop_content": f"<!-- SKIP: {section_title} is a data table -->"}
 
-        self.memory.log_node_execution(
+        memory = MemoryManager(experiment_type=state.get("experiment_type", "default"))
+        
+        memory.log_node_execution(
             section_title,
             "writer",
             {"data_index": data_index, "type": s_type, "phase": phase},
         )
 
-        skill_content = self.memory.load_skill("writer")
+        skill_content = memory.load_skill("writer")
 
         # 2. Select Prompt Mode based on type and phase
         if s_type == "STATIC":
@@ -110,7 +111,11 @@ class WriterNode:
 """
         else:
             # Phase 2: Loading Chapter Rules and Excel data
-            chapter_rules = self.memory.load_chapter_rule(section_title)
+            memory = MemoryManager(
+                experiment_type=state.get("experiment_type", "default"),
+                report_id=state.get("report_id", "default")
+            )
+            chapter_rules = memory.load_chapter_rule(section_title)
             related_tables = self.table_mapper.get_related_tables(section_title, report_id)
             
             tables_context = ""

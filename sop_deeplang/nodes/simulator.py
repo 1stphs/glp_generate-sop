@@ -40,7 +40,12 @@ class SimulatorNode:
         report_id = state.get("report_id", "default")
         phase = state.get("phase", 1)
 
-        skill_content = self.memory.load_skill("simulator")
+        # Instantiate MemoryManager with experiment_type and report_id for this specific call
+        memory = MemoryManager(
+            experiment_type=state.get("experiment_type", "default"),
+            report_id=state.get("report_id", "default")
+        )
+        skill_content = memory.load_skill("simulator")
 
         tables_context = ""
         micro_test_instruction = ""

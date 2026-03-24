@@ -1,0 +1,326 @@
+[
+    {
+        "section_title": "验证报告",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "GLP遵从性声明和签字页",
+        "original_content": "康晓彤，M.S.\t日期",
+        "generate_content": "GLP Compliance Statement and Signature\n试验编号（Study Number）：NS24461HL01\n试验名称（Study Title）：\tGenSci139制剂对人红细胞的体外溶血试验\n（An in Vitro Hemolysis Study of GenSci139 with Human Red Blood Cells）\n除供试品的质量检测外，本试验其它部分均在本机构完成，并遵从下述GLP管理规范。试验期间未见影响试验质量和完整性的因素。\nNMPA (2017), 药物非临床研究质量管理规范。\nUS FDA (1978), 21 CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.\nOECD (1998). Series on Principles of Good Laboratory Practice and Compliance Monitoring. No.1. OECD Principles of Good Laboratory Practice.\n供试品的质量检测在非GLP条件下完成，检验报告（Report of Analysis，ROA）由委托方负责提供。\nExcept for the analysis of the test article, this study was conducted at the test facility according to the following Good Laboratory Practice regulations. Nothing occurred to markedly affect the quality and integrity of the study during the study.\nNMPA (2017), Good Laboratory Practice for Non-clinical Laboratory Studies.\nUS FDA (1978), 21 CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.\nOECD (1998). Series on Principles of Good Laboratory Practice and Compliance\nThe report of analysis of the test article was provided by the Sponsor, and the analysis was conducted under non-GLP conditions.\n签名（Signature）：                        日期（Date）：       年    月    日\n康晓彤（Xiaotong Kang），M.S.                           YYYY /  MM/  DD\n专题负责人（Study Director）",
+        "sop": ""
+    },
+    {
+        "section_title": "质量保证声明",
+        "original_content": "",
+        "generate_content": "QUALITY ASSURANCE STATEMENT\n试验编号（Study Number）：NS24461HL01\n试验名称（Study Title）：GenSci139制剂对人红细胞的体外溶血试验\n（An in Vitro Hemolysis Study of GenSci139 with Human Red Blood Cells）\n本机构QAU对该试验进行了如下检查，本试验报告如实描述试验材料和方法，准确反映试验过程中产生的原始数据（除供试品的质量检测外）。\nThe conduct of the study was inspected by the QAU of the test facility as follows. The final report accurately and completely describes the materials and methods, and the reported results accurately and completely reflect the raw data of the study (except for the analysis of the test article).\n| 检查类型<br>（Inspection Type） | 检查项目<br>（Phases Inspected） | 检查日期<br>（Inspection Date） | 检查日期<br>（Inspection Date） | 报告SD/研究专员/TFM日期<br>(Reported to Study Director/Contributing Scientist/Test Facility Management Date) | 报告SD/研究专员/TFM日期<br>(Reported to Study Director/Contributing Scientist/Test Facility Management Date) |\n| --- | --- | --- | --- | --- | --- |\n| 基于试验的检查<br>（Study-based Inspection） | 试验方案及日程<br>（Protocol and Schedule） | 2025.04.22 | 2025.04.22 | 2025.04.22 | 2025.04.22 |\n| 基于试验的检查<br>（Study-based Inspection） | 给药制剂配制<br>（Dose Formulation Preparation） | 2025.04.24 | 2024.04.25 | 2024.04.25 | 2024.04.25 |\n| 基于试验的检查<br>（Study-based Inspection） | 加样操作<br>（Dose Administration） | 2024.04.25 | 2024.04.25 | 2024.04.25 | 2024.04.25 |\n| 基于试验的检查<br>（Study-based Inspection） | 溶血观察<br>（Hemolysis Observation） | 2024.04.25 | 2024.04.25 | 2024.04.25 | 2024.04.25 |\n| 基于试验的检查<br>（Study-based Inspection） | 给药制剂分析结果及记录<br>（Dose Formulation Analysis Results and Raw Data） | 2025.05.16 | 2025.05.16 | 2025.05.16 | 2025.05.16 |\n| 基于试验的检查<br>（Study-based Inspection） | 试验方案变更001<br>（Protocol Amendment 001） | 2025.07.14 | 2025.07.14 | 2025.07.14 | 2025.07.14 |\n| 基于试验的检查<br>（Study-based Inspection） | 试验报告草稿及记录<br>（Draft Final Report and Raw Data） | 2025.07.20 | 2025.07.20 | 2025.07.20 | 2025.07.20 |\n| 基于试验的检查<br>（Study-based Inspection） | 试验报告终稿<br>(Final Study Report ) | 2025.07.23 | 2025.07.23 | 2025.07.23 | 2025.07.23 |\n| 基于过程的检查<br>(Process-based Inspection) | 血细胞悬液制备<br>（Red Cell Suspension Preparation） | 2025.04.25 | 2025.04.25 | 2025.04.25 | 2025.04.25 |\n\n另外，根据本机构SOPs进行基于设施的检查。\nIn addition, facility-based inspections were conducted according to SOPs of the test facility.\n签名（Signature）：                        日期（Date）：       年    月    日\n唐昀 （Yun Tang）, B.S.                                YYYY/  MM/  DD\nQA检查员 （Quality Assurance Auditor）",
+        "sop": ""
+    },
+    {
+        "section_title": "目录",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "附表目录",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "附图目录",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "缩略语表",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "摘要",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "缩略词术语列表",
+        "original_content": "",
+        "generate_content": "| 缩写 | 英文全称 | 中文全称 |\n| --- | --- | --- |\n| GLP | Good Laboratory Practices | 药物非临床研究质量管理规范 |\n| FDA | Food and Drug Administration | 美国食品药品监督管理局 |\n| NMPA | National Medical Products Administration | 国家药品监督管理局 |\n| OECD | Organization for Economic Co-operation and Development | 经济合作与发展组织 |\n| SOP | Standard Operating Procedure | 标准操作规程 |\n| ROA | Report of Analysis | 检验报告 |",
+        "sop": ""
+    },
+    {
+        "section_title": "摘  要",
+        "original_content": "",
+        "generate_content": "本试验的目的是用健康成人志愿者的红细胞进行GenSci139制剂体外溶血试验，观察GenSci139制剂在体外是否引起溶血和/或红细胞凝聚等反应，为临床提供安全性参考。\n根据委托方提供的资料，临床拟用浓度不超过3.2 mg/mL，故本试验供试品（GenSci139制剂）浓度为3.2 mg/mL，并设置阴性对照组给予0.9%氯化钠注射液和阳性对照组给予去离子水。上述给药制剂分别与2%人红细胞悬液混合后，置于37 °C恒温水浴箱水浴，分别于15 min、30 min、45 min、60 min、120 min、180 min观察1次。\n试验结果显示，本试验条件下使用健康成人志愿者的红细胞进行体外溶血试验，阴性对照管（0.9%氯化钠注射液）无溶血或红细胞凝聚发生，阳性对照管（去离子水）有溶血发生，证明本试验体系可以准确反映供试品/对照品对红细胞的溶血作用。\n实验期间，供试品GenSci139制剂管无溶血或红细胞凝聚发生。表明浓度为3.2 mg/mL的GenSci139制剂不会导致人红细胞溶血或红细胞凝聚发生。\n综上所述，本试验条件下，浓度为3.2 mg/mL的GenSci139制剂在体外均不会导致人红细胞的溶血或红细胞凝聚。",
+        "sop": ""
+    },
+    {
+        "section_title": "引言",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "试验名称",
+        "original_content": "GenSci139制剂对人红细胞的体外溶血试验\n(An in Vitro Hemolysis Study of GenSci139 with Human Red Blood Cells)",
+        "generate_content": "GenSci139制剂对人红细胞的体外溶血试验\n（An in Vitro Hemolysis Study of GenSci139 with Human Red Blood Cells）",
+        "sop": ""
+    },
+    {
+        "section_title": "试验编号",
+        "original_content": "NS24461HL01",
+        "generate_content": "NS24461HL01",
+        "sop": ""
+    },
+    {
+        "section_title": "试验目的",
+        "original_content": "本试验的目的是采用健康成人志愿者红细胞进行体外溶血试验，观察本供试品是否引起溶血和/或红细胞凝聚等反应，为临床试验提供安全性参考。",
+        "generate_content": "本试验的目的是采用健康成人志愿者红细胞进行体外溶血试验，观察本供试品是否引起溶血和/或红细胞凝聚等反应，为临床试验提供安全性参考。",
+        "sop": ""
+    },
+    {
+        "section_title": "试验机构",
+        "original_content": "名称：\t上海益诺思生物技术股份有限公司\nShanghai InnoStar Bio-tech Co., Ltd.（InnoStar）\n地址：\t中国（上海）自由贸易试验区郭守敬路199号\n邮编：\t201203\n电话：\t+86-21-60211999",
+        "generate_content": "名称：\t上海益诺思生物技术股份有限公司\nShanghai InnoStar Bio-tech Co., Ltd.（InnoStar）\n地址：\t中国（上海）自由贸易试验区郭守敬路199号\n邮编：\t201203\n电话：\t+86-21-60211999",
+        "sop": ""
+    },
+    {
+        "section_title": "委托方",
+        "original_content": "名称：\t长春金赛药业有限责任公司\n地址：\t吉林省长春市高新技术产业开发区越达路1718号\n邮编：\t130012",
+        "generate_content": "名称：\t长春金赛药业有限责任公司\n地址：\t吉林省长春市高新技术产业开发区越达路1718号\n邮编：\t130012",
+        "sop": ""
+    },
+    {
+        "section_title": "委托方负责人",
+        "original_content": "姓名：\t张  敏\n手机：\t+86-18550475352\n电子邮件：\tzhangmin01@genscigroup.com",
+        "generate_content": "姓名：\t张  敏\n手机：\t+86-18550475352\n电子邮件：\tzhangmin01@genscigroup.com",
+        "sop": ""
+    },
+    {
+        "section_title": "专题负责人",
+        "original_content": "姓名：\t康晓彤，M.S.\n手机：\t+86-17685846648\n电子邮件：\txtkang@innostar.cn",
+        "generate_content": "姓名：\t康晓彤，M.S.\n手机：\t+86-17685846648\n电子邮件：\txtkang@innostar.cn",
+        "sop": ""
+    },
+    {
+        "section_title": "QA人员",
+        "original_content": "姓名：\t陈 诺，B.S.\n手机：\t+86-17621142603\n电子邮件：\tnchen@innostar.cn",
+        "generate_content": "姓名：\t陈 诺，B.S.\n手机：\t+86-17621142603\n电子邮件：\tnchen@innostar.cn",
+        "sop": ""
+    },
+    {
+        "section_title": "主要研究人员",
+        "original_content": "体外实验负责人：\t董明莉\n给药制剂配制负责人：\t周莉彩，B.S.\n给药制剂分析负责人：\t钱菁琪，B.S.",
+        "generate_content": "体外实验负责人：\t董明莉\n给药制剂配制负责人：\t周莉彩，B.S.\n给药制剂分析负责人：\t钱菁琪，B.S.",
+        "sop": ""
+    },
+    {
+        "section_title": "试验日程",
+        "original_content": "",
+        "generate_content": "试验开始日期：\t\t\t2025年04月23日\n实验开始日期：\t\t\t2025年04月24日\n实验结束日期：\t\t\t2025年04月25日\n试验结束日期：\t\t\t2025年07月23日",
+        "sop": ""
+    },
+    {
+        "section_title": "指导原则",
+        "original_content": "NMPA. 药物刺激性、过敏性和溶血性研究技术指导原则，2014。",
+        "generate_content": "NMPA. 药物刺激性、过敏性和溶血性试验技术指导原则，2014。",
+        "sop": ""
+    },
+    {
+        "section_title": "供试品和对照品",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "供试品",
+        "original_content": "名称：\tGenSci139制剂\n英文名称：\tGenSci139\n代码：\tSTA24461-B\n子代码：\tSTA24461-B（01）\n批号：\tTC120DP20250201\n来源：\t东曜药业有限公司\n性状：\t白色疏松体\n纯度：\t96.8%（SEC-HPLC单体峰面积百分比）\n保存条件：\t冷藏，避光\n有效期至：\t2028.02.27\n注：供试品关键信息（如批号、保存条件、有效期和参与浓度折算的相关参数）更新，以方案变更的形式呈现，其他参数更新则在总结报告中呈现。",
+        "generate_content": "名称：\tGenSci139制剂\n英文名称：\tGenSci139\n代码：\tSTA24461-B\n子代码：\tSTA24461-B（01）\n批号：\tTC120DP20250201\n来源：\t东曜药业有限公司\n性状：\t白色疏松体\n纯度：\t96.8%（SEC-HPLC单体峰面积百分比）\n保存条件：\t冷藏，避光\n有效期至：\t\t\t\t\t2028.02.27\n注：供试品检验报告见附件I。",
+        "sop": ""
+    },
+    {
+        "section_title": "对照品",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "溶媒对照品",
+        "original_content": "名称：\t灭菌注射用水\n批号： \t24112606A\n来源： \t安徽双鹤药业有限责任公司\n保存条件：\t室温，密闭\n有效期至：\t2026.10.31\n名称：\t0.9%氯化钠注射液\n批号： \t24072403B\n来源： \t安徽双鹤药业有限责任公司\n保存条件：\t\t室温，密闭\n有效期至：\t2027.06.30\n注：如使用其他批号的溶媒对照品或上述批号的溶媒对照品更新，相关信息在原始记录中记录，并呈现在总结报告中。",
+        "generate_content": "名称：\t灭菌注射用水\n批号： \t24112606A\n来源： \t安徽双鹤药业有限责任公司\n保存条件：\t室温，密闭\n有效期至：\t2026.10.31\n名称：\t0.9%氯化钠注射液\n批号： \t24071102B\n来源： \t安徽双鹤药业有限责任公司\n保存条件：\t\t室温，密闭\n有效期至：\t\t\t2027.06.30",
+        "sop": ""
+    },
+    {
+        "section_title": "阴性对照品",
+        "original_content": "名称：\t0.9%氯化钠注射液\n批号： \t24072403B\n来源： \t安徽双鹤药业有限责任公司\n保存条件：\t\t室温，密闭\n有效期至：\t2027.06.30\n注：如使用其他批号的阴性对照品或上述批号的阴性对照品更新，相关信息在原始记录中记录，并呈现在总结报告中。",
+        "generate_content": "名称：\t0.9%氯化钠注射液\n批号： \t24071102B\n来源： \t安徽双鹤药业有限责任公司\n保存条件：\t\t室温，密闭\n有效期至：\t\t\t2027.06.30",
+        "sop": ""
+    },
+    {
+        "section_title": "阳性对照组",
+        "original_content": "",
+        "generate_content": "名称：\t去离子水\n来源：\t本机构自制",
+        "sop": ""
+    },
+    {
+        "section_title": "给药制剂的配制和分析",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "配制方法",
+        "original_content": "配制过程需在超净工作台/生物安全柜中进行（除阳性对照组外），使用的试剂瓶等（量筒、烧杯，西林瓶）需经过灭菌处理。配制过程无需避光。\n阴性对照品给药制剂配制：\n直接量取所需量的0.9%氯化钠注射液于合适容器中即可。\n供试品给药制剂配制：\n1)\t在生物安全柜中，将供试品从冰箱取出恢复室温后，每瓶使用12 mL的灭菌注射用水进行复溶，复溶液浓度为5 mg/mL；\n2)\t在生物安全柜中，量取所需体积的复溶液至合适容器中；\n3)\t加入适量0.9%氯化钠注射液至所需体积，将容器中的液体用其他合适容器来回转移（至少3次），摇晃混匀，即得方案所述浓度组。\n所需供试品体积=配制体积*配制浓度/复溶液浓度\n量取所需体积至合适容器即得供试品组给药制剂。\n阳性对照品给药制剂：\n直接分装所需量的去离子水于合适容器中即可。\n准备好的给药制剂用标签进行浓度标识，如下表：\n| 组序 | 组别 | 供试品/对照品 | 浓度（mg/mL） |\n| --- | --- | --- | --- |\n| 1 | 阴性对照组 | 0.9%氯化钠注射液 | 0 |\n| 2 | 供试品组 | GenSci139 | 3.2 |\n| 3 | 阳性对照组 | 去离子水 | 0 |",
+        "generate_content": "配制过程在超净工作台/生物安全柜中进行（除阳性对照组外），使用的试剂瓶等（量筒、烧杯，西林瓶）经过灭菌处理。配制过程未避光。\n阴性对照品给药制剂配制：\n直接量取所需量的0.9%氯化钠注射液于合适容器中即可。\n供试品给药制剂配制：\n1)\t在生物安全柜中，将供试品从冰箱取出恢复室温后，每瓶使用12 mL的灭菌注射用水进行复溶，复溶液浓度为5 mg/mL；\n2)\t在生物安全柜中，量取所需体积的复溶液至合适容器中；\n3)\t加入适量0.9%氯化钠注射液至所需体积，将容器中的液体用其他合适容器来回转移（至少3次），摇晃混匀，即得方案所述浓度组。\n所需供试品体积=配制体积*配制浓度/复溶液浓度\n量取所需体积至合适容器即得供试品组给药制剂。\n阳性对照品给药制剂：\n直接分装所需量的去离子水于合适容器中即可。\n准备好的给药制剂用标签进行浓度标识，如下表：\n| 组序 | 组别 | 供试品/对照品 | 浓度（mg/mL） |\n| --- | --- | --- | --- |\n| 1 | 阴性对照组 | 0.9%氯化钠注射液 | 0 |\n| 2 | 供试品组 | GenSci139 | 3.2 |\n| 3 | 阳性对照组 | 去离子水 | 0 |",
+        "sop": ""
+    },
+    {
+        "section_title": "保存条件",
+        "original_content": "组1~组2：给药制剂配制后2 ~ 8 ℃保存，临用前移至室温。\n组3：现配现用，配制后室温保存",
+        "generate_content": "组1~组2：给药制剂配制后2 ~ 8 ℃保存，临用前移至室温。\n组3：现配现用，配制后室温保存",
+        "sop": ""
+    },
+    {
+        "section_title": "给药制剂稳定性和均一性",
+        "original_content": "本机构制剂分析部完成的给药制剂分析验证试验（验证编号：NS24461DV04，分析方法：NS24461-DFA-004）结果显示，按照2.3.1配制方法，浓度为0.1~4.0 mg/mL和5 mg/mL（原液浓度）的供试品给药制剂，室温保存24小时，2 ~ 8℃保存2天可保持浓度稳定且均一。",
+        "generate_content": "本机构制剂分析部完成的给药制剂分析验证试验（验证编号：NS24461DV04，分析方法：NS24461-DFA-004）结果显示，按照2.3.1配制方法，浓度为0.1~4.0 mg/mL和5 mg/mL（原液浓度）的供试品给药制剂，室温保存24小时，2 ~ 8℃保存2天可保持浓度稳定且均一。",
+        "sop": ""
+    },
+    {
+        "section_title": "给药制剂取样和浓度分析",
+        "original_content": "拟用于加样的阴性对照组和供试品组给药制剂按下表在生物安全柜/超净台中取样（无需避光），1份用于检测，另一份置于2 ~ 8°C保存。分析完成后剩余的样品由给药制剂分析负责人负责处理。\n| 组序 | 取样位置-数量×体积(mL) |\n| --- | --- |\n| 1 | 中-2×~4 |\n| 2 | 中-2×~1 |\n\n使用本机构已验证的制剂分析方法（验证编号：NS24461DV04，分析方法：NS24461-DFA-004）进行分析，接受标准如下表所示，给药制剂分析结果和分析方法在本试验总结报告中的附件中呈现。\n| 检测项目 | 接受标准 |\n| --- | --- |\n| 浓度 | 给药制剂组1不能检出供试品（测得吸光度（A280）不得大于检测范围最低点吸光度的30%视为未检出）。<br>给药制剂组2测得浓度均值在标示浓度的90.0%~110.0%范围内。 |\n| 均一性 | 给药制剂组2平行处理样品的相对偏差（RD）应不超过2.0%。 |",
+        "generate_content": "用于加样的阴性对照组和供试品组给药制剂按下表在生物安全柜/超净台中取样（未避光），1份用于检测，另一份置于2 ~ 8°C保存。分析完成后剩余的样品由给药制剂分析负责人负责处理。\n| 组序 | 取样位置-数量×体积(mL) |\n| --- | --- |\n| 1 | 中-2×~4 |\n| 2 | 中-2×~1 |\n\n使用本机构已验证的制剂分析方法（验证编号：NS24461DV04，分析方法：NS24461-DFA-004）进行分析，接受标准如下表所示，给药制剂分析结果和分析方法在本试验总结报告中的附件III呈现。\n| 检测项目 | 接受标准 |\n| --- | --- |\n| 浓度 | 给药制剂组1不能检出供试品（测得吸光度（A280）不得大于检测范围最低点吸光度的30%视为未检出）。<br>给药制剂组2测得浓度均值在标示浓度的90.0%~110.0%范围内。 |\n| 均一性 | 给药制剂组2平行处理样品的相对偏差（RD）应不超过2.0%。 |",
+        "sop": ""
+    },
+    {
+        "section_title": "剩余给药制剂和供试品及对照品的返还",
+        "original_content": "给药后剩余的给药制剂在给药结束后（如特殊情况剩余给药制剂在给药结束当日无法返还，可在第二天返还）返还给供试品及对照品管理部，由供试品及对照品管理部统一处理；本试验结束后未使用过的供试品和/或对照品在项目结束后由供试品及对照品管理部负责归还委托方，或由委托方书面授权处理方法。",
+        "generate_content": "给药后剩余的给药制剂在给药结束后（返还给供试品及对照品管理部，由供试品及对照品管理部统一处理；本试验结束后未使用过的供试品和/或对照品在项目结束后由供试品及对照品管理部负责归还委托方，或由委托方书面授权处理方法。",
+        "sop": ""
+    },
+    {
+        "section_title": "安全防护",
+        "original_content": "在给药制剂配制/取样分析、加样时均需穿戴防护服、手套、口罩和眼睛防护罩。",
+        "generate_content": "在给药制剂配制/取样分析、加样时均穿戴防护服、手套、口罩和眼睛防护罩。",
+        "sop": ""
+    },
+    {
+        "section_title": "实验系统",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "试验志愿者",
+        "original_content": "经体检合格的健康成人志愿者，志愿者的健康检查资料保存在本试验资料中。",
+        "generate_content": "经体检合格的健康成人志愿者，志愿者的健康检查资料保存在本试验资料中。",
+        "sop": ""
+    },
+    {
+        "section_title": "实验系统选择理由",
+        "original_content": "采用人血进行试验更能准确的反映供试品在临床应用时的真实情况。基于此，选择健康成人志愿者红细胞进行溶血试验。",
+        "generate_content": "采用人血进行试验更能准确的反映供试品在临床应用时的真实情况。基于此，选择健康成人志愿者红细胞进行溶血试验。",
+        "sop": ""
+    },
+    {
+        "section_title": "试验设计及理由",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "剂量设计理由",
+        "original_content": "根据委托方提供的资料，本供试品临床拟用浓度不超过3.2 mg/mL。根据药物刺激性、过敏性和溶血性研究技术指导原则（NMPA，2014年），因此本试验供试品浓度设置为3.2 mg/mL，同时设置阴性对照组（0.9%氯化钠注射液）和阳性对照组（去离子水）。",
+        "generate_content": "根据委托方提供的资料，本供试品临床拟用浓度不超过3.2 mg/mL。根据药物刺激性、过敏性和溶血性研究技术指导原则（NMPA，2014年），因此本试验供试品浓度设置为3.2 mg/mL，同时设置阴性对照组（0.9%氯化钠注射液）和阳性对照组（去离子水）。",
+        "sop": ""
+    },
+    {
+        "section_title": "试验方法",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "人红细胞悬液的制备",
+        "original_content": "经肘正中静脉和/或肘窝贵要静脉采集所需量的健康成人志愿者新鲜全血，放入盛有玻璃珠的三角烧瓶中轻轻振摇约10分钟，除去纤维蛋白原，获得脱纤维蛋白原血，将制备好的脱纤维蛋白原血倒入另外一洁净干燥的试管中，再加入约10倍血量的0.9%氯化钠注射液（来源：安徽双鹤药业有限责任公司；批号：2401083；有效期至：2026.12.31）混匀，室温下1500 rpm离心15分钟，离心机加减速度设置不高于5，弃去上清液，如此反复数次（次数记录在原始记录中，并呈现在总结报告中），至上清液不呈红色为止，量取红细胞的容积加0.9%氯化钠注射液（来源：安徽双鹤药业有限责任公司；批号：2401083；有效期至：2026.12.31）稀释成2%人红细胞悬液供试验用。\n注：如使用其他批号的0.9%氯化钠注射液或上述批号信息更新，相关信息在原始记录中记录，并呈现在总结报告中。",
+        "generate_content": "经肘正中静脉和/或肘窝贵要静脉采集所需量的健康成人志愿者新鲜全血，放入盛有玻璃珠的三角烧瓶中轻轻振摇约10分钟，除去纤维蛋白原，获得脱纤维蛋白原血，将制备好的脱纤维蛋白原血倒入另外一洁净干燥的试管中，再加入约10倍血量的0.9%氯化钠注射液（来源：安徽双鹤药业有限责任公司；批号：24081503B；有效期至：2027.06.30）混匀，室温下1500 rpm离心15分钟，离心机加减速度设置为5，弃去上清液，如此反复2次，至上清液不呈红色为止，量取红细胞的容积加0.9%氯化钠注射液（来源：安徽双鹤药业有限责任公司；批号：24081503B；有效期至：2027.06.30）稀释成2%人红细胞悬液供试验用。",
+        "sop": ""
+    },
+    {
+        "section_title": "试验步骤",
+        "original_content": "取试管7只按下列顺序加入各种溶液。\n| 试管编号 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| 供试品组给药制剂（mL） | 0 | 0.15 | 0.3 | 0.45 | 0.6 | 0.75 | 0 |\n| 0.9%氯化钠注射液（mL） | 5.0 | 4.85 | 4.7 | 4.55 | 4.4 | 4.25 | 0 |\n| 去离子水（mL） | 0 | 0 | 0 | 0 | 0 | 0 | 5.0 |\n| 2%红细胞悬液（mL） | 2.5 | 2.5 | 2.5 | 2.5 | 2.5 | 2.5 | 2.5 |\n\n第1管为阴性对照品管，第2~6管为供试品管，第7管为阳性对照品管，将各管混匀，置于37 ℃ ± 1 ℃恒温水浴箱中，定时观察结果。",
+        "generate_content": "取试管7只按下列顺序加入各种溶液。\n| 试管编号 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| 供试品组给药制剂（mL） | 0 | 0.15 | 0.3 | 0.45 | 0.6 | 0.75 | 0 |\n| 0.9%氯化钠注射液（mL） | 5.0 | 4.85 | 4.7 | 4.55 | 4.4 | 4.25 | 0 |\n| 去离子水（mL） | 0 | 0 | 0 | 0 | 0 | 0 | 5.0 |\n| 2%红细胞悬液（mL） | 2.5 | 2.5 | 2.5 | 2.5 | 2.5 | 2.5 | 2.5 |\n\n第1管为阴性对照品管，第2~6管为供试品管，第7管为阳性对照品管，将各管混匀，置于37 ℃ ± 1 ℃恒温水浴箱中，定时观察结果。",
+        "sop": ""
+    },
+    {
+        "section_title": "结果观察",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "观察时间点",
+        "original_content": "从放入水浴开始每隔15分钟观察1次，1小时后每隔1小时观察1次，总共观察3小时，即分别于15 min、30 min、45 min、60 min、120 min、180 min各观察一次。",
+        "generate_content": "从放入水浴开始每隔15分钟观察1次，1小时后每隔1小时观察1次，总共观察3小时，即分别于15 min、30 min、45 min、60 min、120 min、180 min各观察一次。",
+        "sop": ""
+    },
+    {
+        "section_title": "观察内容",
+        "original_content": "溶血：溶液呈透明红色，管底无细胞残留或有少量红细胞残留。\n无溶血：红细胞全部下沉，上清液体无色澄明。\n红细胞凝聚：溶液中有棕红色或红棕色絮状沉淀，振摇后不分散。\n注：若有红细胞凝聚现象，需进一步判定是真凝聚还是假凝聚：将凝聚物放在盖玻片上，在盖玻片边缘滴加适量0.9%氯化钠注射液，置显微镜下观察，凝聚红细胞能被冲散则为假凝聚，若凝聚红细胞不能被冲散则为真凝聚。在确认没有凝集的情况下，若3小时后因红细胞处于悬浮状态而无法准确直观判断试管内溶液是否发生溶血时，可常温下离心（1500 rpm /5 min）后再判断。",
+        "generate_content": "溶血：溶液呈透明红色，管底无细胞残留或有少量红细胞残留。\n无溶血：红细胞全部下沉，上清液体无色澄明。\n红细胞凝聚：溶液中有棕红色或红棕色絮状沉淀，振摇后不分散。\n注：在确认没有凝集的情况下，3小时后因红细胞处于悬浮状态而无法准确直观判断试管内溶液是否发生溶血时，常温下离心（1500 rpm /5 min）后再判断。",
+        "sop": ""
+    },
+    {
+        "section_title": "试验成立条件",
+        "original_content": "当阴性对照管无溶血或凝聚发生，阳性对照管有溶血发生时，试验成立。",
+        "generate_content": "当阴性对照管无溶血或凝聚发生，阳性对照管有溶血发生时，试验成立。",
+        "sop": ""
+    },
+    {
+        "section_title": "结果判断及评价",
+        "original_content": "最后一个时间点观察结束后拍照保留试验结果并将结果呈现在总结报告中。若供试品管中的溶液在3小时内不发生溶血和/或凝聚，则供试品在体外不会导致溶血和/或凝聚；若供试品管中的溶液在3小时内发生溶血和/或凝聚，则供试品在体外会导致溶血和/或凝聚。",
+        "generate_content": "最后一个时间点观察结束后拍照保留试验结果并把结果呈现在总结报告中。当供试品管中的溶液在3小时内不发生溶血和/或凝聚，则供试品在体外不会导致溶血和/或凝聚；当供试品管中的溶液在3小时内发生溶血和/或凝聚，则供试品在体外会导致溶血和/或凝聚。",
+        "sop": ""
+    },
+    {
+        "section_title": "主要软件系统",
+        "original_content": "本试验中使用的主要计算机化系统包括但不限于：\n| 软件名称 | 版本号 | 用途 |\n| --- | --- | --- |\n| Microsoft word/excel | 2003或以上 | 表格制作、方案及报告撰写 |\n| EMS Vista System | 5.1.6 | 监测和控制环境条件和储存条件 |\n| UVWin6GMP | 6.1.0 | 数据采集处理 |",
+        "generate_content": "本试验中使用的主要计算机化系统包括：\n| 软件名称 | 版本号 | 用途 |\n| --- | --- | --- |\n| Microsoft word/excel | 2016 | 表格制作、方案及报告撰写 |\n| EMS Vista System | 5.1.6 | 监测和控制环境条件和储存条件 |\n| UVWin6GMP | 6.1.0 | 数据采集处理 |",
+        "sop": ""
+    },
+    {
+        "section_title": "结果",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "溶血试验结果",
+        "original_content": "",
+        "generate_content": "加样后3小时观察结果见附件Ⅱ。结果显示阳性对照管（第7管）所有时间点溶血，其他各管均未见溶血现象。详见下表：\n| 试管编号<br>时间(h) | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| 15 min | - | - | - | - | - | - | + |\n| 30 min | - | - | - | - | - | - | + |\n| 45 min | - | - | - | - | - | - | + |\n| 60 min | - | - | - | - | - | - | + |\n| 120 min | - | - | - | - | - | - | + |\n| 180 min | - | - | - | - | - | - | + |\n\n注：-：无溶血及红细胞不凝聚；+：溶血（溶液呈澄明红色，管底无细胞残留或有少量红细胞残留）。",
+        "sop": ""
+    },
+    {
+        "section_title": "给药制剂分析结果",
+        "original_content": "",
+        "generate_content": "给药制剂分析结果见附件III。\n给药制剂分析结果显示，阴性对照组未检测到供试品，供试品的浓度为标示浓度的103.4%，在标示浓度的90.0-110.0%范围内；平行样品的相对偏差为0.1%，小于2.0%。\n综上所述，给药制剂分析结果符合方案要求。",
+        "sop": ""
+    },
+    {
+        "section_title": "结论",
+        "original_content": "",
+        "generate_content": "本试验条件下使用人红细胞进行体外溶血试验，阴性对照管（0.9%氯化钠注射液）无溶血和红细胞凝聚发生，阳性对照管（去离子水）有溶血发生，证明本试验体系可以准确反映供试品/对照品对红细胞的溶血作用。实验期间，供试品GenSci139制剂管均无溶血或红细胞凝聚发生。表明浓度为3.2 mg/mL的GenSci139制剂不会导致人红细胞溶血或红细胞凝聚发生。",
+        "sop": ""
+    },
+    {
+        "section_title": "归档",
+        "original_content": "试验方案、试验方案变更（如有）、原始记录和试验报告等资料将保存于本试验机构和/或合同档案室。",
+        "generate_content": "试验方案及变更、原始记录和试验报告等资料将保存于本试验机构和/或合同档案室。",
+        "sop": ""
+    }
+]

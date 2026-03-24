@@ -17,7 +17,6 @@ class MasterAgent:
     """Master Agent: Uses LLM to assess complexity and determine routing path"""
 
     def __init__(self):
-        self.memory = MemoryManager()
         self.config = MODEL_CONFIG["master"]
 
         # Initialize OpenAI client (for Grok)
@@ -39,21 +38,18 @@ class MasterAgent:
         protocol_content = state.get("protocol_content", "")
         original_report_content = state.get("original_report_content", "")
 
-        # Phase 1 Shortcut: Skeleton Mode
-        if state.get("phase") == 1:
-            print(f"🎬 [{section_title}] Phase 1: 骨架模式 (自动路由: simple_path)")
-            return {
-                **state,
-                "complexity": "simple",
-                "route": "simple_path",
-                "reasoning": "阶段 1：基础骨架生成，无需复杂迭代。",
-            }
+        try:
+            # Use memory with correct experiment type and report id
+            memory = MemoryManager(
+                experiment_type=state.get("experiment_type", "default"),
+                report_id=state.get("report_id", "default")
+            )
+            
+            # Load Complexity Analysis Skill
+            skill_content = memory.load_skill("master")
 
-        # Load Complexity Analysis Skill
-        skill_content = self.memory.load_skill("master")
-
-        # Build prompt
-        prompt = f"""你是复杂度分析专家，请基于以下内容判断章节的复杂度并确定路由路径。
+            # Build prompt
+            prompt = f"""你是复杂度分析专家，请基于以下内容判断章节的复杂度并确定路由路径。
 
 # Complexity Analysis Skill (v{MASTER_SKILL_VERSION})
 {skill_content}
@@ -80,7 +76,6 @@ class MasterAgent:
 
 请输出JSON格式的分析结果。"""
 
-        try:
             # Generate using Grok
             response = self.client.chat.completions.create(
                 model=self.config["model"],
@@ -107,10 +102,10 @@ class MasterAgent:
                 state["iteration"] = 1
 
             # Log execution start
-            self.memory.log_execution_start(section_title, complexity, route)
+            memory.log_execution_start(section_title, complexity, route)
 
             # Log node execution
-            self.memory.log_node_execution(
+            memory.log_node_execution(
                 section_title,
                 "master",
                 {"complexity": complexity, "route": route, "reasoning": reasoning},
@@ -156,7 +151,10 @@ def format_verify_node(state: MasterState) -> MasterState:
     state["reviewer_score"] = 5.0 if is_pass else 1.0
 
     # Log completion
-    memory = MemoryManager()
+    memory = MemoryManager(
+        experiment_type=state.get("experiment_type", "default"),
+        report_id=state.get("report_id", "default")
+    )
     if is_pass:
         memory.save_sop_template(
             section_title,

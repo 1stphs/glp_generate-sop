@@ -14,7 +14,6 @@ class ReviewerNode:
     """Reviewer Node: Quality audit and scoring (harsh mode)"""
 
     def __init__(self):
-        self.memory = MemoryManager()
         self.config = MODEL_CONFIG["reviewer"]
 
         # Initialize OpenAI client (for Grok)
@@ -40,11 +39,15 @@ class ReviewerNode:
 
         simulated_output = simulation_result.get("simulated_output", "")
 
-        skill_content = self.memory.load_skill("reviewer")
+        memory = MemoryManager(
+            experiment_type=state.get("experiment_type", "default"),
+            report_id=state.get("report_id", "default")
+        )
+        skill_content = memory.load_skill("reviewer")
 
         phase_context = ""
         if phase == 2:
-            chapter_rules = self.memory.load_chapter_rule(section_title)
+            chapter_rules = memory.load_chapter_rule(section_title)
             rules_str = json.dumps(chapter_rules, ensure_ascii=False, indent=2) if chapter_rules else "无特定章节规则"
             phase_context = f"""
 ### 【阶段 2：审计重点 (Phase 2 Audit Focus)】
@@ -95,7 +98,7 @@ class ReviewerNode:
             critical_issues = result.get("critical_issues", [])
             summary = result.get("summary", "")
 
-            self.memory.log_node_execution(section_title, "reviewer", result)
+            memory.log_node_execution(section_title, "reviewer", result)
 
             status_str = '✓通过' if is_pass else '✗失败'
             print(

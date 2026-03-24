@@ -93,7 +93,7 @@ COMPLEX_KEYWORDS = [
 ]
 
 # ============== System Configuration ==============
-EXPERIMENT_TYPE = "BV实验"
+EXPERIMENT_TYPE = "default"
 MAX_ITERATIONS = 3
 MAX_DATASETS = 1
 CLEAN_OUTPUT = True

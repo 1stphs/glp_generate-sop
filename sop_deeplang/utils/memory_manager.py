@@ -31,46 +31,49 @@ class MemoryManager:
     """
     V6 Memory Manager - Manages three core libraries:
     1. Skill Library (skills/) - Dynamic, versioned .md files
-    2. Template Library (memory/sop_templates/) - Final verified SOPs
+    2. Experiment Library (memory/experiments/{type}/) - Namespaced rules, SOPs, and templates
     3. Audit Log Library (memory/audit_logs/) - Complete execution history
     """
 
-    def __init__(self):
+    def __init__(self, experiment_type: str = "default", report_id: str = "default"):
+        self.experiment_type = experiment_type
+        self.report_id = report_id
         self.skills_dir = SKILLS_DIR
-        self.templates_dir = TEMPLATES_DIR
-        self.audit_logs_dir = AUDIT_LOGS_DIR
-        self.chapter_rules_dir = CHAPTER_RULES_DIR
-        self.report_maps_dir = MEMORY_DIR / "report_maps"
-
-        # Subdirectories for skills
+        
+        # 1. Experiments Root
+        self.experiments_base_dir = MEMORY_DIR / "experiments"
+        self.experiment_dir = self.experiments_base_dir / self.experiment_type
+        
+        # 2. Assets (Strictly 3 folders: rules, templates, sops)
+        self.chapter_rules_dir = self.experiment_dir / "chapter_rules"
+        self.templates_dir = self.experiment_dir / "sop_templates"
+        self.markdown_dir = self.experiment_dir / "markdown_sops"
+        
+        # 3. Audit Logs (At memory root)
+        self.audit_logs_dir = MEMORY_DIR / "audit_logs"
+        
+        # Global Skills
         self.writing_dir = self.skills_dir / "writing"
         self.simulation_dir = self.skills_dir / "simulation"
         self.evaluation_dir = self.skills_dir / "evaluation"
         self.curation_dir = self.skills_dir / "curation"
 
-        # Markdown output directory (separate folder for all MD files)
-        self.markdown_dir = MEMORY_DIR / "markdown_sops"
-
-        # Previous SOPs storage (for enhancement iteration)
-        self.previous_sops_file = MEMORY_DIR / "previous_sops.json"
+        # Previous SOPs storage (Specific to report but in exp dir)
+        self.previous_sops_file = self.experiment_dir / f"{self.report_id}_previous_sops.json"
 
         # Ensure all directories exist
         for d in [
             self.skills_dir,
-            self.writing_dir,
-            self.simulation_dir,
-            self.evaluation_dir,
-            self.curation_dir,
-            self.templates_dir,
             self.audit_logs_dir,
+            self.experiment_dir,
+            self.templates_dir,
             self.markdown_dir,
             self.chapter_rules_dir,
-            self.report_maps_dir,
         ]:
             d.mkdir(parents=True, exist_ok=True)
 
-        # Initialize Aligner
-        self.aligner = SectionAligner(MEMORY_DIR)
+        # Initialize Aligner (at experiment level)
+        self.aligner = SectionAligner(self.experiment_dir)
 
     def save_previous_sop(self, section_title: str, sop_content: str):
         """保存上一次生成的SOP，用于下一次增强"""
@@ -302,12 +305,7 @@ class MemoryManager:
             metadata: Additional metadata (score, iteration count, etc.)
             report_id: Identifier for the report (e.g. NS25315BV01)
         """
-        # Flatten storage: Save directly to markdown_dir as requested
-        safe_report_id = self._sanitize_filename(report_id)
-        # report_md_dir = self.markdown_dir / safe_report_id
-        # report_md_dir.mkdir(parents=True, exist_ok=True)
-
-        # Save directly to markdown_sops/
+        # Save to markdown_dir
         safe_name = self._sanitize_filename(section_title)
         md_file = self.markdown_dir / f"{safe_name}.md"
 
@@ -315,6 +313,7 @@ class MemoryManager:
             f.write(sop_content)
 
         # Save to report-specific JSON
+        safe_report_id = self._sanitize_filename(report_id)
         report_json_file = self.templates_dir / f"{safe_report_id}_all_sops.json"
 
         with _file_lock:
@@ -360,15 +359,34 @@ class MemoryManager:
             Template data dict or None if not found
         """
         safe_name = self._sanitize_filename(section_title)
-        json_files = list(self.templates_dir.glob(f"{safe_name}_*.json"))
+        # In namespaced mode, templates are in self.templates_dir
+        # They are usually named as {report_id}_all_sops.json
+        # To find the "latest" SOP for a section regardless of report_id, we scan all JSON files in templates_dir
+        json_files = list(self.templates_dir.glob("*_all_sops.json"))
 
         if not json_files:
             return None
 
-        # Get latest file
-        latest_file = max(json_files, key=lambda f: f.stat().st_mtime)
-        with open(latest_file, "r", encoding="utf-8") as f:
-            return json.load(f)
+        # Sort by modification time to find the latest
+        json_files.sort(key=lambda f: f.stat().st_mtime, reverse=True)
+        
+        for json_file in json_files:
+            with open(json_file, "r", encoding="utf-8") as f:
+                try:
+                    all_sops = json.load(f)
+                    for sop in all_sops:
+                        if sop.get("section_title") == section_title:
+                            return sop
+                except Exception:
+                    continue
+        return None
+
+    def get_best_match_sop(self, section_title: str) -> Optional[Dict[str, Any]]:
+        """
+        Get the best matching SOP for a section.
+        Currently just calls load_sop_template, but can be expanded for semantic search.
+        """
+        return self.load_sop_template(section_title)
 
     def log_template_save(self, section_title: str, metadata: Dict[str, Any]):
         """Log template save to audit trail"""
@@ -384,14 +402,16 @@ class MemoryManager:
 
     def log_execution_start(self, section_title: str, complexity: str, route: str):
         """Log execution start"""
-        log_entry = {
+        start_entry = {
             "timestamp": datetime.now().isoformat(),
-            "event_type": "execution_start",
-            "section_title": section_title,
+            "experiment_type": self.experiment_type,
+            "report_id": self.report_id,
+            "section": section_title,
             "complexity": complexity,
             "route": route,
+            "status": "started"
         }
-        self._write_audit_log(log_entry)
+        self._write_audit_log(start_entry)
 
     def log_node_execution(
         self, section_title: str, node_name: str, node_output: Dict[str, Any]
@@ -413,10 +433,11 @@ class MemoryManager:
 
         log_entry = {
             "timestamp": datetime.now().isoformat(),
-            "event_type": "node_execution",
-            "section_title": section_title,
-            "node_name": node_name,
-            "output": clean_output,
+            "experiment_type": self.experiment_type,
+            "report_id": self.report_id,
+            "section": section_title,
+            "node": node_name,
+            "data": clean_output
         }
         self._write_audit_log(log_entry)
 

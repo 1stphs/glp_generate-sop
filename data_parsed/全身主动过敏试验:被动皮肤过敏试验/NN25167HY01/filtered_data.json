@@ -1,0 +1,488 @@
+[
+    {
+        "section_title": "验证报告",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "GLP遵从性声明和签字页",
+        "original_content": "| 签名人 | 职责 | 签名/日期 |\n| --- | --- | --- |\n| 郭景旭，M.S. | 专题负责人 |  |\n| 李小妹 | 委托方负责人 |  |\n| 魏丽萍，Ph.D., DCST | 机构负责人 |  |",
+        "generate_content": "GLP Compliance Statement and Signature\n试验编号（Study Number）：NN25167HY01\n试验名称（Study Title）：\t豚鼠注射给予RF0125008主动全身过敏试验(An Active Systemic Anaphylaxis Study of RF0125008 Substance in Guinea Pigs via Injection)\n除供试品质量检测外，均遵从下述GLP（Good Laboratory Practice）管理规范。试验期间未出现影响试验质量和完整性的因素。\nNMPA. 药物非临床研究质量管理规范。\nUS FDA 21 CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.\nOECD Series on Principles of Good Laboratory Practice and Compliance Monitoring. No.1. OECD Principles of Good Laboratory Practice.\n供试品质量检测在非GLP条件下完成，检验报告（Certificate of Analysis, COA）由委托方负责提供。\nExcept for the analysis of the test article and vehicle control, this study was conducted according to the following GLP regulations. Nothing occurred to markedly affect the quality and integrity of the study during the study.\nNMPA. Good Laboratory Practice for Non-clinical Laboratory Studies.\nUS FDA 21 CFR Part 58, Good Laboratory Practice for Nonclinical Laboratory Studies.\nOECD Series on Principles of Good Laboratory Practice and Compliance Monitoring. No.1. OECD Principles of Good Laboratory Practice.\nThe analysis of test article was conducted under non-GLP conditions, and the certificate of analysis (COA) was provided by the sponsor.\n签名（Signature）：                        日期（Date）：       年    月    日\n郭景旭，M.S.                \t\t\t\t\t\t\t\t\t YYYY /  MM/  DD\n专题负责人（Study Director）",
+        "sop": ""
+    },
+    {
+        "section_title": "质量保证声明",
+        "original_content": "",
+        "generate_content": "QUALITY ASSURANCE STATEMENT\n试验编号（Study Number）：NN25167HY01\n试验名称（Study Title）：   豚鼠注射给予RF0125008主动全身过敏试验(An Active Systemic Anaphylaxis Study of RF0125008 Substance in Guinea Pigs via Injection)\n本机构QAU对该试验进行了如下检查，本试验报告如实描述试验材料和方法，准确反映试验过程中产生的原始数据（除供试品质量检测外）。\nThe conduct of the study was inspected by the QAU of the test facility as follows. The final report accurately and completely describes the materials and methods, and the reported results accurately and completely reflect the raw data of the study (except for the analysis of the test article).\n| 检查类型<br>（Inspection Type） | 检查项目<br>（Phases Inspected） | 检查日期<br>（Inspection Date） | 报告SD/TFM日期<br>（Reported to Study Director/Test Facility Management Date） |\n| --- | --- | --- | --- |\n| 基于试验的检查<br>（Study-based Inspection） | 试验方案  <br>（Protocol） |  |  |\n| 基于试验的检查<br>（Study-based Inspection） | 试验方案变更001<br>（Protocol Amendment 001） |  |  |\n| 基于试验的检查<br>（Study-based Inspection） | 给药制剂配制<br>（Dose Formulation Preparation） |  |  |\n| 基于试验的检查<br>（Study-based Inspection） | 试验报告及记录<br>（Final Report and Raw Data） |  |  |\n\n另外，根据本机构SOPs进行基于设施的检查。\nIn addition, facility-based inspections were conducted according to SOPs of the test facility.\n签名（Signature）：                     日期（Date）：       年    月    日\nYYYY/  MM/  DD\nQA检查员 （Quality Assurance Auditor）",
+        "sop": ""
+    },
+    {
+        "section_title": "目录",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "附表目录",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "附图目录",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "缩略语表",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "摘要",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "缩略词术语列表",
+        "original_content": "",
+        "generate_content": "| 缩写 | 英文全称 | 中文全称 |\n| --- | --- | --- |\n| InnoStar | Shanghai InnoStar Bio-tech Co., Ltd | 上海益诺思生物技术股份有限公司 |\n| GLP | Good Laboratory Practices | 药物非临床研究质量管理规范 |\n| NMPA | National Medical Products Administration | 国家药品监督管理局 |\n| FDA | Food and Drug Administration | 食品药品监督管理局 |\n| OECD | Organization for Economic Co-operation and Development | 经济合作与发展组织 |\n| QA | Quality Assurance | 质量保证 |\n| SOP | Standard Operating Procedure | 标准操作规程 |\n| COA | Certificate of Analysis | 质量检验报告 |\n| QAU | Quality Assurance Unit | 质量保证部门 |",
+        "sop": ""
+    },
+    {
+        "section_title": "摘  要",
+        "original_content": "",
+        "generate_content": "本试验目的在于观察豚鼠注射给予盐酸R-氯胺酮注射液（委托方代号：RF0125008）后是否会引起全身过敏反应，为临床试验提供参考。\n本试验使用SPF级豚鼠24只，分成4组，每组6只，雌雄各半。阴性对照组给予0.9%氯化钠注射液、阳性对照组给予卵白蛋白（致敏剂量为2.0 mg/只，激发剂量为4 mg/只）、供试品低、高剂量组给予盐酸R-氯胺酮注射液（委托方代号：RF0125008）（致敏剂量分别为7.5 mg/kg、15 mg/kg，激发剂量分别为15 mg/kg和30 mg/kg）。\n致敏给药途径为腹腔注射，D1、D3和D5各给药1次，共3次。于末次致敏后第14天（D19）和21天（D26）足背静脉注射给予2倍致敏剂量的受试物进行激发。激发后所有动物观察过敏反应症状。分别于D-1、D1（首次致敏前）、D5（末次致敏前）、D19（首次激发当天激发前）和D26（再次激发当天激发前）称重。\n阴性对照组动物未出现过敏反应征状，阳性对照组动物激发给药后，XX/XX例动物于给药后XX~XX min内死亡，呈现极强阳性过敏反应，过敏反应发生率为100%，本实验系统成立。\n致敏期间，所有动物均未见濒死/死亡；各剂量组受试动物一般观察和体重均未见与供试品相关的异常。\n盐酸R-氯胺酮注射液（委托方代号：RF0125008）15 mg/kg和30 mg/kg组所有动物2次激发后均未见过敏反应征状。\n综上所述，在本试验条件下，豚鼠腹腔注射致敏剂量分别为7.5 mg/kg、15 mg/kg的盐酸R-氯胺酮注射液（委托方代号：RF0125008），主动全身过敏试验结果为阴性。\n引言\n试验名称\n豚鼠注射给予RF0125008主动全身过敏试验（An Active Systemic Anaphylaxis Study of RF0125008 Substance in Guinea Pigs via Injection）\n试验编号\nNN25167HY01\n试验目的\n本试验目的在于观察豚鼠注射给予RF0125008后是否会引起全身过敏反应，为临床试验提供参考。\n试验机构\n名称：\t益诺思生物技术南通有限公司\n地址：\t江苏省南通市海门区临江镇洞庭湖路100号A18楼\n邮编：\t226133\n电话：\t+86-513-80180668\n传真：\t+86-513-80180188\n委托方\n名称：\t宜昌人福药业有限责任公司\n地址：\t湖北省宜昌开发区大连路19号\n邮编：\t443005\n委托方负责人\n姓名：\t李小妹\n手机：\t+86-15587999680\n电子邮件：\tlixiaomei@renfu.com.cn\n专题负责人\n姓名：\t郭景旭，M.S.\n手机：\t+86-13176762015\n电子邮件：\tjxguo@innostar.cn\nQA检查员\n姓名：\t钱丽颖，B.S.\n手机：\t+86-15298666782\n电子邮件：\tlyqian@innostar.cn\n主要研究人员\n动物实验负责人：\t王  磊-1\n给药制剂配制负责人：\t张晓燕，B.S.\n病理解剖负责人（如有）：\t佘韩雯\n病理制片负责人（如有）：\t于嘉雯，B.S.\n病理诊断负责人（如有）：\t葛建雅，M.S.\n动物管理负责人：\t麦俊云，B.S.\n试验日程\n试验开始日期：\t2025年09月05日\n动物到达日期：\t2025年09月02日\n动物分配日期：\t2025年09月06日\n实验开始日期：\t2025年09月08日\n第1次致敏给药日期§：\t2025年09月09日\n第2次致敏给药日期：\t2025年09月11日\n第3次致敏给药日期：\t2025年09月13日\n激发给药日期：\t2025年09月27日；2025年10月04日\n实验结束日期：\t2025年10月04日\n拟定初稿完成时间：\t2025年11月15日\n试验结束日期：\t在总结报告中呈现\n§：定义为给药期第1天（D1）。\n指导原则\nNMPA. 药物刺激性、过敏性和溶血性研究技术指导原则，2014。\n动物福利\n试验期间动物管理和使用遵照美国国家研究委员会颁布的《Guide for the Care and Use of Laboratory Animals》（2011）、中国科学技术委员会颁布的《实验动物管理条例》（2017年修订）和江苏省人民政府2008年颁布的《江苏省实验动物管理办法》的相关要求。本试验的动物管理和使用申请已得到本试验机构动物管理和使用委员会（IACUC）的批准。\n供试品和对照品\n供试品\n名称：\t盐酸R-氯胺酮注射液（委托方代号：RF0125008）\n代码：\tNTA25167-A\n子代码：\tNTA25167-A（02）\n批号：\tYFB250701\n来源：\t宜昌人福药业有限责任公司\n性状：\t无色澄明液体\n含量：\t100.8%\n规格：\t5 mL: 150 mg\n保存条件：\t遮光、密闭、2~8℃保存\n有效期至：\t2027年06月30日\n注：供试品检验书见附件I\n阴性对照品\n名称：\t0.9%氯化钠注射液\n批号：\tD25050502\n来源：\t江西科伦药业有限公司\n保存条件：\t室温，密闭\n有效期至：\t2028年04月30日\n阳性对照品\n名称：\tAlbumin from chicken egg white\n来源：\tAladdin®Shanghai Aladdin Biochemical Technology Co.,LTD\n批号：\tD2501674\n保存条件：\t2~8 °C\n有效期至：\t2026.04.01\n给药制剂的配制\n配制方法\n给药制剂配制过程在生物安全柜或洁净工作台内进行（阳性对照组称量除外），且所使用的试剂瓶等容器（量筒、烧杯、西林瓶）经过灭菌处理。配制过程未避光。\n阴性对照组给药制剂：\n无需配制，直接分发所需体积的0.9%氯化钠注射液，即得阴性对照组给药制剂。\n供试品组给药制剂：\n用0.22 μm PES滤膜过滤（弃去前端约1 mL，取续滤液）所需量的供试品至灭菌容器中，即得供试品组给药制剂。\n阳性对照组给药制剂：\n称取所需量的Albumin from chicken egg white，加入适量的0.9%氯化钠注射液（来源、批号和有效日期记录在原始记录中，并呈现在总结报告中）配制成浓度4 mg/mL的溶液，然后采用0.22 μm的滤膜过滤，即得阳性对照组给药制剂。\n配制好的给药制剂用标签进行标识，标签上至少要包含试验编号、供试品或对照品代码或名称、浓度、保存条件、配制日期、配制人和有效期。\n| 组序 | 组别 | 供试品/<br>对照品 | 给药剂量<br>（mg/kg） | 给药剂量<br>（mg/kg） | 浓度<br>（mg/mL） | 浓度<br>（mg/mL） | 给药容量<br>（mL/kg） | 给药容量<br>（mL/kg） |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 组序 | 组别 | 供试品/<br>对照品 | 致敏 | 激发 | 致敏 | 激发 | 致敏 | 激发 |\n| 1 | 阴性<br>对照组 | 0.9%氯化钠<br>注射液 | 0 | 0 | 0 | 0 | 0.5 | 1 |\n| 2 | 低剂量组 | RF0125008 | 7.5 | 15 | 30 | 30 | 0.25 | 0.5 |\n| 3 | 高剂量组 | RF0125008 | 15 | 30 | 30 | 30 | 0.5 | 1 |\n| 4 | 阳性<br>对照组 | 卵白蛋白 | 2 mg/只 | 4 mg/只 | 4 | 4 | 0.5 mL/只 | 1 mL/只 |\n\n保存条件\n组1：给药前直接整瓶分发，室温保存。\n组2-组3：给药制剂配制后，2 ~ 8 °C遮光保存，临用前转移至室温。\n组4：现配现用。\n剩余给药制剂和供试品的返还\n给药后剩余的给药制剂在给药结束当日返还给供试品管理部，由供试品管理部统一处理；本试验结束后未使用过的供试品在项目结束后由供试品管理部负责归还委托方，或由委托方书面授权处理方法。\n安全防护\n在进行给药制剂配制/准备和给药操作时均穿戴防护服、手套、口罩和眼睛防护罩。\n实验系统\n实验动物\n种属、品系和等级\n豚鼠，Hartley-Dunkin，SPF级\n用于筛选的动物性别和数量\n雌性动物：15只\n雄性动物：15只\n用于试验的动物性别和数量\n雌性动物：12只\n雄性动物：12只\n分组时体重和周龄\n雌性动物：260~400 g，3~7周龄\n雄性动物：260~400 g，3~7周龄\n动物来源及合格证号\n来源：北京维通利华实验动物技术有限公司\n动物合格证号：110011251108162641、110011251108162782\n实验动物使用许可证：SYXK（苏）2023-0053\n动物种属及数量的选择理由\n选择豚鼠作为动物模型，因为该种属动物是国际药审机构公认的进行主动全身过敏试验的标准动物模型，已广泛用于主动全身过敏反应评价试验中，有大量的背景数据。\n本试验共分4组，6只/组，雌雄各半。使用24只动物是评价该供试品引起的全身主动过敏反应所需的最少动物数。\n动物标识\n分组前动物采用芯片进行唯一标识，动物分组后，采用芯片和笼牌进行标识。如下表：\n| 组序 | 组别 | 笼牌颜色 | 动物号 |\n| --- | --- | --- | --- |\n| 1 | 阴性对照组 | 白色 | 1X01~1X03 |\n| 2 | 低剂量组 | 绿色 | 2X01~2X03 |\n| 3 | 高剂量组 | 黄色 | 3X01~3X03 |\n| 4 | 阳性对照组 | 红色 | 4X01~4X03 |\n| 5 | 备用动物组* | 紫色 | 5X01~5X03 |\n\nX：0为雌性，1为雄性\n*备用动物组动物用途见4.1.2，实验期间对所有备用动物每天进行一次笼旁观察。\n动物饲养\n检疫和适应期\n检疫期：至少3天，兽医在检疫期负责完成动物的检疫。\n适应期：至少2天。实验人员于分组前（包括分组当天）每天进行一次笼旁观察，分组前至少完成1次详细的临床观察。\n饲养\n采用IVC笼具按性别饲养，每笼≤ 3只。饲养期间对动物房环境参数进行记录。在此期间，同一房间内不饲养其他种类动物。\n如试验期间，兽医或技术人员对本试验动物进行了人道的治疗处理，均记录于原始记录并呈现在总结报告中。\n饲养环境\n温度：\t20~26 ℃\n湿度：\t40%~70%\n通风：\tIVC独立送风系统\n光照：\t自动光照，每12小时明暗交替（若因试验需要，黑暗期间可以照明），约19:00关灯，次日约07:00开灯。\n饲料\nSPF豚鼠维持配合饲料由科澳协力（天津）饲料有限公司提供（如使用其他来源的饲料记录在原始记录中，并呈现在总结报告中），每批饲料均提供包含常规营养成分（主要成分包括：粗蛋白质、粗脂肪、粗纤维、粗灰分、钙、总磷）、化学污染物（包括：砷、铅、镉、汞、六六六、滴滴涕、黄曲霉毒素B1）和微生物学（包括：菌落总数、大肠菌群、霉菌和酵母菌、致病菌（沙门氏菌））等质量检测报告。本试验所使用的饲料批号为25045213（以上信息更新或使用其他批号的饲料将记录于原始记录并呈现在总结报告中），确认各项指标合格后在总结报告中描述。饲料质量检测报告的原件将归档于本机构档案室。\n饮水\n动物自由饮用自制去离子水。每季度进行一次包含pH值、电导率、微生物及重金属等的水质分析；每年进行一次包括感官指标、理化指标和微生物等指标的全面水质检测，确认各项指标合格后在总结报告中描述。水质检测报告的原件将归档于本试验机构档案室。\n垫料\n玉米芯垫料由南通伟晔生物科技有限公司提供（如使用其他来源的垫料记录在原始记录中，并呈现在总结报告中），每批垫料均提供包含化学污染物（包括：砷、铅、镉、汞、六六六、滴滴涕、黄曲霉毒素B1）等质量检测报告。垫料批号为A2025022-01（以上信息更新或使用其他批号的垫料将记录于原始记录并呈现在总结报告中），确认各项指标合格后在总结报告中描述。本试验所用批号的垫料质量检测报告的原件将归档于本机构档案室。\n实验前动物健康筛选\n实验前，兽医根据检疫期间的检查情况进行动物筛选，签字确认选择健康动物进入适应期。专题负责人根据适应期观察、检查结果，包括适应期一般观察和体重等检查结果再次进行动物健康筛选，由专题负责人签字确认后选择足够数量的健康动物进入随机分组流程。\n动物随机分组\n采用Provantis自带的分组模块，根据性别及体重进行随机分组，把筛选出来的24只动物分配到4组。分组后，动物体重应不超过同性别动物平均体重的±20%，每组同性别动物的平均体重在5.0%的检验水准下，无统计学差异。分组后剩余动物采用Provantis自带的分组模块，根据性别随机分组至备用动物组。待实验结束后未使用的备用动物组动物与实验动物一起安乐死。\n试验设计\n剂量设计理由\n委托方提供的资料显示，本供试品为盐酸R-氯胺酮注射液，临床用于伴急性自杀意念或行为的抑郁症。临床拟给药途径为静脉滴注，临床最大拟用剂量为30-180 mg/人，成人体重按60 kg计算，给药剂量为0.5-3 mg/kg。按体表面积折算豚鼠剂量为2.25-13.5 mg/kg。\n供试品规格为5 mL: 150 mg，本试验设低剂量组和高剂量组，给药浓度均为30 mg/mL（原液），致敏给药容量分别为0.25 mL/kg和 0.5 mL/kg，给药剂量分别为7.5 mg/kg和15 mg/kg。激发给药容量为致敏给药容量的2倍，同时设置阴性对照组（0.9%氯化钠注射液）、阳性对照组（Albumin from chicken egg white）以检验试验系统。\n剂量设计\n本试验剂量设计见下表：\n| 组序 | 组别 | 给药剂量（mg/kg） | 给药剂量（mg/kg） | 给药容量（mL/kg） | 给药容量（mL/kg） | 浓度（mg/mL） | 浓度（mg/mL） |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| 组序 | 组别 | 致敏 | 激发 | 致敏 | 激发 | 致敏 | 激发 |\n| 1 | 阴性对照组 | 0 | 0 | 0.5 | 1.0 | 0 | 0 |\n| 2 | 低剂量组 | 7.5 | 15 | 0.25 | 0.5 | 30 | 30 |\n| 3 | 高剂量组 | 15 | 30 | 0.5 | 1.0 | 30 | 30 |\n| 4 | 阳性对照组 | 2 mg/只 | 4 mg/只 | 0.5 mL/只 | 1.0 mL/只 | 4 | 4 |\n\n试验方法\n给药\n致敏和激发给药途径及选择理由\n致敏途径：腹腔注射\n激发途径：足背静脉注射\n选择理由：NMPA. 药物刺激性、过敏性和溶血性研究技术指导原则，2014。\n给药频率及理由\n致敏频率：隔日注射1次，共3次，给药时间为给药第1、3和5天。\n激发频率：2次，末次致敏给药后第14天（即D19）激发一次（仅阳性对照组选择1只雌性和2只雄性用于激发，动物号从小到大选择，其余各剂量组所有动物均用于激发），如果激发为阳性，试验结束；如果激发为阴性，末次致敏给药后第21天（即D26）再次激发（仅阳性对照组选择D19未激发动物，雌雄共3只，其余各剂量组所有动物均用于激发）。\n选择理由：NMPA. 药物刺激性、过敏性和溶血性研究技术指导原则，2014。\n注：激发注射后，若发现供试品组有过敏反应症状，随机选择两只（雌雄各半）健康的备用动物组的未致敏豚鼠，静脉注射给予激发量的供试品，观察是否由于供试品作用引起的类似过敏反应症状。\n给药部位\n致敏给药部位：腹腔\n激发给药部位：足背静脉\n给药容量\n给药容量见3.5.2\n给药量\n可以最近1次称量体重计算给药量。\n给药速度\n致敏给药：快速推注\n激发给药：组2和组3缓慢推注，不少于2 min/只 （记录每只动物给药开始和结束时间）；组1和组4快速推注（记录每只动物给药结束时间）。\n观察和评价标准\n濒死/死亡观察\n所有动物于致敏给药开始至激发给药结束每天观察1次。",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t引言",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t试验名称",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t试验编号",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t试验目的",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t试验机构",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t委托方",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t委托方负责人",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t专题负责人",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\tQA检查员",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t主要研究人员",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t试验日程",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t指导原则",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t动物福利",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t供试品和对照品",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t供试品",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t阴性对照品",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t阳性对照品",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t给药制剂的配制",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t配制方法",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t保存条件",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t剩余给药制剂和供试品的返还",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t安全防护",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t实验系统",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t实验动物",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t种属、品系和等级",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t用于筛选的动物性别和数量",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t用于试验的动物性别和数量",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t分组时体重和周龄",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t动物来源及合格证号",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t动物种属及数量的选择理由",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t动物标识",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t动物饲养",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t检疫和适应期",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t饲养",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t饲养环境",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t饲料",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t饮水",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t垫料",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t实验前动物健康筛选",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t动物随机分组",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t试验设计",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t剂量设计理由",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t剂量设计",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t试验方法",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t给药",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t致敏和激发给药途径及选择理由",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t给药频率及理由",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t给药部位",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t给药容量",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t给药量",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t给药速度",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t观察和评价标准",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t濒死/死亡观察",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t体重",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t一般观察",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t评价标准",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t死亡或濒死动物处理",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t动物安乐死",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t统计分析",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t结果评价",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t主要软件系统",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": ".\t报告",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "结果",
+        "original_content": "",
+        "generate_content": "",
+        "sop": ""
+    },
+    {
+        "section_title": "给药制剂浓度分析结果",
+        "original_content": "",
+        "generate_content": "给药制剂分析结果和分析方法见附件II。\nXX",
+        "sop": ""
+    },
+    {
+        "section_title": "死亡/濒死情况",
+        "original_content": "",
+        "generate_content": "死亡/濒死个体数据见表1。\n致敏期间所有动物未见死亡/濒死。\n激发给药后动物死亡情况见8.4.2。",
+        "sop": ""
+    },
+    {
+        "section_title": "体重",
+        "original_content": "",
+        "generate_content": "体重数据汇总见表2，个体数据见附件III。\n结果显示，与阴性对照组相比，各剂量组动物体重均未见与供试品相关的异常。",
+        "sop": ""
+    },
+    {
+        "section_title": "一般观察",
+        "original_content": "",
+        "generate_content": "适应期：\t1次/天，至少观察2天（包括分组当天）每天进行一次笼旁观察，分组前至少完成1次详细的临床观察；如同时间段完成了详细临床观察，则无需进行笼旁观察。\n致敏期间：\t致敏给药日：组1~4：所有存活动物每日进行2次一般观察（致敏给药前、给药后各1次）；\n致敏非给药日：组1~4：所有存活动物每天进行1次笼旁观察，每周至少1次详细临床观察。如同时间段完成了详细临床观察，则无需进行笼旁观察。\n组5（备用动物组）：每天进行1次笼旁观察。\n激发：\t静脉注射后即刻起至少观察30分钟，按表1观察每只动物的反应，包括征状的出现及消失时间，最长观察3小时。\n注：其余时间观察到的症状也应及时记录。\n表1 过敏反应症状\n| 0 正常 | 7 呼吸急促 | 14 步态不稳 |\n| --- | --- | --- |\n| 1 不安宁 | 8 排尿 | 15 跳跃 |\n| 2 竖毛 | 9 排粪 | 16 喘息 |\n| 3 发抖 | 10 流泪 | 17 痉挛 |\n| 4 搔鼻 | 11 呼吸困难 | 18 旋转 |\n| 5 喷嚏 | 12 哮鸣音 | 19 潮式呼吸 |\n| 6 咳嗽 | 13 紫癜 | 20 死亡 |\n\n评价标准\n根据表2判断过敏反应发生程度。\n表2 全身致敏性标准\n| 0 |  | 过敏反应阴性 |\n| --- | --- | --- |\n| 1~4症状 | ＋ | 过敏反应弱阳性 |\n| 5~10症状 | ＋＋ | 过敏反应阳性 |\n| 11~19症状 | ＋＋＋ | 过敏反应强阳性 |\n| 20症状 | ＋＋＋＋ | 过敏反应极强阳性 |\n\n死亡或濒死动物处理\n除激发引起的动物死亡外，濒死安乐死动物和发现死亡的动物（对濒死动物进行过量CO2安乐死）要进行解剖，非工作时间发现动物死亡后放置冰箱冷藏（2~8℃），并于24小时内尽快完成解剖。记录解剖情况和大体损伤，大体损伤或异常的组织以及心脏、肝脏、脾脏、肺脏、胸腺、肾脏、肾上腺、胰腺、胃、十二指肠、空肠、回肠、直肠、结肠、盲肠和脑进行组织病理学检查并确认动物标识。除上述脏器外，若全身其他组织脏器（如被毛、皮肤等）发现异常，应进行记录并取材，需进行组织病理学检查。\n动物安乐死\n末次激发观察结束后，所有激发存活动物（包括备用动物组）吸入过量CO2后，开胸或放血安乐死。\n统计分析\nD-1、D1、D5、D19和D26（如果有，除阳性对照组外）动物体重按性别以均数±标准差表示。上述数据采用Provantis系统进行统计分析。当n≥3，组2-4与组1相比时，均按照以下方法统计：①用Levene's检验检测数据的方差齐性，如果方差齐（P>0.05），则进行单因素方差分析（ANOVA）；如果方差不齐（P≤0.05），则将数据进行常用对数转换（Logarithmic Transformation）后再次采用Levene’s检验检测数据（Log data）的方差齐性，如果方差齐（P>0.05），则采用Log data进行单因素方差分析（ANOVA）；如果方差不齐（P≤0.05），则将原数据进行秩转换（Rank Transformation）后（Rank data）进行Kruskal- Wallis检验；②如果方差分析（ANOVA）结果有统计学差异（P≤0.05），则进一步采用Dunnett 检验进行组间比较检验（0.05和0.01水平）；如果方差分析（ANOVA）结果无统计学差异（P>0.05），则统计结束。③如果Kruskal - Wallis检验结果有统计学差异（P≤0.05），则进一步将Rank data采用Dunnett检验进行组间比较检验（0.05和0.01水平）；如果Kruskal - Wallis检验结果无统计学差异（P>0.05），则统计结束。当n=2时，仅按性别以均数±标准差表示，不进行统计推断。\n死亡/濒死结果和一般观察结果不进行统计，以个体数据和/或频数形式表示。\nD26（如果有）仅阳性对照组动物体重按性别以均数±标准差或个体数据形式表示，不进行统计推断。\n如果因数据分析的需要而采用其他的统计分析方法，则需要在总结报告描述。\n结果评价\n当阴性对照组动物未出现过敏反应症状，阳性对照组动物出现过敏反应症状时，试验系统成立。\n计算过敏反应率（每组发生过敏反应的动物数/该组动物总数），根据过敏反应发生率和发生程度综合评价过敏反应情况。\n主要软件系统\n本试验中使用的主要计算机化系统：\n| 软件名称 | 版本号 | 用途 |\n| --- | --- | --- |\n| Microsoft Word | 2003或以上版本 | 方案和报告撰写 |\n| WinCC | 7.5或以上版本 | 监测和控制环境条件和储存条件 |\n| Provantis | 10.5.0.4或以上版本 | 实验室数据采集和报告系统、数据分析 |\n| e慧签 | 3.10.0 | 用于电子文件签名 |\n\n报告\n专题负责人在计划的时间内向委托方提交总结报告草案，此报告草案应包括试验方案中所要求的所有检测分析观察的结果以及对这些实验结果合理的分析讨论；在得到委托方的书面反馈意见（包括邮件、传真）并修改后提供最终的总结报告。\n报告草案发给委托方3个月后，如果没有任何修订意见，则可将该报告草案确定为最终报告，由专题负责人签字后发给委托方。",
+        "sop": ""
+    },
+    {
+        "section_title": "致敏期间观察",
+        "original_content": "",
+        "generate_content": "致敏期间一般观察结果见表3。\n致敏期间，各剂量组动物均未见与给予供试品相关的异常。",
+        "sop": ""
+    },
+    {
+        "section_title": "激发后观察",
+        "original_content": "",
+        "generate_content": "首次激发后症状观察见表4，末次激发后症状观察见表5。",
+        "sop": ""
+    },
+    {
+        "section_title": "结论",
+        "original_content": "",
+        "generate_content": "本试验条件下，豚鼠腹腔注射致敏剂量分别为XX mg/kg、XX mg/kg的供试品名称主动全身过敏试验结果为阴性。",
+        "sop": ""
+    },
+    {
+        "section_title": "归档",
+        "original_content": "",
+        "generate_content": "本机构产生的试验方案、试验方案变更（如果有）、原始记录和试验报告等在试验结束后保存于本机构档案室。",
+        "sop": ""
+    }
+]

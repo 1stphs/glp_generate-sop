@@ -184,34 +184,50 @@ def merge_sources(protocol_sections: Dict[str, str], report_sections: Dict[str, 
 
     return output_data
 
-def process_directory(dir_path: Path, output_root: Path):
-    """Processes a single project directory."""
-    print(f"--- Processing: {dir_path.name} ---")
+def process_directory(dir_path: Path, output_root: Path, report_id: str = None):
+    """Processes a single project directory or flat directory with a specific report_id."""
+    print(f"--- Processing: {dir_path.name} (ID: {report_id or dir_path.name}) ---")
     
-    # Doc discovery
-    protocol_files = [f for f in dir_path.glob("*方案*.docx") if not f.name.startswith((".", ".~"))]
-    if not protocol_files:
-        protocol_files = [f for f in dir_path.glob("*方案*.doc") if not f.name.startswith((".", ".~"))]
-        
-    report_files = [f for f in (list(dir_path.glob("*REPORT*.docx")) + list(dir_path.glob("*报告*.docx"))) if not f.name.startswith((".", ".~"))]
+    # Case-insensitive doc discovery
+    all_files = list(dir_path.iterdir())
+    
+    def matches_keywords(name, keywords):
+        name_lower = name.lower()
+        return any(kw.lower() in name_lower for kw in keywords)
+
+    protocol_keywords = ["方案", "Protocol"]
+    report_keywords = ["REPORT", "报告", "总结报告"]
+
+    protocol_files = [f for f in all_files if matches_keywords(f.name, protocol_keywords) and f.suffix in ['.docx', '.doc'] and not f.name.startswith((".", ".~"))]
+    report_files = [f for f in all_files if matches_keywords(f.name, report_keywords) and f.suffix in ['.docx', '.doc'] and not f.name.startswith((".", ".~"))]
+    
     if not report_files:
-        report_files = [f for f in (list(dir_path.glob("*REPORT*.doc")) + list(dir_path.glob("*报告*.doc"))) if not f.name.startswith((".", ".~"))]
-    
-    protocol_path = protocol_files[0] if protocol_files else None
-    report_path = report_files[0] if report_files else None
-    
-    if not report_path:
         print(f"Skipping {dir_path.name}: No report file found.")
         return
 
-    report_id = dir_path.name
-    report_out_dir = output_root / report_id
+    # If report_id is not passed, use the folder name
+    final_report_id = report_id or dir_path.name
+    
+    # Specific logic for flat directories: filter files by the extracted report_id if possible
+    current_protocol = protocol_files[0] if protocol_files else None
+    current_report = report_files[0] if report_files else None
+    
+    # If we have multiple report files and a specific ID, filter for that ID
+    if report_id:
+        matching_reports = [f for f in report_files if report_id in f.name]
+        if matching_reports:
+             current_report = matching_reports[0]
+        matching_protocols = [f for f in protocol_files if report_id in f.name]
+        if matching_protocols:
+             current_protocol = matching_protocols[0]
+
+    report_out_dir = output_root / final_report_id
     report_out_dir.mkdir(parents=True, exist_ok=True)
     
     try:
         # Report parser is primary as it provides the TOC order
-        report_parser = DocxParser(str(report_path), report_id)
-        protocol_parser = DocxParser(str(protocol_path), report_id) if protocol_path else None
+        report_parser = DocxParser(str(current_report), final_report_id)
+        protocol_parser = DocxParser(str(current_protocol), final_report_id) if current_protocol else None
         
         protocol_sections = protocol_parser.sections if protocol_parser else {}
         report_sections = report_parser.sections
@@ -225,21 +241,53 @@ def process_directory(dir_path: Path, output_root: Path):
         print(f"Successfully saved to {out_file}")
             
     except Exception as e:
-        print(f"Error processing {dir_path.name}: {e}")
-        traceback.print_exc()
+        print(f"Error processing {final_report_id}: {e}")
+        # traceback.print_exc()
 
 def main():
-    base_dir = Path(r"D:\益诺思\sop生成\original_docx\BV报告")
-    output_root = Path(r"D:\益诺思\sop生成\data_parsed")
+    project_root = Path(__file__).parent.parent
+    base_dir = project_root / "original_docx"
+    output_root = project_root / "data_parsed"
     
     if not base_dir.exists():
         print(f"Source directory {base_dir} not found.")
         return
 
-    # Process all project directories
-    for project_dir in base_dir.iterdir():
-        if project_dir.is_dir() and not project_dir.name.startswith("."):
-            process_directory(project_dir, output_root)
+    for exp_type_dir in base_dir.iterdir():
+        if not exp_type_dir.is_dir() or exp_type_dir.name.startswith("."):
+            continue
+            
+        print(f"\n======== Processing Experiment Type: {exp_type_dir.name} ========")
+        exp_output_root = output_root / exp_type_dir.name
+        
+        # Check if it has sub-directories (Nested Mode like BV)
+        sub_dirs = [d for d in exp_type_dir.iterdir() if d.is_dir() and not d.name.startswith(".")]
+        
+        if sub_dirs:
+            # Mode A: Nested (BV Type)
+            for project_dir in sub_dirs:
+                process_directory(project_dir, exp_output_root)
+        else:
+            # Mode B: Flat (Direct files)
+            all_exp_files = list(exp_type_dir.iterdir())
+            report_keywords = ["REPORT", "报告", "总结报告"]
+            
+            report_files = [f for f in all_exp_files if any(kw.lower() in f.name.lower() for kw in report_keywords) 
+                           and f.suffix in ['.docx', '.doc'] and not f.name.startswith((".", ".~"))]
+            
+            processed_ids = set()
+            for r_file in report_files:
+                # Extract ID: Match common pattern like NS24461HL01 or SS23461IR01
+                id_match = re.search(r'([A-Z]{2}\d{5}[A-Z]{2}\d{2})', r_file.name)
+                if id_match:
+                    rid = id_match.group(1)
+                    if rid not in processed_ids:
+                        process_directory(exp_type_dir, exp_output_root, report_id=rid)
+                        processed_ids.add(rid)
+                else:
+                    # Skip templates or non-project files
+                    if "模板" not in r_file.name:
+                        print(f"⚠️ Could not extract ID from {r_file.name}, skipping.")
 
 if __name__ == "__main__":
     main()

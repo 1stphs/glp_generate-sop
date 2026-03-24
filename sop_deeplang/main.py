@@ -63,14 +63,15 @@ def process_section_task(engine: SOPSGeneratorV6, section: Dict[str, Any], repor
         "all_report_contents": [section["original_report_content"]],
         "phase": phase,
         "report_id": report_id,
+        "experiment_type": engine.experiment_type,
         "section_type": "UNKNOWN"
     }
     engine.process_section(initial_state)
 
-def run_phase_1(engine: SOPSGeneratorV6, report_id: str, limit: Optional[int] = None, workers: int = 5):
+def run_phase_1(engine: SOPSGeneratorV6, report_id: str, experiment_type: str, limit: Optional[int] = None, workers: int = 5):
     """Generate generic SOP skeleton from merged protocol/report."""
-    print(f"\n🚀 Starting Phase 1: Skeleton Generation for {report_id} (Parallel: {workers} workers)")
-    all_sections = load_preprocessed_sections(report_id)
+    print(f"\n🚀 Starting Phase 1: Skeleton Generation for {report_id} (Type: {experiment_type})")
+    all_sections = load_preprocessed_sections(report_id, experiment_type)
     
     # Apply Archival truncation
     active_sections = truncate_at_archival(all_sections)
@@ -95,10 +96,10 @@ def run_phase_1(engine: SOPSGeneratorV6, report_id: str, limit: Optional[int] = 
     
     print(f"✅ Phase 1 complete for {report_id}")
 
-def run_phase_2(engine: SOPSGeneratorV6, report_id: str, limit: Optional[int] = None, workers: int = 5):
+def run_phase_2(engine: SOPSGeneratorV6, report_id: str, experiment_type: str, limit: Optional[int] = None, workers: int = 5):
     """Refine SOP using real data iteration."""
-    print(f"\n🚀 Starting Phase 2: Expert Iteration for {report_id} (Parallel: {workers} workers)")
-    all_sections = load_preprocessed_sections(report_id)
+    print(f"\n🚀 Starting Phase 2: Expert Iteration for {report_id} (Type: {experiment_type})")
+    all_sections = load_preprocessed_sections(report_id, experiment_type)
     
     # Apply Archival truncation
     active_sections = truncate_at_archival(all_sections)
@@ -128,6 +129,7 @@ def main():
     parser.add_argument("--phase", type=int, choices=[1, 2], default=1, help="Execution phase (1: Skeleton, 2: Expert)")
     parser.add_argument("--limit", type=int, help="Limit processing to first N sections")
     parser.add_argument("--report", type=str, help="Specific report ID to process")
+    parser.add_argument("--type", type=str, default="BV报告", help="Experiment type (e.g., BV报告, 溶血试验)")
     parser.add_argument("--workers", type=int, default=5, help="Number of parallel workers")
     args = parser.parse_args()
 
@@ -135,20 +137,20 @@ def main():
         print("✗ Configuration invalid. Check .env")
         return
 
-    available_reports = get_available_reports()
+    available_reports = get_available_reports(args.type)
     if not available_reports:
-        print("✗ No preprocessed data found in data_parsed/")
+        print(f"✗ No preprocessed data found in data_parsed/{args.type}")
         return
 
     report_id = args.report if args.report else available_reports[0]
-    print(f"📂 Processing Report: {report_id}")
+    print(f"📂 Processing Report: {report_id} | Type: {args.type}")
 
-    engine = SOPSGeneratorV6()
+    engine = SOPSGeneratorV6(experiment_type=args.type, report_id=report_id)
     
     if args.phase == 1:
-        run_phase_1(engine, report_id, args.limit, args.workers)
+        run_phase_1(engine, report_id, args.type, args.limit, args.workers)
     else:
-        run_phase_2(engine, report_id, args.limit, args.workers)
+        run_phase_2(engine, report_id, args.type, args.limit, args.workers)
 
 if __name__ == "__main__":
     main()
